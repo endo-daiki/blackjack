@@ -4,21 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ユーザー 新規登録ページ</title>
+<title>ユーザー　ログインページ</title>
 </head>
 <body>
-<p>ユーザー 新規登録</p>
+<h1>ブラックジャック</h1>
+<p>ユーザー ログイン</p>
 <form method="post" action="">
-	名前
+	<label>名前</label>
 	<input type="text" name="name"><br>
-	ニックネーム
-	<input type="text" name=""><br>
-	パスワード
+	<label>パスワード</label>
 	<input type="password" name="password"><br>
-	確認用パスワード
-	<input type="password" name="checkPassword"><br>
 	<button type=submit >ログイン</button>
 </form>
-<a href="signin.jsp">ログイン</a>
+<a href="signin.jsp">新規登録</a>
 </body>
 </html>
