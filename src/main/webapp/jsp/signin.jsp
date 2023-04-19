@@ -20,7 +20,7 @@
 				<label>名前</label>
 				<input class="form-control" type="text" name="name"><br>
 				<label>ニックネーム</label>
-				<input class="form-control" type="text" name="nickName"><br>
+				<input class="form-control" type="text" name="nickname"><br>
 				<label>パスワード</label>
 				<input class="form-control" type="password" name="password"><br>
 				<label>確認用パスワード</label>
