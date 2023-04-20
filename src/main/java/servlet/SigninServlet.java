@@ -57,41 +57,7 @@ public class SigninServlet extends HttpServlet {
 		String nickname = request.getParameter("nickname");
 		String password = request.getParameter("password");
 		
-//		try {
-//			Class.forName("com.mysql.cj.jdbc.Driver");
-//		} catch (ClassNotFoundException e){
-//			throw new IllegalStateException("");
-//		}
-//		
-		Connection con = null;
-		try {
-			 con = DriverManager.getConnection(
-				      "jdbc:mysql://localhost:3306/blackjack",
-				      "root",
-				      ""
-				    );
-			 
-////			 PreparedStatement pstmt = con.prepareStatement
-////					 ("insert into user (name, nickname, password) values (?,?,?)");
-////			 
-////			 pstmt.setString(1, name);
-////			 pstmt.setString(2, nickname);
-////			 pstmt.setString(3, password);
-////			 ResultSet rs = pstmt.executeQuery();
-//			 
-//			 rs.close();
-//			 pstmt.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
-		
-//		User user = new User();
-//		user.insertUser(name, nickname, password);
-//		
-//		RequestDispatcher dispatcher = 
-//				request.getRequestDispatcher("jsp/signinDone.jsp");
-//		dispatcher.forward(request, response);
 	}
 
 }
