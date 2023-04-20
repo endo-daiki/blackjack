@@ -17,17 +17,23 @@ public class User {
 	private int draw;
 	
 	public User() {}
-	public void insertUser(String name, String nicname, String password) {
+	public void insertUser(String name, String nickname, String password) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e){
+			throw new IllegalStateException("");
+		}
+		
 		Connection con = null;
 		try {
 			 con = DriverManager.getConnection(
-				      "jdbc:mysql://localhost/＜データベース名＞?useSSL=false",
+				      "jdbc:mysql://localhost/blackjack",
 				      "root",
 				      ""
 				    );
 			 
 			 PreparedStatement pstmt = con.prepareStatement
-					 ("insert into User (name, nickname, password) values (?,?,?)");
+					 ("insert into user (name, nickname, password) values (?,?,?)");
 			 
 			 pstmt.setString(1, name);
 			 pstmt.setString(2, nickname);

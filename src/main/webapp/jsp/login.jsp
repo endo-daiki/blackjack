@@ -16,14 +16,14 @@
 		<h1 class="text-center">ブラックジャック</h1>
 		<p class="text-center">ユーザー ログイン</p>
 		<div class="col-7">
-			<form method="" action="">
+			<form method="post" action="">
 				<label>名前</label>
 				<input type="text" name="name" class="form-control"><br>
 				<label>パスワード</label>
 				<input type="password" name="password" class="form-control"><br>
 				<button type=submit class="btn btn-primary">ログイン</button>
 			</form>
-			<a href="signin.jsp">新規登録</a>
+			<a href="Signin">新規登録</a>
 		</div>
 	</div>
 </div>
