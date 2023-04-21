@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String error_name = (String) request.getAttribute("error_name");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,32 +22,24 @@
 			<form method="post" action="Signin">
 				<label>名前</label>
 				<input class="form-control" type="text" name="name"><br>
-				<%
-			        if(request.getAttribute("error_name")!= null){
-			                request.getAttribute("error_name");
-			        }
-				%>
+				<% if(error_name != null) { %>
+				<p class="text-danger"><%= error_name %></p>
+				<% } %>
 				<label>ニックネーム</label>
 				<input class="form-control" type="text" name="nickname"><br>
-				<%
-			        if(request.getAttribute("error_nickname")!= null){
-			                request.getAttribute("error_nickname");
-			        }
-				%>
+				<% if(request.getAttribute("error_nickname")!= null){ %>
+				<p class="text-danger"><%= (String)request.getAttribute("error_nickname") %></p>
+				<% } %>
 				<label>パスワード</label>
 				<input class="form-control" type="password" name="password"><br>
-				<%
-			        if(request.getAttribute("error_password")!= null){
-			                request.getAttribute("error_password");
-			        }
-				%>
+				<% if(request.getAttribute("error_password")!= null){ %>
+				<p class="text-danger"><%= (String)request.getAttribute("error_password") %></p>
+				<% } %>
 				<label>確認用パスワード</label>
 				<input class="form-control" type="password" name="checkPassword"><br>
-				<%
-			        if(request.getAttribute("error_check")!= null){
-			                request.getAttribute("error_check");
-			        }
-				%>
+				<% if(request.getAttribute("error_check")!= null){ %>
+				<p class="text-danger"><%= (String)request.getAttribute("error_check") %></p>
+				<% } %>
 				<button class="btn btn-primary" type=submit >新規登録</button>
 			</form>
 			<a href="Login">ログイン</a>

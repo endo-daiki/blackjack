@@ -82,12 +82,12 @@ public class SigninServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		} 
 		
-//		User user = new User();
-//		user.insertUser(name, nickname, password, checkPassword);
+		User user = new User();
+		user.insertUser(name, nickname, password, checkPassword);
 		
-//		RequestDispatcher dispatcher = 
-//				request.getRequestDispatcher("/jsp/signinDone.jsp");
-//		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher("/jsp/signinDone.jsp");
+		dispatcher.forward(request, response);
 		
 	}
 
