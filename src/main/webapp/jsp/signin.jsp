@@ -19,12 +19,32 @@
 			<form method="post" action="Signin">
 				<label>名前</label>
 				<input class="form-control" type="text" name="name"><br>
+				<%
+			        if(request.getAttribute("error_name")!= null){
+			                request.getAttribute("error_name");
+			        }
+				%>
 				<label>ニックネーム</label>
 				<input class="form-control" type="text" name="nickname"><br>
+				<%
+			        if(request.getAttribute("error_nickname")!= null){
+			                request.getAttribute("error_nickname");
+			        }
+				%>
 				<label>パスワード</label>
 				<input class="form-control" type="password" name="password"><br>
+				<%
+			        if(request.getAttribute("error_password")!= null){
+			                request.getAttribute("error_password");
+			        }
+				%>
 				<label>確認用パスワード</label>
 				<input class="form-control" type="password" name="checkPassword"><br>
+				<%
+			        if(request.getAttribute("error_check")!= null){
+			                request.getAttribute("error_check");
+			        }
+				%>
 				<button class="btn btn-primary" type=submit >新規登録</button>
 			</form>
 			<a href="Login">ログイン</a>

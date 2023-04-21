@@ -56,7 +56,38 @@ public class SigninServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String nickname = request.getParameter("nickname");
 		String password = request.getParameter("password");
+		String checkPassword = request.getParameter("checkPassword");
+		boolean insertCheck = true;
 		
+		if(name.length() == 0) {
+			request.setAttribute("error_name", "名前を入力してください");
+			insertCheck = false;
+		}
+		if(nickname.length() == 0) {
+			request.setAttribute("error_nickname", "ニックネームを入力してください");
+			insertCheck = false;
+		}
+		if(password.length() == 0) {
+			request.setAttribute("error_password", "パスワードを入力してください");
+			insertCheck = false;
+		}
+		if(checkPassword.length() == 0 && !checkPassword.equals(password)) {
+			request.setAttribute("error_check", "パスワードが正しくありません");
+			insertCheck = false;
+		}
+		
+		if(insertCheck == false) {
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("/jsp/signin.jsp");
+			dispatcher.forward(request, response);
+		} 
+		
+//		User user = new User();
+//		user.insertUser(name, nickname, password, checkPassword);
+		
+//		RequestDispatcher dispatcher = 
+//				request.getRequestDispatcher("/jsp/signinDone.jsp");
+//		dispatcher.forward(request, response);
 		
 	}
 
