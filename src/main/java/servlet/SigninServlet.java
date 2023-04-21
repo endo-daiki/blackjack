@@ -83,7 +83,7 @@ public class SigninServlet extends HttpServlet {
 		} 
 		
 		User user = new User();
-		user.insertUser(name, nickname, password, checkPassword);
+		user.insertUser(name, nickname, password);
 		
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher("/jsp/signinDone.jsp");

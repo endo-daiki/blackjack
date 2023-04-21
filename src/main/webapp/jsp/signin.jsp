@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String error_name = (String) request.getAttribute("error_name");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +19,8 @@
 			<form method="post" action="Signin">
 				<label>名前</label>
 				<input class="form-control" type="text" name="name"><br>
-				<% if(error_name != null) { %>
-				<p class="text-danger"><%= error_name %></p>
+				<% if(request.getAttribute("error_name") != null) { %>
+				<p class="text-danger"><%= request.getAttribute("error_name") %></p>
 				<% } %>
 				<label>ニックネーム</label>
 				<input class="form-control" type="text" name="nickname"><br>

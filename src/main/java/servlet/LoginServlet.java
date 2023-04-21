@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.User;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -39,9 +41,33 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, 
+			HttpServletResponse response) 
+					throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		
+		User user = new User();
+		boolean check = user.userLogin(name, password);
+		
+		if(check == false) {
+			request.setAttribute("error_check", "ログインに失敗しました。名前またはパスワードが正しくありません");
+			
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("/jsp/login.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			request.setAttribute("user_login", "ログインしました。");
+		
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("/jsp/main.jsp");
+			dispatcher.forward(request, response);
+		}
+		
+		
 	}
 
 }
