@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.User" %>
+<% 
+ User user = (User) session.getAttribute("user");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,17 +24,17 @@
                 <tbody>
                   <tr>
                     <th scope="row">名前</th>
-                    <td>遠藤大基</td>
+                    <td><%= user.getName() %></td>
                     <td><a href="userEdit.jsp" class="btn btn-primary">変更</button></td>
                   </tr>
                   <tr>
                     <th scope="row">ニックネーム</th>
-                    <td>DK</td>
+                    <td><%= user.getNickname() %></td>
                     <td><button class="btn btn-primary">変更</button></td>
                   </tr>
                   <tr>
                     <th scope="row">パスワード</th>
-                    <td>***********</td>
+                    <td><%= user.getPassword() %></td>
                     <td><button class="btn btn-primary">変更</button></td>
                   </tr>
                 </tbody>

@@ -74,6 +74,14 @@ public class User {
 			
 			if(rs.next()) {
 				check =  true;
+				this.id = rs.getInt("id");
+				this.name = rs.getString("name");
+				this.nickname = rs.getString("nickname");
+				this.password = rs.getString("password");
+				this.playing = rs.getInt("playing");
+				this.win = rs.getInt("win");
+				this.lose = rs.getInt("lose");
+				this.draw = rs.getInt("draw");
 			} else {
 				check =  false;
 			}
@@ -89,6 +97,10 @@ public class User {
 	public String getName() {
 		return this.name;
 	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public String getNickname() {
 		return this.nickname;
 	}

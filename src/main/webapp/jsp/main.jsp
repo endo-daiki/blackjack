@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.User" %>
+<% User user = (User) session.getAttribute("user"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,16 +16,17 @@
 <div class="container-fluid">
     <h1 class="text-center">ブラックジャック</h1>
     <p class="text-center">トップぺージ</p>
-	<% if(request.getAttribute("login_check") != null) { %>
-		<p class="text-danger"><%= request.getAttribute("login_check") %></p>
+	<% if(request.getAttribute("user_login") != null) { %>
+		<p class="text-danger text-center"><%= request.getAttribute("user_login") %></p>
 	<% } %>
-<%-- 	<p>ようこそ、<%=  %>さん</p> --%>
+	<p class="text-center">ようこそ、<%= user.getNickname()  %>さん</p>
     <div class="row justify-content-center">
         <div class="col-7">
 			<div class="d-grid gap-2">
 				<a href="Game" class="btn btn-outline-primary">ゲームスタート</a>
 			</div>
             
+            <a href="userInfo.jsp">ユーザー情報</a>
 			<a href="userInfo.jsp">戻る</a>
         </div>
     </div>

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.User;
 
@@ -61,6 +62,9 @@ public class LoginServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		} else {
 			request.setAttribute("user_login", "ログインしました。");
+			
+			HttpSession session = request.getSession(true);
+	        session.setAttribute("user", user);
 		
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher("/jsp/main.jsp");
