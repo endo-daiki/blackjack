@@ -26,7 +26,7 @@
 				<a href="Game" class="btn btn-outline-primary">ゲームスタート</a>
 			</div>
             
-            <a href="userInfo.jsp">ユーザー情報</a>
+            <a href="UserInfo">ユーザー情報</a>
 			<a href="userInfo.jsp">戻る</a>
         </div>
     </div>

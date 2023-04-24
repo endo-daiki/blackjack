@@ -25,7 +25,7 @@
                   <tr>
                     <th scope="row">名前</th>
                     <td><%= user.getName() %></td>
-                    <td><a href="userEdit.jsp" class="btn btn-primary">変更</button></td>
+                    <td><a href="userEdit/name" class="btn btn-primary">変更</button></td>
                   </tr>
                   <tr>
                     <th scope="row">ニックネーム</th>
