@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import login.Login;
 import model.User;
 
 /**
@@ -53,6 +54,7 @@ public class LoginServlet extends HttpServlet {
 		
 		User user = new User();
 		boolean check = user.userLogin(name, password);
+		
 		
 		if(check == false) {
 			request.setAttribute("error_check", "ログインに失敗しました。名前またはパスワードが正しくありません");

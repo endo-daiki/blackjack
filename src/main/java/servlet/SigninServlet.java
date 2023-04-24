@@ -57,6 +57,7 @@ public class SigninServlet extends HttpServlet {
 		String nickname = request.getParameter("nickname");
 		String password = request.getParameter("password");
 		String checkPassword = request.getParameter("checkPassword");
+		
 		boolean insertCheck = true;
 		
 		if(name.length() == 0) {

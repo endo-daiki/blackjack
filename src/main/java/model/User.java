@@ -174,6 +174,9 @@ public class User {
 	public int getId() {
 		return this.id;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getName() {
 		return this.name;
@@ -185,21 +188,45 @@ public class User {
 	public String getNickname() {
 		return this.nickname;
 	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname; 
+	}
+	
 	public String getPassword() {
 		return this.password;
 	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	public int getPlaying() {
 		return this.playing;
 	}
+	public void setPlaying(int playing) {
+		this.playing = playing;
+	}
+	
 	public int getWin() {
 		return this.win;
 	}
+	public void setWin(int win) {
+		this.win = win;
+	}
+	
 	public int getLose() {
 		return this.lose;
 	}
-	public int getDraw() {
+	public void setLose(int lose) {
+		this.lose = lose;
+	}
+	
+ 	public int getDraw() {
 		return this.draw;
 	}
+ 	public void setDraw(int draw) {
+ 		this.draw = draw;
+ 	}
+	
 	public double getRate() {
 		return (this.win / this.draw);
 	}
