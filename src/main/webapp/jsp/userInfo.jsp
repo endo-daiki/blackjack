@@ -25,20 +25,18 @@
                   <tr>
                     <th scope="row">名前</th>
                     <td><%= user.getName() %></td>
-                    <td><a href="userEdit/name" class="btn btn-primary">変更</button></td>
                   </tr>
                   <tr>
                     <th scope="row">ニックネーム</th>
                     <td><%= user.getNickname() %></td>
-                    <td><button class="btn btn-primary">変更</button></td>
                   </tr>
                   <tr>
                     <th scope="row">パスワード</th>
                     <td><%= user.getPassword() %></td>
-                    <td><button class="btn btn-primary">変更</button></td>
                   </tr>
                 </tbody>
               </table>
+              <a href="" class="btn btn-primary">変更</a>
               <a href="" class="btn btn-danger">退会</a>
         </div>
     </div>

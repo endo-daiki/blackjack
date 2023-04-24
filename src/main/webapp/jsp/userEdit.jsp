@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.User" %>
+<% User user = (User) session.getAttribute("user"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +18,25 @@
     <p class="text-center">ユーザー情報変更</p>
     <div class="row justify-content-center">
         <div class="col-7">
-            <form method="post" action="">
-				<label>名前：変更前</label>
-				<p>遠藤大基</p>
-				
-				<label>名前：変更後</label>
-				<input type="text" name="name" class="form-control"><br>
-				<button type=submit class="btn btn-primary">変更</button>
+            <form method="post" action="UserEdit">
+				<table class="table">
+                <tbody>
+                  <tr>
+                    <th scope="row">名前</th>
+                    <td><input type="text" name="name" class="form-control" value="<%= user.getName() %>"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">ニックネーム</th>
+                    <td><input type="text" name="nickname" class="form-control" value="<%= user.getNickname() %>"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">パスワード</th>
+                    <td><input type="password" name="password" class="form-control" value="<%= user.getPassword() %>"></td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <input type="hidden" name="id" value="<%= user.getId() %>">
+              <button class="btn btn-primary">変更</button>
 			</form>
 			<a href="userInfo.jsp">戻る</a>
         </div>

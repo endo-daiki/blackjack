@@ -94,6 +94,87 @@ public class User {
 		return check;
 	}
 	
+	public void editUser (String name, String nickname, String password, int id) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			throw new IllegalStateException("取得失敗");
+		}
+		
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection(
+						"jdbc:mariadb://localhost:3306/blackjack",
+						"root",
+						""
+					);
+			
+			PreparedStatement pstmt = con.prepareStatement
+					("update user set name = ?, nickname = ?, password = ? where id = ?");
+			
+			pstmt.setString(1, name);
+			pstmt.setString(2, nickname);
+			pstmt.setString(3, password);
+			pstmt.setInt(4, id);
+			
+			pstmt.executeUpdate();
+			
+			pstmt = con.prepareStatement
+					("select * from user where id = ?");
+			
+			pstmt.setInt(1, id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				this.id = rs.getInt("id");
+				this.name = rs.getString("name");
+				this.nickname = rs.getString("nickname");
+				this.password = rs.getString("password");
+				this.playing = rs.getInt("playing");
+				this.win = rs.getInt("win");
+				this.lose = rs.getInt("lose");
+				this.draw = rs.getInt("draw");
+			}
+			
+			
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void userDelete(int id) {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			throw new IllegalStateException("取得失敗");
+		}
+		
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection(
+						"jdbc:mariadb://localhost:3306/blackjack",
+						"root",
+						""
+					);
+			
+			PreparedStatement pstmt = con.prepareStatement
+					("DELETE FROM user WHERE id = ?");
+			
+			pstmt.setInt(1, id);
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public int getId() {
+		return this.id;
+	}
+	
 	public String getName() {
 		return this.name;
 	}
