@@ -16,16 +16,16 @@
 		<h1 class="text-center">ブラックジャック</h1>
 		<p class="text-center">ユーザー 新規登録</p>
 		<div class="col-7">
-			<form method="post" action="Signin">
+			<form method="post" action="Signup">
+				<label>ID(メールアドレス)</label>
+				<input class="form-control" type="text" name="id"><br>
+				<% if(request.getAttribute("error_name") != null) { %>
+				<p class="text-danger"><%= request.getAttribute("error_id") %></p>
+				<% } %>
 				<label>名前</label>
 				<input class="form-control" type="text" name="name"><br>
-				<% if(request.getAttribute("error_name") != null) { %>
-				<p class="text-danger"><%= request.getAttribute("error_name") %></p>
-				<% } %>
-				<label>ニックネーム</label>
-				<input class="form-control" type="text" name="nickname"><br>
-				<% if(request.getAttribute("error_nickname")!= null){ %>
-				<p class="text-danger"><%= (String)request.getAttribute("error_nickname") %></p>
+				<% if(request.getAttribute("error_name")!= null){ %>
+				<p class="text-danger"><%= (String)request.getAttribute("error_name") %></p>
 				<% } %>
 				<label>パスワード</label>
 				<input class="form-control" type="password" name="password"><br>

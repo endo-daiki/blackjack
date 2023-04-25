@@ -7,9 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class User {
-	private int id;
+	private String id;
 	private String name;
 	private String nickname;
+	private String checkPassword;
 	private String password;
 	private int playing;
 	private int win;
@@ -17,6 +18,13 @@ public class User {
 	private int draw;
 	
 	public User() {}
+	public User(String id, String name, String password, String checkPassword) {
+		this.id = id;
+		this.name = name;
+		this.password = password;
+		this.checkPassword = checkPassword;
+	}
+	
 	public void insertUser(String name, String nickname, String password) {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -74,7 +82,7 @@ public class User {
 			
 			if(rs.next()) {
 				check =  true;
-				this.id = rs.getInt("id");
+				this.id = rs.getString("id");
 				this.name = rs.getString("name");
 				this.nickname = rs.getString("nickname");
 				this.password = rs.getString("password");
@@ -127,7 +135,7 @@ public class User {
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				this.id = rs.getInt("id");
+				this.id = rs.getString("id");
 				this.name = rs.getString("name");
 				this.nickname = rs.getString("nickname");
 				this.password = rs.getString("password");
@@ -171,10 +179,10 @@ public class User {
 		}
 	}
 	
-	public int getId() {
+	public String getId() {
 		return this.id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
@@ -197,6 +205,13 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getCheckPassword() {
+		return this.checkPassword;
+	}
+	public void setCheckPassword(String checkPassword) {
+		this.checkPassword = checkPassword;
 	}
 	
 	public int getPlaying() {

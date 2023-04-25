@@ -26,7 +26,7 @@
 				<input type="password" name="password" class="form-control"><br>
 				<button type=submit class="btn btn-primary">ログイン</button>
 			</form>
-			<a href="Signin">新規登録</a>
+			<a href="Signup">新規登録</a>
 		</div>
 	</div>
 </div>

@@ -15,7 +15,7 @@ public class Database {
     private static final String pass = "";
     
     
-	private Connection getConnection() {
+	private static Connection getConnection() {
 		try {
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
@@ -45,7 +45,7 @@ public class Database {
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				loginUser.setId(rs.getInt("id"));
+				loginUser.setId(rs.getString("id"));
 				loginUser.setName(rs.getString("name"));
 				loginUser.setNickname(rs.getString("nickname"));
 				loginUser.setPassword(rs.getString("password"));
@@ -59,5 +59,29 @@ public class Database {
 		}
 		
 		return loginUser;
+	}
+	
+	public static boolean insertUser(String id, String name, String password) {
+		Connection con = getConnection();
+		
+		try {
+			PreparedStatement pstmt = con.prepareStatement
+					("insert into user (id, name, password) values (?,?,?)");
+			
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			pstmt.setString(3, password);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			rs.close();
+			pstmt.close();
+			
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			return false;
+		}
 	}
 }
