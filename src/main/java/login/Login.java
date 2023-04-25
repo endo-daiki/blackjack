@@ -42,4 +42,17 @@ public class Login {
 		
 		return dispatcher;
 	}
+	
+	public static RequestDispatcher login(HttpServletRequest request) {
+		RequestDispatcher dispatcher = null;
+		HttpSession session = request.getSession(true);
+		
+       if(session.getAttribute("user") == null) {
+    	   dispatcher = request.getRequestDispatcher("Login");
+       } else {
+    	   dispatcher = request.getRequestDispatcher("jsp/main.jsp");
+       }
+       
+       return dispatcher;
+	}
 }

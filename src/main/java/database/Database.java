@@ -59,25 +59,36 @@ public class Database {
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			user = null;
 		}
 		return user;
 	}
 	
 	public static boolean insertUser(String id, String name, String password) {
 		Connection con = getConnection();
-		boolean check;
+		boolean check = false;
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement
+			PreparedStatement pstmt;
+			ResultSet rs;
+			
+			pstmt = con.prepareStatement
+					("select id from user where id = ?");
+			
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return false;
+			}
+			
+			pstmt = con.prepareStatement
 					("insert into user (id, name, password) values (?,?,?)");
 			
 			pstmt.setString(1, id);
 			pstmt.setString(2, name);
 			pstmt.setString(3, password);
 			
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			
 			rs.close();
 			pstmt.close();
@@ -85,9 +96,8 @@ public class Database {
 			check = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			check = false;
 		}
+		
 		return check;
 	}
 	

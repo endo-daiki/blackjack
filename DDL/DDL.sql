@@ -1,15 +1,13 @@
-Create database blackjack;
+Create database blackjack DEFAULT CHARACTER SET utf8mb4;
 
-CREATE TABLE user(
-id INT,
-	name VARCHAR(20) not null,
-	nickname VARCHAR(100) not null,
-    	password varchar(100) not null,
-    	playing integer not null,
-    	win integer not null,
-   	lose integer not null,
-    	draw integer not null,
-	created_at DATETIME,
-	updated_at DATETIME,
+CREATE TABLE `blackjack`.`user`(
+	id varchar(100) not null,
+	name varchar(100) not null,
+	password varchar(100) not null,
+	playing integer not null default 0,
+	win integer not null default 0,
+   	lose integer not null default 0,
+	draw integer not null default 0,
 	primary key(id)
-);
+) DEFAULT CHARSET=utf8mb4;
+

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import login.Login;
+
 /**
  * Servlet implementation class MainServlet
  */
@@ -31,8 +33,7 @@ public class MainServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("jsp/main.jsp");
+		RequestDispatcher dispatcher = Login.login(request);
 		dispatcher.forward(request, response);
 	}
 

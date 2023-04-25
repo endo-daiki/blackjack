@@ -3,7 +3,6 @@ package model;
 public class User {
 	private String id;
 	private String name;
-	private String nickname;
 	private String checkPassword;
 	private String password;
 	private int playing;
@@ -36,14 +35,7 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public String getNickname() {
-		return this.nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname; 
-	}
-	
+		
 	public String getPassword() {
 		return this.password;
 	}
