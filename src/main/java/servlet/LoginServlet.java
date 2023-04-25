@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import login.Login;
+import login.Signup;
 import model.User;
 
 /**
@@ -49,30 +50,13 @@ public class LoginServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String name = request.getParameter("name");
+		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		
-		User user = new User();
-		boolean check = user.userLogin(name, password);
+		User user = new User(id, password);
+		RequestDispatcher dispatcher = Login.loginCheck(user, request);
 		
-		
-		if(check == false) {
-			request.setAttribute("error_check", "ログインに失敗しました。名前またはパスワードが正しくありません");
-			
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("/jsp/login.jsp");
-			dispatcher.forward(request, response);
-		} else {
-			request.setAttribute("user_login", "ログインしました。");
-			
-			HttpSession session = request.getSession(true);
-	        session.setAttribute("user", user);
-		
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("/jsp/main.jsp");
-			dispatcher.forward(request, response);
-		}
-		
+		dispatcher.forward(request, response);
 		
 	}
 

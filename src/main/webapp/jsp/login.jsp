@@ -20,8 +20,8 @@
 				<p class="text-danger"><%= (String)request.getAttribute("error_check") %></p>
 			<% } %>
 			<form method="post" action="Login">
-				<label>名前</label>
-				<input type="text" name="name" class="form-control"><br>
+				<label>ID(メールアドレス)</label>
+				<input type="text" name="id" class="form-control"><br>
 				<label>パスワード</label>
 				<input type="password" name="password" class="form-control"><br>
 				<button type=submit class="btn btn-primary">ログイン</button>

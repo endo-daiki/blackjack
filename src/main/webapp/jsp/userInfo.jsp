@@ -23,12 +23,12 @@
             <table class="table">
                 <tbody>
                   <tr>
-                    <th scope="row">名前</th>
-                    <td><%= user.getName() %></td>
+                    <th scope="row">ID</th>
+                    <td><%= user.getId() %></td>
                   </tr>
                   <tr>
-                    <th scope="row">ニックネーム</th>
-                    <td><%= user.getNickname() %></td>
+                    <th scope="row">名前</th>
+                    <td><%= user.getName() %></td>
                   </tr>
                   <tr>
                     <th scope="row">パスワード</th>
@@ -36,8 +36,8 @@
                   </tr>
                 </tbody>
               </table>
-              <a href="" class="btn btn-primary">変更</a>
-              <a href="" class="btn btn-danger">退会</a>
+              <a href="UserEdit" class="btn btn-primary">変更</a>
+              <a href="UserDelete" class="btn btn-danger">退会</a>
         </div>
     </div>
 </div>

@@ -2,12 +2,13 @@ package login;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import database.Database;
 import model.User;
 
-public class Signup {
-	public static RequestDispatcher SignupCheck(User user, HttpServletRequest request) {
+public class Edit {
+	public static RequestDispatcher editCheck(User user, HttpServletRequest request) {
 		RequestDispatcher dispatcher = null;
 		boolean check = true;
 		
@@ -29,20 +30,18 @@ public class Signup {
 		}
 		
 		
-		if(check == true) {
-			if(!Database.insertUser(user.getId(), user.getName(), user.getPassword())) {
-				request.setAttribute("error_id", "このIDはすでに使われています");
-				dispatcher = 
-						request.getRequestDispatcher("/jsp/signup.jsp");	
-			} else {
-				dispatcher = 
-						request.getRequestDispatcher("/jsp/signupDone.jsp");
-			}
-		} else {
-				dispatcher = 
-						request.getRequestDispatcher("/jsp/signup.jsp");
-		}
+		User updateUser = Database.updateUser(user.getId(), user.getName(), user.getPassword());
 		
+		if(check == false) {
+			dispatcher = 
+				request.getRequestDispatcher("/jsp/userEdit.jsp");
+		} else {
+			HttpSession session = request.getSession(true);
+		    session.setAttribute("user", updateUser);
+		        
+			dispatcher = 
+				request.getRequestDispatcher("/jsp/userEditDone.jsp");
+		} 
 		
 		return dispatcher;
 	}

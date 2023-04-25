@@ -9,19 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import database.Database;
-
 /**
- * Servlet implementation class UserDelete
+ * Servlet implementation class MainServlet
  */
-@WebServlet("/UserDelete")
-public class UserDelete extends HttpServlet {
+@WebServlet("/Main")
+public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserDelete() {
+    public MainServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,27 +32,16 @@ public class UserDelete extends HttpServlet {
 					throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("jsp/userDeleteCheck.jsp");
+				request.getRequestDispatcher("jsp/main.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, 
-			HttpServletResponse response) 
-					throws ServletException, IOException {
-
-
-		request.setCharacterEncoding("UTF-8");
-		
-		String id =  request.getParameter("id");
-
-		Database.deleteUser(id);
-		
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("jsp/userDeleteDone.jsp");
-		dispatcher.forward(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

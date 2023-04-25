@@ -19,24 +19,27 @@
     <div class="row justify-content-center">
         <div class="col-7">
             <form method="post" action="UserEdit">
-				<table class="table">
-                <tbody>
-                  <tr>
-                    <th scope="row">名前</th>
-                    <td><input type="text" name="name" class="form-control" value="<%= user.getName() %>"></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">ニックネーム</th>
-                    <td><input type="text" name="nickname" class="form-control" value="<%= user.getNickname() %>"></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">パスワード</th>
-                    <td><input type="password" name="password" class="form-control" value="<%= user.getPassword() %>"></td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <input type="hidden" name="id" value="<%= user.getId() %>">
-              <button class="btn btn-primary">変更</button>
+				<label>ID(メールアドレス)</label>
+				<input class="form-control" type="text" name="id" value="<%= user.getId() %>"><br>
+				<% if(request.getAttribute("error_id") != null) { %>
+				<p class="text-danger"><%= request.getAttribute("error_id") %></p>
+				<% } %>
+				<label>名前</label>
+				<input class="form-control" type="text" name="name" value="<%= user.getName() %>"><br>
+				<% if(request.getAttribute("error_name")!= null){ %>
+				<p class="text-danger"><%= (String)request.getAttribute("error_name") %></p>
+				<% } %>
+				<label>パスワード</label>
+				<input class="form-control" type="password" name="password" value="<%= user.getPassword() %>"><br>
+				<% if(request.getAttribute("error_password")!= null){ %>
+				<p class="text-danger"><%= (String)request.getAttribute("error_password") %></p>
+				<% } %>
+				<label>確認用パスワード</label>
+				<input class="form-control" type="password" name="checkPassword"><br>
+				<% if(request.getAttribute("error_check")!= null){ %>
+				<p class="text-danger"><%= (String)request.getAttribute("error_check") %></p>
+				<% } %>
+				<button class="btn btn-primary" type=submit >変更</button>
 			</form>
 			<a href="userInfo.jsp">戻る</a>
         </div>

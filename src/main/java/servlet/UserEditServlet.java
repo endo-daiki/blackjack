@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import login.Edit;
 import model.User;
 
 /**
@@ -47,20 +48,15 @@ public class UserEditServlet extends HttpServlet {
 					throws ServletException, IOException {
 		
 			request.setCharacterEncoding("UTF-8");
-		
+	
+			String id = request.getParameter("id");
 			String name = request.getParameter("name");
-			String nickname = request.getParameter("nickname");
 			String password = request.getParameter("password");
-			int id =  Integer.parseInt(request.getParameter("id"));
+			String checkPassword = request.getParameter("checkPassword");
 			
-			User user = new User();
-			user.editUser(name, nickname, password, id);
+			User user = new User(id, name, password, checkPassword);
+			RequestDispatcher dispatcher = Edit.editCheck(user, request);
 			
-			HttpSession session = request.getSession(true);
-	        session.setAttribute("user", user);
-			
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("/jsp/userEditDone.jsp");
 			dispatcher.forward(request, response);
 	}
 

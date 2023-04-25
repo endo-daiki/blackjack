@@ -20,7 +20,7 @@ public class Validation {
 		return true;
 	}
 	public static boolean passwordCheck(String password, String checkPassword) {
-		if(checkPassword.length() == 0 && !checkPassword.equals(password)) {
+		if(checkPassword.length() == 0 || !checkPassword.equals(password)) {
 			return false;
 		}
 		return true;

@@ -31,38 +31,43 @@ public class Database {
 		return con;
 	}
 	
-	public User getUser(String name, String password) {
+	public static User loginUser(String id, String password) {
 		Connection con = getConnection();
-		User loginUser = new User();
+		User user = new User();
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement
-					("select * from user where name = ? and password = ?");
+					("select * from user where id = ? and password = ?");
 			
-			pstmt.setString(1, name);
+			pstmt.setString(1, id);
 			pstmt.setString(2, password);
 			
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				loginUser.setId(rs.getString("id"));
-				loginUser.setName(rs.getString("name"));
-				loginUser.setNickname(rs.getString("nickname"));
-				loginUser.setPassword(rs.getString("password"));
+				user.setId(rs.getString("id"));
+				user.setName(rs.getString("name"));
+				user.setPassword(rs.getString("password"));
+				user.setPlaying(rs.getInt("playing"));
+				user.setWin(rs.getInt("win"));
+				user.setLose(rs.getInt("lose"));
+				user.setDraw(rs.getInt("draw"));
 			} else {
-				return null;
+				user = null;
 			}
 			
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
+			user = null;
 		}
-		
-		return loginUser;
+		return user;
 	}
 	
 	public static boolean insertUser(String id, String name, String password) {
 		Connection con = getConnection();
+		boolean check;
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement
@@ -77,11 +82,49 @@ public class Database {
 			rs.close();
 			pstmt.close();
 			
-			return true;
+			check = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			
-			return false;
+			check = false;
+		}
+		return check;
+	}
+	
+	public static User updateUser(String id, String name, String password) {
+		Connection con = getConnection();
+		User user = null;
+		
+		try {
+			PreparedStatement pstmt = con.prepareStatement
+					("update user set name = ?, password = ? where id = ?");
+			
+			pstmt.setString(1, name);
+			pstmt.setString(2, password);
+			pstmt.setString(3, id);
+			
+			pstmt.executeUpdate();
+			
+			user = loginUser(id, password);
+			
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
+	public static void deleteUser(String id) {
+		Connection con = getConnection();
+		try {
+			PreparedStatement pstmt = con.prepareStatement
+					("delete from user where id = ?");
+			
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 }
