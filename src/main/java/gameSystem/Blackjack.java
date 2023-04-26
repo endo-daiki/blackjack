@@ -2,6 +2,10 @@ package gameSystem;
 
 import java.util.Collections;
 import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+
 import java.util.ArrayList;
 
 import model.Card;
@@ -23,10 +27,10 @@ public class Blackjack {
     	int point = 0;
     	
     	for(Card card : hand) {
-    		if(card.no != "j" || card.no != "q" || card.no != "k") {
-    			point += Integer.parseInt(card.no);
-    		} else {
+    		if( card.no.equals("j") || card.no.equals("q") || card.no.equals("k") ) {
     			point += 10;
+    		} else {
+    			point += Integer.parseInt(card.no);
     		}
     	}
     	return point;
@@ -40,7 +44,9 @@ public class Blackjack {
     	//負け判定の画面を表示させる
     }
 	
-	public Game setup(Game game) {
+	public HttpServletRequest setup(Game game, HttpServletRequest request) {		
+		deck = new ArrayList<Card>();
+		
 		for(String suit : suit) {
 			for(String no : no) {
 				Card card = new Card(suit, no);
@@ -61,10 +67,12 @@ public class Blackjack {
 		dealerHand.add(draw());
 		dealerHand.add(draw());
 		
-		game.setDealerHand(hand);
+		game.setDealerHand(dealerHand);
 		game.setDealerPoint(pointCalc(dealerHand));
+
+		request.setAttribute("game", game);
 		
-		return game;
+		return request;
 	}
 	
 	public Game Hit(Game game) {
@@ -78,6 +86,8 @@ public class Blackjack {
 	}
 	
 	public Game Stand(Game game) {
-		
+		//playerがburstしていたら、dealerはドローしないで、結果を表示させる
+		//17以下だったっらカードを引く
+		return game;
 	}
 }

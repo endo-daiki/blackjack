@@ -1,6 +1,7 @@
 package model;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Game {
 	private List<Card> playerHand;
@@ -11,6 +12,14 @@ public class Game {
 	private boolean dealerBurst;
 	private String result;
 	
+	public Game() {
+		this.playerHand = new ArrayList<Card>();
+		this.dealerHand = new ArrayList<Card>();
+		this.playerPoint = 0;
+		this.dealerPoint = 0;
+		this.playerBurst = false;
+		this.dealerBurst = false;
+	}
 	
 	public List getPlayerHand() {
 		return playerHand;
