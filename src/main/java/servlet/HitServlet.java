@@ -1,28 +1,23 @@
 package servlet;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Game;
-import gameSystem.Blackjack;
 /**
- * Servlet implementation class PlayerTurnServlet
+ * Servlet implementation class HitServlet
  */
-@WebServlet("/PlayerTurn")
-public class PlayerTurnServlet extends HttpServlet {
+@WebServlet("/Hit")
+public class HitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PlayerTurnServlet() {
+    public HitServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,20 +29,15 @@ public class PlayerTurnServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		Game game = new Game();
-		Blackjack blackjack = new Blackjack();
 		
-		ServletContext application = this.getServletContext();
-		
-		RequestDispatcher dispatcher = 
-				blackjack.setup(game, request).getRequestDispatcher("playerTurn.jsp");
-		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, 
+			HttpServletResponse response) 
+					throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

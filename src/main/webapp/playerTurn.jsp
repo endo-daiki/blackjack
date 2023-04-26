@@ -27,9 +27,10 @@
             <div class="col-7 border">
                <p class="text-center"><%= game.getPlayerPoint() %></p>
             </div>
-            <form action="Hit" method="post">
-            	<>
-            </form>
+            <div class="col-7 border">
+            	<a href="Hit" class="btn btn-outline-primary">hit</a>
+            	<a href="Stand" class="btn btn-outline-danger">stand</a>
+            </div>
         </div>
     </div>
 
