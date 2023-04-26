@@ -18,8 +18,29 @@ public class Blackjack {
     	
     	return card;
     }
+    
+    private int pointCalc(List<Card> hand) {
+    	int point = 0;
+    	
+    	for(Card card : hand) {
+    		if(card.no != "j" || card.no != "q" || card.no != "k") {
+    			point += Integer.parseInt(card.no);
+    		} else {
+    			point += 10;
+    		}
+    	}
+    	return point;
+    }
+    
+    public boolean burstCheck(int point) {
+    	if(point > 21) {
+    		return false;
+    	}
+    	return true;
+    	//負け判定の画面を表示させる
+    }
 	
-	public void setup(Game game) {
+	public Game setup(Game game) {
 		for(String suit : suit) {
 			for(String no : no) {
 				Card card = new Card(suit, no);
@@ -34,5 +55,29 @@ public class Blackjack {
 		hand.add(draw());
 		
 		game.setPlayerHand(hand);
+		game.setPlayerPoint(pointCalc(hand));
+		
+		List<Card> dealerHand = new ArrayList<Card>();
+		dealerHand.add(draw());
+		dealerHand.add(draw());
+		
+		game.setDealerHand(hand);
+		game.setDealerPoint(pointCalc(dealerHand));
+		
+		return game;
+	}
+	
+	public Game Hit(Game game) {
+		List<Card> hand = game.getPlayerHand();
+		hand.add(draw());
+		
+		game.setPlayerHand(hand);
+		game.setPlayerPoint(pointCalc(hand));
+		
+		return game;
+	}
+	
+	public Game Stand(Game game) {
+		
 	}
 }

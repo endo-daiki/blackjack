@@ -1,8 +1,8 @@
 package model;
 
 public class Card {
-	private String suit;
-	private String no;
+	public String suit;
+	public String no;
 	
 	public Card(String suit, String no) {
 		this.suit = suit;

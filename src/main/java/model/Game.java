@@ -22,8 +22,22 @@ public class Game {
 	public List getDealerHand() {
 		return dealerHand;
 	}	
-	public void setDealerCard(List<Card> dealerHand) {
+	public void setDealerHand(List<Card> dealerHand) {
 		this.dealerHand = dealerHand;
+	}
+	
+	public int getPlayerPoint() {
+		return playerPoint;
+	}
+	public void setPlayerPoint(int point) {
+		this.playerPoint = point;
+	}
+	
+	public int getDealerPoint() {
+		return dealerPoint;
+	}
+	public void setDealerPoint(int point) {
+		this.dealerPoint =  point;
 	}
 	
 	public boolean getPlayerBurst() {
