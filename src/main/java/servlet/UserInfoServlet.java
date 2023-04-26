@@ -32,7 +32,7 @@ public class UserInfoServlet extends HttpServlet {
 					throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("jsp/userInfo.jsp");
+				request.getRequestDispatcher("userInfo.jsp");
 		dispatcher.forward(request, response);
 	}
 

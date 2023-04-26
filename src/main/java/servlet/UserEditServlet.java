@@ -36,7 +36,7 @@ public class UserEditServlet extends HttpServlet {
 					throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("jsp/userEdit.jsp");
+				request.getRequestDispatcher("userEdit.jsp");
 		dispatcher.forward(request, response);
 	}
 

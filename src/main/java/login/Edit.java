@@ -34,13 +34,13 @@ public class Edit {
 		
 		if(check == false) {
 			dispatcher = 
-				request.getRequestDispatcher("/jsp/userEdit.jsp");
+				request.getRequestDispatcher("userEdit.jsp");
 		} else {
 			HttpSession session = request.getSession(true);
 		    session.setAttribute("user", updateUser);
 		        
 			dispatcher = 
-				request.getRequestDispatcher("/jsp/userEditDone.jsp");
+				request.getRequestDispatcher("userEditDone.jsp");
 		} 
 		
 		return dispatcher;

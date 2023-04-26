@@ -34,7 +34,7 @@ public class UserDelete extends HttpServlet {
 					throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("jsp/userDeleteCheck.jsp");
+				request.getRequestDispatcher("userDeleteCheck.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -53,7 +53,7 @@ public class UserDelete extends HttpServlet {
 		Database.deleteUser(id);
 		
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("jsp/userDeleteDone.jsp");
+				request.getRequestDispatcher("userDeleteDone.jsp");
 		dispatcher.forward(request, response);
 	}
 

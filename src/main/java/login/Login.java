@@ -33,11 +33,11 @@ public class Login {
 		        session.setAttribute("user", loginUser);
 		        
 				dispatcher = 
-						request.getRequestDispatcher("/Main");
+						request.getRequestDispatcher("main.jsp");
 			}
 		} else {
 			dispatcher = 
-					request.getRequestDispatcher("/jsp/login.jsp");
+					request.getRequestDispatcher("login.jsp");
 		}
 		
 		return dispatcher;
@@ -50,7 +50,7 @@ public class Login {
        if(session.getAttribute("user") == null) {
     	   dispatcher = request.getRequestDispatcher("Login");
        } else {
-    	   dispatcher = request.getRequestDispatcher("jsp/main.jsp");
+    	   dispatcher = request.getRequestDispatcher("main.jsp");
        }
        
        return dispatcher;

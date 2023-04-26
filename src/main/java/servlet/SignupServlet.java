@@ -36,7 +36,7 @@ public class SignupServlet extends HttpServlet {
 					throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("jsp/signup.jsp");
+				request.getRequestDispatcher("signup.jsp");
 		dispatcher.forward(request, response);
 	}
 
