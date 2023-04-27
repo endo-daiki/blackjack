@@ -32,7 +32,7 @@
                   </tr>
                   <tr>
                     <th scope="row">パスワード</th>
-                    <td><%= user.getPassword() %></td>
+                    <td><% for(int i = 0; i < user.getPassword().length(); i++) { %>*<% } %></td>
                   </tr>
                 </tbody>
               </table>
