@@ -44,7 +44,7 @@ public class Blackjack {
     	//負け判定の画面を表示させる
     }
 	
-	public Game setup(Game game, HttpServletRequest request) {		
+	public HttpServletRequest setup(Game game, HttpServletRequest request) {		
 		deck = new ArrayList<Card>();
 		
 		for(String suit : suit) {
