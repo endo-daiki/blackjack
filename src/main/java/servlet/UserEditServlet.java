@@ -49,12 +49,13 @@ public class UserEditServlet extends HttpServlet {
 		
 			request.setCharacterEncoding("UTF-8");
 	
-			String id = request.getParameter("id");
+			String oldId = request.getParameter("oldId");
+			String newId = request.getParameter("newId");
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
 			String checkPassword = request.getParameter("checkPassword");
 			
-			User user = new User(id, name, password, checkPassword);
+			User user = new User(oldId, newId, name, password, checkPassword);
 			RequestDispatcher dispatcher = Edit.editCheck(user, request);
 			
 			dispatcher.forward(request, response);

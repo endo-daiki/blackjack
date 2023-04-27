@@ -29,13 +29,13 @@ public class Edit {
 			request.setAttribute("error_check", "パスワードが正しくありません");
 		}
 		
-		
-		User updateUser = Database.updateUser(user.getId(), user.getName(), user.getPassword());
-		
+			
 		if(check == false) {
 			dispatcher = 
 				request.getRequestDispatcher("userEdit.jsp");
 		} else {
+			User updateUser = Database.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());
+			
 			HttpSession session = request.getSession(true);
 		    session.setAttribute("user", updateUser);
 		        

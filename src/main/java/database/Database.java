@@ -105,21 +105,22 @@ public class Database {
 		return check;
 	}
 	
-	public static User updateUser(String id, String name, String password) {
+	public static User updateUser(String id, String newId, String name, String password) {
 		Connection con = getConnection();
 		User user = null;
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement
-					("update user set name = ?, password = ? where id = ?");
+					("update user set id = ?, name = ?, password = ? where id = ?");
 			
-			pstmt.setString(1, name);
-			pstmt.setString(2, password);
-			pstmt.setString(3, id);
+			pstmt.setString(1, newId);
+			pstmt.setString(2, name);
+			pstmt.setString(3, password);
+			pstmt.setString(4, id);
 			
 			pstmt.executeUpdate();
 			
-			user = loginUser(id, password);
+			user = loginUser(newId, password);
 			
 			pstmt.close();
 		} catch (SQLException e) {

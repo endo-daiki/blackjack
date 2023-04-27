@@ -20,7 +20,7 @@
         <div class="col-7">
             <form method="post" action="UserEdit">
 				<label>ID(メールアドレス)</label>
-				<input class="form-control" type="text" name="id" value="<%= user.getId() %>"><br>
+				<input class="form-control" type="text" name="newId" value="<%= user.getId() %>"><br>
 				<% if(request.getAttribute("error_id") != null) { %>
 				<p class="text-danger"><%= request.getAttribute("error_id") %></p>
 				<% } %>
@@ -39,6 +39,7 @@
 				<% if(request.getAttribute("error_check")!= null){ %>
 				<p class="text-danger"><%= (String)request.getAttribute("error_check") %></p>
 				<% } %>
+				<input type="hidden" name="oldId" value="<%= user.getId() %>">
 				<button class="btn btn-primary" type=submit >変更</button>
 			</form>
 			<a href="userInfo.jsp">戻る</a>
