@@ -59,6 +59,8 @@ public class Database {
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
+			user = null;
 		}
 		return user;
 	}
@@ -72,7 +74,7 @@ public class Database {
 			ResultSet rs;
 			
 			pstmt = con.prepareStatement
-					("select id from user where id = ?");
+					("select * from user where id = ?");
 			
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -96,6 +98,8 @@ public class Database {
 			check = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
+			return false;
 		}
 		
 		return check;

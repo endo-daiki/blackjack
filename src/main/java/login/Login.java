@@ -9,7 +9,7 @@ import model.User;
 
 public class Login {
 	public static RequestDispatcher loginCheck(User user, HttpServletRequest request) {
-		RequestDispatcher dispatcher = null;
+		RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
 		boolean check = true;
 		
 		if(!Validation.validationId(user.getId())) {
@@ -25,15 +25,12 @@ public class Login {
 		
 		if(check == true) {
 			if(loginUser == null) {
-				request.setAttribute("error_login", "IDまたはパスワードが違います");
+				request.setAttribute("error_login", "ログインに失敗しました。アカウントが存在しないか、IDまたはパスワードが違います");
 				dispatcher = 
-						request.getRequestDispatcher("/jsp/login.jsp");	
+						request.getRequestDispatcher("/login.jsp");	
 			} else {
 				HttpSession session = request.getSession(true);
 		        session.setAttribute("user", loginUser);
-		        
-				dispatcher = 
-						request.getRequestDispatcher("main.jsp");
 			}
 		} else {
 			dispatcher = 

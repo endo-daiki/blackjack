@@ -19,7 +19,7 @@
 			<form method="post" action="Signup">
 				<label>ID(メールアドレス)</label>
 				<input class="form-control" type="text" name="id"><br>
-				<% if(request.getAttribute("error_name") != null) { %>
+				<% if(request.getAttribute("error_id") != null) { %>
 				<p class="text-danger"><%= request.getAttribute("error_id") %></p>
 				<% } %>
 				<label>名前</label>
@@ -39,7 +39,7 @@
 				<% } %>
 				<button class="btn btn-primary" type=submit >新規登録</button>
 			</form>
-			<a href="Login">ログイン</a>
+			<a href="login.jsp">ログイン</a>
 		</div>
 	</div>
 </div>

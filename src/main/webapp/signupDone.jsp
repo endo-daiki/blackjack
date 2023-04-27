@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
         <div class="col-7">
             <p>登録を完了しました。</p>
-            <a href="Login">ログインする</a>
+            <a href="login.jsp">ログインする</a>
         </div>
     </div>
 </div>

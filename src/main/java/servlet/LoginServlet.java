@@ -32,14 +32,14 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, 
-			HttpServletResponse response) 
-					throws ServletException, IOException {
-		
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("/login.jsp");
-		dispatcher.forward(request, response);
-	}
+//	protected void doGet(HttpServletRequest request, 
+//			HttpServletResponse response) 
+//					throws ServletException, IOException {
+//		
+//		RequestDispatcher dispatcher = 
+//				request.getRequestDispatcher("/login.jsp");
+//		dispatcher.forward(request, response);
+//	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

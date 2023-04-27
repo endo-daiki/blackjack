@@ -16,17 +16,23 @@
 		<h1 class="text-center">ブラックジャック</h1>
 		<p class="text-center">ユーザー ログイン</p>
 		<div class="col-7">
-			<% if(request.getAttribute("error_check")!= null){ %>
-				<p class="text-danger"><%= (String)request.getAttribute("error_check") %></p>
+			<% if(request.getAttribute("error_login")!= null){ %>
+				<p class="text-danger"><%= (String)request.getAttribute("error_login") %></p>
 			<% } %>
 			<form method="post" action="Login">
 				<label>ID(メールアドレス)</label>
 				<input type="text" name="id" class="form-control"><br>
+				<% if(request.getAttribute("error_id") != null) { %>
+				<p class="text-danger"><%= request.getAttribute("error_id") %></p>
+				<% } %>
 				<label>パスワード</label>
 				<input type="password" name="password" class="form-control"><br>
+				<% if(request.getAttribute("error_password")!= null){ %>
+				<p class="text-danger"><%= (String)request.getAttribute("error_password") %></p>
+				<% } %>
 				<button type=submit class="btn btn-primary">ログイン</button>
 			</form>
-			<a href="Signup">新規登録</a>
+			<a href="signup.jsp">新規登録</a>
 		</div>
 	</div>
 </div>
