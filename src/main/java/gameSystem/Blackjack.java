@@ -94,6 +94,12 @@ public class Blackjack {
 					request.getRequestDispatcher("Stand");
 			
 			return dispatcher;
+		} else if(pointCalc(hand) == 21) {
+			request.setAttribute("game", game);
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("Stand");
+			
+			return dispatcher;
 		}
 		
 		request.setAttribute("game", game);
@@ -137,6 +143,8 @@ public class Blackjack {
 		} else {
 			game.setResult("draw");
 		}
+		
+		//Database.updateResult();
 		
 		request.setAttribute("game", game);
 		RequestDispatcher dispatcher = 

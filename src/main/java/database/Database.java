@@ -131,12 +131,44 @@ public class Database {
 	
 	public static void deleteUser(String id) {
 		Connection con = getConnection();
+		
 		try {
 			PreparedStatement pstmt = con.prepareStatement
 					("delete from user where id = ?");
 			
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void updateResult(String id, String result) {
+		Connection con = getConnection();
+		
+		try {
+			PreparedStatement pstmt = null;
+			
+			switch (result) {
+				case "win" :
+					pstmt = con.prepareStatement
+						("update user set win = win + 1, playing = playing + 1 where id = ?");
+					break;
+				case "lose" :
+					pstmt = con.prepareStatement
+						("update user set lose = lose + 1, playing = playing + 1 where id = ?");
+					break;
+				case "draw" :
+					pstmt = con.prepareStatement
+						("update user set draw = draw + 1, playing = playing + 1 where id = ?");
+					break;
+			}
+			
+			pstmt.setString(1, id);
+			
+			pstmt.executeUpdate();
+			
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
