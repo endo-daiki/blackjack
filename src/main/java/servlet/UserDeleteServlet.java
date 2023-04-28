@@ -15,13 +15,13 @@ import database.Database;
  * Servlet implementation class UserDelete
  */
 @WebServlet("/UserDelete")
-public class UserDelete extends HttpServlet {
+public class UserDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserDelete() {
+    public UserDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

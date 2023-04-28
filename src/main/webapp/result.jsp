@@ -22,7 +22,7 @@
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text center">プレイヤーターン</p>
             <div class="col-7 border">
-               <p class="text-center"><%= dealerHand.get(0).no %> + ?</p>
+               <p class="text-center"><%= game.getDealerPoint() %> + ?</p>
             </div>
             <div class="col-7 border">
                <p class="text-center"><%= game.getPlayerPoint() %></p>

@@ -34,13 +34,8 @@ public class PlayerTurnServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		Game game = (Game) request.getAttribute(getServletName());
-		Blackjack blackjack = new Blackjack();
-		
-		ServletContext application = this.getServletContext();
-		
 		RequestDispatcher dispatcher = 
-				blackjack.setup(game, request);
+				Blackjack.setup(request);
 		dispatcher.forward(request, response);
 	}
 

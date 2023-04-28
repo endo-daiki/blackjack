@@ -12,18 +12,19 @@ import model.Card;
 import model.Game;
 
 public class Blackjack {
-	private List<Card> deck;
-	private String[] suit = {"spade","heart","diamond","club"};
-    private String[] no = {"1","2","3","4","5","6","7","8","9","10","j","q","k"};
+	private static final Game game = new Game();
+	private static final List<Card> deck = new ArrayList<Card>();
+	private static final String[] suit = {"spade","heart","diamond","club"};
+    private static final String[] no = {"1","2","3","4","5","6","7","8","9","10","j","q","k"};
     
-    private Card draw() {
+    public static Card draw() {
     	Card card = deck.get(0);
     	deck.remove(0);
     	
     	return card;
     }
     
-    private int pointCalc(List<Card> hand) {
+    public static int pointCalc(List<Card> hand) {
     	int point = 0;
     	
     	for(Card card : hand) {
@@ -36,7 +37,7 @@ public class Blackjack {
     	return point;
     }
     
-    public boolean burstCheck(int point) {
+    public static boolean burstCheck(int point) {
     	if(point > 21) {
     		return false;
     	}
@@ -44,8 +45,7 @@ public class Blackjack {
     	//負け判定の画面を表示させる
     }
 	
-	public HttpServletRequest setup(Game game, HttpServletRequest request) {		
-		deck = new ArrayList<Card>();
+	public static RequestDispatcher setup(HttpServletRequest request) {
 		
 		for(String suit : suit) {
 			for(String no : no) {
@@ -72,17 +72,32 @@ public class Blackjack {
 
 		request.setAttribute("game", game);
 		
-		return request;
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher("playerTurn.jsp");
+		
+		return dispatcher;
 	}
 	
-	public Game Hit(Game game) {
+	public static RequestDispatcher Hit(HttpServletRequest request) {
 		List<Card> hand = game.getPlayerHand();
 		hand.add(draw());
 		
 		game.setPlayerHand(hand);
 		game.setPlayerPoint(pointCalc(hand));
 		
-		return game;
+		if(pointCalc(hand) > 21) {
+			game.setPlayerBurst(true);
+			
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("Result");
+		}
+		
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher("playerTurn.jsp");
+		
+		request.setAttribute("game", game);
+		
+		return dispatcher;
 	}
 	
 	public Game Stand(Game game) {
