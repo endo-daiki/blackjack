@@ -29,12 +29,14 @@ public class HitServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-//	protected void doGet(HttpServletRequest request, 
-//			HttpServletResponse response) 
-//					throws ServletException, IOException {
-//		
-//		
-//	}
+	protected void doGet(HttpServletRequest request, 
+			HttpServletResponse response) 
+					throws ServletException, IOException {
+		
+		RequestDispatcher dispatcher = 
+				Blackjack.Hit(request);
+		dispatcher.forward(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,9 +45,6 @@ public class HitServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = 
-				Blackjack.Hit(request);
-		dispatcher.forward(request, response);
 		
 	}
 

@@ -12,7 +12,7 @@ import model.Card;
 import model.Game;
 
 public class Blackjack {
-	private static final Game game = new Game();
+	private static Game game;
 	private static final List<Card> deck = new ArrayList<Card>();
 	private static final String[] suit = {"spade","heart","diamond","club"};
     private static final String[] no = {"1","2","3","4","5","6","7","8","9","10","j","q","k"};
@@ -46,6 +46,7 @@ public class Blackjack {
     }
 	
 	public static RequestDispatcher setup(HttpServletRequest request) {
+		game = new Game();
 		
 		for(String suit : suit) {
 			for(String no : no) {
@@ -88,21 +89,59 @@ public class Blackjack {
 		if(pointCalc(hand) > 21) {
 			game.setPlayerBurst(true);
 			
+			request.setAttribute("game", game);
 			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("Result");
+					request.getRequestDispatcher("Stand");
+			
+			return dispatcher;
 		}
 		
+		request.setAttribute("game", game);
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher("playerTurn.jsp");
-		
-		request.setAttribute("game", game);
 		
 		return dispatcher;
 	}
 	
-	public Game Stand(Game game) {
-		//playerがburstしていたら、dealerはドローしないで、結果を表示させる
-		//17以下だったっらカードを引く
-		return game;
+	public static RequestDispatcher Stand(HttpServletRequest request) {
+		
+		if(game.getPlayerBurst()) {
+			game.setResult("lose");
+			
+			request.setAttribute("game", game);
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("result.jsp");
+			
+			return dispatcher;
+		}
+		
+		int i = game.getDealerPoint();
+		while(i < 17) {
+			List<Card> dealerHand = game.getDealerHand();
+			dealerHand.add(draw());
+			
+			game.setDealerHand(dealerHand);
+			game.setDealerPoint(pointCalc(dealerHand));
+			
+			i = game.getDealerPoint();
+			
+			if(i > 21) {
+				game.setDealerBurst(true);
+			}
+		}
+		
+		if(game.getDealerBurst() == true || game.getPlayerPoint() > game.getDealerPoint()) {
+			game.setResult("win");
+		} else if (game.getPlayerPoint() < game.getDealerPoint()) {
+			game.setResult("lose");
+		} else {
+			game.setResult("draw");
+		}
+		
+		request.setAttribute("game", game);
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher("result.jsp");
+		
+		return dispatcher;
 	}
 }

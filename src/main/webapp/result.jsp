@@ -20,21 +20,29 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <h1 class="text-center">ブラックジャック</h1>
-            <p class="text center">プレイヤーターン</p>
+            <p class="text-center">ゲームリザルト</p>
             <div class="col-7 border">
-               <p class="text-center"><%= game.getDealerPoint() %> + ?</p>
+               <p class="text-center"><%= game.getDealerPoint() %></p>
             </div>
             <div class="col-7 border">
                <p class="text-center"><%= game.getPlayerPoint() %></p>
-               <% if(game.getPlayerBurst() == true) { %>
-               <p class="text-danger">your burst!!</p>
-               <% } %>
             </div>
+            <h3 class="text-center text-danger">
+            	<% switch(game.getResult()) { 
+            		case  "win" : %>
+            			you win!
+            	<% 		break; 
+            		case "lose" : %>
+            			you lose...
+            	<%      break;
+            		case "draw" : %>
+            			draw..
+            	<% 		break; 
+            	} %>
+            </h3>
             <div class="col-7 border">
-            	<form action="Hit" method="post">
-            		<button type="submit" class="btn btn-outline-primary">hit</button>
-            	</form>
-            	<a href="Stand" class="btn btn-outline-danger">stand</a>
+            	<a href="PlayerTurn" class="btn btn-primary">もう一度</a>
+            	<a href="gameTop.jsp" class="btn btn-danger">終了</a>
             </div>
         </div>
     </div>

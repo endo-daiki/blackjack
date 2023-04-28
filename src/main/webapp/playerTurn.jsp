@@ -20,20 +20,15 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <h1 class="text-center">ブラックジャック</h1>
-            <p class="text center">プレイヤーターン</p>
+            <p class="text-center">プレイヤーターン</p>
             <div class="col-7 border">
                <p class="text-center"><%= dealerHand.get(0).no %> + ?</p>
             </div>
             <div class="col-7 border">
                <p class="text-center"><%= game.getPlayerPoint() %></p>
-               <% if(game.getPlayerBurst() == true) { %>
-               <p class="text-danger">your burst!!</p>
-               <% } %>
             </div>
             <div class="col-7 border">
-            	<form action="Hit" method="post">
-            		<button type="submit" class="btn btn-outline-primary">hit</button>
-            	</form>
+            	<a href="Hit" class="btn btn-outline-primary">hit</a>
             	<a href="Stand" class="btn btn-outline-danger">stand</a>
             </div>
         </div>
