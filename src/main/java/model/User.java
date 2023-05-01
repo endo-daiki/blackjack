@@ -94,7 +94,7 @@ public class User {
  	}
 	
 	public double getRate() {
-		return ((double)this.win / (double)this.draw);
+		return ((double)this.win / (double)this.playing);
 	}
 	
 }

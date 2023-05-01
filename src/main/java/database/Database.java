@@ -120,7 +120,7 @@ public class Database {
 			
 			pstmt.executeUpdate();
 			
-			user = loginUser(newId, password);
+			user = selectUser(newId);
 			
 			pstmt.close();
 		} catch (SQLException e) {
@@ -144,8 +144,9 @@ public class Database {
 		}
 	}
 	
-	public static void updateResult(String id, String result) {
+	public static User updateResult(String id, String result) {
 		Connection con = getConnection();
+		User user = null;
 		
 		try {
 			PreparedStatement pstmt = null;
@@ -169,9 +170,45 @@ public class Database {
 			
 			pstmt.executeUpdate();
 			
+			user = selectUser(id);
+			
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return user;
+	}
+	
+	public static User selectUser(String id) {
+		Connection con = getConnection();
+		User user = new User();
+		
+		try {
+			PreparedStatement pstmt = con.prepareStatement
+					("select * from user where id = ?");
+			
+			pstmt.setString(1, id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				user.setId(rs.getString("id"));
+				user.setName(rs.getString("name"));
+				user.setPassword(rs.getString("password"));
+				user.setPlaying(rs.getInt("playing"));
+				user.setWin(rs.getInt("win"));
+				user.setLose(rs.getInt("lose"));
+				user.setDraw(rs.getInt("draw"));
+			} else {
+				user = null;
+			}
+			
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			user = null;
+		}
+		return user;
 	}
 }

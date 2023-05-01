@@ -121,6 +121,11 @@ public class Blackjack {
 		if(game.getPlayerBurst()) {
 			game.setResult("lose");
 			
+			User updateUser = Database.updateResult(game.getUserId(), game.getResult());
+			
+			HttpSession session = request.getSession(true);
+		    session.setAttribute("user", updateUser);
+			
 			request.setAttribute("game", game);
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher("result.jsp");
@@ -153,7 +158,10 @@ public class Blackjack {
 			game.setResult("draw");
 		}
 		
-		Database.updateResult(game.getUserId(), game.getResult());
+		User updateUser = Database.updateResult(game.getUserId(), game.getResult());
+		
+		HttpSession session = request.getSession(true);
+	    session.setAttribute("user", updateUser);
 		
 		request.setAttribute("game", game);
 		RequestDispatcher dispatcher = 
