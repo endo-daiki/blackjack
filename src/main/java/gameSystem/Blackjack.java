@@ -5,11 +5,15 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import database.Database;
 
 import java.util.ArrayList;
 
 import model.Card;
 import model.Game;
+import model.User;
 
 public class Blackjack {
 	private static Game game;
@@ -46,7 +50,10 @@ public class Blackjack {
     }
 	
 	public static RequestDispatcher setup(HttpServletRequest request) {
-		game = new Game();
+		HttpSession session = request.getSession(true);
+        User user = (User)session.getAttribute("user");
+        
+		game = new Game(user.getId());
 		
 		for(String suit : suit) {
 			for(String no : no) {
@@ -118,6 +125,8 @@ public class Blackjack {
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher("result.jsp");
 			
+			Database.updateResult(game.getUserId(), game.getResult());
+			
 			return dispatcher;
 		}
 		
@@ -144,7 +153,7 @@ public class Blackjack {
 			game.setResult("draw");
 		}
 		
-		//Database.updateResult();
+		Database.updateResult(game.getUserId(), game.getResult());
 		
 		request.setAttribute("game", game);
 		RequestDispatcher dispatcher = 

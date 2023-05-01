@@ -94,7 +94,7 @@ public class User {
  	}
 	
 	public double getRate() {
-		return (this.win / this.draw);
+		return ((double)this.win / (double)this.draw);
 	}
 	
 }

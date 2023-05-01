@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
         <div class="col-7">
             <p>ログアウトしました。</p>
-            <a href="/">ログイン画面へ戻る</a>
+            <a href="/blackjack">ログイン画面へ戻る</a>
         </div>
     </div>
 </div>
