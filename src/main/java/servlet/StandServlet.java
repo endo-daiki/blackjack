@@ -34,9 +34,9 @@ public class StandServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = 
-				Blackjack.Stand(request);
-		dispatcher.forward(request, response);
+		Blackjack.Stand(request);
+		
+		response.sendRedirect("Result");
 	}
 
 	/**

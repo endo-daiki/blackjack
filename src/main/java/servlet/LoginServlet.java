@@ -48,17 +48,15 @@ public class LoginServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-//		request.setCharacterEncoding("UTF-8");
-//		
-//		String id = request.getParameter("id");
-//		String password = request.getParameter("password");
-//		
-//		User user = new User(id, password);
-//		RequestDispatcher dispatcher = Login.loginCheck(user, request);
-//		
-//		dispatcher.forward(request, response);
+		request.setCharacterEncoding("UTF-8");
 		
-		response.sendRedirect("testServlet");
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		
+		User user = new User(id, password);
+		RequestDispatcher dispatcher = Login.loginCheck(user, request);
+		
+		dispatcher.forward(request, response);
 		
 	}
 

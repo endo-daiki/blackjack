@@ -41,6 +41,22 @@ public class Blackjack {
     	return point;
     }
     
+    public static RequestDispatcher getGame(HttpServletRequest request) {
+    	request.setAttribute("game", game);
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher("playerTurn.jsp");
+		
+		return dispatcher;
+    }
+    
+    public static RequestDispatcher getResult(HttpServletRequest request) {
+    	request.setAttribute("game", game);
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher("result.jsp");
+		
+		return dispatcher;
+    }
+    
     public static boolean burstCheck(int point) {
     	if(point > 21) {
     		return false;
@@ -49,7 +65,7 @@ public class Blackjack {
     	//負け判定の画面を表示させる
     }
 	
-	public static RequestDispatcher setup(HttpServletRequest request) {
+	public static void setup(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
         User user = (User)session.getAttribute("user");
         
@@ -77,46 +93,30 @@ public class Blackjack {
 		
 		game.setDealerHand(dealerHand);
 		game.setDealerPoint(pointCalc(dealerHand));
-
-		request.setAttribute("game", game);
 		
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("playerTurn.jsp");
-		
-		return dispatcher;
 	}
 	
-	public static RequestDispatcher Hit(HttpServletRequest request) {
+	public static String Hit(HttpServletRequest request) {
 		List<Card> hand = game.getPlayerHand();
 		hand.add(draw());
 		
 		game.setPlayerHand(hand);
 		game.setPlayerPoint(pointCalc(hand));
 		
+		String url = "PlayerTurn";
+		
 		if(pointCalc(hand) > 21) {
 			game.setPlayerBurst(true);
 			
-			request.setAttribute("game", game);
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("Stand");
-			
-			return dispatcher;
+			url = "Stand";
 		} else if(pointCalc(hand) == 21) {
-			request.setAttribute("game", game);
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("Stand");
-			
-			return dispatcher;
+			url = "Stand";
 		}
 		
-		request.setAttribute("game", game);
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("playerTurn.jsp");
-		
-		return dispatcher;
+		return url;
 	}
 	
-	public static RequestDispatcher Stand(HttpServletRequest request) {
+	public static void Stand(HttpServletRequest request) {
 		
 		if(game.getPlayerBurst()) {
 			game.setResult("lose");
@@ -132,41 +132,35 @@ public class Blackjack {
 			
 			Database.updateResult(game.getUserId(), game.getResult());
 			
-			return dispatcher;
-		}
-		
-		int i = game.getDealerPoint();
-		while(i < 17) {
-			List<Card> dealerHand = game.getDealerHand();
-			dealerHand.add(draw());
-			
-			game.setDealerHand(dealerHand);
-			game.setDealerPoint(pointCalc(dealerHand));
-			
-			i = game.getDealerPoint();
-			
-			if(i > 21) {
-				game.setDealerBurst(true);
-			}
-		}
-		
-		if(game.getDealerBurst() == true || game.getPlayerPoint() > game.getDealerPoint()) {
-			game.setResult("win");
-		} else if (game.getPlayerPoint() < game.getDealerPoint()) {
-			game.setResult("lose");
 		} else {
-			game.setResult("draw");
+			int i = game.getDealerPoint();
+			while(i < 17) {
+				List<Card> dealerHand = game.getDealerHand();
+				dealerHand.add(draw());
+				
+				game.setDealerHand(dealerHand);
+				game.setDealerPoint(pointCalc(dealerHand));
+				
+				i = game.getDealerPoint();
+				
+				if(i > 21) {
+					game.setDealerBurst(true);
+				}
+			}
+			
+			if(game.getDealerBurst() == true || game.getPlayerPoint() > game.getDealerPoint()) {
+				game.setResult("win");
+			} else if (game.getPlayerPoint() < game.getDealerPoint()) {
+				game.setResult("lose");
+			} else {
+				game.setResult("draw");
+			}
+			
+			User updateUser = Database.updateResult(game.getUserId(), game.getResult());
+			
+			HttpSession session = request.getSession(true);
+		    session.setAttribute("user", updateUser);
+			
 		}
-		
-		User updateUser = Database.updateResult(game.getUserId(), game.getResult());
-		
-		HttpSession session = request.getSession(true);
-	    session.setAttribute("user", updateUser);
-		
-		request.setAttribute("game", game);
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("result.jsp");
-		
-		return dispatcher;
 	}
 }

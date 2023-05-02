@@ -35,7 +35,7 @@ public class PlayerTurnServlet extends HttpServlet {
 					throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = 
-				Blackjack.setup(request);
+				Blackjack.getGame(request);
 		dispatcher.forward(request, response);
 	}
 

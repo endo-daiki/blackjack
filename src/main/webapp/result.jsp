@@ -41,7 +41,7 @@
             	} %>
             </h3>
             <div class="col-7 border">
-            	<a href="PlayerTurn" class="btn btn-primary">もう一度</a>
+            	<a href="Setup" class="btn btn-primary">もう一度</a>
             	<a href="gameTop.jsp" class="btn btn-danger">終了</a>
             </div>
         </div>

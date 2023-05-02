@@ -33,8 +33,7 @@ public class MainServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = Login.login(request);
-		dispatcher.forward(request, response);
+		response.sendRedirect("main.jsp");
 	}
 
 	/**

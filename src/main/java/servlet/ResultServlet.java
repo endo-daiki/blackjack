@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import gameSystem.Blackjack;
 
 /**
- * Servlet implementation class HitServlet
+ * Servlet implementation class ResultServlet
  */
-@WebServlet("/Hit")
-public class HitServlet extends HttpServlet {
+@WebServlet("/Result")
+public class ResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HitServlet() {
+    public ResultServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,19 +33,17 @@ public class HitServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		String url = Blackjack.Hit(request);
-		
-		response.sendRedirect(url);
+		RequestDispatcher dispatcher = 
+				Blackjack.getResult(request);
+		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, 
-			HttpServletResponse response) 
-					throws ServletException, IOException {
-		
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

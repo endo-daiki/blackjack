@@ -18,7 +18,7 @@
     	<p class="text-center">ゲームを始めます</p>
 		<div class="col-7">
 			<div class="d-grid gap-2">
-				<a href="PlayerTurn" class="btn btn-outline-primary">DUEL START</a>
+				<a href="Setup" class="btn btn-outline-primary">DUEL START</a>
 			 </div>
 			<a href="main.jsp" class="btn btn-danger">戻る</a>
 		</div>
