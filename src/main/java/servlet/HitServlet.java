@@ -33,6 +33,7 @@ public class HitServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
+		
 		String url = Blackjack.Hit(request);
 		
 		response.sendRedirect(url);

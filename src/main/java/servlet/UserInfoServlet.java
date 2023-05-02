@@ -31,9 +31,11 @@ public class UserInfoServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("userInfo.jsp");
-		dispatcher.forward(request, response);
+		response.sendRedirect("/blackjack");
+		
+//		RequestDispatcher dispatcher = 
+//				request.getRequestDispatcher("userInfo.jsp");
+//		dispatcher.forward(request, response);
 	}
 
 	/**
