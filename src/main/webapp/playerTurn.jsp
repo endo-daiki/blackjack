@@ -22,10 +22,15 @@
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">プレイヤーターン</p>
             <div class="col-7 border">
-               <p class="text-center"><%= dealerHand.get(0).no %> + ?</p>
+            	<img  src="img/<%= dealerHand.get(0).suit %>_<%= dealerHand.get(0).no %>.png" width="100" height="150">
+            	<img  src="img/trump_back.png" width="100" height="150">
+            	<p class="text-center"><%= dealerHand.get(0).no %> + ?</p>
             </div>
             <div class="col-7 border">
-               <p class="text-center"><%= game.getPlayerPoint() %></p>
+            	<% for(Card card : playerHand) { %>
+            		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
+            	<% } %>
+             	<p class="text-center"><%= game.getPlayerPoint() %></p>
             </div>
             <div class="col-7 border">
             	<a href="Hit" class="btn btn-outline-primary">hit</a>

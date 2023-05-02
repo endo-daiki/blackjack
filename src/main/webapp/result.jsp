@@ -22,9 +22,15 @@
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">ゲームリザルト</p>
             <div class="col-7 border">
+            	<% for(Card card : dealerHand) { %>
+            		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
+            	<% } %>
                <p class="text-center"><%= game.getDealerPoint() %></p>
             </div>
             <div class="col-7 border">
+            	<% for(Card card : playerHand) { %>
+            		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
+            	<% } %>
                <p class="text-center"><%= game.getPlayerPoint() %></p>
             </div>
             <h3 class="text-center text-danger">

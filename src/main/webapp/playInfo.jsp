@@ -44,7 +44,7 @@
                     <% if(Double.isNaN(user.getRate())) {%>
                     	<td>0</td>
                     <% } else { %>
-                    	<td><%= user.getRate() %></td>
+                    	<td><%= String.format("%.2f", user.getRate()) %></td>
                     <% } %>
                   </tr>
                 </tbody>
