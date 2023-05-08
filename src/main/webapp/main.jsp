@@ -34,7 +34,7 @@
 			</div>
             
             <a class="btn btn-primary" href="userInfo.jsp">ユーザー情報</a>
-            <a class="btn btn-primary" href="playInfo.jsp">戦績情報</a>
+            <a class="btn btn-primary" href="PlayInfo">戦績情報</a>
 			<a class="" href="Logout">ログアウト</a>
         </div>
     </div>

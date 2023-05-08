@@ -16,6 +16,10 @@ public class Edit {
 			check = false;
 			request.setAttribute("error_id", "IDを入力してください");
 		}
+		if(Database.selectUser(user.getId()) != null) {
+			check = false;
+			request.setAttribute("error_id", "このIDは既に使われています。");
+		}
 		if(!Validation.validationName(user.getName())) {
 			check = false;
 			request.setAttribute("error_name", "名前を入力してください");

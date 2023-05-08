@@ -25,22 +25,25 @@ public class Game {
 		this.user_id = user_id;
 	}
 	
-	public List getPlayerHand() {
+	public List<Card> getPlayerHand() {
 		return playerHand;
 	}
 	public void setPlayerHand(List<Card> playerHand) {
 		this.playerHand = playerHand;
 	}
 	
-	public List getDealerHand() {
+	public List<Card> getDealerHand() {
 		return dealerHand;
 	}	
 	public void setDealerHand(List<Card> dealerHand) {
 		this.dealerHand = dealerHand;
 	}
 	
-	public List getDeck() {
+	public List<Card> getDeck() {
 		return this.deck;
+	}
+	public void setDeck(List<Card> deck) {
+		this.deck = deck;
 	}
 	
 	public int getPlayerPoint() {
@@ -84,4 +87,5 @@ public class Game {
 	public void setUserId(String user_id) {
 		this.user_id = user_id;
 	}
+	
 }

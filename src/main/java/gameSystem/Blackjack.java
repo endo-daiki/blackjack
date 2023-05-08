@@ -17,13 +17,18 @@ import model.User;
 
 public class Blackjack {
 	private static Game game;
-	private static final List<Card> deck = new ArrayList<Card>();
 	private static final String[] suit = {"spade","heart","diamond","club"};
     private static final String[] no = {"1","2","3","4","5","6","7","8","9","10","j","q","k"};
+    private static boolean finished = false;
     
     public static Card draw() {
+    	List<Card> deck = new ArrayList<Card>();
+    	deck = game.getDeck();
+    	
     	Card card = deck.get(0);
     	deck.remove(0);
+    	
+    	game.setDeck(deck);
     	
     	return card;
     }
@@ -65,12 +70,15 @@ public class Blackjack {
     	//負け判定の画面を表示させる
     }
 	
-	public static void setup(HttpServletRequest request) {
+	public static void Setup(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
         User user = (User)session.getAttribute("user");
         
 		game = new Game(user.getId());
+		List<Card> deck = new ArrayList<Card>();
 		
+		finished = false;
+
 		for(String suit : suit) {
 			for(String no : no) {
 				Card card = new Card(suit, no);
@@ -79,6 +87,7 @@ public class Blackjack {
 		}
 		
 		Collections.shuffle(deck);
+		game.setDeck(deck);
 		
 		List<Card> hand = new ArrayList<Card>();
 		hand.add(draw());
@@ -98,12 +107,24 @@ public class Blackjack {
 	
 	public static String Hit(HttpServletRequest request) {
 		List<Card> hand = game.getPlayerHand();
+		String url = "PlayerTurn";
+		
+		if(finished == true) {
+			return "Result";
+		}
+		
+		List<Card> deck = new ArrayList<Card>();
+		deck = game.getDeck();
+		
+//		if(deck.indexOf(hand.get(hand.size() - 1)) != -1) {
+//			deck.remove(hand.get(hand.size() - 1));
+//		}
+		
 		hand.add(draw());
 		
 		game.setPlayerHand(hand);
 		game.setPlayerPoint(pointCalc(hand));
 		
-		String url = "PlayerTurn";
 		
 		if(pointCalc(hand) > 21) {
 			game.setPlayerBurst(true);
@@ -117,18 +138,19 @@ public class Blackjack {
 	}
 	
 	public static void Stand(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		if(finished == true) {
+			return;
+		}
 		
 		if(game.getPlayerBurst()) {
 			game.setResult("lose");
 			
 			User updateUser = Database.updateResult(game.getUserId(), game.getResult());
 			
-			HttpSession session = request.getSession(true);
 		    session.setAttribute("user", updateUser);
 			
 			request.setAttribute("game", game);
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("result.jsp");
 			
 			Database.updateResult(game.getUserId(), game.getResult());
 			
@@ -156,9 +178,9 @@ public class Blackjack {
 				game.setResult("draw");
 			}
 			
+			finished = true;
 			User updateUser = Database.updateResult(game.getUserId(), game.getResult());
-			
-			HttpSession session = request.getSession(true);
+
 		    session.setAttribute("user", updateUser);
 			
 		}

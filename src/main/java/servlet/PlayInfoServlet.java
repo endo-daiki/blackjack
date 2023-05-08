@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import gameSystem.Blackjack;
+import login.Information;
 
 /**
- * Servlet implementation class SetupServlet
+ * Servlet implementation class PlayInfoServlet
  */
-@WebServlet("/Setup")
-public class SetupServlet extends HttpServlet {
+@WebServlet("/PlayInfo")
+public class PlayInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SetupServlet() {
+    public PlayInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,11 +32,10 @@ public class SetupServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-
-
-		Blackjack.Setup(request);
 		
-		response.sendRedirect("PlayerTurn");
+		RequestDispatcher dispatcher = 
+				Information.PlayInfo(request);
+		dispatcher.forward(request, response);
 	}
 
 	/**

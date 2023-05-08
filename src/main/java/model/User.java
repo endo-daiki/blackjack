@@ -10,6 +10,7 @@ public class User {
 	private int win;
 	private int lose;
 	private int draw;
+	private double rate;
 	
 	public User() {}
 	public User(String id, String password) {
@@ -94,7 +95,10 @@ public class User {
  	}
 	
 	public double getRate() {
-		return ((double)this.win / (double)this.playing);
+		return this.rate;
+	}
+	public void setRate(double rate) {
+		this.rate = rate;
 	}
 	
 }

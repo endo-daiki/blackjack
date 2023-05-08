@@ -5,7 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import model.Card;
 import model.User;
 
 public class Database {
@@ -52,6 +55,7 @@ public class Database {
 				user.setWin(rs.getInt("win"));
 				user.setLose(rs.getInt("lose"));
 				user.setDraw(rs.getInt("draw"));
+				user.setRate(rs.getDouble("rate"));
 			} else {
 				user = null;
 			}
@@ -69,19 +73,13 @@ public class Database {
 		Connection con = getConnection();
 		boolean check = false;
 		
+		if(selectUser(id) == null) {
+			return false;
+		}
+		
 		try {
 			PreparedStatement pstmt;
 			ResultSet rs;
-			
-			pstmt = con.prepareStatement
-					("select * from user where id = ?");
-			
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				return false;
-			}
 			
 			pstmt = con.prepareStatement
 					("insert into user (id, name, password) values (?,?,?)");
@@ -154,15 +152,15 @@ public class Database {
 			switch (result) {
 				case "win" :
 					pstmt = con.prepareStatement
-						("update user set win = win + 1, playing = playing + 1 where id = ?");
+						("update user set win = win + 1, playing = playing + 1, rate = win / playing where id = ?");
 					break;
 				case "lose" :
 					pstmt = con.prepareStatement
-						("update user set lose = lose + 1, playing = playing + 1 where id = ?");
+						("update user set lose = lose + 1, playing = playing + 1, rate = win / playing where id = ?");
 					break;
 				case "draw" :
 					pstmt = con.prepareStatement
-						("update user set draw = draw + 1, playing = playing + 1 where id = ?");
+						("update user set draw = draw + 1, playing = playing + 1, rate = win / playing where id = ?");
 					break;
 			}
 			
@@ -199,6 +197,7 @@ public class Database {
 				user.setWin(rs.getInt("win"));
 				user.setLose(rs.getInt("lose"));
 				user.setDraw(rs.getInt("draw"));
+				user.setRate(rs.getDouble("rate"));
 			} else {
 				user = null;
 			}
@@ -210,5 +209,32 @@ public class Database {
 			user = null;
 		}
 		return user;
+	}
+	
+	public static List<User> getRanking() {
+		Connection con = getConnection();
+		List<User> ranker = new ArrayList<User>();
+		
+		try {
+			PreparedStatement pstmt = con.prepareStatement
+					("select name, rate from user order by rate desc limit 5");
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				User user = new User();
+				user.setName(rs.getString("name"));
+				user.setRate(rs.getDouble("rate"));
+				ranker.add(user);
+			}
+			
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			ranker = null;
+		}
+		
+		return ranker;
 	}
 }
