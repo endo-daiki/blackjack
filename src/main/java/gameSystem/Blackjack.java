@@ -62,13 +62,12 @@ public class Blackjack {
 		return dispatcher;
     }
     
-    public static boolean burstCheck(int point) {
-    	if(point > 21) {
-    		return false;
-    	}
-    	return true;
-    	//負け判定の画面を表示させる
-    }
+//    public static boolean burstCheck(int point) {
+//    	if(point > 21) {
+//    		return false;
+//    	}
+//    	return true;
+//    }
 	
 	public static void Setup(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
@@ -108,23 +107,15 @@ public class Blackjack {
 	public static String Hit(HttpServletRequest request) {
 		List<Card> hand = game.getPlayerHand();
 		String url = "PlayerTurn";
-		
+
 		if(finished == true) {
 			return "Result";
 		}
-		
-		List<Card> deck = new ArrayList<Card>();
-		deck = game.getDeck();
-		
-//		if(deck.indexOf(hand.get(hand.size() - 1)) != -1) {
-//			deck.remove(hand.get(hand.size() - 1));
-//		}
 		
 		hand.add(draw());
 		
 		game.setPlayerHand(hand);
 		game.setPlayerPoint(pointCalc(hand));
-		
 		
 		if(pointCalc(hand) > 21) {
 			game.setPlayerBurst(true);
@@ -139,7 +130,7 @@ public class Blackjack {
 	
 	public static void Stand(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
-		if(finished == true) {
+		if(finished == true || session.getAttribute("user") == null) {
 			return;
 		}
 		
@@ -151,8 +142,6 @@ public class Blackjack {
 		    session.setAttribute("user", updateUser);
 			
 			request.setAttribute("game", game);
-			
-			Database.updateResult(game.getUserId(), game.getResult());
 			
 		} else {
 			int i = game.getDealerPoint();
@@ -184,5 +173,10 @@ public class Blackjack {
 		    session.setAttribute("user", updateUser);
 			
 		}
+	}
+
+	public static void resetGame() {
+		game = null;
+		
 	}
 }

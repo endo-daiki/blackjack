@@ -7,7 +7,7 @@ import database.Database;
 import model.User;
 
 public class Signup {
-	public static RequestDispatcher SignupCheck(User user, HttpServletRequest request) {
+	public static RequestDispatcher signup(User user, HttpServletRequest request) {
 		RequestDispatcher dispatcher =
 				request.getRequestDispatcher("signupDone.jsp");
 		boolean check = true;

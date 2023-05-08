@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Card;
 import model.User;
 
 public class Database {
@@ -73,7 +72,7 @@ public class Database {
 		Connection con = getConnection();
 		boolean check = false;
 		
-		if(selectUser(id) == null) {
+		if(selectUser(id) != null) {
 			return false;
 		}
 		

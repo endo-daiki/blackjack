@@ -8,10 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import login.Login;
-import login.Signup;
 import model.User;
 
 /**
@@ -54,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		User user = new User(id, password);
-		RequestDispatcher dispatcher = Login.loginCheck(user, request);
+		RequestDispatcher dispatcher = Login.login(user, request);
 		
 		dispatcher.forward(request, response);
 		

@@ -31,7 +31,7 @@
 				<input type="hidden" value="<%= user.getId() %>" name="id">
 				<button type=submit class="btn btn-danger">退会する</button>
 			</form>
-			<a href="userInfo">戻る</a>
+			<a href="userInfo.jsp">戻る</a>
         </div>
     </div>
 </div>

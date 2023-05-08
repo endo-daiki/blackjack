@@ -16,7 +16,7 @@ public class Edit {
 			check = false;
 			request.setAttribute("error_id", "IDを入力してください");
 		}
-		if(Database.selectUser(user.getId()) != null) {
+		if(Database.selectUser(user.getNewId()) != null) {
 			check = false;
 			request.setAttribute("error_id", "このIDは既に使われています。");
 		}

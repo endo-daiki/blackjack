@@ -3,9 +3,9 @@
 <%@ page import="model.User" %>
 <% 
 	User user = (User) session.getAttribute("user"); 
-	if(user == null) {
+	if(user != null) {
 %>
-<jsp:forward page="/" />
+<jsp:forward page="main.jsp" />
 <%
 	}
 %>

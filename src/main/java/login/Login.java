@@ -8,7 +8,7 @@ import database.Database;
 import model.User;
 
 public class Login {
-	public static RequestDispatcher loginCheck(User user, HttpServletRequest request) {
+	public static RequestDispatcher login(User user, HttpServletRequest request) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Main");
 		boolean check = true;
 		

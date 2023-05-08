@@ -8,6 +8,7 @@ CREATE TABLE `blackjack`.`user`(
 	win integer not null default 0,
    	lose integer not null default 0,
 	draw integer not null default 0,
+	rate double not null default 0,
 	primary key(id)
 ) DEFAULT CHARSET=utf8mb4;
 

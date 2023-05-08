@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import login.Signup;
-import login.Validation;
 import model.User;
 
 /**
@@ -55,7 +54,7 @@ public class SignupServlet extends HttpServlet {
 		String checkPassword = request.getParameter("checkPassword");
 		
 		User user = new User(id, name, password, checkPassword);
-		RequestDispatcher dispatcher = Signup.SignupCheck(user, request);
+		RequestDispatcher dispatcher = Signup.signup(user, request);
 		
 		dispatcher.forward(request, response);
 	}

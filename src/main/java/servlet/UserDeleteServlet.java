@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import database.Database;
+import login.Delete;
 
 /**
  * Servlet implementation class UserDelete
@@ -50,7 +50,7 @@ public class UserDeleteServlet extends HttpServlet {
 		
 		String id =  request.getParameter("id");
 
-		Database.deleteUser(id);
+		Delete.UserDelete(id, request);
 		
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher("userDeleteDone.jsp");
