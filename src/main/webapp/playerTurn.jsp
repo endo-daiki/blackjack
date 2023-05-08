@@ -33,7 +33,11 @@
             <div class="col-7 border">
             	<img  src="img/<%= dealerHand.get(0).suit %>_<%= dealerHand.get(0).no %>.png" width="100" height="150">
             	<img  src="img/trump_back.png" width="100" height="150">
+            	<% if( dealerHand.get(0).no.equals("j") || dealerHand.get(0).no.equals("q") || dealerHand.get(0).no.equals("k")) { %>
+            	<p class="text-center"><%= dealerHand.get(0).no %>(10) + ?</p>
+            	<% } else { %>
             	<p class="text-center"><%= dealerHand.get(0).no %> + ?</p>
+            	<% } %>
             </div>
             <div class="col-7 border">
             	<% for(Card card : playerHand) { %>

@@ -29,7 +29,7 @@
 				<p class="text-danger"><%= (String)request.getAttribute("error_login") %></p>
 			<% } %>
 			<form method="post" action="Login">
-				<label>ID(メールアドレス)</label>
+				<label>ID</label>
 				<input type="text" name="id" class="form-control"><br>
 				<% if(request.getAttribute("error_id") != null) { %>
 				<p class="text-danger"><%= request.getAttribute("error_id") %></p>

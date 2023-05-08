@@ -26,7 +26,7 @@
 		<p class="text-center">ユーザー 新規登録</p>
 		<div class="col-7">
 			<form method="post" action="Signup">
-				<label>ID(メールアドレス)</label>
+				<label>ID</label>
 				<input class="form-control" type="text" name="id"><br>
 				<% if(request.getAttribute("error_id") != null) { %>
 				<p class="text-danger"><%= request.getAttribute("error_id") %></p>

@@ -2,14 +2,13 @@ package gameSystem;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import database.Database;
-
-import java.util.ArrayList;
 
 import model.Card;
 import model.Game;
@@ -61,13 +60,6 @@ public class Blackjack {
 		
 		return dispatcher;
     }
-    
-//    public static boolean burstCheck(int point) {
-//    	if(point > 21) {
-//    		return false;
-//    	}
-//    	return true;
-//    }
 	
 	public static void Setup(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);

@@ -26,7 +26,7 @@
     <div class="row justify-content-center">
         <div class="col-7">
             <form method="post" action="UserEdit">
-				<label>ID(メールアドレス)</label>
+				<label>ID</label>
 				<input class="form-control" type="text" name="newId" value="<%= user.getId() %>"><br>
 				<% if(request.getAttribute("error_id") != null) { %>
 				<p class="text-danger"><%= request.getAttribute("error_id") %></p>

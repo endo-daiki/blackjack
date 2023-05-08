@@ -25,7 +25,7 @@ public class Login {
 		
 		if(check == true) {
 			if(loginUser == null) {
-				request.setAttribute("error_login", "ログインに失敗しました。アカウントが存在しないか、IDまたはパスワードが違います");
+				request.setAttribute("error_login", "ログインに失敗しました。アカウントが存在しないか、IDまたはパスワードが間違っています");
 				dispatcher = 
 						request.getRequestDispatcher("login.jsp");	
 			} else {
