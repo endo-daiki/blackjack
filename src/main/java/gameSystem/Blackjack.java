@@ -15,7 +15,7 @@ import model.Game;
 import model.User;
 
 public class Blackjack {
-	private static Game game;
+	private static Game game = null;
 	private static boolean finished = false;
 	private static final String[] suit = {"spade","heart","diamond","club"};
     private static final String[] no = {"1","2","3","4","5","6","7","8","9","10","j","q","k"};
@@ -141,7 +141,7 @@ public class Blackjack {
 	public static String Stand(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		if(finished == true || session.getAttribute("user") == null || game == null) {
-			return "/blackjack";
+			return "Result";
 		}
 		
 		String url = "Result";

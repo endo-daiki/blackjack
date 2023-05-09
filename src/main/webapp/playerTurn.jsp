@@ -48,6 +48,7 @@
             <div class="col-7 border">
             	<a href="Hit" class="btn btn-outline-primary">hit</a>
             	<a href="Stand" class="btn btn-outline-danger">stand</a>
+            	<a href="gameTop.jsp" class="btn btn-outline-danger">戻る</a>
             </div>
         </div>
     </div>

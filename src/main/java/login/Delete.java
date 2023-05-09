@@ -17,7 +17,7 @@ public class Delete {
 		Blackjack.resetGame();
 	        
 	    RequestDispatcher dispatcher = 
-			request.getRequestDispatcher("login.jsp");
+			request.getRequestDispatcher("userDeleteDone.jsp");
 		
 		return dispatcher;
 	}

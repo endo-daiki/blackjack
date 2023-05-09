@@ -31,7 +31,7 @@ public class Signup {
 		
 		
 		if(check == true) {
-			if(!(Database.insertUser(user.getId(), user.getName(), user.getPassword()))) {
+			if(Database.selectUser(user.getId()) != null) {
 				request.setAttribute("error_id", "このIDは既に使われています。");
 				dispatcher = 
 					request.getRequestDispatcher("signup.jsp");
@@ -41,7 +41,6 @@ public class Signup {
 					request.getRequestDispatcher("signup.jsp");
 		}
 			
-		
 		return dispatcher;
 	}
 }

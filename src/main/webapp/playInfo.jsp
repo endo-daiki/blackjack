@@ -50,7 +50,7 @@
                     <% if(Double.isNaN(user.getRate())) {%>
                     	<td>0</td>
                     <% } else { %>
-                    	<td><%= String.format("%.2f", user.getRate()) %></td>
+                    	<td><%= String.format("%.4f", user.getRate()) %></td>
                     <% } %>
                   </tr>
                 </tbody>
@@ -58,7 +58,7 @@
               <p class="text-center">勝率トップ５</p>
               <table class="table">
                 <tbody>
-                <% 	int rank = 1; %>
+                <% int rank = 1; %>
                 <% for(int i = 0; i < ranker.size(); i++) { %>
                   <tr>
                     <th scope="row"><%= rank %>位</th>

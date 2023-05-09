@@ -37,7 +37,7 @@
                   </tr>
                   <tr>
                     <th scope="row">パスワード</th>
-                    <td><% for(int i = 0; i < user.getPassword().length(); i++) { %>*<% } %></td>
+                    <td><% for(int i = 0; i < user.getPassword().length() + 5; i++) { %>*<% } %></td>
                   </tr>
                 </tbody>
               </table>

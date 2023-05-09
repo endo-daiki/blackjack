@@ -10,7 +10,7 @@ import model.User;
 
 public class Information {
 	public static RequestDispatcher PlayInfo(HttpServletRequest request) {
-		RequestDispatcher dispatcher = null;
+		RequestDispatcher dispatcher;
 		List<User> ranker = Database.getRanking(); 
 		
 		request.setAttribute("ranker", ranker);

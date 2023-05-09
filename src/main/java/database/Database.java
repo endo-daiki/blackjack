@@ -37,6 +37,10 @@ public class Database {
 		Connection con = getConnection();
 		User user = new User();
 		
+		if(con == null) {
+			
+		}
+		
 		try {
 			PreparedStatement pstmt = con.prepareStatement
 					("select * from user where id = ? and password = ?");
@@ -72,8 +76,12 @@ public class Database {
 		Connection con = getConnection();
 		boolean check = false;
 		
+		if(con == null) {
+			//データベースエラーでログインに戻す
+		}
 		if(selectUser(id) != null) {
 			return false;
+			//登録ページに戻す
 		}
 		
 		try {
@@ -104,6 +112,11 @@ public class Database {
 	
 	public static User updateUser(String id, String newId, String name, String password) {
 		Connection con = getConnection();
+		
+		if(con == null) {
+			//データベースエラーでログインに戻す
+		}
+		
 		User user = null;
 		
 		try {
@@ -129,6 +142,10 @@ public class Database {
 	public static void deleteUser(String id) {
 		Connection con = getConnection();
 		
+		if(con == null) {
+			//データベースエラーでログインに戻す
+		}
+		
 		try {
 			PreparedStatement pstmt = con.prepareStatement
 					("delete from user where id = ?");
@@ -143,6 +160,11 @@ public class Database {
 	
 	public static User updateResult(String id, String result) {
 		Connection con = getConnection();
+		
+		if(con == null) {
+			//データベースエラーでログインに戻す
+		}
+		
 		User user = null;
 		
 		try {
@@ -178,6 +200,11 @@ public class Database {
 	
 	public static User selectUser(String id) {
 		Connection con = getConnection();
+		
+		if(con == null) {
+			//データベースエラーでログインに戻す
+		}
+		
 		User user = new User();
 		
 		try {
@@ -197,6 +224,7 @@ public class Database {
 				user.setLose(rs.getInt("lose"));
 				user.setDraw(rs.getInt("draw"));
 				user.setRate(rs.getDouble("rate"));
+				
 			} else {
 				user = null;
 			}
@@ -210,6 +238,11 @@ public class Database {
 	
 	public static List<User> getRanking() {
 		Connection con = getConnection();
+		
+		if(con == null) {
+			//データベースエラーでログインに戻す
+		}
+		
 		List<User> ranker = new ArrayList<User>();
 		
 		try {
@@ -234,4 +267,5 @@ public class Database {
 		
 		return ranker;
 	}
+	
 }
