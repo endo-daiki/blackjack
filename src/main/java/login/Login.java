@@ -40,17 +40,17 @@ public class Login {
 		return dispatcher;
 	}
 	
-	public static RequestDispatcher login(HttpServletRequest request) {
-		RequestDispatcher dispatcher = null;
-		HttpSession session = request.getSession(true);
-		
-       if(session.getAttribute("user") == null) {
-    	   request.setAttribute("error_login", "ログインされていません。ログインしてください。");
-    	   dispatcher = request.getRequestDispatcher("login.jsp");
-       } else {
-    	   dispatcher = request.getRequestDispatcher("/Main");
-       }
-       
-       return dispatcher;
-	}
+//	public static RequestDispatcher login(HttpServletRequest request) {
+//		RequestDispatcher dispatcher = null;
+//		HttpSession session = request.getSession(true);
+//		
+//       if(session.getAttribute("user") == null) {
+//    	   request.setAttribute("error_login", "ログインされていません。ログインしてください。");
+//    	   dispatcher = request.getRequestDispatcher("login.jsp");
+//       } else {
+//    	   dispatcher = request.getRequestDispatcher("/Main");
+//       }
+//       
+//       return dispatcher;
+//	}
 }

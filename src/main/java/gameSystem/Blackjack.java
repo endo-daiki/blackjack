@@ -61,10 +61,14 @@ public class Blackjack {
 		return dispatcher;
     }
 	
-	public static void Setup(HttpServletRequest request) {
+	public static String Setup(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
-        User user = (User)session.getAttribute("user");
+        User user = (User)session.getAttribute("user");        
+        if(user == null) {
+        	return "/blackjack";
+        }
         
+        String url = "PlayerTurn";
 		game = new Game(user.getId());
 		List<Card> deck = new ArrayList<Card>();
 		
@@ -94,12 +98,19 @@ public class Blackjack {
 		game.setDealerHand(dealerHand);
 		game.setDealerPoint(pointCalc(dealerHand));
 		
+		return url;
+		
 	}
 	
 	public static String Hit(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		if(session.getAttribute("user") == null || game == null) {
+			return "/blackjack";
+		}
+
 		List<Card> hand = game.getPlayerHand();
 		String url = "PlayerTurn";
-
+		
 		if(finished == true) {
 			return "Result";
 		}
@@ -120,11 +131,13 @@ public class Blackjack {
 		return url;
 	}
 	
-	public static void Stand(HttpServletRequest request) {
+	public static String Stand(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
-		if(finished == true || session.getAttribute("user") == null) {
-			return;
+		if(finished == true || session.getAttribute("user") == null || game == null) {
+			return "/blackjack";
 		}
+		
+		String url = "Result";
 		
 		if(game.getPlayerBurst()) {
 			game.setResult("lose");
@@ -165,10 +178,11 @@ public class Blackjack {
 		    session.setAttribute("user", updateUser);
 			
 		}
+		
+		return url;
 	}
 
 	public static void resetGame() {
 		game = null;
-		
 	}
 }

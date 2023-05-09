@@ -8,7 +8,7 @@ import database.Database;
 import model.User;
 
 public class Edit {
-	public static RequestDispatcher editCheck(User user, HttpServletRequest request) {
+	public static RequestDispatcher edit(User user, HttpServletRequest request) {
 		RequestDispatcher dispatcher = null;
 		boolean check = true;
 		
@@ -49,4 +49,5 @@ public class Edit {
 		
 		return dispatcher;
 	}
+
 }
