@@ -40,7 +40,10 @@
             	<% for(Card card : playerHand) { %>
             		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
             	<% } %>
-               <p class="text-center"><%= game.getPlayerPoint() %></p>
+            	<% if(game.getPlayerPoint() == 21) { %>
+            		<p class="text-center text-danger">BlackJack!!</p>
+            	<% } %>
+              	<p class="text-center"><%= game.getPlayerPoint() %></p>
             </div>
             <h3 class="text-center text-danger">
             	<% switch(game.getResult()) { 

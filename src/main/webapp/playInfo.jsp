@@ -58,12 +58,14 @@
               <p class="text-center">勝率トップ５</p>
               <table class="table">
                 <tbody>
+                <% 	int rank = 1; %>
                 <% for(int i = 0; i < ranker.size(); i++) { %>
                   <tr>
-                    <th scope="row"><%= i + 1 %>位</th>
+                    <th scope="row"><%= rank %>位</th>
                     <td><%= ranker.get(i).getName() %></td>
-                    <td><%= String.format("%.2f", ranker.get(i).getRate()) %></td>
+                    <td><%= String.format("%.4f", ranker.get(i).getRate()) %></td>
                   </tr>
+                <% rank++; %>
                 <% } %>
                 </tbody>
               </table>

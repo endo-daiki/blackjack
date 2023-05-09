@@ -33,10 +33,6 @@ public class StandServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-//		Blackjack.Stand(request);
-//		
-//		response.sendRedirect("Result");
-		
 		String url = Blackjack.Stand(request);
 		
 		response.sendRedirect(url);
@@ -48,6 +44,7 @@ public class StandServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
+		
 		
 	}
 

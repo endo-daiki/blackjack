@@ -16,11 +16,11 @@ import model.User;
 
 public class Blackjack {
 	private static Game game;
+	private static boolean finished = false;
 	private static final String[] suit = {"spade","heart","diamond","club"};
     private static final String[] no = {"1","2","3","4","5","6","7","8","9","10","j","q","k"};
-    private static boolean finished = false;
     
-    public static Card draw() {
+    private static Card draw() {
     	List<Card> deck = new ArrayList<Card>();
     	deck = game.getDeck();
     	
@@ -32,7 +32,7 @@ public class Blackjack {
     	return card;
     }
     
-    public static int pointCalc(List<Card> hand) {
+    private static int pointCalc(List<Card> hand) {
     	int point = 0;
     	
     	for(Card card : hand) {
@@ -54,6 +54,13 @@ public class Blackjack {
     }
     
     public static RequestDispatcher getResult(HttpServletRequest request) {
+    	if(game == null) {
+    		RequestDispatcher dispatcher = 
+    				request.getRequestDispatcher("main.jsp");
+    		
+    		return dispatcher;
+    	}
+    	
     	request.setAttribute("game", game);
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher("result.jsp");
@@ -147,6 +154,7 @@ public class Blackjack {
 		    session.setAttribute("user", updateUser);
 			
 			request.setAttribute("game", game);
+			finished = true;
 			
 		} else {
 			int i = game.getDealerPoint();

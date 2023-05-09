@@ -204,8 +204,6 @@ public class Database {
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			user = null;
 		}
 		return user;
 	}

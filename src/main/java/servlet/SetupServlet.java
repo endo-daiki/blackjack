@@ -32,8 +32,6 @@ public class SetupServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 
-
-		//Blackjack.Setup(request);
 		String url = Blackjack.Setup(request);
 		
 		response.sendRedirect(url);
@@ -42,9 +40,10 @@ public class SetupServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, 
+			HttpServletResponse response) 
+					throws ServletException, IOException {
+		
 	}
 
 }
