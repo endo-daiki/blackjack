@@ -27,22 +27,22 @@
         <div class="col-7">
             <form method="post" action="UserEdit">
 				<label>ID</label>
-				<input class="form-control" type="text" name="newId" value="<%= user.getId() %>"><br>
+				<input class="form-control" type="text" name="newId" value="<%= user.getId() %>" required><br>
 				<% if(request.getAttribute("error_id") != null) { %>
 				<p class="text-danger"><%= request.getAttribute("error_id") %></p>
 				<% } %>
 				<label>名前</label>
-				<input class="form-control" type="text" name="name" value="<%= user.getName() %>"><br>
+				<input class="form-control" type="text" name="name" value="<%= user.getName() %>" required><br>
 				<% if(request.getAttribute("error_name")!= null){ %>
 				<p class="text-danger"><%= (String)request.getAttribute("error_name") %></p>
 				<% } %>
 				<label>パスワード</label>
-				<input class="form-control" type="password" name="password" value="<%= user.getPassword() %>"><br>
+				<input class="form-control" type="password" name="password" value="<%= user.getPassword() %>" pattern="/^[a-zA-Z0-9.?\/-]{8}$/" placeholder="8文字以上で入力してください" required><br>
 				<% if(request.getAttribute("error_password")!= null){ %>
 				<p class="text-danger"><%= (String)request.getAttribute("error_password") %></p>
 				<% } %>
 				<label>確認用パスワード</label>
-				<input class="form-control" type="password" name="checkPassword"><br>
+				<input class="form-control" type="password" name="checkPassword" pattern="/^[a-zA-Z0-9.?\/-]{8}$/" placeholder="上記と同じパスワードを入力してください" required><br>
 				<% if(request.getAttribute("error_check")!= null){ %>
 				<p class="text-danger"><%= (String)request.getAttribute("error_check") %></p>
 				<% } %>

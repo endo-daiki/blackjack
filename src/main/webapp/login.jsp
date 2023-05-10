@@ -31,12 +31,12 @@
 			<% } %>
 			<form method="post" action="Login">
 				<label>ID</label>
-				<input type="text" name="id" class="form-control"><br>
+				<input type="text" name="id" class="form-control" required><br>
 				<% if(request.getAttribute("error_id") != null) { %>
 				<p class="text-danger"><%= request.getAttribute("error_id") %></p>
 				<% } %>
 				<label>パスワード</label>
-				<input type="password" name="password" class="form-control"><br>
+				<input type="password" name="password" class="form-control" required><br>
 				<% if(request.getAttribute("error_password")!= null){ %>
 				<p class="text-danger"><%= (String)request.getAttribute("error_password") %></p>
 				<% } %>
