@@ -33,7 +33,6 @@ public class SetupServlet extends HttpServlet {
 					throws ServletException, IOException {
 
 		String url = Blackjack.Setup(request);
-		
 		response.sendRedirect(url);
 	}
 

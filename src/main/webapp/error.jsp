@@ -10,9 +10,15 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </head>
-<body>
-	<p>エラーが発生しました。</p>
-	<p>最初のページに戻ります。</p>
-	<a href="./">戻る</a>
+<body class="p-4">
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<h1 class="text-center text-danger">エラーが発生しました。</h1>
+		<p class="text-center text-danger">TOPページに戻ります。</p>
+		<div class="col-7">
+			<a href="./">トップページ</a>
+		</div>
+	</div>
+</div>
 </body>
 </html>

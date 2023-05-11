@@ -32,17 +32,20 @@ public class HitServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		String url = Blackjack.Hit(request);		
-		response.sendRedirect(url);
+//		String url = Blackjack.Hit(request);		
+//		response.sendRedirect(url);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-//	protected void doPost(HttpServletRequest request, 
-//			HttpServletResponse response) 
-//					throws ServletException, IOException {
-//		
-//	}
+	protected void doPost(HttpServletRequest request, 
+			HttpServletResponse response) 
+					throws ServletException, IOException {
+		
+		String url = Blackjack.Hit(request);		
+		response.sendRedirect(url);
+		
+	}
 
 }

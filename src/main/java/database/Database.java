@@ -268,4 +268,8 @@ public class Database {
 		return ranker;
 	}
 	
+	public static void insertLog(String id) {
+		
+	}
+	
 }

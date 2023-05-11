@@ -46,8 +46,14 @@
              	<p class="text-center"><%= game.getPlayerPoint() %></p>
             </div>
             <div class="col-7 border">
-            	<a href="Hit" class="btn btn-outline-primary">hit</a>
-            	<a href="Stand" class="btn btn-outline-danger">stand</a>
+<!--             	<a href="Hit" class="btn btn-outline-primary">hit</a> -->
+<!--             	<a href="Stand" class="btn btn-outline-danger">stand</a> -->
+				<form action="Hit" method="post">
+					<button type="submit" class="btn btn-outline-primary">hit</button>
+				</form>
+				<form action="Stand" method="post">
+					<button type="submit" class="btn btn-outline-danger">stand</button>
+				</form>
             	<a href="gameTop.jsp" class="btn btn-outline-danger">戻る</a>
             </div>
         </div>

@@ -15,7 +15,7 @@ import model.Game;
 import model.User;
 
 public class Blackjack {
-	private static Game game = null;
+	public static Game game = null;
 	private static boolean finished = false;
 	private static final String[] suit = {"spade","heart","diamond","club"};
     private static final String[] no = {"1","2","3","4","5","6","7","8","9","10","j","q","k"};
@@ -130,9 +130,9 @@ public class Blackjack {
 		if(pointCalc(hand) > 21) {
 			game.setPlayerBurst(true);
 			
-			url = "Stand";
+			url = Stand(request);
 		} else if(pointCalc(hand) == 21) {
-			url = "Stand";
+			url = Stand(request);
 		}
 		
 		return url;
