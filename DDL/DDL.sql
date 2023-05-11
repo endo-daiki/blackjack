@@ -17,7 +17,7 @@ CREATE TABLE `blackjack`.`playLog`(
 	user_id varchar(100) not null,
 	log varchar(100) not null,
 	created_at datetime not null default create_timestamp,
-	primary key(id)
+	primary key(id),
 ) DEFAULT CHARSET=utf8mb4;
 
 
