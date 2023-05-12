@@ -35,6 +35,8 @@ public class Signup {
 				request.setAttribute("error_id", "このIDは既に使われています。");
 				dispatcher = 
 					request.getRequestDispatcher("signup.jsp");
+			} else {
+				Database.insertUser(user.getId(), user.getName(), user.getPassword());
 			}
 		} else {
 			dispatcher = 

@@ -26,9 +26,11 @@
 		<h1 class="text-center">ブラックジャック</h1>
     	<p class="text-center">ゲームを始めます</p>
 		<div class="col-7">
-			<div class="d-grid gap-2">
-				<a href="Setup" class="btn btn-outline-primary">GAME START</a>
-			</div>
+			<form action="Setup" method="post">
+				<div class="d-grid gap-2">
+					<button type="submit" class="btn btn-outline-primary">GAME START</button>
+				</div>
+			</form>
 			<a href="main.jsp" class="btn btn-danger">戻る</a>
 		</div>
 		

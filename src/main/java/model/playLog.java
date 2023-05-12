@@ -2,7 +2,6 @@ package model;
 
 import java.sql.Timestamp;
 import java.util.Date;
-import org.joda.time.DateTime;
 
 public class playLog {
 	private int id;
