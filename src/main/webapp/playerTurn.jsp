@@ -43,7 +43,13 @@
             	<% for(Card card : playerHand) { %>
             		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
             	<% } %>
-             	<p class="text-center"><%= game.getPlayerPoint() %></p>
+             	<p class="text-center">
+             		<% if(game.getAce()){ %>
+					<%= game.getPlayerPoint() - 10 %>
+					 / 
+					<% } %>             		
+             		<%= game.getPlayerPoint() %>
+             	</p>
             </div>
             <div class="col-7 border">
 <!--             	<a href="Hit" class="btn btn-outline-primary">hit</a> -->

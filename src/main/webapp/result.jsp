@@ -34,7 +34,9 @@
             	<% for(Card card : dealerHand) { %>
             		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
             	<% } %>
-               <p class="text-center"><%= game.getDealerPoint() %></p>
+               <p class="text-center">
+			   	<%= game.getDealerPoint() %>
+			   </p>
             </div>
             <div class="col-7 border">
             	<% for(Card card : playerHand) { %>

@@ -13,6 +13,7 @@ public class Game {
 	private boolean dealerBurst;
 	private String result;
 	private String user_id;
+	private boolean ace;
 	
 	public Game(String user_id) {
 		this.playerHand = new ArrayList<Card>();
@@ -23,6 +24,7 @@ public class Game {
 		this.playerBurst = false;
 		this.dealerBurst = false;
 		this.user_id = user_id;
+		this.ace = false;
 	}
 	
 	public List<Card> getPlayerHand() {
@@ -86,6 +88,13 @@ public class Game {
 	}
 	public void setUserId(String user_id) {
 		this.user_id = user_id;
+	}
+	
+	public boolean getAce() {
+		return this.ace;
+	}
+	public void setAce(boolean ace) {
+		this.ace = ace;
 	}
 	
 }

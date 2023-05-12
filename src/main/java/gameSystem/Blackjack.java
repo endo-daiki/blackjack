@@ -36,12 +36,22 @@ public class Blackjack {
     	int point = 0;
     	
     	for(Card card : hand) {
+    		if( card.no.equals("1")) {
+    			point += 11;
+    			game.setAce(true);
+    		} else 
     		if( card.no.equals("j") || card.no.equals("q") || card.no.equals("k") ) {
     			point += 10;
     		} else {
     			point += Integer.parseInt(card.no);
     		}
     	}
+    	
+    	if(game.getAce() && point > 21) {
+    		game.setAce(false);
+    		point -= 10;
+    	}
+    	
     	return point;
     }
     
@@ -103,7 +113,10 @@ public class Blackjack {
 		dealerHand.add(draw());
 		
 		game.setDealerHand(dealerHand);
-		game.setDealerPoint(pointCalc(dealerHand));
+		
+		if(game.getPlayerPoint() == 21) {
+			url = "Stand";
+		}
 		
 		return url;
 		
@@ -145,12 +158,14 @@ public class Blackjack {
 		}
 		
 		String url = "Result";
+		game.setAce(false);
+		game.setDealerPoint(pointCalc(game.getDealerHand()));
 		
 		if(game.getPlayerBurst()) {
 			game.setResult("lose");
 			
-			Database.insertLog(game.getUserId(), game.getResult());
 			User updateUser = Database.updateResult(game.getUserId(), game.getResult());
+			Database.insertLog(game.getUserId(), game.getResult());
 			
 		    session.setAttribute("user", updateUser);
 			
@@ -182,8 +197,8 @@ public class Blackjack {
 			}
 			
 			finished = true;
-			Database.insertLog(game.getUserId(), game.getResult());
 			User updateUser = Database.updateResult(game.getUserId(), game.getResult());
+			Database.insertLog(game.getUserId(), game.getResult());
 
 		    session.setAttribute("user", updateUser);
 			
