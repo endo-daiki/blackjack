@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.User, java.util.List" %>
+<%@ page import="model.User, model.playLog, java.util.List" %>
 <% 
  	User user = (User) session.getAttribute("user");
 	List<User> ranker = (List<User>) request.getAttribute("ranker");
+	List<playLog> playLog = (List<playLog>) request.getAttribute("playLog");
 	if(user == null) {
 %>
 <jsp:forward page="/" />
@@ -64,6 +65,18 @@
                     <th scope="row"><%= rank %>位</th>
                     <td><%= ranker.get(i).getName() %></td>
                     <td><%= String.format("%.4f", ranker.get(i).getRate()) %></td>
+                  </tr>
+                <% rank++; %>
+                <% } %>
+                </tbody>
+              </table>
+              <p class="text-center">ゲーム記録</p>
+              <table class="table">
+                <tbody>
+                <% for(int i = 0; i < playLog.size(); i++) { %>
+                  <tr>
+                    <td><%= playLog.get(i).getTime() %></td>
+                    <td><%= playLog.get(i).getLog() %></td>
                   </tr>
                 <% rank++; %>
                 <% } %>

@@ -5,10 +5,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.DateTime;
+
 import model.User;
+import model.playLog;
 
 public class Database {
 	private static final String driver = "org.mariadb.jdbc.Driver";
@@ -268,8 +272,54 @@ public class Database {
 		return ranker;
 	}
 	
-	public static void insertLog(String id) {
+	public static void insertLog(String id, String result) {
+		Connection con = getConnection();
 		
+		try {
+			PreparedStatement pstmt = con.prepareStatement
+					("insert into playLog (user_id, log) values (?,?)");
+			
+			pstmt.setString(1, id);
+			pstmt.setString(2, result);
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static List<playLog> getPlayLog(String id) {
+		Connection con = getConnection();
+		
+		if(con == null) {
+			//データベースエラーでログインに戻す
+		}
+		
+		List<playLog> playLogs = new ArrayList<playLog>();
+		
+		try {
+			PreparedStatement pstmt = con.prepareStatement
+					("select * from playLog where user_id = ? order by created_at desc");
+			
+			pstmt.setString(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String user_id = rs.getString("user_id");
+				String log = rs.getString("log");
+				Timestamp time = rs.getTimestamp("created_at");
+				playLog playLog = new playLog(user_id, log, time);
+				playLogs.add(playLog);
+			}
+			
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			return null;
+		}
+		
+		return playLogs;
 	}
 	
 }

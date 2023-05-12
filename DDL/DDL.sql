@@ -13,11 +13,11 @@ CREATE TABLE `blackjack`.`user`(
 ) DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `blackjack`.`playLog`(
-	id varchar(100) not null auto_increment,
+	id integer not null auto_increment,
 	user_id varchar(100) not null,
 	log varchar(100) not null,
-	created_at datetime not null default create_timestamp,
-	primary key(id),
-) DEFAULT CHARSET=utf8mb4;
+	created_at datetime not null default current_timestamp,
+	primary key(id)
+) DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_bin;
 
 

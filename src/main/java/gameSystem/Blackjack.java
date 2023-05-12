@@ -149,6 +149,7 @@ public class Blackjack {
 		if(game.getPlayerBurst()) {
 			game.setResult("lose");
 			
+			Database.insertLog(game.getUserId(), game.getResult());
 			User updateUser = Database.updateResult(game.getUserId(), game.getResult());
 			
 		    session.setAttribute("user", updateUser);
@@ -181,6 +182,7 @@ public class Blackjack {
 			}
 			
 			finished = true;
+			Database.insertLog(game.getUserId(), game.getResult());
 			User updateUser = Database.updateResult(game.getUserId(), game.getResult());
 
 		    session.setAttribute("user", updateUser);
