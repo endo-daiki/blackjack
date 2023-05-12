@@ -37,12 +37,12 @@
 				<p class="text-danger"><%= (String)request.getAttribute("error_name") %></p>
 				<% } %>
 				<label>パスワード</label>
-				<input class="form-control" type="password" name="password" value="<%= user.getPassword() %>" pattern="/^[a-zA-Z0-9.?\/-]{8}$/" placeholder="8文字以上で入力してください" required><br>
+				<input class="form-control" type="password" name="password" value="<%= user.getPassword() %>" pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="8文字以上で入力してください" required><br>
 				<% if(request.getAttribute("error_password")!= null){ %>
 				<p class="text-danger"><%= (String)request.getAttribute("error_password") %></p>
 				<% } %>
 				<label>確認用パスワード</label>
-				<input class="form-control" type="password" name="checkPassword" pattern="/^[a-zA-Z0-9.?\/-]{8}$/" placeholder="上記と同じパスワードを入力してください" required><br>
+				<input class="form-control" type="password" name="checkPassword" pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="上記と同じパスワードを入力してください" required><br>
 				<% if(request.getAttribute("error_check")!= null){ %>
 				<p class="text-danger"><%= (String)request.getAttribute("error_check") %></p>
 				<% } %>
