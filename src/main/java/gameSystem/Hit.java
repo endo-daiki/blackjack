@@ -13,7 +13,7 @@ public class Hit {
 	
 	public Hit(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
-		Game game = Blackjack.getGame();
+		Game game = Blackjack.game;
 		if(session.getAttribute("user") == null || game == null) {
 			url = "/blackjack";
 			return;
@@ -24,13 +24,13 @@ public class Hit {
 		}
 		
 		List<Card> hand = game.getPlayerHand();
-		Deck deck = new Deck(game.getDeck());
+		Deck deck = Blackjack.deck;
 		url = "PlayerTurn";
 		
 		hand.add(deck.Draw());
 		
 		game.setPlayerHand(hand);
-		int point = PointCalc.pointCalc(hand);
+		int point = PointCalc.Calc(hand);
 		game.setPlayerPoint(point);
 		
 		game.setDeck(deck.getDeck());
@@ -40,7 +40,7 @@ public class Hit {
 			
 			new Stand(request);
 			url = Stand.getUrl();
-		} else if(PointCalc.pointCalc(hand) == 21) {
+		} else if(PointCalc.Calc(hand) == 21) {
 			new Stand(request);
 			url = Stand.getUrl();
 		}

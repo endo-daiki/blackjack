@@ -4,7 +4,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import database.Database;
 import gameSystem.Blackjack;
 
 public class Delete {
@@ -12,7 +11,8 @@ public class Delete {
 		HttpSession session = request.getSession(true);
 		session.invalidate();
 		
-		Database.deleteUser(id);
+		new Delete();
+		database.Delete.deleteUser(id);
 		
 		Blackjack.resetGame();
 	        

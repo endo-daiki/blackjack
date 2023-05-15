@@ -19,7 +19,7 @@ public class Database {
     private static final String pass = "";
     
     
-	private static Connection getConnection() {
+	public static Connection getConnection() {
 		try {
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {

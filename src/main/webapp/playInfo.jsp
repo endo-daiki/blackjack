@@ -71,7 +71,7 @@
                 </tbody>
               </table>
               <p class="text-center">ゲーム記録</p>
-              <div class="overflow-auto" style="height:400px;">
+              <div class="overflow-auto" style="max-height:400px;">
 	              <table class="table">
     	            <tbody>
         	        <% for(int i = 0; i < playLog.size(); i++) { %>

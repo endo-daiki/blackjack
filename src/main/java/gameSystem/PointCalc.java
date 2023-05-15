@@ -6,9 +6,9 @@ import model.Card;
 import model.Game;
 
 public class PointCalc {
-	public static int pointCalc(List<Card> hand) {
+	public static int Calc(List<Card> hand) {
 		int point = 0;
-		Game game = Blackjack.getGame();
+		Game game = Blackjack.game;
 		game.setAce(false);
     	
     	for(Card card : hand) {

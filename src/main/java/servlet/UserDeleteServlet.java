@@ -45,14 +45,11 @@ public class UserDeleteServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 
-
 		request.setCharacterEncoding("UTF-8");
 		String id =  request.getParameter("id");
 
-		Delete.UserDelete(id, request);
-		
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("userDeleteDone.jsp");
+				Delete.UserDelete(id, request);
 		dispatcher.forward(request, response);
 	}
 

@@ -4,12 +4,13 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import database.Database;
+import database.Select;
 import model.User;
 
 public class Login {
 	public static RequestDispatcher login(User user, HttpServletRequest request) {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Main");
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher("Main");
 		boolean check = true;
 		
 		if(!Validation.validationId(user.getId())) {
@@ -20,37 +21,20 @@ public class Login {
 			check = false;
 			request.setAttribute("error_password", "パスワードを入力してください");
 		}
+		new Select();
+		User loginUser = Select.selectUser(user.getId(), user.getPassword());
+		if(loginUser == null) {
+			check = false;
+			request.setAttribute("error_login", "ログインに失敗しました。アカウントが存在しないか、IDまたはパスワードが間違っています");
+		} 
 		
-		User loginUser = Database.loginUser(user.getId(), user.getPassword());
-		
-		if(check == true) {
-			if(loginUser == null) {
-				request.setAttribute("error_login", "ログインに失敗しました。アカウントが存在しないか、IDまたはパスワードが間違っています");
-				dispatcher = 
-						request.getRequestDispatcher("login.jsp");	
-			} else {
-				HttpSession session = request.getSession(true);
-		        session.setAttribute("user", loginUser);
-			}
-		} else {
+		if(check == false) {
 			dispatcher = 
-					request.getRequestDispatcher("login.jsp");
+					request.getRequestDispatcher("login.jsp");	
+		} else {
+			HttpSession session = request.getSession(true);
+		    session.setAttribute("user", loginUser);
 		}
-		
 		return dispatcher;
 	}
-	
-//	public static RequestDispatcher login(HttpServletRequest request) {
-//		RequestDispatcher dispatcher = null;
-//		HttpSession session = request.getSession(true);
-//		
-//       if(session.getAttribute("user") == null) {
-//    	   request.setAttribute("error_login", "ログインされていません。ログインしてください。");
-//    	   dispatcher = request.getRequestDispatcher("login.jsp");
-//       } else {
-//    	   dispatcher = request.getRequestDispatcher("/Main");
-//       }
-//       
-//       return dispatcher;
-//	}
 }

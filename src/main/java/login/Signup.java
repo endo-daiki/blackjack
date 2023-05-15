@@ -4,6 +4,8 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
 import database.Database;
+import database.Insert;
+import database.Select;
 import model.User;
 
 public class Signup {
@@ -29,18 +31,18 @@ public class Signup {
 			request.setAttribute("error_check", "パスワードが正しくありません");
 		}
 		
+		new Select();
+		if(Select.selectId(user.getId())) {
+			check = false;
+			request.setAttribute("error_id", "このIDは既に使われています。");
+		}
 		
-		if(check == true) {
-			if(Database.selectUser(user.getId()) != null) {
-				request.setAttribute("error_id", "このIDは既に使われています。");
-				dispatcher = 
+		if(check == false) {
+			dispatcher =
 					request.getRequestDispatcher("signup.jsp");
-			} else {
-				Database.insertUser(user.getId(), user.getName(), user.getPassword());
-			}
 		} else {
-			dispatcher = 
-					request.getRequestDispatcher("signup.jsp");
+			new Insert();
+			Insert.insertUser(user.getId(), user.getName(), user.getPassword());
 		}
 			
 		return dispatcher;

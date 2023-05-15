@@ -5,18 +5,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import database.Database;
+import database.Select;
+import database.Update;
 import model.User;
 
 public class Edit {
 	public static RequestDispatcher edit(User user, HttpServletRequest request) {
-		RequestDispatcher dispatcher = null;
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher("userEditDone.jsp");
 		boolean check = true;
 		
 		if(!Validation.validationId(user.getId())) {
 			check = false;
 			request.setAttribute("error_id", "IDを入力してください");
 		}
-		if(Database.selectUser(user.getNewId()) != null && !(user.getNewId().equals(user.getId()))) {
+		new Select();
+		if(Select.selectId(user.getNewId()) && !(user.getNewId().equals(user.getId()))) {
 			check = false;
 			request.setAttribute("error_id", "このIDは既に使われています。");
 		}
@@ -38,13 +42,13 @@ public class Edit {
 			dispatcher = 
 				request.getRequestDispatcher("userEdit.jsp");
 		} else {
-			User updateUser = Database.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());
+			new Update();
+			Update.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());
+			
+			User updateUser = Select.selectUser(user.getNewId(), user.getPassword());
 			
 			HttpSession session = request.getSession(true);
 		    session.setAttribute("user", updateUser);
-		        
-			dispatcher = 
-				request.getRequestDispatcher("userEditDone.jsp");
 		} 
 		
 		return dispatcher;

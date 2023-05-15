@@ -15,15 +15,16 @@ public static String url;
 	
 	public Stand(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
-		Game game = Blackjack.getGame();
+		Game game = Blackjack.game;
 		if(game.getFinished() == true || session.getAttribute("user") == null || game == null) {
 			url = "Result";
 		}
 		
 		url = "Result";
 		game.setAce(false);
-		game.setDealerPoint(PointCalc.pointCalc(game.getDealerHand()));
-		Deck deck = new Deck(game.getDeck());
+		game.setDealerPoint(PointCalc.Calc(game.getDealerHand()));
+		Deck deck = Blackjack.deck;
+		
 		
 		if(game.getPlayerBurst()) {
 			game.setResult("lose");
@@ -43,7 +44,7 @@ public static String url;
 				dealerHand.add(deck.Draw());
 				
 				game.setDealerHand(dealerHand);
-				game.setDealerPoint(PointCalc.pointCalc(dealerHand));
+				game.setDealerPoint(PointCalc.Calc(dealerHand));
 				
 				i = game.getDealerPoint();
 				
@@ -67,8 +68,6 @@ public static String url;
 		    session.setAttribute("user", updateUser);
 			
 		}
-		
-		game.setDeck(deck.getDeck());
 	}
 	
 	public static String getUrl() {

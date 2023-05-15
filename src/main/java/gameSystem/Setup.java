@@ -23,23 +23,21 @@ public class Setup {
         }
 		
         new Blackjack(user.getId());
-        Game game = Blackjack.getGame();
-        Deck deck = new Deck();
+        Game game = Blackjack.game;
+        Deck deck = Blackjack.deck;
 		
-		List<Card> hand = new ArrayList<Card>();
+		List<Card> hand = game.getPlayerHand();
 		hand.add(deck.Draw());
 		hand.add(deck.Draw());
 		
 		game.setPlayerHand(hand);
-		game.setPlayerPoint(PointCalc.pointCalc(hand));
+		game.setPlayerPoint(PointCalc.Calc(hand));
 		
-		List<Card> dealerHand = new ArrayList<Card>();
+		List<Card> dealerHand = game.getDealerHand();
 		dealerHand.add(deck.Draw());
 		dealerHand.add(deck.Draw());
 		
 		game.setDealerHand(dealerHand);
-		
-		game.setDeck(deck.getDeck());
 		
 		if(game.getPlayerPoint() == 21) {
 			new Stand(request);
