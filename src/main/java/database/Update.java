@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import model.User;
+
 public class Update {
 private static Connection con;
 	
@@ -39,6 +41,45 @@ private static Connection con;
 			checker = false;
 		}
 		
+		return checker;
+	}
+
+	public static boolean updateResult(String id, String result) {
+		if(con == null) {
+			return false;
+		}
+		
+		boolean checker;
+		try {
+			PreparedStatement pstmt = null;
+			
+			switch (result) {
+				case "win" :
+					pstmt = con.prepareStatement
+						("update user set win = win + 1, playing = playing + 1, rate = win / playing where id = ?");
+					break;
+				case "lose" :
+					pstmt = con.prepareStatement
+						("update user set lose = lose + 1, playing = playing + 1, rate = win / playing where id = ?");
+					break;
+				case "draw" :
+					pstmt = con.prepareStatement
+						("update user set draw = draw + 1, playing = playing + 1, rate = win / playing where id = ?");
+					break;
+			}
+			
+			pstmt.setString(1, id);
+			
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+			checker = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			checker = false;
+		}
 		return checker;
 	}
 }

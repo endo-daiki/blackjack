@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class Game {
 	private List<Card> playerHand;
 	private List<Card> dealerHand;
-	private List<Card> deck;
 	private int playerPoint;
 	private int dealerPoint;
 	private boolean playerBurst;
@@ -19,7 +18,6 @@ public class Game {
 	public Game(String user_id) {
 		this.playerHand = new ArrayList<Card>();
 		this.dealerHand = new ArrayList<Card>();
-		this.deck = new ArrayList<Card>();
 		this.playerPoint = 0;
 		this.dealerPoint = 0;
 		this.playerBurst = false;
@@ -41,13 +39,6 @@ public class Game {
 	}	
 	public void setDealerHand(List<Card> dealerHand) {
 		this.dealerHand = dealerHand;
-	}
-	
-	public List<Card> getDeck() {
-		return this.deck;
-	}
-	public void setDeck(List<Card> deck) {
-		this.deck = deck;
 	}
 	
 	public int getPlayerPoint() {

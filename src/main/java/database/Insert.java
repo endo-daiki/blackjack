@@ -44,4 +44,30 @@ public class Insert {
 		
 		return checker;
 	}
+
+	public static boolean insertLog(String id, String result) {
+		if(con == null) {
+			return false;
+		}
+		
+		boolean checker;
+		
+		try {
+			PreparedStatement pstmt = con.prepareStatement
+					("insert into playLog (user_id, log) values (?,?)");
+			
+			pstmt.setString(1, id);
+			pstmt.setString(2, result);
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+			checker = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			checker = false;
+		}
+		
+		return checker;
+	}
 }

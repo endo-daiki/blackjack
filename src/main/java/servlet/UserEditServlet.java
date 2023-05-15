@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import login.Edit;
+import login.UserEdit;
 import model.User;
 
 /**
@@ -55,7 +55,7 @@ public class UserEditServlet extends HttpServlet {
 			String checkPassword = request.getParameter("checkPassword");
 			
 			User user = new User(oldId, newId, name, password, checkPassword);
-			RequestDispatcher dispatcher = Edit.edit(user, request);
+			RequestDispatcher dispatcher = UserEdit.edit(user, request);
 			
 			dispatcher.forward(request, response);
 	}

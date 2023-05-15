@@ -6,7 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import database.Database;
+import database.Select;
 import model.User;
 import model.playLog;
 
@@ -16,8 +16,9 @@ public class Information {
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
 
-		List<User> ranker = Database.getRanking(); 
-		List<playLog> playLog = Database.getPlayLog(user.getId());
+		new Select();
+		List<User> ranker = Select.selectRanker(); 
+		List<playLog> playLog = Select.selectPlayLog(user.getId());
 		
 		request.setAttribute("ranker", ranker);
 		request.setAttribute("playLog", playLog);

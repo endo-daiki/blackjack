@@ -33,7 +33,7 @@ public class Hit {
 		int point = PointCalc.Calc(hand);
 		game.setPlayerPoint(point);
 		
-		game.setDeck(deck.getDeck());
+//		game.setDeck(deck.getDeck());
 		
 		if(point > 21) {
 			game.setPlayerBurst(true);

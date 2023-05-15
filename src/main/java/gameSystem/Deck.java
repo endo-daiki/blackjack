@@ -23,10 +23,7 @@ public class Deck {
 		
 		Collections.shuffle(deck);
     }
-    public Deck(List<Card> deck) {
-    	Deck.deck = deck;
-    }
-    
+        
     public Card Draw() {
     	Card card = deck.get(0);
     	deck.remove(0);
@@ -37,8 +34,4 @@ public class Deck {
     public List<Card> getDeck() {
     	return deck;
     }
-    
-//    public int size() {
-//    	return deck.size();
-//    }
 }

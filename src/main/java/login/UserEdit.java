@@ -4,12 +4,11 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import database.Database;
 import database.Select;
 import database.Update;
 import model.User;
 
-public class Edit {
+public class UserEdit {
 	public static RequestDispatcher edit(User user, HttpServletRequest request) {
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher("userEditDone.jsp");
@@ -53,5 +52,4 @@ public class Edit {
 		
 		return dispatcher;
 	}
-
 }

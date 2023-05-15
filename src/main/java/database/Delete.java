@@ -35,4 +35,29 @@ private static Connection con;
 		
 		return checker;
 	}
+	
+	public static boolean deleteLog(String id) {
+		if(con == null) {
+			return false;
+		}
+		
+		boolean checker;
+		
+		try {
+			PreparedStatement pstmt = con.prepareStatement
+					("delete from playLog where user_id = ?");
+			
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+			checker = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+			checker = false;
+		}
+		
+		return checker;
+	}
 }

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import login.Delete;
+import login.UserDelete;
 
 /**
  * Servlet implementation class UserDelete
@@ -49,7 +49,7 @@ public class UserDeleteServlet extends HttpServlet {
 		String id =  request.getParameter("id");
 
 		RequestDispatcher dispatcher = 
-				Delete.UserDelete(id, request);
+				UserDelete.delete(id, request);
 		dispatcher.forward(request, response);
 	}
 

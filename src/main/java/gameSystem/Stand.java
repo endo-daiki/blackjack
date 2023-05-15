@@ -5,7 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import database.Database;
+import database.Insert;
+import database.Select;
+import database.Update;
 import model.Card;
 import model.Game;
 import model.User;
@@ -18,6 +20,7 @@ public static String url;
 		Game game = Blackjack.game;
 		if(game.getFinished() == true || session.getAttribute("user") == null || game == null) {
 			url = "Result";
+			return;
 		}
 		
 		url = "Result";
@@ -29,10 +32,15 @@ public static String url;
 		if(game.getPlayerBurst()) {
 			game.setResult("lose");
 			
-			User updateUser = Database.updateResult(game.getUserId(), game.getResult());
-			Database.insertLog(game.getUserId(), game.getResult());
+			new Update();
+			Update.updateResult(game.getUserId(), game.getResult());
 			
-		    session.setAttribute("user", updateUser);
+			new Insert();
+			Insert.insertLog(game.getUserId(), game.getResult());
+			
+			new Select();
+			User user = (User) session.getAttribute("user");
+			user = Select.selectUser(user.getId(), user.getPassword());
 			
 			request.setAttribute("game", game);
 			game.setFinished(true);
@@ -62,10 +70,17 @@ public static String url;
 			}
 			
 			game.setFinished(true);
-			User updateUser = Database.updateResult(game.getUserId(), game.getResult());
-			Database.insertLog(game.getUserId(), game.getResult());
+			new Update();
+			Update.updateResult(game.getUserId(), game.getResult());
+			
+			new Insert();
+			Insert.insertLog(game.getUserId(), game.getResult());
+			
+			new Select();
+			User user = (User) session.getAttribute("user");
+			user = Select.selectUser(user.getId(), user.getPassword());
 
-		    session.setAttribute("user", updateUser);
+		    session.setAttribute("user", user);
 			
 		}
 	}
