@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import model.Card;
 import model.Game;
 
 public class Hit {
@@ -33,14 +32,12 @@ public class Hit {
 		int point = PointCalc.Calc(hand);
 		game.setPlayerPoint(point);
 		
-//		game.setDeck(deck.getDeck());
-		
 		if(point > 21) {
 			game.setPlayerBurst(true);
 			
 			new Stand(request);
 			url = Stand.getUrl();
-		} else if(PointCalc.Calc(hand) == 21) {
+		} else if(PointCalc.Calc(hand) == 21) {			
 			new Stand(request);
 			url = Stand.getUrl();
 		}

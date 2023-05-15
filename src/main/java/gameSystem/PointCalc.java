@@ -2,7 +2,6 @@ package gameSystem;
 
 import java.util.List;
 
-import model.Card;
 import model.Game;
 
 public class PointCalc {

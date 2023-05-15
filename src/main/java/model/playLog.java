@@ -1,10 +1,8 @@
 package model;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class playLog {
-	private int id;
 	private String user_id;
 	private String log;
 	private Timestamp created_at;

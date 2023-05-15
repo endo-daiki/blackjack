@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import database.Insert;
 import database.Select;
 import database.Update;
-import model.Card;
 import model.Game;
 import model.User;
 
@@ -18,7 +17,11 @@ public static String url;
 	public Stand(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		Game game = Blackjack.game;
-		if(game.getFinished() == true || session.getAttribute("user") == null || game == null) {
+		if(game == null) {
+			url = "/blackjack";
+			return;
+		}
+		if(game.getFinished() == true || session.getAttribute("user") == null) {
 			url = "Result";
 			return;
 		}
@@ -27,7 +30,6 @@ public static String url;
 		game.setAce(false);
 		game.setDealerPoint(PointCalc.Calc(game.getDealerHand()));
 		Deck deck = Blackjack.deck;
-		
 		
 		if(game.getPlayerBurst()) {
 			game.setResult("lose");

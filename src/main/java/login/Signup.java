@@ -3,7 +3,6 @@ package login;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
-import database.Database;
 import database.Insert;
 import database.Select;
 import model.User;

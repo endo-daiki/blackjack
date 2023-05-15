@@ -3,6 +3,8 @@ package model;
 import java.util.List;
 import java.util.ArrayList;
 
+import gameSystem.Card;
+
 public class Game {
 	private List<Card> playerHand;
 	private List<Card> dealerHand;

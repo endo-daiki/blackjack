@@ -9,7 +9,7 @@
 <%
 	}
 %>
-<%@ page import="model.Game, model.Card, java.util.List" %>
+<%@ page import="model.Game,gameSystem.Card, java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game"); 
 	List<Card> playerHand = game.getPlayerHand();
@@ -53,8 +53,6 @@
              	</p>
             </div>
             <div class="col-7 border">
-<!--             	<a href="Hit" class="btn btn-outline-primary">hit</a> -->
-<!--             	<a href="Stand" class="btn btn-outline-danger">stand</a> -->
 				<form action="Hit" method="post">
 					<button type="submit" class="btn btn-outline-primary">hit</button>
 				</form>

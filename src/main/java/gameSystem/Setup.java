@@ -1,12 +1,10 @@
 package gameSystem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import model.Card;
 import model.Game;
 import model.User;
 
