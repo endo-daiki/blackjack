@@ -14,6 +14,7 @@ public class Game {
 	private String result;
 	private String user_id;
 	private boolean ace;
+	private boolean finished;
 	
 	public Game(String user_id) {
 		this.playerHand = new ArrayList<Card>();
@@ -25,6 +26,7 @@ public class Game {
 		this.dealerBurst = false;
 		this.user_id = user_id;
 		this.ace = false;
+		this.finished = false;
 	}
 	
 	public List<Card> getPlayerHand() {
@@ -95,6 +97,13 @@ public class Game {
 	}
 	public void setAce(boolean ace) {
 		this.ace = ace;
+	}
+	
+	public boolean getFinished() {
+		return this.finished;
+	}
+	public void setFinished(boolean finished) {
+		this.finished = finished;
 	}
 	
 }

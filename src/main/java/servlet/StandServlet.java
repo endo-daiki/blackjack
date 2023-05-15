@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import gameSystem.Blackjack;
+import gameSystem.Stand;
 
 /**
  * Servlet implementation class StandServlet
@@ -44,7 +45,8 @@ public class StandServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		String url = Blackjack.Stand(request);
+		new Stand(request);
+		String url = Stand.getUrl();
 		response.sendRedirect(url);
 	}
 

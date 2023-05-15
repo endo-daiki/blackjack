@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import gameSystem.Blackjack;
+import gameSystem.Setup;
 
 /**
  * Servlet implementation class SetupServlet
@@ -41,7 +42,8 @@ public class SetupServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		String url = Blackjack.Setup(request);
+		new Setup(request);
+		String url = Setup.getUrl();
 		response.sendRedirect(url);
 	}
 

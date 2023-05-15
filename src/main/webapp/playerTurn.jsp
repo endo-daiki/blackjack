@@ -27,12 +27,13 @@
 </head>
 <body class="p-4">
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        
+    <div class="row justify-content-center">
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">プレイヤーターン</p>
             <div class="col-7 border">
-            	<img  src="img/<%= dealerHand.get(0).suit %>_<%= dealerHand.get(0).no %>.png" width="100" height="150">
-            	<img  src="img/trump_back.png" width="100" height="150">
+            	<img src="img/<%= dealerHand.get(0).suit %>_<%= dealerHand.get(0).no %>.png" width="100" height="150">
+            	<img src="img/trump_back.png" width="100" height="150">
             	<% if( dealerHand.get(0).no.equals("j") || dealerHand.get(0).no.equals("q") || dealerHand.get(0).no.equals("k")) { %>
             	<p class="text-center"><%= dealerHand.get(0).no %>(10) + ?</p>
             	<% } else { %>
@@ -41,7 +42,7 @@
             </div>
             <div class="col-7 border">
             	<% for(Card card : playerHand) { %>
-            		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
+            		<img src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
             	<% } %>
              	<p class="text-center">
              		<% if(game.getAce()){ %>
@@ -62,8 +63,7 @@
 				</form>
             	<a href="gameTop.jsp" class="btn btn-outline-danger">戻る</a>
             </div>
-        </div>
-    </div>
+        </div></div>
 
 </body>
 </html>
