@@ -115,7 +115,7 @@ public class Blackjack {
 		game.setDealerHand(dealerHand);
 		
 		if(game.getPlayerPoint() == 21) {
-			url = "Stand";
+			url = Stand(request);
 		}
 		
 		return url;

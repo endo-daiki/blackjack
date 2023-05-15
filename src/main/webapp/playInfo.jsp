@@ -71,17 +71,19 @@
                 </tbody>
               </table>
               <p class="text-center">ゲーム記録</p>
-              <table class="table">
-                <tbody>
-                <% for(int i = 0; i < playLog.size(); i++) { %>
-                  <tr>
-                    <td><%= playLog.get(i).getTime() %></td>
-                    <td><%= playLog.get(i).getLog() %></td>
-                  </tr>
-                <% rank++; %>
-                <% } %>
-                </tbody>
-              </table>
+              <div class="overflow-auto" style="height:200px;">
+	              <table class="table">
+    	            <tbody>
+        	        <% for(int i = 0; i < playLog.size(); i++) { %>
+            	      <tr>
+                	    <td><%= playLog.get(i).getTime() %></td>
+                    	<td><%= playLog.get(i).getLog() %></td>
+                  	  </tr>
+                	<% rank++; %>
+	                <% } %>
+	                </tbody>
+	              </table>
+              </div>
               <a href="main.jsp">戻る</a>
         </div>
     </div>

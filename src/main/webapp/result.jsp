@@ -62,9 +62,7 @@
             </h3>
             <div class="col-7 border">
             	<form action="Setup" method="post">
-					<div class="d-grid gap-2">
-						<button type="submit" class="btn btn-outline-primary">GAME START</button>
-					</div>
+					<button type="submit" class="btn btn-primary">もう一度</button>
 				</form>
             	<a href="gameTop.jsp" class="btn btn-danger">終了</a>
             </div>
