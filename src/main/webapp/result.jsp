@@ -64,7 +64,7 @@
             	<form action="Setup" method="post">
 					<button type="submit" class="btn btn-primary">もう一度</button>
 				</form>
-            	<a href="gameTop.jsp" class="btn btn-danger">終了</a>
+            	<a href="Main" class="btn btn-danger">終了</a>
             </div>
         </div>
     </div>

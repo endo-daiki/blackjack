@@ -10,6 +10,22 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
+  <security-constraint>
+  	<display-name>Jsp Security</display-name>
+    <web-resource-collection>
+      <web-resource-name>Protected Area</web-resource-name>
+      <url-pattern>/playerTurn.jsp</url-pattern>
+      <url-pattern>/result.jsp</url-pattern>
+      <url-pattern>/main.jsp</url-pattern>
+      <url-pattern>/playInfo.jsp</url-pattern>
+      <url-pattern>/userInfo.jsp</url-pattern>
+      <url-pattern>/userDeleteCheck.jsp</url-pattern>
+      <url-pattern>/userDeleteDone.jsp</url-pattern>
+      <url-pattern>/userEdit.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+    </auth-constraint>
+  </security-constraint>
   <error-page>
 	<error-code>500</error-code>
  	<location>/error.jsp</location>

@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +31,9 @@ public class UserInfoServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		response.sendRedirect("/blackjack");
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher("userInfo.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**

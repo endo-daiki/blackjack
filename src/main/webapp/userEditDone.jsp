@@ -26,7 +26,7 @@
     <div class="row justify-content-center">
         <div class="col-7">
             <p>変更を完了しました。</p>
-            <a href="userInfo.jsp">戻る</a>
+            <a href="UserInfo">戻る</a>
         </div>
     </div>
 </div>

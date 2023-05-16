@@ -41,9 +41,9 @@
                   </tr>
                 </tbody>
               </table>
-              <a href="userEdit.jsp" class="btn btn-primary">変更</a>
-              <a href="userDeleteCheck.jsp" class="btn btn-danger">退会</a>
-              <a href="main.jsp">戻る</a>
+              <a href="UserEdit" class="btn btn-primary">変更</a>
+              <a href="UserDelete" class="btn btn-danger">退会</a>
+              <a href="Main">戻る</a>
         </div>
     </div>
 </div>

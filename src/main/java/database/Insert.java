@@ -6,10 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Insert {
-	private static Connection con;
-	static {
-		con = Database.getConnection();
-	}
+	private static final Connection con = Database.getConnection();
 
 	public static boolean insertUser(String id, String name, String password) {
 		if(con == null) {

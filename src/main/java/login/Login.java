@@ -19,7 +19,6 @@ public class Login {
 			request.setAttribute("error_msg", "パスワードを入力してください");
 			return dispatcher;
 		}
-
 		User loginUser = Select.selectUser(user.getId(), user.getPassword());
 		if(loginUser == null) {
 			request.setAttribute("error_msg", "アカウントが存在しないか、IDまたはパスワードが間違っています");

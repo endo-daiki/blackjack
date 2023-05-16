@@ -33,7 +33,7 @@
 				<a href="gameTop.jsp" class="btn btn-outline-primary">ゲームスタート</a>
 			</div>
             
-            <a class="btn btn-primary" href="userInfo.jsp">ユーザー情報</a>
+            <a class="btn btn-primary" href="UserInfo">ユーザー情報</a>
             <a class="btn btn-primary" href="PlayInfo">戦績情報</a>
 			<a class="" href="Logout">ログアウト</a>
         </div>

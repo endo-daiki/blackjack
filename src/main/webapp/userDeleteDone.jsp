@@ -26,7 +26,7 @@
     <div class="row justify-content-center">
         <div class="col-7">
             <p>退会しました。</p>
-            <a href="login.jsp">ログイン画面に戻る</a>
+            <a href="./">ログイン画面に戻る</a>
         </div>
     </div>
 </div>

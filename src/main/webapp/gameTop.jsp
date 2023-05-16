@@ -31,7 +31,7 @@
 					<button type="submit" class="btn btn-outline-primary">GAME START</button>
 				</div>
 			</form>
-			<a href="main.jsp" class="btn btn-danger">戻る</a>
+			<a href="Main" class="btn btn-danger">戻る</a>
 		</div>
 		
 	</div>

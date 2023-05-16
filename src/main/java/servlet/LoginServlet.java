@@ -52,10 +52,9 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		User user = new User(id, password);
-		RequestDispatcher dispatcher = Login.login(user, request);
 		
-		dispatcher.forward(request, response);
-		
+		RequestDispatcher dispatcher = Login.login(user, request);		
+		dispatcher.forward(request, response);		
 	}
 
 }

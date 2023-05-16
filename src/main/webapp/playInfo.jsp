@@ -84,7 +84,7 @@
 	                </tbody>
 	              </table>
               </div>
-              <a href="main.jsp">戻る</a>
+              <a href="Main">戻る</a>
         </div>
     </div>
 </div>

@@ -12,10 +12,7 @@ import model.User;
 import model.playLog;
 
 public class Select {
-	private static Connection con;
-	static {
-		con = Database.getConnection();
-	}
+	private static final Connection con = Database.getConnection();
 
 	public static boolean selectId(String id) {
 		if(con == null) {

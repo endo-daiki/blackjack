@@ -35,8 +35,7 @@ public class UserEdit {
 		
 		dispatcher = request.getRequestDispatcher("userEditDone.jsp");
 		
-		Update.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());
-		
+		Update.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());	
 		User updateUser = Select.selectUser(user.getNewId(), user.getPassword());
 		
 		HttpSession session = request.getSession(true);

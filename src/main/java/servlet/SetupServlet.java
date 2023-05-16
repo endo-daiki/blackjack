@@ -32,6 +32,7 @@ public class SetupServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
+		response.sendRedirect("playerTurn.jsp");
 	}
 
 	/**

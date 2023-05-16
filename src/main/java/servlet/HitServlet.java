@@ -44,8 +44,7 @@ public class HitServlet extends HttpServlet {
 		
 		new Hit(request);
 		String url = Hit.getUrl();		
-		response.sendRedirect(url);
-		
+		response.sendRedirect(url);		
 	}
 
 }

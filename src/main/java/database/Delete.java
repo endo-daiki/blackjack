@@ -5,10 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Delete {
-	private static Connection con;
-	static {
-		con = Database.getConnection();
-	}
+	private static final Connection con = Database.getConnection();
 	
 	public static boolean deleteUser(String id) {
 		if(con == null) {
@@ -18,7 +15,8 @@ public class Delete {
 		boolean checker;
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("delete from user where id = ?");
+			PreparedStatement pstmt = 
+					con.prepareStatement("delete from user where id = ?");
 			
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
@@ -42,7 +40,8 @@ public class Delete {
 		boolean checker;
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("delete from playLog where user_id = ?");
+			PreparedStatement pstmt = 
+					con.prepareStatement("delete from playLog where user_id = ?");
 			
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();

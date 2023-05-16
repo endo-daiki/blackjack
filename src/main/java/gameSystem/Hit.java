@@ -1,9 +1,6 @@
 package gameSystem;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import login.Login;
 import model.Game;

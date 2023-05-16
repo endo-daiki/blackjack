@@ -7,6 +7,7 @@ public class playLog {
 	private String log;
 	private Timestamp created_at;
 	
+	public playLog() {}
 	public playLog(String user_id, String log, Timestamp created_at) {
 		this.user_id = user_id;
 		this.log = log;

@@ -40,7 +40,7 @@
 				<input type="hidden" name="oldId" value="<%= user.getId() %>">
 				<button class="btn btn-primary" type=submit >変更</button>
 			</form>
-			<a href="userInfo.jsp">戻る</a>
+			<a href="UserInfo">戻る</a>
         </div>
     </div>
 </div>
