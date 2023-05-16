@@ -17,6 +17,7 @@ public class Game {
 	private boolean ace;
 	private boolean finished;
 	
+	public Game() {}
 	public Game(String user_id) {
 		this.playerHand = new ArrayList<Card>();
 		this.dealerHand = new ArrayList<Card>();

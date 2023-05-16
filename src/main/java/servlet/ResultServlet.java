@@ -34,7 +34,7 @@ public class ResultServlet extends HttpServlet {
 					throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = 
-				Blackjack.getResult(request);
+				Blackjack.getGame(request);
 		dispatcher.forward(request, response);
 	}
 

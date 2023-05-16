@@ -1,18 +1,14 @@
 package gameSystem;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import model.Game;
+import login.Login;
 import model.User;
 
 public class Setup {
 	private static String url;
 	private static HttpSession session;
-	private static Game game;
-	private static Deck deck;
 	private static HttpServletRequest request;
 	
 	public Setup(HttpServletRequest request) { 
@@ -20,31 +16,23 @@ public class Setup {
 		session = request.getSession(true);
 		User user = (User)session.getAttribute("user"); 
 		new Blackjack(user.getId());
-		
-		game = Blackjack.game;
-		deck = Blackjack.deck;
+
 		url = "PlayerTurn";
 	}
 	
 	public static String getUrl() {		
-        User user = (User)session.getAttribute("user"); 
-        if(user == null) {
+        if(Login.loginCheck(request) == false) {
         	url = "/blackjack";
         	return url;
         }
+        
+        Blackjack.dealerDraw();
+        Blackjack.dealerDraw();
 		
-		List<Card> hand = game.getPlayerHand();
-		hand.add(deck.Draw());
-		hand.add(deck.Draw());		
-		game.setPlayerHand(hand);
-		game.setPlayerPoint(PointCalc.Calc(hand));
+		Blackjack.playerDraw();
+		Blackjack.playerDraw();
 		
-		List<Card> dealerHand = game.getDealerHand();
-		dealerHand.add(deck.Draw());
-		dealerHand.add(deck.Draw());		
-		game.setDealerHand(dealerHand);
-		
-		if(game.getPlayerPoint() == 21) {
+		if(Blackjack.game.getPlayerPoint() == 21) {
 			new Stand(request);
 			url = Stand.getUrl();
 			

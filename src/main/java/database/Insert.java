@@ -7,11 +7,10 @@ import java.sql.SQLException;
 
 public class Insert {
 	private static Connection con;
-	
-	public Insert() {
+	static {
 		con = Database.getConnection();
 	}
-	
+
 	public static boolean insertUser(String id, String name, String password) {
 		if(con == null) {
 			return false;
@@ -23,8 +22,7 @@ public class Insert {
 			PreparedStatement pstmt;
 			ResultSet rs;
 			
-			pstmt = con.prepareStatement
-					("insert into user (id, name, password) values (?,?,?)");
+			pstmt = con.prepareStatement("insert into user (id, name, password) values (?,?,?)");
 			
 			pstmt.setString(1, id);
 			pstmt.setString(2, name);
@@ -53,8 +51,7 @@ public class Insert {
 		boolean checker;
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement
-					("insert into playLog (user_id, log) values (?,?)");
+			PreparedStatement pstmt = con.prepareStatement("insert into playLog (user_id, log) values (?,?)");
 			
 			pstmt.setString(1, id);
 			pstmt.setString(2, result);

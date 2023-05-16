@@ -9,8 +9,7 @@ import model.User;
 
 public class Login {
 	public static RequestDispatcher login(User user, HttpServletRequest request) {
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("login.jsp");	
+		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");	
 		
 		if(!Validation.validationId(user.getId())) {
 			request.setAttribute("error_msg", "IDを入力してください");
@@ -20,15 +19,14 @@ public class Login {
 			request.setAttribute("error_msg", "パスワードを入力してください");
 			return dispatcher;
 		}
-		new Select();
+
 		User loginUser = Select.selectUser(user.getId(), user.getPassword());
 		if(loginUser == null) {
 			request.setAttribute("error_msg", "アカウントが存在しないか、IDまたはパスワードが間違っています");
 			return dispatcher;
 		} 
 		
-		dispatcher = 
-				request.getRequestDispatcher("/Main");	
+		dispatcher = request.getRequestDispatcher("/Main");	
 		HttpSession session = request.getSession(true);
 	    session.setAttribute("user", loginUser);
 		return dispatcher;

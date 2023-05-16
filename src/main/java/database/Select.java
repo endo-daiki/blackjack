@@ -13,11 +13,10 @@ import model.playLog;
 
 public class Select {
 	private static Connection con;
-	
-	public Select() {
+	static {
 		con = Database.getConnection();
 	}
-	
+
 	public static boolean selectId(String id) {
 		if(con == null) {
 			return false;

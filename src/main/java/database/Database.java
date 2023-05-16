@@ -18,6 +18,7 @@ public class Database {
 		}
 		
 		Connection con = null;
+		
 		try {
 			con = DriverManager.getConnection(url,user,pass);
 		} catch (SQLException e) {

@@ -16,7 +16,6 @@ public class Information {
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
 
-		new Select();
 		List<User> ranker = Select.selectRanker(); 
 		List<playLog> playLog = Select.selectPlayLog(user.getId());
 		

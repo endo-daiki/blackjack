@@ -12,7 +12,6 @@ public class UserDelete {
 		HttpSession session = request.getSession(true);
 		session.invalidate();
 		
-		new Delete();
 		Delete.deleteUser(id);
 		Delete.deleteLog(id);
 		

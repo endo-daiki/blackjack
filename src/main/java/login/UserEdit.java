@@ -10,14 +10,12 @@ import model.User;
 
 public class UserEdit {
 	public static RequestDispatcher edit(User user, HttpServletRequest request) {
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("userEdit.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("userEdit.jsp");
 		
 		if(!Validation.validationId(user.getId())) {
 			request.setAttribute("error_msg", "IDを入力してください");
 			return dispatcher;
 		}
-		new Select();
 		if(Select.selectId(user.getNewId()) && !(user.getNewId().equals(user.getId()))) {
 			request.setAttribute("error_msg", "このIDは既に使われています。");
 			return dispatcher;
@@ -34,11 +32,9 @@ public class UserEdit {
 			request.setAttribute("error_msg", "パスワードが正しくありません");
 			return dispatcher;
 		}
-
-		dispatcher = 
-				request.getRequestDispatcher("userEditDone.jsp");
-
-		new Update();
+		
+		dispatcher = request.getRequestDispatcher("userEditDone.jsp");
+		
 		Update.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());
 		
 		User updateUser = Select.selectUser(user.getNewId(), user.getPassword());

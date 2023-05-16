@@ -5,12 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Update {
-private static Connection con;
-	
-	public Update() {
+	private static Connection con;
+	static {
 		con = Database.getConnection();
 	}
-	
+
 	public static boolean updateUser(String id, String newId, String name, String password) {
 		if(con == null) {
 			return false;

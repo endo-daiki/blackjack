@@ -9,8 +9,7 @@ import model.User;
 
 public class Signup {
 	public static RequestDispatcher signup(User user, HttpServletRequest request) {
-		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("signup.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
 		
 		if(!Validation.validationId(user.getId())) {
 			request.setAttribute("error_msg", "IDを入力してください");
@@ -33,11 +32,11 @@ public class Signup {
 			request.setAttribute("error_msg", "このIDは既に使われています。");
 			return dispatcher;
 		}
+			
+		dispatcher = request.getRequestDispatcher("signupDone.jsp");
+
+		Insert.insertUser(user.getId(), user.getName(), user.getPassword());
 		
-		dispatcher =
-				request.getRequestDispatcher("signupDone.jsp");
-		new Insert();
-		Insert.insertUser(user.getId(), user.getName(), user.getPassword());		
 		return dispatcher;
 	}
 }

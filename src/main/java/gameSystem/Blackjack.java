@@ -1,5 +1,7 @@
 package gameSystem;
 
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,39 +15,44 @@ public class Blackjack {
     	game = new Game(id);
     	deck = new Deck();
     }
-    
-    public static Game getGame() {
-    	return game;
-    }
-    public static Deck getDeck() {
-    	return deck;
-    }
 
-    public static RequestDispatcher getPlayerTurn(HttpServletRequest request) {
+    public static RequestDispatcher getGame(HttpServletRequest request) {
     	request.setAttribute("game", game);
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("playerTurn.jsp");
-		
-		return dispatcher;
-    }
-    
-    public static RequestDispatcher getResult(HttpServletRequest request) {
-    	if(game == null) {
-    		RequestDispatcher dispatcher = 
-    				request.getRequestDispatcher("main.jsp");
-    		
+    	RequestDispatcher dispatcher;
+    	if(game.getFinished()) {
+    		dispatcher = request.getRequestDispatcher("result.jsp");
     		return dispatcher;
     	}
-    	
-    	request.setAttribute("game", game);
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("result.jsp");
 		
+    	dispatcher = request.getRequestDispatcher("playerTurn.jsp");
 		return dispatcher;
     }
+    
+	public static void playerDraw() {
+		List<Card> hand = game.getPlayerHand();		
+		hand.add(deck.Draw());
+		game.setPlayerHand(hand);
+		game.setPlayerPoint(PointCalc.Calc(hand));
+		
+		if(game.getPlayerPoint() > 21) {
+			game.setPlayerBurst(true);
+		}
+	}
+	
+	public static void dealerDraw() {
+		List<Card> hand = game.getDealerHand();		
+		hand.add(deck.Draw());
+		game.setDealerHand(hand);
+		game.setDealerPoint(PointCalc.Calc(hand));
+		
+		if(game.getDealerPoint() > 21) {
+			game.setDealerBurst(true);
+		}
+	}
 	
 	public static void resetGame() {
 		game = null;
 		deck = null;
 	}
 }
+

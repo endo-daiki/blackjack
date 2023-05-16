@@ -18,7 +18,7 @@ public class Deck {
 				deck.add(card);
 			}
 		}
-		
+    	
 		Collections.shuffle(deck);
     }
         
@@ -27,9 +27,5 @@ public class Deck {
     	deck.remove(0);
     	
     	return card;
-    }
-    
-    public List<Card> getDeck() {
-    	return deck;
     }
 }
