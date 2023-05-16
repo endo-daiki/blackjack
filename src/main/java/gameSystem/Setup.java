@@ -10,19 +10,28 @@ import model.User;
 
 public class Setup {
 	public static String url;
+	private static HttpSession session;
+	private static Game game;
+	private static Deck deck;
+	private static HttpServletRequest request;
 	
-	public Setup(HttpServletRequest request) {      
-		url = "PlayerTurn";
+	public Setup(HttpServletRequest request) { 
+		this.request = request;
+		session = request.getSession(true);
+		User user = (User)session.getAttribute("user"); 
+		new Blackjack(user.getId());
 		
-		HttpSession session = request.getSession(true);
+		game = Blackjack.game;
+		deck = Blackjack.deck;
+		url = "PlayerTurn";
+	}
+	
+	public static String getUrl() {		
         User user = (User)session.getAttribute("user"); 
         if(user == null) {
         	url = "/blackjack";
+        	return url;
         }
-		
-        new Blackjack(user.getId());
-        Game game = Blackjack.game;
-        Deck deck = Blackjack.deck;
 		
 		List<Card> hand = game.getPlayerHand();
 		hand.add(deck.Draw());
@@ -40,11 +49,10 @@ public class Setup {
 		if(game.getPlayerPoint() == 21) {
 			new Stand(request);
 			url = Stand.getUrl();
+			
+			return url;
 		}
 		
-	}
-	
-	public static String getUrl() {
 		return url;
 	}
 }

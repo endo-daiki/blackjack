@@ -9,17 +9,27 @@ import model.Game;
 
 public class Hit {
 	public static String url;
+	private static HttpSession session;
+	private static Game game;
+	private static Deck deck;
+	private static HttpServletRequest request;
 	
 	public Hit(HttpServletRequest request) {
-		HttpSession session = request.getSession(true);
-		Game game = Blackjack.game;
+		this.request = request;
+		session = request.getSession(true);
+		game = Blackjack.game;
+		deck = Blackjack.deck;
+		url = "PlayerTurn";
+	}
+	
+	public static String getUrl() {
 		if(session.getAttribute("user") == null || game == null) {
 			url = "/blackjack";
-			return;
+			return url;
 		}
 		if(game.getFinished() == true) {
 			url = "Result";
-			return;
+			return url;
 		}
 		
 		List<Card> hand = game.getPlayerHand();
@@ -37,13 +47,15 @@ public class Hit {
 			
 			new Stand(request);
 			url = Stand.getUrl();
+			
+			return url;
 		} else if(PointCalc.Calc(hand) == 21) {			
 			new Stand(request);
 			url = Stand.getUrl();
+			
+			return url;
 		}
-	}
-	
-	public static String getUrl() {
+		
 		return url;
 	}
 }

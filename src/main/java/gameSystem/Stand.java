@@ -12,82 +12,95 @@ import model.Game;
 import model.User;
 
 public class Stand {
-public static String url;
+	public static String url;
+	private static HttpSession session;
+	private static Game game;
+	private static Deck deck;
+	private static HttpServletRequest request;
 	
 	public Stand(HttpServletRequest request) {
-		HttpSession session = request.getSession(true);
-		Game game = Blackjack.game;
-		if(game == null) {
-			url = "/blackjack";
-			return;
-		}
-		if(game.getFinished() == true || session.getAttribute("user") == null) {
-			url = "Result";
-			return;
-		}
-		
+		this.request = request;
+		session = request.getSession(true);
+		game = Blackjack.game;
+		deck = Blackjack.deck;
 		url = "Result";
-		game.setAce(false);
-		game.setDealerPoint(PointCalc.Calc(game.getDealerHand()));
-		Deck deck = Blackjack.deck;
+	}
+	
+	public static String getUrl() {
+		if(game == null || session.getAttribute("user") == null) {
+			url = "/blackjack";
+			return url;
+		}
+		if(game.getFinished() == true) {
+			return url;
+		}
 		
 		if(game.getPlayerBurst()) {
+			game.setDealerPoint(PointCalc.Calc(game.getDealerHand()));
 			game.setResult("lose");
 			
-			new Update();
-			Update.updateResult(game.getUserId(), game.getResult());
-			
-			new Insert();
-			Insert.insertLog(game.getUserId(), game.getResult());
-			
-			new Select();
-			User user = (User) session.getAttribute("user");
-			user = Select.selectUser(user.getId(), user.getPassword());
+			playLog();
 			
 			request.setAttribute("game", game);
 			game.setFinished(true);
 			
-		} else {
-			int i = game.getDealerPoint();
-			while(i < 17) {
-				List<Card> dealerHand = game.getDealerHand();
-				dealerHand.add(deck.Draw());
-				
-				game.setDealerHand(dealerHand);
-				game.setDealerPoint(PointCalc.Calc(dealerHand));
-				
-				i = game.getDealerPoint();
-				
-				if(i > 21) {
-					game.setDealerBurst(true);
-				}
+			return url;
+		} 
+		
+		dealerTurn();
+		gameResult();
+		playLog();
+		
+		request.setAttribute("game", game);		
+		
+		return url;
+	}
+	
+	private static void playLog() {
+		game.setFinished(true);
+		
+		new Update();
+		Update.updateResult(game.getUserId(), game.getResult());
+		
+		new Insert();
+		Insert.insertLog(game.getUserId(), game.getResult());
+		
+		new Select();
+		User user = (User) session.getAttribute("user");
+		user = Select.selectUser(user.getId(), user.getPassword());
+		
+		session.setAttribute("user", user);
+		
+		game.setFinished(true);
+	}
+	
+	private static void dealerTurn() {
+		game.setAce(false);
+		game.setDealerPoint(PointCalc.Calc(game.getDealerHand()));
+		int point = game.getDealerPoint();
+		
+		while(point < 17) {
+			List<Card> dealerHand = game.getDealerHand();
+			dealerHand.add(deck.Draw());
+			
+			game.setDealerHand(dealerHand);
+			game.setDealerPoint(PointCalc.Calc(dealerHand));
+			
+			point = game.getDealerPoint();
+			
+			if(point > 21) {
+				game.setDealerBurst(true);
 			}
-			
-			if(game.getDealerBurst() == true || game.getPlayerPoint() > game.getDealerPoint()) {
-				game.setResult("win");
-			} else if (game.getPlayerPoint() < game.getDealerPoint()) {
-				game.setResult("lose");
-			} else {
-				game.setResult("draw");
-			}
-			
-			game.setFinished(true);
-			new Update();
-			Update.updateResult(game.getUserId(), game.getResult());
-			
-			new Insert();
-			Insert.insertLog(game.getUserId(), game.getResult());
-			
-			new Select();
-			User user = (User) session.getAttribute("user");
-			user = Select.selectUser(user.getId(), user.getPassword());
-
-		    session.setAttribute("user", user);
-			
 		}
 	}
 	
-	public static String getUrl() {
-		return url;
+	private static void gameResult() {
+		if(game.getDealerBurst() || game.getPlayerPoint() > game.getDealerPoint()) {
+			game.setResult("win");
+		} else if (game.getPlayerPoint() < game.getDealerPoint()) {
+			game.setResult("lose");
+		} else {
+			game.setResult("draw");
+		}
 	}
 }

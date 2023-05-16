@@ -10,40 +10,34 @@ import model.User;
 public class Signup {
 	public static RequestDispatcher signup(User user, HttpServletRequest request) {
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("signupDone.jsp");
-		boolean check = true;
+				request.getRequestDispatcher("signup.jsp");
 		
 		if(!Validation.validationId(user.getId())) {
-			check = false;
-			request.setAttribute("error_id", "IDを入力してください");
+			request.setAttribute("error_msg", "IDを入力してください");
+			return dispatcher;
 		}
 		if(!Validation.validationName(user.getName())) {
-			check = false;
-			request.setAttribute("error_name", "名前を入力してください");
+			request.setAttribute("error_msg", "名前を入力してください");
+			return dispatcher;
 		}
 		if(!Validation.validationPassword(user.getPassword())) {
-			check = false;
-			request.setAttribute("error_password", "パスワードを入力してください");
+			request.setAttribute("error_msg", "パスワードを入力してください");
+			return dispatcher;
 		}
 		if(!Validation.passwordCheck(user.getPassword(), user.getCheckPassword())) {
-			check = false;
-			request.setAttribute("error_check", "パスワードが正しくありません");
+			request.setAttribute("error_msg", "パスワードが正しくありません");
+			return dispatcher;
 		}
-		
 		new Select();
 		if(Select.selectId(user.getId())) {
-			check = false;
-			request.setAttribute("error_id", "このIDは既に使われています。");
+			request.setAttribute("error_msg", "このIDは既に使われています。");
+			return dispatcher;
 		}
 		
-		if(check == false) {
-			dispatcher =
-					request.getRequestDispatcher("signup.jsp");
-		} else {
-			new Insert();
-			Insert.insertUser(user.getId(), user.getName(), user.getPassword());
-		}
-			
+		dispatcher =
+				request.getRequestDispatcher("signupDone.jsp");
+		new Insert();
+		Insert.insertUser(user.getId(), user.getName(), user.getPassword());		
 		return dispatcher;
 	}
 }
