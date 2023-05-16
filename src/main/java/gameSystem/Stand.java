@@ -63,10 +63,6 @@ public class Stand {
 			Blackjack.dealerDraw();
 		}
 		
-		gameResult();
-	}
-	
-	private static void gameResult() {
 		if(game.getDealerBurst() || game.getPlayerPoint() > game.getDealerPoint()) {
 			game.setResult("win");
 		} else if (game.getPlayerPoint() < game.getDealerPoint() || game.getPlayerBurst()) {
@@ -75,4 +71,5 @@ public class Stand {
 			game.setResult("draw");
 		}
 	}
+	
 }

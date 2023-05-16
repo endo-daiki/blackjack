@@ -8,11 +8,7 @@ public class Update {
 	private static final Connection con = Database.getConnection();
 
 	public static boolean updateUser(String id, String newId, String name, String password) {
-		if(con == null) {
-			return false;
-		}
-		
-		boolean checker;
+		boolean checker = false;
 		try {
 			PreparedStatement pstmt;
 			
@@ -30,19 +26,14 @@ public class Update {
 			checker = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			checker = false;
 		}
 		
 		return checker;
 	}
 
 	public static boolean updateResult(String id, String result) {
-		if(con == null) {
-			return false;
-		}
+		boolean checker = false;
 		
-		boolean checker;
 		try {
 			PreparedStatement pstmt = null;
 			
@@ -61,17 +52,13 @@ public class Update {
 					break;
 			}
 			
-			pstmt.setString(1, id);
-			
+			pstmt.setString(1, id);			
 			pstmt.executeUpdate();
-			
 			pstmt.close();
 			
 			checker = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			checker = false;
 		}
 		return checker;
 	}

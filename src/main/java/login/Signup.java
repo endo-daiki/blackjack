@@ -27,7 +27,6 @@ public class Signup {
 			request.setAttribute("error_msg", "パスワードが正しくありません");
 			return dispatcher;
 		}
-		new Select();
 		if(Select.selectId(user.getId())) {
 			request.setAttribute("error_msg", "このIDは既に使われています。");
 			return dispatcher;

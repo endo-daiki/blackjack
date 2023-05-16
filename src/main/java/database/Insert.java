@@ -9,11 +9,7 @@ public class Insert {
 	private static final Connection con = Database.getConnection();
 
 	public static boolean insertUser(String id, String name, String password) {
-		if(con == null) {
-			return false;
-		}
-		
-		boolean checker;
+		boolean checker = false;
 		
 		try {
 			PreparedStatement pstmt;
@@ -33,19 +29,13 @@ public class Insert {
 			checker = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			checker = false;
 		}
 		
 		return checker;
 	}
 
 	public static boolean insertLog(String id, String result) {
-		if(con == null) {
-			return false;
-		}
-		
-		boolean checker;
+		boolean checker = false;
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement("insert into playLog (user_id, log) values (?,?)");
@@ -58,8 +48,6 @@ public class Insert {
 			checker = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			checker = false;
 		}
 		
 		return checker;

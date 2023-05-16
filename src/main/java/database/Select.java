@@ -14,12 +14,8 @@ import model.playLog;
 public class Select {
 	private static final Connection con = Database.getConnection();
 
-	public static boolean selectId(String id) {
-		if(con == null) {
-			return false;
-		}
-		
-		boolean idChecker;
+	public static boolean selectId(String id) {		
+		boolean idChecker = false;
 		try {
 			PreparedStatement pstmt = con.prepareStatement
 					("select * from user where id = ?");
@@ -30,24 +26,16 @@ public class Select {
 			
 			if(rs.next()) {
 				idChecker = true;
-			} else {
-				idChecker = false;
 			}
 			
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			idChecker = false;
 		}
 		return idChecker;
 	}
 	
 	public static User selectUser(String id, String password) {
-		if(con == null) {
-			return null;
-		}
-
 		User user = new User();
 		
 		try {
@@ -68,24 +56,16 @@ public class Select {
 				user.setLose(rs.getInt("lose"));
 				user.setDraw(rs.getInt("draw"));
 				user.setRate(rs.getDouble("rate"));
-			} else {
-				user = null;
 			}
 			
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			return null;
 		}
 		return user;
 	}
 	
 	public static List<User> selectRanker() {
-		if(con == null) {
-			return null;
-		}
-		
 		List<User> ranker = new ArrayList<User>();
 		
 		try {
@@ -104,18 +84,12 @@ public class Select {
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			ranker = null;
 		}
 		
 		return ranker;
 	}
 
-	public static List<playLog> selectPlayLog(String id) {
-		if(con == null) {
-			return null;
-		}
-		
+	public static List<playLog> selectPlayLog(String id) {	
 		List<playLog> playLogs = new ArrayList<playLog>();
 		
 		try {
@@ -136,8 +110,6 @@ public class Select {
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			return null;
 		}
 		
 		return playLogs;

@@ -8,11 +8,7 @@ public class Delete {
 	private static final Connection con = Database.getConnection();
 	
 	public static boolean deleteUser(String id) {
-		if(con == null) {
-			return false;
-		}
-		
-		boolean checker;
+		boolean checker = false;
 		
 		try {
 			PreparedStatement pstmt = 
@@ -25,19 +21,13 @@ public class Delete {
 			checker = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			checker = false;
 		}
 		
 		return checker;
 	}
 	
 	public static boolean deleteLog(String id) {
-		if(con == null) {
-			return false;
-		}
-		
-		boolean checker;
+		boolean checker = false;
 		
 		try {
 			PreparedStatement pstmt = 
@@ -50,8 +40,6 @@ public class Delete {
 			checker = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
-			checker = false;
 		}
 		
 		return checker;

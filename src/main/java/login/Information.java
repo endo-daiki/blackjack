@@ -17,10 +17,11 @@ public class Information {
 		User user = (User)session.getAttribute("user");
 
 		List<User> ranker = Select.selectRanker(); 
-		List<playLog> playLog = Select.selectPlayLog(user.getId());
-		
 		request.setAttribute("ranker", ranker);
+		
+		List<playLog> playLog = Select.selectPlayLog(user.getId());
 		request.setAttribute("playLog", playLog);
+		
 		dispatcher = request.getRequestDispatcher("playInfo.jsp");
 		
 		return dispatcher;

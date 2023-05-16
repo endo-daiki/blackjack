@@ -5,7 +5,6 @@ import java.util.List;
 public class PointCalc {
 	public static int Calc(List<Card> hand) {
 		int point = 0;
-		Blackjack.game.setAce(false);
 		int aceCount = 0;
     	
     	for(Card card : hand) {
