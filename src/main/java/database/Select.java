@@ -36,7 +36,7 @@ public class Select {
 	}
 	
 	public static User selectUser(String id, String password) {
-		User user = new User();
+		User user = null;
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement
@@ -48,6 +48,7 @@ public class Select {
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				user = new User();
 				user.setId(rs.getString("id"));
 				user.setName(rs.getString("name"));
 				user.setPassword(rs.getString("password"));
