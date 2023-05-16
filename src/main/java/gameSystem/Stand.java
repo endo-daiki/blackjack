@@ -12,7 +12,7 @@ import model.Game;
 import model.User;
 
 public class Stand {
-	public static String url;
+	private static String url;
 	private static HttpSession session;
 	private static Game game;
 	private static Deck deck;
@@ -42,7 +42,6 @@ public class Stand {
 			playLog();
 			
 			request.setAttribute("game", game);
-			game.setFinished(true);
 			
 			return url;
 		} 
@@ -52,7 +51,7 @@ public class Stand {
 		playLog();
 		
 		request.setAttribute("game", game);		
-		
+
 		return url;
 	}
 	

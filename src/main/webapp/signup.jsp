@@ -26,7 +26,7 @@
 		<p class="text-center">ユーザー 新規登録</p>
 		<div class="col-7">
 			<% if(request.getAttribute("error_msg")!= null){ %>
-				<p class="text-danger"><%= (String)request.getAttribute("error_msg") %></p>
+				<p class="text-danger">登録エラー：<%= (String)request.getAttribute("error_msg") %></p>
 			<% } %>
 			<form method="post" action="Signup">
 				<label>ID</label>

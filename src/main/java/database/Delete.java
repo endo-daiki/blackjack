@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Delete {
-private static Connection con;
+	private static Connection con;
 	
 	public Delete() {
 		con = Database.getConnection();

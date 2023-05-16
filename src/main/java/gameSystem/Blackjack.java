@@ -46,5 +46,6 @@ public class Blackjack {
 	
 	public static void resetGame() {
 		game = null;
+		deck = null;
 	}
 }

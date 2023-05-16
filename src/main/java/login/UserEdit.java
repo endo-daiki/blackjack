@@ -14,28 +14,27 @@ public class UserEdit {
 				request.getRequestDispatcher("userEdit.jsp");
 		
 		if(!Validation.validationId(user.getId())) {
-			request.setAttribute("error_id", "IDを入力してください");
+			request.setAttribute("error_msg", "IDを入力してください");
 			return dispatcher;
 		}
 		new Select();
 		if(Select.selectId(user.getNewId()) && !(user.getNewId().equals(user.getId()))) {
-			request.setAttribute("error_id", "このIDは既に使われています。");
+			request.setAttribute("error_msg", "このIDは既に使われています。");
 			return dispatcher;
 		}
 		if(!Validation.validationName(user.getName())) {
-			request.setAttribute("error_name", "名前を入力してください");
+			request.setAttribute("error_msg", "名前を入力してください");
 			return dispatcher;
 		}
 		if(!Validation.validationPassword(user.getPassword())) {
-			request.setAttribute("error_password", "パスワードを入力してください");
+			request.setAttribute("error_msg", "パスワードを入力してください");
 			return dispatcher;
 		}
 		if(!Validation.passwordCheck(user.getPassword(), user.getCheckPassword())) {
-			request.setAttribute("error_check", "パスワードが正しくありません");
+			request.setAttribute("error_msg", "パスワードが正しくありません");
 			return dispatcher;
 		}
-		
-		
+
 		dispatcher = 
 				request.getRequestDispatcher("userEditDone.jsp");
 

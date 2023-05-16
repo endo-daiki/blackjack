@@ -25,27 +25,18 @@
     <p class="text-center">ユーザー情報変更</p>
     <div class="row justify-content-center">
         <div class="col-7">
+			<% if(request.getAttribute("error_msg") != null) { %>
+			<p class="text-danger">編集エラー：<%= request.getAttribute("error_msg") %></p>
+			<% } %>
             <form method="post" action="UserEdit">
 				<label>ID</label>
 				<input class="form-control" type="text" name="newId" value="<%= user.getId() %>" required><br>
-				<% if(request.getAttribute("error_id") != null) { %>
-				<p class="text-danger"><%= request.getAttribute("error_id") %></p>
-				<% } %>
 				<label>名前</label>
 				<input class="form-control" type="text" name="name" value="<%= user.getName() %>" required><br>
-				<% if(request.getAttribute("error_name")!= null){ %>
-				<p class="text-danger"><%= (String)request.getAttribute("error_name") %></p>
-				<% } %>
 				<label>パスワード</label>
 				<input class="form-control" type="password" name="password" value="<%= user.getPassword() %>" pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="8文字以上で入力してください" required><br>
-				<% if(request.getAttribute("error_password")!= null){ %>
-				<p class="text-danger"><%= (String)request.getAttribute("error_password") %></p>
-				<% } %>
 				<label>確認用パスワード</label>
 				<input class="form-control" type="password" name="checkPassword" pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="上記と同じパスワードを入力してください" required><br>
-				<% if(request.getAttribute("error_check")!= null){ %>
-				<p class="text-danger"><%= (String)request.getAttribute("error_check") %></p>
-				<% } %>
 				<input type="hidden" name="oldId" value="<%= user.getId() %>">
 				<button class="btn btn-primary" type=submit >変更</button>
 			</form>

@@ -9,7 +9,7 @@ import model.Game;
 import model.User;
 
 public class Setup {
-	public static String url;
+	private static String url;
 	private static HttpSession session;
 	private static Game game;
 	private static Deck deck;
@@ -35,15 +35,13 @@ public class Setup {
 		
 		List<Card> hand = game.getPlayerHand();
 		hand.add(deck.Draw());
-		hand.add(deck.Draw());
-		
+		hand.add(deck.Draw());		
 		game.setPlayerHand(hand);
 		game.setPlayerPoint(PointCalc.Calc(hand));
 		
 		List<Card> dealerHand = game.getDealerHand();
 		dealerHand.add(deck.Draw());
-		dealerHand.add(deck.Draw());
-		
+		dealerHand.add(deck.Draw());		
 		game.setDealerHand(dealerHand);
 		
 		if(game.getPlayerPoint() == 21) {

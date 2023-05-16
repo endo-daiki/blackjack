@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 import model.Game;
 
 public class Hit {
-	public static String url;
+	private static String url;
 	private static HttpSession session;
 	private static Game game;
 	private static Deck deck;
@@ -32,30 +32,26 @@ public class Hit {
 			return url;
 		}
 		
-		List<Card> hand = game.getPlayerHand();
-		Deck deck = Blackjack.deck;
-		url = "PlayerTurn";
-		
+		List<Card> hand = game.getPlayerHand();		
 		hand.add(deck.Draw());
-		
 		game.setPlayerHand(hand);
-		int point = PointCalc.Calc(hand);
-		game.setPlayerPoint(point);
+		game.setPlayerPoint(PointCalc.Calc(hand));
 		
+		pointCheck(PointCalc.Calc(hand));
+		
+		return url;
+	}
+	
+	private static void pointCheck(int point) {
 		if(point > 21) {
 			game.setPlayerBurst(true);
 			
 			new Stand(request);
-			url = Stand.getUrl();
-			
-			return url;
-		} else if(PointCalc.Calc(hand) == 21) {			
+			url = Stand.getUrl();	
+		} 
+		if(point == 21) {			
 			new Stand(request);
-			url = Stand.getUrl();
-			
-			return url;
+			url = Stand.getUrl();	
 		}
-		
-		return url;
 	}
 }
