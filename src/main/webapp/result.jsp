@@ -9,7 +9,7 @@
 <%
 	}
 %>
-<%@ page import="model.Game,gameSystem.Card, java.util.List" %>
+<%@ page import="model.Game,model.Card, java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game"); 
 	List<Card> playerHand = game.getPlayerHand();

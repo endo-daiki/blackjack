@@ -2,10 +2,13 @@ package gameSystem;
 
 import java.util.List;
 
+import model.Card;
+
 public class PointCalc {
 	public static int Calc(List<Card> hand) {
 		int point = 0;
 		int aceCount = 0;
+		Blackjack.game.setAce(false);
     	
     	for(Card card : hand) {
     		if(card.no.equals("1")) {

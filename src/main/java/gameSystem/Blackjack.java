@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
+import model.Card;
 import model.Game;
 
 public class Blackjack {

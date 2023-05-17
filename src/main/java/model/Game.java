@@ -1,11 +1,14 @@
 package model;
 
 import java.util.List;
+
+import gameSystem.Deck;
+
 import java.util.ArrayList;
 
-import gameSystem.Card;
 
 public class Game {
+	private Deck deck;
 	private List<Card> playerHand;
 	private List<Card> dealerHand;
 	private int playerPoint;
@@ -19,6 +22,7 @@ public class Game {
 	
 	public Game() {}
 	public Game(String user_id) {
+		this.deck = new Deck();
 		this.playerHand = new ArrayList<Card>();
 		this.dealerHand = new ArrayList<Card>();
 		this.playerPoint = 0;
@@ -30,6 +34,12 @@ public class Game {
 		this.finished = false;
 	}
 	
+	public Deck getDeck() {
+		return this.deck;
+	}
+	public void setDeck(Deck deck) {
+		this.deck = deck;
+	}
 	public List<Card> getPlayerHand() {
 		return playerHand;
 	}

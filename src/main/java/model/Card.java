@@ -1,4 +1,4 @@
-package gameSystem;
+package model;
 
 public class Card {
 	public String suit;

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import model.Card;
+
 public class Deck {
 	private static List<Card> deck;
 	private static final String[] suit = {"spade","heart","diamond","club"};

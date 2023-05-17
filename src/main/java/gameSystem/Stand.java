@@ -43,10 +43,10 @@ public class Stand {
 		
 		Insert.insertLog(game.getUserId(), game.getResult());
 
-		User user = (User) session.getAttribute("user");
-		user = Select.selectUser(user.getId(), user.getPassword());
+		User user = (User)session.getAttribute("user");
+		User updateUser = Select.selectUser(user.getId(), user.getPassword());
 		
-		session.setAttribute("user", user);
+		session.setAttribute("user", updateUser);
 		request.setAttribute("game", game);		
 	}
 	
