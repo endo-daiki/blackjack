@@ -16,7 +16,7 @@
       <web-resource-name>Protected Area</web-resource-name>
       <url-pattern>/playerTurn.jsp</url-pattern>
       <url-pattern>/result.jsp</url-pattern>
-      <url-pattern>/main.jsp</url-pattern>
+<!--       <url-pattern>/main.jsp</url-pattern> -->
       <url-pattern>/playInfo.jsp</url-pattern>
       <url-pattern>/userInfo.jsp</url-pattern>
       <url-pattern>/userDeleteCheck.jsp</url-pattern>
