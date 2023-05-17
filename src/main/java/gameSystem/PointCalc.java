@@ -23,11 +23,14 @@ public class PointCalc {
     	}
 
     	if(Blackjack.game.getAce() && point > 21) {
-    		Blackjack.game.setAce(false);
     		for(int i = 0; i < aceCount; i++) {
     			if(point > 21) {
-    				point -= 10;    				    					
+    				point -= 10;  
+    				aceCount--;
     			}
+    		}
+    		if(aceCount == 0) {
+    			Blackjack.game.setAce(false);
     		}
     	}
     	return point;

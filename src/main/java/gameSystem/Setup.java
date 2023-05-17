@@ -1,9 +1,13 @@
 package gameSystem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import login.Login;
+import model.Card;
 import model.User;
 
 public class Setup {
