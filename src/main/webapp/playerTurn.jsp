@@ -9,11 +9,15 @@
 <%
 	}
 %>
-<%@ page import="model.Game,model.Card, java.util.List" %>
+<%@ page import="model.Game,model.Card,gameSystem.Hand,gameSystem.Point,java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game"); 
-	List<Card> playerHand = game.getPlayerHand();
-	List<Card> dealerHand = game.getDealerHand();
+	Hand playerHand = game.getPlayerHand();
+	List<Card> playerHandList = playerHand.getList();
+	Point playerPoint = game.getPlayerPoint();
+	int point = playerPoint.getPoint();
+	Hand dealerHand = game.getDealerHand();
+	List<Card> dealerHandList = dealerHand.getList();
 %>
 <!DOCTYPE html>
 <html>
@@ -32,24 +36,24 @@
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">プレイヤーターン</p>
             <div class="col-7 border">
-            	<img src="img/<%= dealerHand.get(0).suit %>_<%= dealerHand.get(0).no %>.png" width="100" height="150">
+            	<img src="img/<%= dealerHandList.get(0).suit %>_<%= dealerHandList.get(0).no %>.png" width="100" height="150">
             	<img src="img/trump_back.png" width="100" height="150">
-            	<% if( dealerHand.get(0).no.equals("j") || dealerHand.get(0).no.equals("q") || dealerHand.get(0).no.equals("k")) { %>
-            	<p class="text-center"><%= dealerHand.get(0).no %>(10) + ?</p>
+            	<% if( dealerHandList.get(0).no.equals("j") || dealerHandList.get(0).no.equals("q") || dealerHandList.get(0).no.equals("k")) { %>
+            	<p class="text-center"><%= dealerHandList.get(0).no %>(10) + ?</p>
             	<% } else { %>
-            	<p class="text-center"><%= dealerHand.get(0).no %> + ?</p>
+            	<p class="text-center"><%= dealerHandList.get(0).no %> + ?</p>
             	<% } %>
             </div>
             <div class="col-7 border">
-            	<% for(Card card : playerHand) { %>
+            	<% for(Card card : playerHandList) { %>
             		<img src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
             	<% } %>
              	<p class="text-center">
-             		<% if(game.getAce()){ %>
-					<%= game.getPlayerPoint() - 10 %>
+             		<% if(playerHand.aceCheck()){ %>
+					<%= point - 10 %>
 					 / 
 					<% } %>             		
-             		<%= game.getPlayerPoint() %>
+             		<%= point %>
              	</p>
             </div>
             <div class="col-7 border">
@@ -61,7 +65,7 @@
 				</form>
             	<a href="gameTop.jsp" class="btn btn-outline-danger">戻る</a>
             </div>
-        </div></div>
-
+        </div>
+       </div>
 </body>
 </html>

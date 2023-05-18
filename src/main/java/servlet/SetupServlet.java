@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import gameSystem.Setup;
+import gameSystem.Blackjack;
 
 /**
  * Servlet implementation class SetupServlet
@@ -42,8 +42,11 @@ public class SetupServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		new Setup(request);
-		String url = Setup.getUrl();
+		request.setCharacterEncoding("UTF-8");		
+		String user_id = request.getParameter("user_id");
+		
+		new Blackjack(user_id);
+		String url = Blackjack.Setup();
 		response.sendRedirect(url);
 	}
 

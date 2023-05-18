@@ -9,11 +9,14 @@
 <%
 	}
 %>
-<%@ page import="model.Game,model.Card, java.util.List" %>
+<%@ page import="model.Game,model.Card,gameSystem.Hand,gameSystem.Point,java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game"); 
-	List<Card> playerHand = game.getPlayerHand();
-	List<Card> dealerHand = game.getDealerHand();
+	Hand playerHand = game.getPlayerHand();
+	List<Card> playerHandList = playerHand.getList();
+	Point playerPoint = game.getPlayerPoint();
+	Hand dealerHand = game.getDealerHand();
+	List<Card> dealerHandList = dealerHand.getList();
 %>
 <!DOCTYPE html>
 <html>
@@ -31,21 +34,21 @@
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">ゲームリザルト</p>
             <div class="col-7 border">
-            	<% for(Card card : dealerHand) { %>
+            	<% for(Card card : dealerHandList) { %>
             		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
             	<% } %>
                <p class="text-center">
-			   	<%= game.getDealerPoint() %>
+			   	<%= game.getDealerPoint().getPoint() %>
 			   </p>
             </div>
             <div class="col-7 border">
-            	<% for(Card card : playerHand) { %>
+            	<% for(Card card : playerHandList) { %>
             		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
             	<% } %>
-            	<% if(game.getPlayerPoint() == 21) { %>
+            	<% if(playerPoint.getPoint() == 21) { %>
             		<p class="text-center text-danger">BlackJack!!</p>
             	<% } %>
-              	<p class="text-center"><%= game.getPlayerPoint() %></p>
+              	<p class="text-center"><%= game.getPlayerPoint().getPoint() %></p>
             </div>
             <h3 class="text-center text-danger">
             	<% switch(game.getResult()) { 
@@ -62,6 +65,7 @@
             </h3>
             <div class="col-7 border">
             	<form action="Setup" method="post">
+            		<input type="hidden" name="user_id" value="<%= user.getId() %>">
 					<button type="submit" class="btn btn-primary">もう一度</button>
 				</form>
             	<a href="Main" class="btn btn-danger">終了</a>

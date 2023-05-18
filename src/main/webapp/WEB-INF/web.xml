@@ -17,8 +17,8 @@
       <url-pattern>/playerTurn.jsp</url-pattern>
       <url-pattern>/result.jsp</url-pattern>
 <!--       <url-pattern>/main.jsp</url-pattern> -->
-      <url-pattern>/playInfo.jsp</url-pattern>
-      <url-pattern>/userInfo.jsp</url-pattern>
+<!--       <url-pattern>/playInfo.jsp</url-pattern> -->
+<!--       <url-pattern>/userInfo.jsp</url-pattern> -->
       <url-pattern>/userDeleteCheck.jsp</url-pattern>
       <url-pattern>/userDeleteDone.jsp</url-pattern>
       <url-pattern>/userEdit.jsp</url-pattern>
@@ -26,16 +26,16 @@
     <auth-constraint>
     </auth-constraint>
   </security-constraint>
-  <error-page>
-	<error-code>500</error-code>
- 	<location>/error.jsp</location>
-  </error-page>
-  <error-page>
-	<error-code>403</error-code>
- 	<location>/error.jsp</location>
-  </error-page>
-  <error-page>
-	<error-code>404</error-code>
- 	<location>/error.jsp</location>
-  </error-page>
+<!--   <error-page> -->
+<!-- 	<error-code>500</error-code> -->
+<!--  	<location>/error.jsp</location> -->
+<!--   </error-page> -->
+<!--   <error-page> -->
+<!-- 	<error-code>403</error-code> -->
+<!--  	<location>/error.jsp</location> -->
+<!--   </error-page> -->
+<!--   <error-page> -->
+<!-- 	<error-code>404</error-code> -->
+<!--  	<location>/error.jsp</location> -->
+<!--   </error-page> -->
 </web-app>

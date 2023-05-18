@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import gameSystem.Hit;
+import gameSystem.Blackjack;
 
 /**
  * Servlet implementation class HitServlet
@@ -42,8 +42,7 @@ public class HitServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		new Hit(request);
-		String url = Hit.getUrl();		
+		String url = Blackjack.Hit();		
 		response.sendRedirect(url);		
 	}
 

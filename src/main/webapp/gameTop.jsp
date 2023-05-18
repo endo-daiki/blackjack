@@ -27,6 +27,7 @@
     	<p class="text-center">ゲームを始めます</p>
 		<div class="col-7">
 			<form action="Setup" method="post">
+				<input type="hidden" name="user_id" value="<%= user.getId() %>">
 				<div class="d-grid gap-2">
 					<button type="submit" class="btn btn-outline-primary">GAME START</button>
 				</div>

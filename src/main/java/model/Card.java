@@ -16,3 +16,4 @@ public class Card {
 		return this.no;
 	}
 }
+
