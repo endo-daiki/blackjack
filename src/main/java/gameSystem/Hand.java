@@ -14,6 +14,7 @@ public class Hand {
 	}
 	
 	public Card draw(Deck deck) {
+		ace = false;
 		Card card = deck.Draw();
 		hand.add(card);
 		if(card.getNo() == "1") {
