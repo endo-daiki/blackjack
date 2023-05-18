@@ -15,6 +15,9 @@ public class Information {
 		RequestDispatcher dispatcher;
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
+		
+		User userInfo = Select.selectUser(user.getId(), user.getPassword());
+		request.setAttribute("user", userInfo);
 
 		List<User> ranker = Select.selectRanker(); 
 		request.setAttribute("ranker", ranker);
@@ -23,6 +26,19 @@ public class Information {
 		request.setAttribute("playLog", playLog);
 		
 		dispatcher = request.getRequestDispatcher("playInfo.jsp");
+		
+		return dispatcher;
+	}
+	
+	public static RequestDispatcher UserInfo(HttpServletRequest request) {
+		RequestDispatcher dispatcher;
+		HttpSession session = request.getSession(true);
+		User user = (User)session.getAttribute("user");
+		
+		User userInfo = Select.selectUser(user.getId(), user.getPassword());
+		request.setAttribute("user", userInfo);
+		
+		dispatcher = request.getRequestDispatcher("userInfo.jsp");
 		
 		return dispatcher;
 	}

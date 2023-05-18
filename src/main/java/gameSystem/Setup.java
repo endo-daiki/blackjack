@@ -29,6 +29,7 @@ public class Setup {
     	if(game.getPlayerPoint().bjCheck()) {
 			new Stand(game);
 			url = Stand.getUrl();
+			return;
 		}
 		
 		url = "PlayerTurn";

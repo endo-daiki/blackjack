@@ -15,7 +15,7 @@
 	Hand playerHand = game.getPlayerHand();
 	List<Card> playerHandList = playerHand.getList();
 	Point playerPoint = game.getPlayerPoint();
-	int point = playerPoint.getPoint();
+	int aceCount = playerPoint.aceCount;
 	Hand dealerHand = game.getDealerHand();
 	List<Card> dealerHandList = dealerHand.getList();
 %>
@@ -49,11 +49,11 @@
             		<img src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
             	<% } %>
              	<p class="text-center">
-             		<% if(playerHand.aceCheck()){ %>
-					<%= point - 10 %>
+             		<% if(aceCount > 0){ %>
+					<%= playerPoint.getPoint() - 10 %>
 					 / 
 					<% } %>             		
-             		<%= point %>
+             		<%= playerPoint.getPoint() %>
              	</p>
             </div>
             <div class="col-7 border">

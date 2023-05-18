@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="model.User, model.playLog, java.util.List" %>
 <% 
- 	User user = (User) session.getAttribute("user");
+ 	User user = (User) request.getAttribute("user");
 	List<User> ranker = (List<User>) request.getAttribute("ranker");
 	List<playLog> playLog = (List<playLog>) request.getAttribute("playLog");
 	if(user == null) {

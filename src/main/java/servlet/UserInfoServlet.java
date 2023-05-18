@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import login.Information;
+
 /**
  * Servlet implementation class UserInfoServlet
  */
@@ -32,7 +34,7 @@ public class UserInfoServlet extends HttpServlet {
 					throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("userInfo.jsp");
+				Information.UserInfo(request);
 		dispatcher.forward(request, response);
 	}
 

@@ -19,6 +19,7 @@ public class Hit {
     	if(playerPoint.burstCheck() || playerPoint.bjCheck()) {
     		new Stand(game);
 			url = Stand.getUrl();
+			return;
 		}
     	
 		url = "PlayerTurn";

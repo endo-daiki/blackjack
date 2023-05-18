@@ -16,9 +16,9 @@ public class Stand {
 		Hand dealerHand = game.getDealerHand();
 		Point dealerPoint = game.getDealerPoint();
 		
-		while(dealerPoint.point < 17) {
-			dealerHand.draw(deck);
+		while(dealerPoint.point< 17) {
 			dealerPoint.calc(dealerHand.draw(deck));
+			System.out.println(dealerPoint.point);
 		}
 		game.setDealerPoint(dealerPoint);
 				

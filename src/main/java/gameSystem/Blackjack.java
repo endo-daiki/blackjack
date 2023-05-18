@@ -2,13 +2,10 @@ package gameSystem;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import database.Insert;
-import database.Select;
 import database.Update;
 import model.Game;
-import model.User;
 
 public class Blackjack {
 	public static Game game;
@@ -28,12 +25,6 @@ public class Blackjack {
     	if(!(game.getResult().equals("playing"))) {
     		Update.updateResult(game.getUserId(), game.getResult());
     		Insert.insertLog(game.getUserId(), game.getResult());
-    		
-    		HttpSession session = request.getSession(true);
-    		
-    		User user = (User)session.getAttribute("user");
-    		User updateUser = Select.selectUser(user.getId(), user.getPassword());
-    		session.setAttribute("user", updateUser);
     		
     		dispatcher = request.getRequestDispatcher("result.jsp");
     		return dispatcher;
