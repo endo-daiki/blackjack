@@ -7,26 +7,43 @@ public class Setup {
 	
 	Setup(Game game) {
 		Deck deck = game.getDeck();
-    	Hand hand = game.getPlayerHand();
-    	Point point = game.getPlayerPoint();
+//    	Hand hand = game.getPlayerHand();
+//    	Point point = game.getPlayerPoint();
     	
-    	point.calc(hand.draw(deck));
-    	point.calc(hand.draw(deck));
-    	game.setPlayerHand(hand);
-    	game.setPlayerPoint(point);
+    	Player player = game.getPlayer();   	
+    	player.Draw(deck);
+    	player.Draw(deck); 
+    	if(player.getHand().splitCheck()) {
+    		Player spliter = new Player();
+    		player.split(spliter);
+    		player.Draw(deck);
+    		spliter.Draw(deck);
+    		game.setSpliter(spliter);
+    	}
+    	game.setPlayer(player);
+    	
+    	Player dealer = game.getDealer();
+    	dealer.Draw(deck);
+    	dealer.Draw(deck);
+    	game.setDealer(dealer);
+    	
+//    	point.calc(hand.draw(deck));
+//    	point.calc(hand.draw(deck));
+//    	game.setPlayerHand(hand);
+//    	game.setPlayerPoint(point);
     	 	
-    	hand = game.getDealerHand();
-    	point = game.getDealerPoint();
-    	
-    	point.calc(hand.draw(deck));
-    	point.calc(hand.draw(deck));
-    	game.setDealerHand(hand);
-    	game.setDealerPoint(point);
+//    	hand = game.getDealerHand();
+//    	point = game.getDealerPoint();
+//    	
+//    	point.calc(hand.draw(deck));
+//    	point.calc(hand.draw(deck));
+//    	game.setDealerHand(hand);
+//    	game.setDealerPoint(point);
     	
     	game.setDeck(deck);
     	game.setResult("playing");
     	
-    	if(game.getPlayerPoint().bjCheck()) {
+    	if(player.getPoint().bjCheck()) {
 			new Stand(game);
 			url = Stand.getUrl();
 			return;

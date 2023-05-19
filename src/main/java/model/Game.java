@@ -2,24 +2,23 @@ package model;
 
 import gameSystem.Deck;
 import gameSystem.Hand;
+import gameSystem.Player;
 import gameSystem.Point;
 
 public class Game {
 	private Deck deck;
-	private Hand playerHand;
-	private Hand dealerHand;
-	private Point playerPoint;
-	private Point dealerPoint;
+	private Player player;
+	private Player dealer;
+	private Player spliter;
 	private String result;
 	private String user_id;
 	
 	public Game() {}
 	public Game(String user_id) {
 		this.deck = new Deck();
-		this.playerHand = new Hand();
-		this.dealerHand = new Hand();
-		this.playerPoint = new Point();
-		this.dealerPoint = new Point();
+		this.player = new Player();
+		this.dealer = new Player();
+		this.spliter = null;
 		this.result = "playing";
 		this.user_id = user_id;
 	}
@@ -30,30 +29,6 @@ public class Game {
 	public void setDeck(Deck deck) {
 		this.deck = deck;
 	}
-	public Hand getPlayerHand() {
-		return playerHand;
-	}
-	public void setPlayerHand(Hand playerHand) {
-		this.playerHand = playerHand;
-	}
-	public Hand getDealerHand() {
-		return dealerHand;
-	}	
-	public void setDealerHand(Hand dealerHand) {
-		this.dealerHand = dealerHand;
-	}
-	public Point getPlayerPoint() {
-		return playerPoint;
-	}
-	public void setPlayerPoint(Point point) {
-		this.playerPoint = point;
-	}	
-	public Point getDealerPoint() {
-		return dealerPoint;
-	}
-	public void setDealerPoint(Point point) {
-		this.dealerPoint =  point;
-	}	
 	public String getResult() {
 		return result;
 	}
@@ -65,5 +40,24 @@ public class Game {
 	}
 	public void setUserId(String user_id) {
 		this.user_id = user_id;
+	}
+	
+	public Player getPlayer() {
+		return player;
+	}
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+	public Player getDealer() {
+		return dealer;
+	}
+	public void setDealer(Player dealer) {
+		this.dealer = dealer;
+	}
+	public Player getSpliter() {
+		return spliter;
+	}
+	public void setSpliter(Player spliter) {
+		this.spliter = spliter;
 	}
 }

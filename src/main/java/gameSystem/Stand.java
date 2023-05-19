@@ -6,25 +6,26 @@ public class Stand {
 	private static String url;
 	
 	Stand(Game game) {
-		Point playerPoint = game.getPlayerPoint();
-		if(playerPoint.burstCheck()) {
+		Deck deck = game.getDeck();
+		Player player = game.getPlayer();
+		Player dealer = game.getDealer();
+		
+		if(player.getPoint().burstCheck()) {
 			game.setResult("lose");
 			return;
 		} 
-
-		Deck deck = game.getDeck();
-		Hand dealerHand = game.getDealerHand();
-		Point dealerPoint = game.getDealerPoint();
 		
-		while(dealerPoint.point< 17) {
-			dealerPoint.calc(dealerHand.draw(deck));
-			System.out.println(dealerPoint.point);
+		while(dealer.getPoint().point< 17) {
+			dealer.Draw(deck);
 		}
-		game.setDealerPoint(dealerPoint);
+		
+		game.setDeck(deck);
+		game.setPlayer(player);
+		game.setDealer(dealer);
 				
-		if(dealerPoint.burstCheck() || playerPoint.point > dealerPoint.point) {
+		if(dealer.getPoint().burstCheck() || player.getPoint().point > dealer.getPoint().point) {
 			game.setResult("win");
-		} else if (playerPoint.burstCheck() || playerPoint.point < dealerPoint.point) {
+		} else if (player.getPoint().burstCheck() || player.getPoint().point < dealer.getPoint().point) {
 			game.setResult("lose");
 		} else {
 			game.setResult("draw");

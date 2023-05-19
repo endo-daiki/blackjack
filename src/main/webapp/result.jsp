@@ -9,14 +9,15 @@
 <%
 	}
 %>
-<%@ page import="model.Game,model.Card,gameSystem.Hand,gameSystem.Point,java.util.List" %>
+<%@ page import="model.Game,model.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,java.util.List" %>
 <% 
-	Game game = (Game) request.getAttribute("game"); 
-	Hand playerHand = game.getPlayerHand();
-	List<Card> playerHandList = playerHand.getList();
-	Point playerPoint = game.getPlayerPoint();
-	Hand dealerHand = game.getDealerHand();
-	List<Card> dealerHandList = dealerHand.getList();
+	Game game = (Game) request.getAttribute("game");
+	Player player = game.getPlayer();
+	Hand playerHand = player.getHand();
+	Point playerPoint = player.getPoint();
+	Player dealer = game.getDealer();
+	Hand dealerHand = dealer.getHand();
+	Point dealerPoint = dealer.getPoint();
 %>
 <!DOCTYPE html>
 <html>
@@ -34,21 +35,21 @@
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">ゲームリザルト</p>
             <div class="col-7 border">
-            	<% for(Card card : dealerHandList) { %>
+            	<% for(Card card : dealerHand.getList()) { %>
             		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
             	<% } %>
                <p class="text-center">
-			   	<%= game.getDealerPoint().getPoint() %>
+			   	<%= dealerPoint.getPoint() %>
 			   </p>
             </div>
             <div class="col-7 border">
-            	<% for(Card card : playerHandList) { %>
+            	<% for(Card card : playerHand.getList()) { %>
             		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
             	<% } %>
             	<% if(playerPoint.getPoint() == 21) { %>
             		<p class="text-center text-danger">BlackJack!!</p>
             	<% } %>
-              	<p class="text-center"><%= game.getPlayerPoint().getPoint() %></p>
+              	<p class="text-center"><%= playerPoint.getPoint() %></p>
             </div>
             <h3 class="text-center text-danger">
             	<% switch(game.getResult()) { 

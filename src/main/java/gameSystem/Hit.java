@@ -7,16 +7,14 @@ public class Hit {
 	
 	Hit(Game game) {
 		Deck deck = game.getDeck();
-		Hand playerHand = game.getPlayerHand();
-    	Point playerPoint = game.getPlayerPoint();
+		Player player = game.getPlayer();
     	
-    	playerPoint.calc(playerHand.draw(deck));
+    	player.Draw(deck);
     	
     	game.setDeck(deck);
-    	game.setPlayerHand(playerHand);
-    	game.setPlayerPoint(playerPoint);
+    	game.setPlayer(player);
 		
-    	if(playerPoint.burstCheck() || playerPoint.bjCheck()) {
+    	if(player.getPoint().burstCheck() || player.getPoint().bjCheck()) {
     		new Stand(game);
 			url = Stand.getUrl();
 			return;

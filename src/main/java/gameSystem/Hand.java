@@ -31,4 +31,8 @@ public class Hand {
 	public List<Card> getList() {
 		return hand;
 	}
+	
+	public boolean splitCheck() {
+		return hand.get(0).no == hand.get(1).no;
+	}
 }

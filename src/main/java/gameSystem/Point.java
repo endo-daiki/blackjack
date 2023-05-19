@@ -48,4 +48,7 @@ public class Point {
 	public int getPoint() {
 		return point;
 	}
+	public boolean aceCount() {
+		return aceCount > 0;
+	}
 }
