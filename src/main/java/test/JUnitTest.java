@@ -14,6 +14,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import login.Login;
+import login.Logout;
 import model.Card;
 import model.User;
 
@@ -75,6 +76,22 @@ class JUnitTest {
 		
 		String error_msg = (String)request.getAttribute("error_msg"); //エラーメッセージを取得
 		assertEquals("アカウントが存在しないか、IDまたはパスワードが間違っています", error_msg);
+	}
+	
+	@Test
+	public void testLogout() throws 
+		ServletException, IOException { //正常にログアウトできているかの動作チェック
+		
+		User user = new User("test@mail.com", "password");
+		RequestDispatcher dispatcher = Login.login(user, request);
+
+		dispatcher.forward(request, response);	
+		
+		Logout.logout(request);
+				
+		HttpSession session = request.getSession(true);
+		user = (User)session.getAttribute("user");
+		assertNull(user);
 	}
 	
 }
