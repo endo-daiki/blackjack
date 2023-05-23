@@ -17,6 +17,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.mock.web.MockHttpSession;
 
 import database.Database;
 import database.Delete;
@@ -31,6 +32,7 @@ import model.playLog;
 class InformationTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();
 	static MockHttpServletResponse response = new MockHttpServletResponse();
+	static MockHttpSession session = new MockHttpSession();
 	
 	static User user;
 	
@@ -45,8 +47,10 @@ class InformationTest {
 			Update.updateResult(String.valueOf(i), "lose");
 			Insert.insertLog(String.valueOf(i), "lose");
 		}
-		user = new User("0", "Name0", "password", "password"); //作ったユーザーでログイン
-		Login.login(user, request);
+		user = Select.selectUser("0", "password"); //作ったユーザーでログイン
+		
+		session.setAttribute("user", user);
+		request.setSession(session);
 	}
 	
 	@Test
