@@ -12,7 +12,7 @@ public class UserEdit {
 	public static RequestDispatcher edit(User user, HttpServletRequest request) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("userEdit.jsp");
 		
-		if(!Validation.validationId(user.getId())) {
+		if(!Validation.validationId(user.getNewId())) {
 			request.setAttribute("error_msg", "IDを入力してください");
 			return dispatcher;
 		}

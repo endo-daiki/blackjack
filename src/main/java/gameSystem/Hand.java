@@ -8,6 +8,7 @@ import model.Card;
 public class Hand {
 	private List<Card> hand; 
 	boolean ace = false;
+	private int counter;
 	
 	public Hand() {
 		hand = new ArrayList<Card>();
@@ -17,6 +18,7 @@ public class Hand {
 		ace = false;
 		Card card = deck.Draw();
 		hand.add(card);
+		counter++;
 		if(card.getNo() == "1") {
 			ace = true;
 		}
@@ -33,6 +35,6 @@ public class Hand {
 	}
 	
 	public boolean splitCheck() {
-		return hand.get(0).no == hand.get(1).no;
+		return hand.get(0).no == hand.get(1).no && counter == 2;
 	}
 }
