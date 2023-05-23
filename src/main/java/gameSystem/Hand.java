@@ -7,8 +7,8 @@ import model.Card;
 
 public class Hand {
 	private List<Card> hand; 
-	boolean ace = false;
 	private int counter;
+	boolean ace = false;
 	
 	public Hand() {
 		hand = new ArrayList<Card>();

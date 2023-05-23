@@ -2,15 +2,7 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -19,23 +11,19 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockHttpSession;
 
-import database.Database;
 import database.Delete;
 import database.Insert;
 import database.Select;
 import database.Update;
-import gameSystem.Blackjack;
-import login.Information;
-import login.Login;
 import model.User;
 import model.playLog;
 
-class InformationTest {
+class SelectTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();
 	static MockHttpServletResponse response = new MockHttpServletResponse();
 	static MockHttpSession session = new MockHttpSession();
 	
-	static User user;
+	static User user = new User();
 	
 	@BeforeAll
 	public static void setup() {
@@ -48,41 +36,43 @@ class InformationTest {
 			Update.updateResult(String.valueOf(i), "lose");
 			Insert.insertLog(String.valueOf(i), "lose");
 		}
+		Insert.insertUser(String.valueOf(6),  "Name6", "password");
+		Update.updateResult(String.valueOf(6), "win");
+		Insert.insertLog(String.valueOf(6), "win");
+		
 		user = Select.selectUser("0", "password"); //作ったユーザーでログイン
 		
 		session.setAttribute("user", user);
 		request.setSession(session);
 	}
-	
-	@Test
-	public void testPlayInfo() throws 
-			ServletException, IOException{ //ログインされたユーザーの情報を取得
 		
-		RequestDispatcher dispatcher = 
-				Information.PlayInfo(request);
-		
-		dispatcher.forward(request, response);
-		
-		User userInfo = (User)request.getAttribute("user"); //ログインしているユーザーの情報
-		List<User> ranker = (List<User>)request.getAttribute("ranker"); //勝率の上位5名を選出
-		List<playLog> playLog = (List<playLog>)request.getAttribute("playLog"); //ゲームプレイした記録を取得
-		
-		assertEquals("Name0", userInfo.getName());
-		assertEquals(5, ranker.size());
-		assertEquals("0", playLog.get(0).getUserId());
+	@Test 
+	public void testSelectId() {
+		boolean idCheck = Select.selectId("0");
+		assertEquals(true, idCheck);
 	}
 	
-	public void testUserInfo() throws 
-			ServletException, IOException{ //ログインされたユーザーの情報を取得
+	@Test
+	public void testSelectUser() {
+		User user = Select.selectUser("0", "password");
+		assertEquals("Name0", user.getName());
+	}
+	
+	@Test
+	public void testSelectRanker() {
+		List<User> ranker = Select.selectRanker();
+		User topRanker = ranker.get(0);
 		
-		RequestDispatcher dispatcher = 
-				Information.UserInfo(request);
+		assertEquals(1, topRanker.getRate());
+		assertEquals(5, ranker.size());
+	}
 		
-		dispatcher.forward(request, response);
+	@Test
+	public void  testSelectPlayLog() {
+		List<playLog> playLogs = Select.selectPlayLog("6");
+		playLog log = playLogs.get(0);
 		
-		User userInfo = (User)request.getAttribute("user"); //ログインしているユーザーの情報
-		
-		assertEquals("Name0", userInfo.getName());
+		assertEquals("win", log.getLog());
 	}
 	
 	@AfterAll
@@ -91,6 +81,8 @@ class InformationTest {
 			Delete.deleteUser(String.valueOf(i));
 			Delete.deleteLog(String.valueOf(i));
 		}
+		Delete.deleteUser(String.valueOf(6));
+		Delete.deleteLog(String.valueOf(6));
 		session.invalidate();
 	}
 

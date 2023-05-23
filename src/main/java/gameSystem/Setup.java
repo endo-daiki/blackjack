@@ -7,12 +7,11 @@ public class Setup {
 	
 	Setup(Game game) {
 		Deck deck = game.getDeck();
-//    	Hand hand = game.getPlayerHand();
-//    	Point point = game.getPlayerPoint();
-    	
+
     	Player player = game.getPlayer();   	
     	player.Draw(deck);
     	player.Draw(deck); 
+    	
     	if(player.getHand().splitCheck()) {
     		Player spliter = new Player();
     		player.split(spliter);
@@ -26,19 +25,6 @@ public class Setup {
     	dealer.Draw(deck);
     	dealer.Draw(deck);
     	game.setDealer(dealer);
-    	
-//    	point.calc(hand.draw(deck));
-//    	point.calc(hand.draw(deck));
-//    	game.setPlayerHand(hand);
-//    	game.setPlayerPoint(point);
-    	 	
-//    	hand = game.getDealerHand();
-//    	point = game.getDealerPoint();
-//    	
-//    	point.calc(hand.draw(deck));
-//    	point.calc(hand.draw(deck));
-//    	game.setDealerHand(hand);
-//    	game.setDealerPoint(point);
     	
     	game.setDeck(deck);
     	game.setResult("playing");
