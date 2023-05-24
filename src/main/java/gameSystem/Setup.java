@@ -7,18 +7,18 @@ public class Setup {
 	
 	Setup(Game game) {
 		Deck deck = game.getDeck();
-
     	Player player = game.getPlayer();   	
     	player.Draw(deck);
     	player.Draw(deck); 
+ 	
+//    	if(player.getHand().splitCheck()) {
+//    		Player spliter = new Player();
+//    		player.split(spliter);
+//    		player.Draw(deck);
+//    		spliter.Draw(deck);
+//    		game.setSpliter(spliter);
+//    	}
     	
-    	if(player.getHand().splitCheck()) {
-    		Player spliter = new Player();
-    		player.split(spliter);
-    		player.Draw(deck);
-    		spliter.Draw(deck);
-    		game.setSpliter(spliter);
-    	}
     	game.setPlayer(player);
     	
     	Player dealer = game.getDealer();

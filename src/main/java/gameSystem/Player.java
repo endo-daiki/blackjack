@@ -22,9 +22,9 @@ public class Player{
 		return point;
 	}
 	
-	public void split(Player spliter) {
-		spliter.hand = this.hand;
-		spliter.hand.getList().remove(0);
-		this.hand.getList().remove(1);
-	}
+//	public void split(Player spliter) {
+//		spliter.hand = this.hand;
+//		spliter.hand.getList().remove(0);
+//		this.hand.getList().remove(1);
+//	}
 }
