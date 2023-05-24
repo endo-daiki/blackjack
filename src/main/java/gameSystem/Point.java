@@ -32,17 +32,11 @@ public class Point {
 	}
 	
 	boolean burstCheck() {
-		if(this.point > 21) {
-			return true;
-		}
-		return false;
+		return this.point > 21;
 	}
 	
 	boolean bjCheck() {
-		if(this.point == 21) {
-			return true;
-		}
-		return false;
+		return this.point == 21;
 	}
 	
 	public int getPoint() {

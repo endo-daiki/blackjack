@@ -1,10 +1,9 @@
-package test;
+package gameSystem;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +15,6 @@ import org.springframework.mock.web.MockHttpSession;
 import database.Delete;
 import database.Insert;
 import database.Select;
-import gameSystem.Blackjack;
 import model.Game;
 import model.User;
 import model.playLog;
