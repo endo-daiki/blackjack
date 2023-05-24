@@ -15,7 +15,7 @@ public class Information {
 		RequestDispatcher dispatcher;
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
-		
+
 		User userInfo = Select.selectUser(user.getId(), user.getPassword());
 		request.setAttribute("user", userInfo);
 

@@ -1,9 +1,7 @@
 package model;
 
 import gameSystem.Deck;
-import gameSystem.Hand;
 import gameSystem.Player;
-import gameSystem.Point;
 
 public class Game {
 	private Deck deck;
