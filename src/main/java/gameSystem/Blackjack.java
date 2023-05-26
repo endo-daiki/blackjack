@@ -15,9 +15,6 @@ public class Blackjack {
     	game = new Game(id);
     	url = "PlayerTurn";
     }
-    public static void resetGame() {
-    	game = null;
-    }
 
     public static RequestDispatcher getGame(HttpServletRequest request) {
     	RequestDispatcher dispatcher;

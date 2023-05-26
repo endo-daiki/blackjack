@@ -30,12 +30,4 @@ public class Login {
 	    session.setAttribute("user", loginUser);
 		return dispatcher;
 	}
-	
-	public static boolean loginCheck(HttpServletRequest request) {
-		HttpSession session = request.getSession(true);
-		if(session.getAttribute("user") == null) {
-			return false;
-		}
-		return true;
-	}
 }

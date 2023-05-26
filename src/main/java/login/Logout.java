@@ -13,8 +13,6 @@ public class Logout {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		Blackjack.resetGame();
-		
 		dispatcher = request.getRequestDispatcher("logout.jsp");
 		
 		return dispatcher;

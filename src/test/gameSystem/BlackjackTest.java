@@ -48,15 +48,6 @@ class BlackjackTest {
 	}
 	
 	@Test
-	public void testResetGame() {
-		Blackjack.resetGame();
-		
-		Game game = Blackjack.game;
-		
-		assertNull(game);
-	}
-	
-	@Test
 	public void testGetGame() {
 		Game game = Blackjack.game;
 		game.setResult("win");
