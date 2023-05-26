@@ -9,7 +9,7 @@
 <%
 	}
 %>
-<%@ page import="model.Game,model.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,java.util.List" %>
+<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game");
 	Player player = game.getPlayer();
@@ -36,7 +36,7 @@
             <p class="text-center">ゲームリザルト</p>
             <div class="col-7 border">
             	<% for(Card card : dealerHand.getList()) { %>
-            		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
+            		<img  src="img/<%= card.getSuit() %>_<%= card.getNo().getNo() %>.png" width="100" height="150">
             	<% } %>
                <p class="text-center">
 			   	<%= dealerPoint.getPoint() %>
@@ -44,7 +44,7 @@
             </div>
             <div class="col-7 border">
             	<% for(Card card : playerHand.getList()) { %>
-            		<img  src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
+            		<img  src="img/<%= card.getSuit() %>_<%= card.getNo().getNo() %>.png" width="100" height="150">
             	<% } %>
             	<% if(playerPoint.getPoint() == 21) { %>
             		<p class="text-center text-danger">BlackJack!!</p>

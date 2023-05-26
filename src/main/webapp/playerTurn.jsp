@@ -9,7 +9,7 @@
 <%
 	}
 %>
-<%@ page import="model.Game,model.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,java.util.List" %>
+<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game");
 	Player player = game.getPlayer();
@@ -35,17 +35,17 @@
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">プレイヤーターン</p>
             <div class="col-7 border">
-            	<img src="img/<%= dealerHand.getList().get(0).suit %>_<%= dealerHand.getList().get(0).no %>.png" width="100" height="150">
+            	<img src="img/<%= dealerHand.getList().get(0).getSuit() %>_<%= dealerHand.getList().get(0).getNo().getNo() %>.png" width="100" height="150">
             	<img src="img/trump_back.png" width="100" height="150">
-            	<% if( dealerHand.getList().get(0).no.equals("j") || dealerHand.getList().get(0).no.equals("q") || dealerHand.getList().get(0).no.equals("k")) { %>
-            	<p class="text-center"><%= dealerHand.getList().get(0).no %>(10) + ?</p>
+            	<% if( dealerHand.getList().get(0).courtCheck() ) { %>
+            	<p class="text-center"><%= dealerHand.getList().get(0).getNo().getNo() %>(10) + ?</p>
             	<% } else { %>
-            	<p class="text-center"><%= dealerHand.getList().get(0).no %> + ?</p>
+            	<p class="text-center"><%= dealerHand.getList().get(0).getNo().getNo() %> + ?</p>
             	<% } %>
             </div>
             <div class="col-7 border">
             	<% for(Card card : playerHand.getList()) {  %>
-            		<img src="img/<%= card.suit %>_<%= card.no %>.png" width="100" height="150">
+            		<img src="img/<%= card.getSuit() %>_<%= card.getNo().getNo() %>.png" width="100" height="150">
             	<% } %>
              	<p class="text-center">
              		<% if(playerPoint.aceCount()) { %>

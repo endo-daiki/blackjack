@@ -1,7 +1,5 @@
 package gameSystem;
 
-import model.Card;
-
 public class Player{
 	private Hand hand;
 	private Point point;

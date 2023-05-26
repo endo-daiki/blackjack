@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.Card;
 
 class PointTest {
 	static Point point;
@@ -17,9 +16,9 @@ class PointTest {
 	@BeforeEach
 	public void setup() {
 		point = new Point();
-		aceCard = new Card("heart", "1");
-		courtCard = new Card("spade", "k");
-		towCard = new Card("diamond", "2");
+		aceCard = new Card("heart", CardNumber.one);
+		courtCard = new Card("spade", CardNumber.king);
+		towCard = new Card("diamond", CardNumber.two);
 	}
 	
 	@Test

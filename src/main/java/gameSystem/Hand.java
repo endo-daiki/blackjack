@@ -3,8 +3,6 @@ package gameSystem;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Card;
-
 public class Hand {
 	private List<Card> hand; 
 	private int counter;
@@ -19,7 +17,7 @@ public class Hand {
 		Card card = deck.Draw();
 		hand.add(card);
 		counter++;
-		if(card.getNo() == "1") {
+		if(card.getNo().getPoint() == 1) {
 			ace = true;
 		}
 		
