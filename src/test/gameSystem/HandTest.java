@@ -21,7 +21,7 @@ class HandTest {
 	@Test
 	public void testHand() {
 		assertNotNull(hand);
-		assertEquals(false, hand.aceCheck());
+		assertEquals(false, hand.splitCheck());
 	}
 	
 	@Test
@@ -30,11 +30,6 @@ class HandTest {
 		List<Card> list = hand.getList();
 			
 		assertEquals(1, list.size());
-	}
-	
-	@Test
-	public void testAceCheck() {
-		assertEquals(false, hand.aceCheck());
 	}
 	
 	@Test
