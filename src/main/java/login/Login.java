@@ -9,7 +9,7 @@ import model.User;
 
 public class Login {
 	public static RequestDispatcher login(User user, HttpServletRequest request) {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");	
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");	
 		
 		if(!Validation.validationId(user.getId())) {
 			request.setAttribute("error_msg", "IDを入力してください");
