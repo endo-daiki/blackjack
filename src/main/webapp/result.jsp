@@ -39,17 +39,17 @@
             		<img  src="img/<%= card.getSuit() %>_<%= card.getNo().getNo() %>.png" width="100" height="150">
             	<% } %>
                <p class="text-center">
-			   	<%= dealerPoint.getPoint() %>
+			   	<%= dealerPoint.getScore() %>
 			   </p>
             </div>
             <div class="col-7 border">
             	<% for(Card card : playerHand.getList()) { %>
             		<img  src="img/<%= card.getSuit() %>_<%= card.getNo().getNo() %>.png" width="100" height="150">
             	<% } %>
-            	<% if(playerPoint.getPoint() == 21) { %>
+            	<% if(playerPoint.getScore() == 21) { %>
             		<p class="text-center text-danger">BlackJack!!</p>
             	<% } %>
-              	<p class="text-center"><%= playerPoint.getPoint() %></p>
+              	<p class="text-center"><%= playerPoint.getScore() %></p>
             </div>
             <h3 class="text-center text-danger">
             	<% switch(game.getResult()) { 

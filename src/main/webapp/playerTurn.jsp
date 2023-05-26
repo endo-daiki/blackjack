@@ -48,11 +48,11 @@
             		<img src="img/<%= card.getSuit() %>_<%= card.getNo().getNo() %>.png" width="100" height="150">
             	<% } %>
              	<p class="text-center">
-             		<% if(playerPoint.aceCount()) { %>
-					<%= (playerPoint.getPoint() - 10) %>
+             		<% if(playerPoint.aceCountCheck()) { %>
+					<%= (playerPoint.getScore() - 10) %>
 					 / 
 					<% } %>             		
-             		<%= playerPoint.getPoint() %>
+             		<%= playerPoint.getScore() %>
              	</p>
             </div>
             <div class="col-7 border">

@@ -15,7 +15,7 @@ public class Stand {
 			return;
 		} 
 		
-		while(dealer.getPoint().point< 17) {
+		while(dealer.getPoint().score< 17) {
 			dealer.Draw(deck);
 		}
 		
@@ -23,9 +23,9 @@ public class Stand {
 		game.setPlayer(player);
 		game.setDealer(dealer);
 				
-		if(dealer.getPoint().burstCheck() || player.getPoint().point > dealer.getPoint().point) {
+		if(dealer.getPoint().burstCheck() || player.getPoint().score > dealer.getPoint().score) {
 			game.setResult("win");
-		} else if (player.getPoint().burstCheck() || player.getPoint().point < dealer.getPoint().point) {
+		} else if (player.getPoint().burstCheck() || player.getPoint().score < dealer.getPoint().score) {
 			game.setResult("lose");
 		} else {
 			game.setResult("draw");

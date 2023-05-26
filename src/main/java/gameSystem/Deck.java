@@ -7,12 +7,13 @@ import java.util.List;
 public class Deck {
 	private static List<Card> deck;
 	private static final String[] suit = {"spade","heart","diamond","club"};
+	private static final CardNumber[] cardNumber = CardNumber.values();
     
     public Deck() {
     	deck = new ArrayList<Card>();
     	
     	for(String suit : suit) {
-			for(CardNumber no : CardNumber.values()) {
+			for(CardNumber no : cardNumber) {
 				Card card = new Card(suit, no);
 				deck.add(card);
 			}

@@ -2,7 +2,6 @@ package gameSystem;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,11 +23,11 @@ class PointTest {
 	@Test
 	public void testCalc() {
 		point.calc(aceCard);
-		assertEquals(11, point.point);
+		assertEquals(11, point.score);
 		point.calc(courtCard);
-		assertEquals(21, point.point);
+		assertEquals(21, point.score);
 		point.calc(towCard);
-		assertEquals(13, point.point);
+		assertEquals(13, point.score);
 	}
 	
 	@Test
@@ -42,14 +41,14 @@ class PointTest {
 	}
 	
 	@Test
-	public void testGetPoint() {
+	public void testGetScore() {
 		point.calc(aceCard);
-		assertEquals(11, point.getPoint());
+		assertEquals(11, point.getScore());
 	}
 	
 	@Test
-	public void testAceCount() {
-		assertEquals(false, point.aceCount());
+	public void testAceCountCheck() {
+		assertEquals(false, point.aceCountCheck());
 	}
 
 }
