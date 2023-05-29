@@ -72,6 +72,7 @@ class InformationTest {
 		assertEquals("0", playLog.get(0).getUserId());
 	}
 	
+	@Test
 	public void testUserInfo() throws 
 			ServletException, IOException{ //ログインされたユーザーの情報を取得
 		

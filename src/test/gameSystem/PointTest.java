@@ -33,11 +33,18 @@ class PointTest {
 	@Test
 	public void testBurstCheck() {
 		assertEquals(false, point.burstCheck());
+		point.calc(courtCard);
+		point.calc(courtCard);
+		point.calc(courtCard);
+		assertEquals(true, point.burstCheck());
 	}
 	
 	@Test
 	public void testBjCheck() {
 		assertEquals(false, point.bjCheck());
+		point.calc(aceCard);
+		point.calc(courtCard);
+		assertEquals(true, point.bjCheck());
 	}
 	
 	@Test
@@ -49,6 +56,8 @@ class PointTest {
 	@Test
 	public void testAceCountCheck() {
 		assertEquals(false, point.aceCountCheck());
+		point.calc(aceCard);
+		assertEquals(true, point.aceCountCheck());
 	}
 
 }

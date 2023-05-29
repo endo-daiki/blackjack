@@ -3,7 +3,6 @@ package database;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 
@@ -13,12 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import database.Delete;
-import database.Insert;
-import database.Select;
-import database.Update;
 import model.User;
-import model.playLog;
 
 class UpdateTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();

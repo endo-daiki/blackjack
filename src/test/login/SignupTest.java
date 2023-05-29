@@ -16,7 +16,6 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import database.Delete;
 import database.Insert;
 import database.Select;
-import login.Signup;
 import model.User;
 
 class SignupTest {

@@ -12,6 +12,7 @@ public class Stand {
 		
 		if(player.getPoint().burstCheck()) {
 			game.setResult("lose");
+			url = "Result";
 			return;
 		} 
 		

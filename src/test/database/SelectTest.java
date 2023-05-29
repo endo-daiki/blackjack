@@ -11,10 +11,6 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockHttpSession;
 
-import database.Delete;
-import database.Insert;
-import database.Select;
-import database.Update;
 import model.User;
 import model.playLog;
 

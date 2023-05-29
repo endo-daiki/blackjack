@@ -42,6 +42,8 @@ class HandTest {
 	public void testSplitCheck() {
 		hand.draw(deck);
 		hand.draw(deck);
+		assertEquals(false, hand.splitCheck());
+
 		hand.draw(deck);
 		assertEquals(false, hand.splitCheck());
 	}

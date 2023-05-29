@@ -10,14 +10,6 @@ public class Setup {
     	Player player = game.getPlayer();   	
     	player.Draw(deck);
     	player.Draw(deck); 
- 	
-//    	if(player.getHand().splitCheck()) {
-//    		Player spliter = new Player();
-//    		player.split(spliter);
-//    		player.Draw(deck);
-//    		spliter.Draw(deck);
-//    		game.setSpliter(spliter);
-//    	}
     	
     	game.setPlayer(player);
     	

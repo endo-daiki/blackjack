@@ -2,9 +2,6 @@ package login;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
 import org.junit.jupiter.api.AfterAll;
@@ -15,10 +12,6 @@ import org.springframework.mock.web.MockHttpServletResponse;
 
 import database.Delete;
 import database.Insert;
-import database.Select;
-import login.Login;
-import login.Logout;
-import login.UserDelete;
 import model.User;
 
 class LogoutTest {

@@ -11,6 +11,7 @@ import org.springframework.mock.web.MockHttpSession;
 import database.Delete;
 import database.Insert;
 import gameSystem.Blackjack;
+import model.Game;
 import model.User;
 
 class HitTest {
@@ -29,9 +30,19 @@ class HitTest {
 	
 	@Test 
 	public void testHit() {
-		String url = Blackjack.Hit();	
+		Game game = Blackjack.game;
 		
+		new Hit(game);
+		String url = Hit.getUrl();
 		assertEquals("PlayerTurn", url);
+		
+		Player player = game.getPlayer();
+		while(!player.getPoint().burstCheck()) {
+			new Hit(game);
+		}
+		
+		url = Hit.getUrl();
+		assertEquals("Result", url);
 	}
 	
 	@AfterAll

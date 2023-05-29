@@ -6,8 +6,6 @@ import java.sql.Connection;
 
 import org.junit.jupiter.api.Test;
 
-import database.Database;
-
 class DatabaseTest {
 
 	@Test

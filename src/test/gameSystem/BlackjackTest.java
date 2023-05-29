@@ -2,7 +2,11 @@ package gameSystem;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -48,11 +52,22 @@ class BlackjackTest {
 	}
 	
 	@Test
-	public void testGetGame() {
+	public void testGetGame() 
+			throws ServletException, IOException {
+
 		Game game = Blackjack.game;
+		game.setResult("playing");
+		
+		RequestDispatcher dispatcher = Blackjack.getGame(request);
+		dispatcher.forward(request, response);
+		
+		String url = response.getForwardedUrl();
+		assertEquals("playerTurn.jsp", url);
+		
 		game.setResult("win");
 		
-		Blackjack.getGame(request);
+		dispatcher = Blackjack.getGame(request);
+		dispatcher.forward(request, response);
 		
 		List<playLog> playLog = Select.selectPlayLog("testId");
 		String result = playLog.get(0).getLog();
