@@ -36,7 +36,7 @@
             <p class="text-center">ゲームリザルト</p>
             <div class="col-7 border">
             	<% for(Card card : dealerHand.getList()) { %>
-            		<img  src="img/<%= card.getSuit() %>_<%= card.getNo().getNo() %>.png" width="100" height="150">
+            		<img  src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
             	<% } %>
                <p class="text-center">
 			   	<%= dealerPoint.getScore() %>
@@ -44,7 +44,7 @@
             </div>
             <div class="col-7 border">
             	<% for(Card card : playerHand.getList()) { %>
-            		<img  src="img/<%= card.getSuit() %>_<%= card.getNo().getNo() %>.png" width="100" height="150">
+            		<img  src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
             	<% } %>
             	<% if(playerPoint.getScore() == 21) { %>
             		<p class="text-center text-danger">BlackJack!!</p>

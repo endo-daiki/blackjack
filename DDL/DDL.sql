@@ -10,7 +10,7 @@ CREATE TABLE `blackjack`.`user`(
 	draw integer not null default 0,
 	rate double not null default 0,
 	primary key(id)
-) DEFAULT CHARSET=utf8mb4;
+) DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_bin;
 
 CREATE TABLE `blackjack`.`playLog`(
 	id integer not null auto_increment,
