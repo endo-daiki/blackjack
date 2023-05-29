@@ -4,27 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
-	private List<Card> hand; 
+	private List<Card> list; 
 	
 	public Hand() {
-		hand = new ArrayList<Card>();
+		list = new ArrayList<Card>();
 	}
 	
 	public Card draw(Deck deck) {
-		Card card = deck.Draw();
-		hand.add(card);
+		Card card = deck.pull();
+		list.add(card);
 		
 		return card;
 	}
 
 	public List<Card> getList() {
-		return hand;
+		return list;
 	}
 	
 	public boolean splitCheck() {
-		if(hand.size() != 2) {
+		if(list.size() != 2) {
 			return false;
 		}
-		return hand.get(0).getNo().getPoint() == hand.get(1).getNo().getPoint();
+		String firstCardNo = list.get(0).getCardNumber().getNo();
+		String secondCardNo = list.get(1).getCardNumber().getNo();
+		
+		return firstCardNo.equals(secondCardNo);
 	}
 }

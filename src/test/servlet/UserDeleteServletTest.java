@@ -6,13 +6,11 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import database.Delete;
 import database.Insert;
 import login.Login;
 import model.User;

@@ -2,22 +2,22 @@ package gameSystem;
 
 public class Card {
 	public String suit;
-	public CardNumber no;
+	public CardNumber cardNumber;
 	
-	public Card(String suit, CardNumber no) {
+	public Card(String suit, CardNumber cardNumber) {
 		this.suit = suit;
-		this.no = no;
+		this.cardNumber = cardNumber;
 	}
 	
 	public String getSuit() {
 		return this.suit;
 	}
-	public CardNumber getNo() {
-		return this.no;
+	public CardNumber getCardNumber() {
+		return this.cardNumber;
 	}
 	
 	public boolean courtCheck() {
-		return this.no.getNo() == "j" || this.no.getNo() == "q" || this.no.getNo() == "k"; 
+		return this.cardNumber.getNo() == "j" || this.cardNumber.getNo() == "q" || this.cardNumber.getNo() == "k"; 
 	}
 }
 

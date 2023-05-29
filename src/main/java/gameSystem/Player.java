@@ -19,10 +19,4 @@ public class Player{
 	public Point getPoint() {
 		return point;
 	}
-	
-//	public void split(Player spliter) {
-//		spliter.hand = this.hand;
-//		spliter.hand.getList().remove(0);
-//		this.hand.getList().remove(1);
-//	}
 }

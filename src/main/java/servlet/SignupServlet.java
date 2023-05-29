@@ -54,7 +54,7 @@ public class SignupServlet extends HttpServlet {
 		String checkPassword = request.getParameter("checkPassword");
 		
 		User user = new User(id, name, password, checkPassword);
-		RequestDispatcher dispatcher = Signup.signup(user, request);
+		RequestDispatcher dispatcher = Signup.userSignup(user, request);
 		
 		dispatcher.forward(request, response);
 	}

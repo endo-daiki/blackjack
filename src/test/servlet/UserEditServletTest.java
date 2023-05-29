@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 
 import org.junit.jupiter.api.AfterAll;
@@ -16,7 +15,6 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import database.Insert;
 import login.Login;
 import login.UserDelete;
-import login.UserEdit;
 import model.User;
 
 class UserEditServletTest {

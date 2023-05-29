@@ -7,7 +7,7 @@ public class Setup {
 	
 	Setup(Game game) {
 		Deck deck = game.getDeck();
-    	Player player = game.getPlayer();   	
+    	Player player = game.getPlayer();
     	player.Draw(deck);
     	player.Draw(deck); 
     	

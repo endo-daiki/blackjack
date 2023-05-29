@@ -4,10 +4,8 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import gameSystem.Blackjack;
-
 public class Logout {
-	public static RequestDispatcher logout(HttpServletRequest request) {
+	public static RequestDispatcher userLogout(HttpServletRequest request) {
 		RequestDispatcher dispatcher;
 		
 		HttpSession session = request.getSession();

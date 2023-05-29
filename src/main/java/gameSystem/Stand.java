@@ -16,7 +16,7 @@ public class Stand {
 			return;
 		} 
 		
-		while(dealer.getPoint().score< 17) {
+		while(dealer.getPoint().score < 17) {
 			dealer.Draw(deck);
 		}
 		

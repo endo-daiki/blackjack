@@ -34,7 +34,7 @@ public class UserInfoServlet extends HttpServlet {
 					throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = 
-				Information.UserInfo(request);
+				Information.getUserInfo(request);
 		dispatcher.forward(request, response);
 	}
 

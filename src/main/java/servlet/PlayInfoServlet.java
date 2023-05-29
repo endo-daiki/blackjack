@@ -34,7 +34,7 @@ public class PlayInfoServlet extends HttpServlet {
 					throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = 
-				Information.PlayInfo(request);
+				Information.getPlayInfo(request);
 		dispatcher.forward(request, response);
 	}
 

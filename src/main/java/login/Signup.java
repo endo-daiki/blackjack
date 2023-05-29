@@ -8,7 +8,7 @@ import database.Select;
 import model.User;
 
 public class Signup {
-	public static RequestDispatcher signup(User user, HttpServletRequest request) {
+	public static RequestDispatcher userSignup(User user, HttpServletRequest request) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
 		
 		if(!Validation.validationId(user.getId())) {

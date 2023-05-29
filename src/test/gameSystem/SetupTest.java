@@ -11,7 +11,6 @@ import org.springframework.mock.web.MockHttpSession;
 
 import database.Delete;
 import database.Insert;
-import gameSystem.Blackjack;
 import model.User;
 
 class SetupTest {	
@@ -30,9 +29,15 @@ class SetupTest {
 	
 	@Test 
 	public void testSetup() {
-		String url = Blackjack.Setup();	
-		
+		String url = Blackjack.Setup();			
 		assertEquals("PlayerTurn", url);
+		
+		while(!(url == "Result")) {
+			new Blackjack("testId");
+			url = Blackjack.Setup();
+		}
+		
+		assertNotEquals("playing",Blackjack.game.getResult());
 	}
 	
 	@AfterAll

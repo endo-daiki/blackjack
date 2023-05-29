@@ -49,7 +49,7 @@ public class UserDeleteServlet extends HttpServlet {
 		String id =  request.getParameter("id");
 
 		RequestDispatcher dispatcher = 
-				UserDelete.delete(id, request);
+				UserDelete.excute(id, request);
 		dispatcher.forward(request, response);
 	}
 

@@ -43,10 +43,19 @@ class UpdateTest {
 			throws ServletException, IOException{ //正しくゲームログが追加されているかどうか
 		
 		boolean checker = Update.updateResult(id, "win"); //勝ち数を1追加
-
 		User user = Select.selectUser(id, password); //ユーザー情報を取得
 		assertEquals(true, checker); //正しく編集(機能がうごいているか)されているかの確認
-		assertEquals(1, user.getWin()); //勝ち数が1担っているか確認
+		assertEquals(1, user.getWin()); //勝ち数が1になっているか確認
+		
+		checker = Update.updateResult(id, "lose"); //負け数を1追加
+		user = Select.selectUser(id, password); //ユーザー情報を取得
+		assertEquals(true, checker); //正しく編集(機能がうごいているか)されているかの確認
+		assertEquals(1, user.getLose()); //負け数が1になっているか確認
+		
+		checker = Update.updateResult(id, "draw"); //引き分け数を1追加
+		user = Select.selectUser(id, password); //ユーザー情報を取得
+		assertEquals(true, checker); //正しく編集(機能がうごいているか)されているかの確認
+		assertEquals(1, user.getDraw()); //引き分け数が1になっているか確認
 	}
 	
 	@AfterAll

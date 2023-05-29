@@ -9,11 +9,11 @@ public class Point {
 	}
 	
 	void calc(Card card) {
-		int addPoint = card.getNo().getPoint();
+		int addPoint = card.getCardNumber().getPoint();
 		if(addPoint == 11) {
 			aceCount++;
 		}
-    	this.score += card.getNo().getPoint();
+    	this.score += card.getCardNumber().getPoint();
     	
     	if(this.score > 21 && aceCount > 0) {
     		while(this.score > 21) {

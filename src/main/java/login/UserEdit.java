@@ -9,7 +9,7 @@ import database.Update;
 import model.User;
 
 public class UserEdit {
-	public static RequestDispatcher edit(User user, HttpServletRequest request) {
+	public static RequestDispatcher excute(User user, HttpServletRequest request) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("userEdit.jsp");
 		
 		if(!Validation.validationId(user.getNewId())) {

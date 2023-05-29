@@ -3,10 +3,6 @@ package login;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -19,14 +15,10 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockHttpSession;
 
-import database.Database;
 import database.Delete;
 import database.Insert;
 import database.Select;
 import database.Update;
-import gameSystem.Blackjack;
-import login.Information;
-import login.Login;
 import model.User;
 import model.playLog;
 

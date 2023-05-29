@@ -16,7 +16,6 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import database.Delete;
 import database.Insert;
 import database.Select;
-import login.UserEdit;
 import model.User;
 
 class UserEditTest {

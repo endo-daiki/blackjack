@@ -22,7 +22,7 @@ public class Deck {
 		Collections.shuffle(deck);
     }
         
-    public Card Draw() {
+    public Card pull() {
     	Card card = deck.get(0);
     	deck.remove(0);
     	

@@ -16,7 +16,7 @@ class CardTest {
 	@Test
 	public void testCard() {
 		assertNotNull(card);
-		assertEquals(11, card.getNo().getPoint());
+		assertEquals(11, card.getCardNumber().getPoint());
 	}
 
 
@@ -27,7 +27,7 @@ class CardTest {
 
 	@Test
 	public void testGetNo() {
-		CardNumber no = card.getNo();
+		CardNumber no = card.getCardNumber();
 		assertEquals(11, no.getPoint());
 	}
 

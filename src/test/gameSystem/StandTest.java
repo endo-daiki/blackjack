@@ -10,7 +10,6 @@ import org.springframework.mock.web.MockHttpSession;
 
 import database.Delete;
 import database.Insert;
-import gameSystem.Blackjack;
 import model.User;
 
 class StandTest {
@@ -31,6 +30,35 @@ class StandTest {
 	public void testStand() {
 		String url = Blackjack.Stand();	
 		assertEquals("Result", url);
+		
+		Player player = new Player();
+		Player dealer = new Player();
+		
+		player.getPoint().calc(new Card("heart", CardNumber.king));
+		player.getPoint().calc(new Card("heart", CardNumber.king));
+		dealer.getPoint().calc(new Card("heart", CardNumber.king));
+		dealer.getPoint().calc(new Card("heart", CardNumber.seven));
+		Blackjack.game.setPlayer(player);
+		Blackjack.game.setDealer(dealer);
+		url = Blackjack.Stand();
+		assertEquals("win", Blackjack.game.getResult());
+		
+		dealer.getPoint().calc(new Card("heart", CardNumber.four));
+		Blackjack.game.setDealer(dealer);
+		url = Blackjack.Stand();
+		assertEquals("lose", Blackjack.game.getResult());
+		
+		player.getPoint().calc(new Card("heart", CardNumber.one));
+		Blackjack.game.setPlayer(player);
+		url = Blackjack.Stand();
+		assertEquals("draw", Blackjack.game.getResult());
+		
+		player.getPoint().calc(new Card("heart", CardNumber.king));	
+		Blackjack.game.setPlayer(player);
+		url = Blackjack.Stand();
+		
+		assertEquals("Result", url);
+		assertEquals("lose", Blackjack.game.getResult());
 	}
 	
 	@AfterAll
