@@ -51,7 +51,7 @@ class InformationTest {
 			ServletException, IOException{ //ログインされたユーザーの情報を取得
 		
 		RequestDispatcher dispatcher = 
-				Information.PlayInfo(request);
+				Information.getPlayInfo(request);
 		
 		dispatcher.forward(request, response);
 		
@@ -69,7 +69,7 @@ class InformationTest {
 			ServletException, IOException{ //ログインされたユーザーの情報を取得
 		
 		RequestDispatcher dispatcher = 
-				Information.UserInfo(request);
+				Information.getUserInfo(request);
 		
 		dispatcher.forward(request, response);
 		

@@ -36,7 +36,7 @@ class UserEditTest {
 			throws ServletException, IOException{ //idが未入力のときにエラーを返すかどうか
 		
 		User user = new User("testId", "", "testName", "password", "password");
-		RequestDispatcher dispatcher = UserEdit.edit(user, request);
+		RequestDispatcher dispatcher = UserEdit.excute(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -49,7 +49,7 @@ class UserEditTest {
 			throws ServletException, IOException{ //名前が未入力のときにエラーを返すかどうか
 		
 		User user = new User("testId", "newId", "", "password", "password");
-		RequestDispatcher dispatcher = UserEdit.edit(user, request);
+		RequestDispatcher dispatcher = UserEdit.excute(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -62,7 +62,7 @@ class UserEditTest {
 			throws ServletException, IOException{ //パスワードが未入力のときにエラーを返すかどうか
 		
 		User user = new User("testId", "newId", "newTestName", "", "password");
-		RequestDispatcher dispatcher = UserEdit.edit(user, request);
+		RequestDispatcher dispatcher = UserEdit.excute(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -75,7 +75,7 @@ class UserEditTest {
 			throws ServletException, IOException{ //パスワードと確認用パスワードが違う(未入力含む)のときにエラーを返すかどうか
 		
 		User user = new User("testId", "newId", "newTestName", "PAssWorD", "password");
-		RequestDispatcher dispatcher = UserEdit.edit(user, request);
+		RequestDispatcher dispatcher = UserEdit.excute(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -88,7 +88,7 @@ class UserEditTest {
 			throws ServletException, IOException{ //登録したいidの重複判定のテスト
 		
 		User user = new User("testId", "otherId", "newTestName", "password", "password");
-		RequestDispatcher dispatcher = UserEdit.edit(user, request);
+		RequestDispatcher dispatcher = UserEdit.excute(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -97,11 +97,11 @@ class UserEditTest {
 	}
 	
 	@Test
-	public void userEditTest()
+	public void testExcute()
 		throws ServletException, IOException{ //正しくユーザー登録されているかどうかのテスト
 		
 		User user = new User("testId", "testId", "変更したユーザー名", "password", "password");
-		RequestDispatcher dispatcher = UserEdit.edit(user, request);		//ユーザーを登録
+		RequestDispatcher dispatcher = UserEdit.excute(user, request);		//ユーザーを登録
 		
 		dispatcher.forward(request, response);	
 		

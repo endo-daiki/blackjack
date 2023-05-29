@@ -42,7 +42,7 @@ class SignupServletTest {
 		
 	@AfterAll
 	public static void clean() {
-		UserDelete.delete("testId", request);
+		UserDelete.excute("testId", request);
 	}
 
 }

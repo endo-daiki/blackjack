@@ -26,13 +26,13 @@ class LogoutTest {
        User user = new User(id, name, password, password);
        Insert.insertUser(user.getId(), user.getName(), user.getPassword());
        
-       Login.login(user, request);
+       Login.userLogin(user, request);
     }
 
 	@Test 
-	public void testLogout() { //正しくログアウト(セッションから削除されているか)
+	public void testUserLogout() { //正しくログアウト(セッションから削除されているか)
 		
-		Logout.logout(request); 
+		Logout.userLogout(request); 
 	        
 		HttpSession session = request.getSession(true); 
 		User user = (User)session.getAttribute("uesr"); //セッションからユーザー登録情報を取得

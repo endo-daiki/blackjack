@@ -15,7 +15,7 @@ class DeckTest {
 	@Test
 	public void testDraw() {
 		Deck deck = new Deck();
-		Card card = deck.Draw();
+		Card card = deck.pull();
 		
 		assertNotNull(card);
 	}

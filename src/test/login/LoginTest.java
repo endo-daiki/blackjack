@@ -29,9 +29,9 @@ class LoginTest {
 	}
 	
 	@Test
-	public void testLogin() throws Exception {
+	public void testUserLogin() throws Exception {
 		User user = new User("testId", "password");
-		RequestDispatcher dispatcher = Login.login(user, request);
+		RequestDispatcher dispatcher = Login.userLogin(user, request);
 
 		dispatcher.forward(request, response);	
 				
@@ -45,7 +45,7 @@ class LoginTest {
 		ServletException, IOException { //ログインの際、Idが入力されていない時の動作チェック
 		
 		User user = new User("", "password");
-		RequestDispatcher dispatcher = Login.login(user, request);
+		RequestDispatcher dispatcher = Login.userLogin(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -58,7 +58,7 @@ class LoginTest {
 		ServletException, IOException { //ログインの際、passwordが入力されていない時の動作チェック
 		
 		User user = new User("testId", "");
-		RequestDispatcher dispatcher = Login.login(user, request);
+		RequestDispatcher dispatcher = Login.userLogin(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -71,7 +71,7 @@ class LoginTest {
 		ServletException, IOException { //登録されたIdとpasswordが異なっているときのチェック
 		
 		User user = new User("testId", "PASSWORD");
-		RequestDispatcher dispatcher = Login.login(user, request);
+		RequestDispatcher dispatcher = Login.userLogin(user, request);
 		
 		dispatcher.forward(request, response);	
 		

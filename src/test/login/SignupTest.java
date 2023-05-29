@@ -33,7 +33,7 @@ class SignupTest {
 			throws ServletException, IOException{ //idが未入力のときにエラーを返すかどうか
 		
 		User user = new User("", "testName", "password", "password");
-		RequestDispatcher dispatcher = Signup.signup(user, request);
+		RequestDispatcher dispatcher = Signup.userSignup(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -46,7 +46,7 @@ class SignupTest {
 			throws ServletException, IOException{ //名前が未入力のときにエラーを返すかどうか
 		
 		User user = new User("testmail@mail.com", "", "password", "password");
-		RequestDispatcher dispatcher = Signup.signup(user, request);
+		RequestDispatcher dispatcher = Signup.userSignup(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -59,7 +59,7 @@ class SignupTest {
 			throws ServletException, IOException{ //パスワードが未入力のときにエラーを返すかどうか
 		
 		User user = new User("testmail@mail.com", "testName", "", "password");
-		RequestDispatcher dispatcher = Signup.signup(user, request);
+		RequestDispatcher dispatcher = Signup.userSignup(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -72,7 +72,7 @@ class SignupTest {
 			throws ServletException, IOException{ //パスワードと確認用パスワードが違う(未入力含む)のときにエラーを返すかどうか
 		
 		User user = new User("testmail@mail.com", "testName", "AbcD1234", "abcd1234");
-		RequestDispatcher dispatcher = Signup.signup(user, request);
+		RequestDispatcher dispatcher = Signup.userSignup(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -85,7 +85,7 @@ class SignupTest {
 			throws ServletException, IOException{ //登録したいidの重複判定のテスト
 		
 		User user = new User("testId", "テストネーム", "PASSWORD", "PASSWORD");
-		RequestDispatcher dispatcher = Signup.signup(user, request);
+		RequestDispatcher dispatcher = Signup.userSignup(user, request);
 		
 		dispatcher.forward(request, response);	
 		
@@ -98,7 +98,7 @@ class SignupTest {
 		throws ServletException, IOException{ //正しくユーザー登録されているかどうかのテスト
 		
 		User user = new User("newUser", "新しいユーザー", "PASSWORD", "PASSWORD"); //正しい入力値のユーザー
-		RequestDispatcher dispatcher = Signup.signup(user, request);			//ユーザーを登録
+		RequestDispatcher dispatcher = Signup.userSignup(user, request);			//ユーザーを登録
 		
 		dispatcher.forward(request, response);	
 		

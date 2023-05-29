@@ -31,7 +31,7 @@ class PlayerTurnServletTest {
 		 user = new User("testId", "testName", "password", "password");
 	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
-	     Login.login(user, request);
+	     Login.userLogin(user, request);
 	}
 	
 	@Test
@@ -48,7 +48,7 @@ class PlayerTurnServletTest {
 	
 	@AfterAll
 	public static void clean() {
-		UserDelete.delete("testId", request);
+		UserDelete.excute("testId", request);
 	}
 
 }

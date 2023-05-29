@@ -29,10 +29,10 @@ class UserDeleteTest {
     }
 
 	@Test 
-	public void testDelete() 
+	public void testExcute() 
 			throws ServletException, IOException{ //正しく削除されているかどうか
 		
-		UserDelete.delete(id, request);
+		UserDelete.excute(id, request);
 	        
 		User user = Select.selectUser(id, password); //最初に登録したユーザーをdbから取得(いなければnull)	
 		assertNull(user);
