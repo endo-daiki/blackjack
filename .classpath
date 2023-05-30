@@ -20,6 +20,5 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/spring-core-3.2.3.release.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/spring-mock-2.0.6.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/commons-logging-1.2-javadoc.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

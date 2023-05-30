@@ -13,7 +13,7 @@ public class Point {
 		if(addPoint == 11) {
 			aceCount++;
 		}
-    	this.score += card.getCardNumber().getPoint();
+    	this.score += addPoint;
     	
     	if(this.score > 21 && aceCount > 0) {
     		while(this.score > 21) {
