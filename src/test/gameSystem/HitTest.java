@@ -36,10 +36,10 @@ class HitTest {
 		assertEquals("PlayerTurn", url);
 		
 		Player player = game.getPlayer();
-		while(!player.getPoint().burstCheck()) {
-			new Hit(game);
-		}
-		
+		Card card = new Card("heart", CardNumber.king);
+		player.getPoint().calc(card);
+		player.getPoint().calc(card);
+
 		url = Hit.getUrl();
 		assertEquals("Result", url);
 	}

@@ -24,8 +24,10 @@ class PointTest {
 	public void testCalc() {
 		point.calc(aceCard);
 		assertEquals(11, point.score);
+		
 		point.calc(courtCard);
 		assertEquals(21, point.score);
+		
 		point.calc(towCard);
 		assertEquals(13, point.score);
 	}
