@@ -22,7 +22,7 @@ public class Blackjack {
     	Player player = game.getPlayer();
     	
     	request.setAttribute("game", game);
-    	if(!(player.getResult().equals("playing"))) {
+    	if(player.getResult().equals("stand")) {
     		update.updateResult(game.getUserId(), player.getResult());
     		insert.insertLog(game.getUserId(), player.getResult());
     		
@@ -52,5 +52,10 @@ public class Blackjack {
 		return url;
 	}
 
+	public static String Split() {
+		new Split(game);
+		url = Stand.getUrl();
+		return url;
+	}
 }
 
