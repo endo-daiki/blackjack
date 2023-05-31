@@ -10,9 +10,10 @@ public class UserDelete {
 	public static RequestDispatcher excute(String id, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		session.invalidate();
+		Delete delete = new Delete();
 		
-		Delete.deleteUser(id);
-		Delete.deleteLog(id);
+		delete.deleteUser(id);
+		delete.deleteLog(id);
 			        
 	    RequestDispatcher dispatcher = 
 			request.getRequestDispatcher("userDeleteDone.jsp");

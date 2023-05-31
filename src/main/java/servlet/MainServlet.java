@@ -41,7 +41,7 @@ public class MainServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
-		doGet(request, response);
+		response.sendRedirect("./");
 	}
 
 }

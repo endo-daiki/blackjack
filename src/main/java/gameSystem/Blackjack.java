@@ -18,10 +18,13 @@ public class Blackjack {
 
     public static RequestDispatcher getGame(HttpServletRequest request) {
     	RequestDispatcher dispatcher;
+    	Update update = new Update();
+    	Insert insert = new Insert();
+    	
     	request.setAttribute("game", game);
     	if(!(game.getResult().equals("playing"))) {
-    		Update.updateResult(game.getUserId(), game.getResult());
-    		Insert.insertLog(game.getUserId(), game.getResult());
+    		update.updateResult(game.getUserId(), game.getResult());
+    		insert.insertLog(game.getUserId(), game.getResult());
     		
     		dispatcher = request.getRequestDispatcher("result.jsp");
     		return dispatcher;

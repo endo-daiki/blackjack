@@ -10,7 +10,7 @@ public class Database {
     private static final String user = "root";
     private static final String pass = "";
     
-	public static Connection getConnection() {
+	protected static Connection getConnection() {
 		try {
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {

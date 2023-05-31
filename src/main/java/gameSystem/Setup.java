@@ -4,9 +4,9 @@ import model.Game;
 
 public class Setup {
 	private static String url;
+
 	Setup() {
 		url = "playerTurn.jsp";
-		//ここで、gameからの情報を変数にしたほうがわかりやすい?
 	}
 	
 	Setup(Game game) {

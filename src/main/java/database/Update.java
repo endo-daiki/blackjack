@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Update {
 	private static final Connection con = Database.getConnection();
 
-	public static boolean updateUser(String id, String newId, String name, String password) {
+	public boolean updateUser(String id, String newId, String name, String password) {
 		boolean checker = false;
 		try {
 			PreparedStatement pstmt;
@@ -31,7 +31,7 @@ public class Update {
 		return checker;
 	}
 
-	public static boolean updateResult(String id, String result) {
+	public boolean updateResult(String id, String result) {
 		boolean checker = false;
 		
 		try {

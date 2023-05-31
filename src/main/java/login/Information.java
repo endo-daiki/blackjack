@@ -13,10 +13,12 @@ import model.playLog;
 public class Information {
 	public static RequestDispatcher getPlayInfo(HttpServletRequest request) {
 		RequestDispatcher dispatcher;
+		Select select = new Select();
+		
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
 
-		User userInfo = Select.selectUser(user.getId(), user.getPassword());
+		User userInfo = select.selectUser(user.getId(), user.getPassword());
 		request.setAttribute("user", userInfo);
 
 		List<User> ranker = Select.selectRanker();
@@ -32,10 +34,12 @@ public class Information {
 	
 	public static RequestDispatcher getUserInfo(HttpServletRequest request) {
 		RequestDispatcher dispatcher;
+		Select select = new Select();
+		
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
 		
-		User userInfo = Select.selectUser(user.getId(), user.getPassword());
+		User userInfo = select.selectUser(user.getId(), user.getPassword());
 		request.setAttribute("user", userInfo);
 		
 		dispatcher = request.getRequestDispatcher("userInfo.jsp");

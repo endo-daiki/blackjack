@@ -11,12 +11,13 @@ import model.User;
 public class UserEdit {
 	public static RequestDispatcher excute(User user, HttpServletRequest request) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("userEdit.jsp");
+		Select select = new Select();
 		
 		if(!Validation.validationId(user.getNewId())) {
 			request.setAttribute("error_msg", "IDを入力してください");
 			return dispatcher;
 		}
-		if(Select.selectId(user.getNewId()) && !(user.getNewId().equals(user.getId()))) {
+		if(select.selectId(user.getNewId()) && !(user.getNewId().equals(user.getId()))) {
 			request.setAttribute("error_msg", "このIDは既に使われています。");
 			return dispatcher;
 		}
@@ -35,8 +36,10 @@ public class UserEdit {
 		
 		dispatcher = request.getRequestDispatcher("userEditDone.jsp");
 		
-		Update.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());	
-		User updateUser = Select.selectUser(user.getNewId(), user.getPassword());
+		Update update = new Update();
+		
+		update.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());	
+		User updateUser = select.selectUser(user.getNewId(), user.getPassword());
 		
 		HttpSession session = request.getSession(true);
 	    session.setAttribute("user", updateUser);

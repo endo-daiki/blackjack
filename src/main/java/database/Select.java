@@ -14,7 +14,7 @@ import model.playLog;
 public class Select {
 	private static final Connection con = Database.getConnection();
 
-	public static boolean selectId(String id) {		
+	public boolean selectId(String id) {		
 		boolean idChecker = false;
 		try {
 			PreparedStatement pstmt = con.prepareStatement
@@ -35,7 +35,7 @@ public class Select {
 		return idChecker;
 	}
 	
-	public static User selectUser(String id, String password) {
+	public User selectUser(String id, String password) {
 		User user = null;
 		
 		try {

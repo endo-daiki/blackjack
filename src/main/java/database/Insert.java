@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class Insert {
 	private static final Connection con = Database.getConnection();
 
-	public static boolean insertUser(String id, String name, String password) {
+	public boolean insertUser(String id, String name, String password) {
 		boolean checker = false;
 		
 		try {
@@ -34,7 +34,7 @@ public class Insert {
 		return checker;
 	}
 
-	public static boolean insertLog(String id, String result) {
+	public boolean insertLog(String id, String result) {
 		boolean checker = false;
 		
 		try {
