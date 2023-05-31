@@ -14,8 +14,8 @@ private static String url;
 		Card card1 = playerHand.getList().get(0);
 		Card card2 = playerHand.getList().get(1);
 		
-		deck.add(0, card1);
-		deck.add(0, card2);
+		deck.add(card1);
+		deck.add(card2);
 		
 		Player newPlayer = new Player();
 		newPlayer.draw(deck);

@@ -28,4 +28,7 @@ public class Deck {
     	
     	return card;
     }
+    public void add(Card card) {
+    	deck.add(0, card);
+    }
 }
