@@ -11,6 +11,10 @@ public class Setup {
     	Player player = game.getPlayer();
     	player.setResult("playing");
     	
+    	Card card = new Card("heart", CardNumber.one);
+    	deck.add(card); //split機能をテストしている
+    	deck.add(card);
+    	
     	player.draw(deck);
     	player.draw(deck);  	
     	game.setPlayer(player);

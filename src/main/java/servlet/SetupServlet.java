@@ -43,10 +43,9 @@ public class SetupServlet extends HttpServlet {
 					throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");		
-		String user_id = request.getParameter("user_id");
-		int bet = request.getParameter("bet");
+		int bet = Integer.parseInt(request.getParameter("bet"));
 		
-		new Blackjack(user_id);
+		new Blackjack(bet);
 		String url = Blackjack.Setup();
 		response.sendRedirect(url);
 	}
