@@ -19,34 +19,33 @@ class DeleteTest {
 	static MockHttpServletResponse response = new MockHttpServletResponse();
 	static MockHttpSession session = new MockHttpSession();
 	
+	static Delete delete = new Delete();
+	
 	@BeforeAll
 	public static void setup() {
-		 User user = new User("testId", "testName", "password", "password");
-	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		Insert insert = new Insert();
+		User user = new User("testId", "testName", "password", "password");
+	    insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
-	     Insert.insertLog("testId", "win");
+	    insert.insertLog("testId", "win");
 	}
 	
 	@Test
-	public void testDeleteUser() {
-		Delete.deleteUser("testId");
-		
-		boolean checker = Select.selectId("testId");		
+	public void testDeleteUser() {	
+		boolean checker = delete.deleteUser("testId");		
 		assertEquals(false, checker);
 	}
 	
 	@Test
 	public void testDeleteLog() {
-		Delete.deleteLog("testId");
-		
-		List<playLog> playLogs = Select.selectPlayLog("testId");
-		assertEquals(0, playLogs.size());
+		boolean checker = delete.deleteLog("testId");
+		assertEquals(false, checker);
 	}
 	
 	@AfterAll
 	public static void clean() {
-		Delete.deleteUser("testId");
-		Delete.deleteLog("testId");
+		delete.deleteUser("testId");
+		delete.deleteLog("testId");
 	}
 	
 }

@@ -55,7 +55,9 @@ public class UserEditServlet extends HttpServlet {
 			String checkPassword = request.getParameter("checkPassword");
 			
 			User user = new User(oldId, newId, name, password, checkPassword);
-			RequestDispatcher dispatcher = UserEdit.excute(user, request);
+			String url = UserEdit.excute(user, request);
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher(url);
 			
 			dispatcher.forward(request, response);
 	}

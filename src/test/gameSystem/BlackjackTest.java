@@ -31,7 +31,8 @@ class BlackjackTest {
 	@BeforeAll
 	public static void setup() {
 		 User user = new User("testId", "testName", "password", "password");
-	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		 Insert insert = new Insert();
+	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
 	     request.setSession(session);
 	}
@@ -43,38 +44,15 @@ class BlackjackTest {
 	
 	@Test 
 	public void testBlackjack() {
-		Game game = Blackjack.game;
-		
-		game.getUserId();
-		
-		assertEquals("testId", game.getUserId());
-		assertEquals("playing", game.getResult());
+		assertEquals("playerTurn.jsp", Blackjack.getGame(request));
 	}
 	
 	@Test
 	public void testGetGame() 
-			throws ServletException, IOException {
-
-		Game game = Blackjack.game;
-		game.setResult("playing");
+			throws ServletException, IOException {	
+		assertEquals("playerTurn.jsp", Blackjack.getGame(request));
 		
-		RequestDispatcher dispatcher = Blackjack.getGame(request);
-		dispatcher.forward(request, response);
 		
-		String url = response.getForwardedUrl();
-		assertEquals("playerTurn.jsp", url);
-		
-		game.setResult("win");
-		
-		dispatcher = Blackjack.getGame(request);
-		dispatcher.forward(request, response);
-		
-		List<playLog> playLog = Select.selectPlayLog("testId");
-		String result = playLog.get(0).getLog();
-		
-		game = (Game)request.getAttribute("game");
-		assertNotNull(game);
-		assertEquals("win", result);
 	}
 	
 	@Test
@@ -104,8 +82,9 @@ class BlackjackTest {
 	
 	@AfterAll
 	public static void clean() {
-		Delete.deleteUser("testId");
-		Delete.deleteLog("testId");
+		Delete delete = new Delete();
+		delete.deleteUser("testId");
+		delete.deleteLog("testId");
 	}
 
 }

@@ -8,36 +8,36 @@ import database.Select;
 import model.User;
 
 public class Signup {
-	public static RequestDispatcher userSignup(User user, HttpServletRequest request) {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
+	public static String userSignup(User user, HttpServletRequest request) {
+		String url = "signup.jsp";
 		Select select = new Select();
 		
 		if(!Validation.validationId(user.getId())) {
 			request.setAttribute("error_msg", "IDを入力してください");
-			return dispatcher;
+			return url;
 		}
 		if(!Validation.validationName(user.getName())) {
 			request.setAttribute("error_msg", "名前を入力してください");
-			return dispatcher;
+			return url;
 		}
 		if(!Validation.validationPassword(user.getPassword())) {
 			request.setAttribute("error_msg", "パスワードを入力してください");
-			return dispatcher;
+			return url;
 		}
 		if(!Validation.passwordCheck(user.getPassword(), user.getCheckPassword())) {
 			request.setAttribute("error_msg", "パスワードが正しくありません");
-			return dispatcher;
+			return url;
 		}
 		if(select.selectId(user.getId())) {
 			request.setAttribute("error_msg", "このIDは既に使われています。");
-			return dispatcher;
+			return url;
 		}
 			
-		dispatcher = request.getRequestDispatcher("signupDone.jsp");
+		url = "signupDone.jsp";
 
 		Insert insert = new Insert();
 		insert.insertUser(user.getId(), user.getName(), user.getPassword());
 		
-		return dispatcher;
+		return url;
 	}
 }

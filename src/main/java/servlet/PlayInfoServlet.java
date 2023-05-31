@@ -33,8 +33,9 @@ public class PlayInfoServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
+		String url = Information.getPlayInfo(request);
 		RequestDispatcher dispatcher = 
-				Information.getPlayInfo(request);
+				request.getRequestDispatcher(url); 				
 		dispatcher.forward(request, response);
 	}
 

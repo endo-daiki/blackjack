@@ -33,8 +33,9 @@ public class UserInfoServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		
+		String url = Information.getUserInfo(request);
 		RequestDispatcher dispatcher = 
-				Information.getUserInfo(request);
+				request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
 

@@ -48,8 +48,9 @@ public class UserDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String id =  request.getParameter("id");
 
+		String url = UserDelete.excute(id, request);
 		RequestDispatcher dispatcher = 
-				UserDelete.excute(id, request);
+				request.getRequestDispatcher(url);				
 		dispatcher.forward(request, response);
 	}
 

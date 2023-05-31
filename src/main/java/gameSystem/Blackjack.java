@@ -8,16 +8,15 @@ import database.Update;
 import model.Game;
 
 public class Blackjack {
-	public static Game game;
+	private static Game game;
 	private static String url;
     
     public Blackjack(String id) {
     	game = new Game(id);
-    	url = "PlayerTurn";
+    	url = "playerTurn.jsp";
     }
 
-    public static RequestDispatcher getGame(HttpServletRequest request) {
-    	RequestDispatcher dispatcher;
+    public static String getGame(HttpServletRequest request) {
     	Update update = new Update();
     	Insert insert = new Insert();
     	
@@ -26,12 +25,12 @@ public class Blackjack {
     		update.updateResult(game.getUserId(), game.getResult());
     		insert.insertLog(game.getUserId(), game.getResult());
     		
-    		dispatcher = request.getRequestDispatcher("result.jsp");
-    		return dispatcher;
+    		url = "result.jsp";
+    		return url;
     	}
 		
-    	dispatcher = request.getRequestDispatcher("playerTurn.jsp");
-		return dispatcher;
+    	url = "playerTurn.jsp";
+		return url;
     }
     
     public static String Setup() {    	

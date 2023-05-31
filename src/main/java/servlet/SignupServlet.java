@@ -51,11 +51,12 @@ public class SignupServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-		String checkPassword = request.getParameter("checkPassword");
-		
+		String checkPassword = request.getParameter("checkPassword");		
 		User user = new User(id, name, password, checkPassword);
-		RequestDispatcher dispatcher = Signup.userSignup(user, request);
 		
+		String url = Signup.userSignup(user, request);
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
 

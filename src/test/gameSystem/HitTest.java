@@ -21,7 +21,8 @@ class HitTest {
 	@BeforeAll
 	public static void setup() {
 		 User user = new User("testId", "testName", "password", "password");
-	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		 Insert insert = new Insert();
+	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
 	     new Blackjack("testId");
 	     request.setSession(session);
@@ -46,7 +47,8 @@ class HitTest {
 	
 	@AfterAll
 	public static void clean() {
-		Delete.deleteUser("testId");
-		Delete.deleteLog("testId");
+		Delete delete = new Delete();
+		delete.deleteUser("testId");
+		delete.deleteLog("testId");
 	}
 }

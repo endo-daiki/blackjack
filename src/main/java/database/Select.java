@@ -66,7 +66,7 @@ public class Select {
 		return user;
 	}
 	
-	public static List<User> selectRanker() {
+	public List<User> selectRanker() {
 		List<User> ranker = new ArrayList<User>();
 		
 		try {
@@ -90,7 +90,7 @@ public class Select {
 		return ranker;
 	}
 
-	public static List<playLog> selectPlayLog(String id) {	
+	public List<playLog> selectPlayLog(String id) {	
 		List<playLog> playLogs = new ArrayList<playLog>();
 		
 		try {

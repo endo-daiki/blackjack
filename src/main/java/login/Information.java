@@ -11,8 +11,8 @@ import model.User;
 import model.playLog;
 
 public class Information {
-	public static RequestDispatcher getPlayInfo(HttpServletRequest request) {
-		RequestDispatcher dispatcher;
+	public static String getPlayInfo(HttpServletRequest request) {
+		String url;
 		Select select = new Select();
 		
 		HttpSession session = request.getSession(true);
@@ -21,19 +21,19 @@ public class Information {
 		User userInfo = select.selectUser(user.getId(), user.getPassword());
 		request.setAttribute("user", userInfo);
 
-		List<User> ranker = Select.selectRanker();
+		List<User> ranker = select.selectRanker();
 		request.setAttribute("ranker", ranker);
 		
-		List<playLog> playLog = Select.selectPlayLog(user.getId());
+		List<playLog> playLog = select.selectPlayLog(user.getId());
 		request.setAttribute("playLog", playLog);
 		
-		dispatcher = request.getRequestDispatcher("playInfo.jsp");
+		url = "playInfo.jsp";
 		
-		return dispatcher;
+		return url;
 	}
 	
-	public static RequestDispatcher getUserInfo(HttpServletRequest request) {
-		RequestDispatcher dispatcher;
+	public static String getUserInfo(HttpServletRequest request) {
+		String url;
 		Select select = new Select();
 		
 		HttpSession session = request.getSession(true);
@@ -42,8 +42,8 @@ public class Information {
 		User userInfo = select.selectUser(user.getId(), user.getPassword());
 		request.setAttribute("user", userInfo);
 		
-		dispatcher = request.getRequestDispatcher("userInfo.jsp");
+		url = "userInfo.jsp";
 		
-		return dispatcher;
+		return url;
 	}
 }
