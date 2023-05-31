@@ -10,14 +10,12 @@
 	}
 %>
 <%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,java.util.List" %>
+<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game");
 	Player player = game.getPlayer();
-	Hand playerHand = player.getHand();
-	Point playerPoint = player.getPoint();
+	Player split = game.getSplit();
 	Player dealer = game.getDealer();
-	Hand dealerHand = dealer.getHand();
-	Point dealerPoint = dealer.getPoint();
 %>
 <!DOCTYPE html>
 <html>
@@ -34,43 +32,99 @@
         <div class="row justify-content-center">
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">ゲームリザルト</p>
-            <div class="col-7 border">
-            	<% for(Card card : dealerHand.getList()) { %>
+            <div class="col-12 border">
+           		<% 
+            		Hand dealerHand = dealer.getHand(); 
+            		List<Card> dealerHandList = dealerHand.getList();
+            		Point dealerPoint = dealer.getPoint();
+            	%>
+            	<% for(Card card : dealerHandList) { %>
             		<img  src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
             	<% } %>
+            	<p class="text-center text-danger">
+					<% if(dealerPoint.burstCheck()) { %>
+						Burst!!
+					<% } %>
+					<% if(dealerPoint.bjCheck()) { %>
+           				BlackJack!!
+           			<% } %>
+            	</p>
                <p class="text-center">
 			   	<%= dealerPoint.getScore() %>
 			   </p>
             </div>
-            <div class="col-7 border">
-            	<% for(Card card : playerHand.getList()) { %>
+            <% if(!(split.result.equals("ready"))) { %>
+            	<% 
+	            	Hand splitHand = split.getHand(); 
+	            	Point splitPoint = split.getPoint(); 
+	            	List<Card> splitHandList = splitHand.getList();
+	            	int point = splitPoint.getScore();
+	            %>
+	            <div class="col-6 border <% if(split.result.equals("playing")) { %>border-danger<%}%>">
+	            	<% for(Card card : splitHandList) {  %>
+	            		<img src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
+	            	<% } %>
+		             	<p class="text-center text-danger">
+		             	<% if(dealerPoint.burstCheck()) { %>
+							Burst!!
+						<% } %>
+						<% if(splitPoint.bjCheck()) { %>
+	          				BlackJack!!
+	          			<% } %>
+            		</p>
+	             	<p class="text-center">
+	             		<% if(splitPoint.aceCountCheck() && split.result.equals("playing")) { %>
+						<%= (point - 10) %>
+						 / 
+						<% } %>             		
+	             		<%= point %>
+	             	</p>
+	             	<h3 class="text-center text-danger">
+						<%= split.result %>
+            		</h3>
+	            </div>
+            <% } %>
+            <div class="col-6 border">
+            	<% 
+	            	Hand playerHand = player.getHand(); 
+	            	Point playerPoint = player.getPoint(); 
+	            	List<Card> playerHandList = playerHand.getList();
+	            	int point = playerPoint.getScore();
+	            %>
+            	<% for(Card card : playerHandList) { %>
             		<img  src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
             	<% } %>
-            	<% if(playerPoint.getScore() == 21) { %>
+            	<% if(playerPoint.bjCheck()) { %>
             		<p class="text-center text-danger">BlackJack!!</p>
             	<% } %>
-              	<p class="text-center"><%= playerPoint.getScore() %></p>
+              	<p class="text-center">
+              		<%= point %>
+              	</p>
+              	<h3 class="text-center text-danger">
+              		<%= player.result %>
+              	</h3>
             </div>
-            <h3 class="text-center text-danger">
-            	<% switch(game.getResult()) { 
-            		case  "win" : %>
-            			you win!
-            	<% 		break; 
-            		case "lose" : %>
-            			you lose...
-            	<%      break;
-            		case "draw" : %>
-            			draw..
-            	<% 		break; 
-            	} %>
-            </h3>
-            <div class="col-7 border">
+             result is <%= game.getBet().refund() %>
+            <div class="col-12 border">
             	<form action="Setup" method="post">
-            		<input type="hidden" name="user_id" value="<%= user.getId() %>">
-					<button type="submit" class="btn btn-primary">もう一度</button>
+            		bet is
+				 <select class="form-select" name="bet">
+				    <option selected value="1">1</option>
+				    <option value="2">2</option>
+				    <option value="3">3</option>
+				    <option value="4">4</option>
+				    <option value="5">5</option>
+				    <option value="6">6</option>
+				    <option value="7">7</option>
+				    <option value="8">8</option>
+				    <option value="9">9</option>
+				    <option value="10">10</option>
+				 </select>
+				<div class="d-grid gap-2">
+					<button type="submit" class="btn btn-outline-primary">RE START</button>
+				</div>
 				</form>
             	<a href="Main" class="btn btn-danger">終了</a>
-            </div>
         </div>
     </div>
 

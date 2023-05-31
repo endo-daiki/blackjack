@@ -21,6 +21,9 @@ public class Player{
 	public Point getPoint() {
 		return point;
 	}
+	public String getResult() {
+		return this.result;
+	}
 	
 	public void setResult(String result) {
 		this.result = result;

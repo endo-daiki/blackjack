@@ -1,5 +1,6 @@
 package model;
 
+import gameSystem.Bet;
 import gameSystem.Deck;
 import gameSystem.Player;
 
@@ -9,14 +10,15 @@ public class Game {
 	private Player dealer;
 	private Player split;
 	private String user_id;
+	private Bet bet;
 	
 	public Game() {}
-	public Game(String user_id) {
+	public Game(int bet) {
 		this.deck = new Deck();
 		this.player = new Player();
 		this.dealer = new Player();
 		this.split = new Player();
-		this.user_id = user_id;
+		this.setBet(new Bet(bet));
 	}
 	
 	public Deck getDeck() {
@@ -49,5 +51,11 @@ public class Game {
 	}
 	public void setSplit(Player split) {
 		this.split = split;
+	}
+	public Bet getBet() {
+		return bet;
+	}
+	public void setBet(Bet bet) {
+		this.bet = bet;
 	}
 }

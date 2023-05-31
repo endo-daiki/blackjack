@@ -66,7 +66,7 @@
             			<% } %>
             		</p>
 	             	<p class="text-center">
-	             		<% if(splitPoint.aceCheck() && split.result.equals("playing")) { %>
+	             		<% if(splitPoint.aceCountCheck() && split.result.equals("playing")) { %>
 						<%= (point - 10) %>
 						 / 
 						<% } %>             		
@@ -74,25 +74,42 @@
 	             	</p>
 	            </div>
             <% } %>
-            <div class="col-7 border">
-            	<% for(Card card : playerHand.getList()) {  %>
+            <div class="col-6 border">
+            	<% 
+	            	Hand playerHand = player.getHand(); 
+	            	Point playerPoint = player.getPoint(); 
+	            	List<Card> playerHandList = playerHand.getList();
+	            	int point = playerPoint.getScore();
+	            %>
+            	<% for(Card card : playerHandList) {  %>
             		<img src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
             	<% } %>
+             	<p class="text-center text-danger">
+					<% if(playerPoint.bjCheck()) { %>
+          			BlackJack!!
+          			<% } %>
+            	</p>
              	<p class="text-center">
-             		<% if(playerPoint.aceCountCheck()) { %>
-					<%= (playerPoint.getScore() - 10) %>
+             		<% if(playerPoint.aceCountCheck() && player.result.equals("playing")) { %>
+					<%= (point - 10) %>
 					 / 
 					<% } %>             		
-             		<%= playerPoint.getScore() %>
+             		<%= point %>
              	</p>
             </div>
-            <div class="col-7 border">
+             bet is <%= game.getBet().getBet() %>
+            <div class="col-12 border">
 				<form action="Hit" method="post">
 					<button type="submit" class="btn btn-outline-primary">hit</button>
 				</form>
 				<form action="Stand" method="post">
 					<button type="submit" class="btn btn-outline-danger">stand</button>
 				</form>
+				<% if(playerHand.splitCheck()) { %>
+					<form action="Split" method="post">
+						<button type="submit" class="btn btn-outline">split</button>
+					</form>
+				<% } %>
             	<a href="gameTop.jsp" class="btn btn-outline-danger">戻る</a>
             </div>
         </div>

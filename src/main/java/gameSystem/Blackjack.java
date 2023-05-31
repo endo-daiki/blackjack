@@ -11,8 +11,8 @@ public class Blackjack {
 	private static Game game;
 	private static String url;
     
-    public Blackjack(String id) {
-    	game = new Game(id);
+    public Blackjack(int bet) {
+    	game = new Game(bet);
     	url = "playerTurn.jsp";
     }
 
@@ -23,8 +23,8 @@ public class Blackjack {
     	
     	request.setAttribute("game", game);
     	if(!(player.getResult().equals("playing"))) {
-    		update.updateResult(game.getUserId(), game.getResult());
-    		insert.insertLog(game.getUserId(), game.getResult());
+    		update.updateResult(game.getUserId(), player.getResult());
+    		insert.insertLog(game.getUserId(), player.getResult());
     		
     		url = "result.jsp";
     		return url;

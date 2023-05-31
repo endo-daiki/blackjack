@@ -44,6 +44,7 @@ public class SetupServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");		
 		String user_id = request.getParameter("user_id");
+		int bet = request.getParameter("bet");
 		
 		new Blackjack(user_id);
 		String url = Blackjack.Setup();
