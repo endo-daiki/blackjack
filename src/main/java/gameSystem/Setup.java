@@ -15,6 +15,7 @@ public class Setup {
     	player.draw(deck);
     	player.draw(deck); 
     	
+    	player.setResult("playing");
     	game.setPlayer(player);
     	
     	Player dealer = game.getDealer();
@@ -23,7 +24,6 @@ public class Setup {
     	game.setDealer(dealer);
     	
     	game.setDeck(deck);
-    	game.setResult("playing");
     	
     	if(player.getPoint().bjCheck()) {
 			new Stand(game);

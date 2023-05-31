@@ -8,7 +8,6 @@ public class Game {
 	private Player player;
 	private Player dealer;
 	private Player split;
-	private String result;
 	private String user_id;
 	
 	public Game() {}
@@ -16,8 +15,7 @@ public class Game {
 		this.deck = new Deck();
 		this.player = new Player();
 		this.dealer = new Player();
-		this.split = null;
-		this.result = "playing";
+		this.split = new Player();
 		this.user_id = user_id;
 	}
 	
@@ -26,12 +24,6 @@ public class Game {
 	}
 	public void setDeck(Deck deck) {
 		this.deck = deck;
-	}
-	public String getResult() {
-		return result;
-	}
-	public void setResult(String result) {
-		this.result = result;
 	}
 	public String getUserId() {
 		return this.user_id;
