@@ -9,7 +9,7 @@ public class Hit {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
     	
-    	player.Draw(deck);
+    	player.draw(deck);
     	
     	game.setDeck(deck);
     	game.setPlayer(player);

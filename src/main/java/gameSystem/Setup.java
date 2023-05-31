@@ -12,14 +12,14 @@ public class Setup {
 	Setup(Game game) {
 		Deck deck = game.getDeck();
     	Player player = game.getPlayer();
-    	player.Draw(deck);
-    	player.Draw(deck); 
+    	player.draw(deck);
+    	player.draw(deck); 
     	
     	game.setPlayer(player);
     	
     	Player dealer = game.getDealer();
-    	dealer.Draw(deck);
-    	dealer.Draw(deck);
+    	dealer.draw(deck);
+    	dealer.draw(deck);
     	game.setDealer(dealer);
     	
     	game.setDeck(deck);

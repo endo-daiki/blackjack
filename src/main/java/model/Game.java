@@ -7,7 +7,7 @@ public class Game {
 	private Deck deck;
 	private Player player;
 	private Player dealer;
-	private Player spliter;
+	private Player split;
 	private String result;
 	private String user_id;
 	
@@ -16,7 +16,7 @@ public class Game {
 		this.deck = new Deck();
 		this.player = new Player();
 		this.dealer = new Player();
-		this.spliter = null;
+		this.split = null;
 		this.result = "playing";
 		this.user_id = user_id;
 	}
@@ -52,10 +52,10 @@ public class Game {
 	public void setDealer(Player dealer) {
 		this.dealer = dealer;
 	}
-	public Player getSpliter() {
-		return spliter;
+	public Player getSplit() {
+		return split;
 	}
-	public void setSpliter(Player spliter) {
-		this.spliter = spliter;
+	public void setSplit(Player split) {
+		this.split = split;
 	}
 }

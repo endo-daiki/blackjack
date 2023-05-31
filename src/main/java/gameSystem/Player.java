@@ -9,7 +9,7 @@ public class Player{
 		point = new Point();
 	}
 	
-	public void Draw(Deck deck) {
+	public void draw(Deck deck) {
 		Card card = this.hand.draw(deck);
 		point.calc(card);
 	}

@@ -17,7 +17,7 @@ public class Stand {
 		} 
 		
 		while(dealer.getPoint().getScore() < 17) {
-			dealer.Draw(deck);
+			dealer.draw(deck);
 		}
 		
 		game.setDeck(deck);
