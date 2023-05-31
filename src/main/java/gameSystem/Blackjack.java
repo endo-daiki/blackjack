@@ -19,9 +19,10 @@ public class Blackjack {
     public static String getGame(HttpServletRequest request) {
     	Update update = new Update();
     	Insert insert = new Insert();
+    	Player player = game.getPlayer();
     	
     	request.setAttribute("game", game);
-    	if(!(game.getResult().equals("playing"))) {
+    	if(!(player.getResult().equals("playing"))) {
     		update.updateResult(game.getUserId(), game.getResult());
     		insert.insertLog(game.getUserId(), game.getResult());
     		

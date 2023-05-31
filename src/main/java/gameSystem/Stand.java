@@ -8,29 +8,36 @@ public class Stand {
 	Stand(Game game) {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
+		Player split = game.getSplit();
 		Player dealer = game.getDealer();
 		
-		if(player.getPoint().burstCheck()) {
-			game.setResult("lose");
-			url = "Result";
+		if(player.result == "split") {
+			player.setResult("playing");
+			split.setResult("stand");
+			
+			if(player.getPoint().bjCheck()) {
+				new Stand(game);
+				url = Stand.getUrl();
+				return;
+			}
+			url = "PlayerTurn";
 			return;
-		} 
-		
-		while(dealer.getPoint().getScore() < 17) {
-			dealer.draw(deck);
 		}
+		
+		if(!player.getPoint().burstCheck() || !split.getPoint().burstCheck()) {
+			while(dealer.getPoint().getScore() < 17) {
+				dealer.draw(deck);
+			}
+		}
+		
+		player.judge(dealer);
+		split.judge(dealer);
+		//game.setResult(player.result);
 		
 		game.setDeck(deck);
 		game.setPlayer(player);
+		game.setSplit(split);
 		game.setDealer(dealer);
-				
-		if(dealer.getPoint().burstCheck() || player.getPoint().score > dealer.getPoint().score) {
-			game.setResult("win");
-		} else if (player.getPoint().burstCheck() || player.getPoint().score < dealer.getPoint().score) {
-			game.setResult("lose");
-		} else {
-			game.setResult("draw");
-		}
 		
 		url = "Result";
 	}
