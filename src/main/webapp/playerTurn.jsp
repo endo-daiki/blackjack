@@ -13,10 +13,8 @@
 <% 
 	Game game = (Game) request.getAttribute("game");
 	Player player = game.getPlayer();
-	Hand playerHand = player.getHand();
-	Point playerPoint = player.getPoint();
+	Player split = game.getSplit();
 	Player dealer = game.getDealer();
-	Hand dealerHand = dealer.getHand();
 %>
 <!DOCTYPE html>
 <html>
@@ -34,15 +32,48 @@
     <div class="row justify-content-center">
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">プレイヤーターン</p>
-            <div class="col-7 border">
-            	<img src="img/<%= dealerHand.getList().get(0).getSuit() %>_<%= dealerHand.getList().get(0).getCardNumber().getNo() %>.png" width="100" height="150">
-            	<img src="img/trump_back.png" width="100" height="150">
-            	<% if( dealerHand.getList().get(0).courtCheck() ) { %>
-            	<p class="text-center"><%= dealerHand.getList().get(0).getCardNumber().getNo() %>(10) + ?</p>
-            	<% } else { %>
-            	<p class="text-center"><%= dealerHand.getList().get(0).getCardNumber().getNo() %> + ?</p>
-            	<% } %>
+            <div class="col-12 border">
+            <% 
+           		Hand dealerHand = dealer.getHand(); 
+           		List<Card> list = dealerHand.getList();
+           		Card openCard = list.get(0); 
+            %>
+           	<img src="img/<%= dealerHand.getList().get(0).getSuit() %>_<%= dealerHand.getList().get(0).getCardNumber().getNo() %>.png" width="100" height="150">
+           	<img src="img/trump_back.png" width="100" height="150">
+           	<% if( dealerHand.getList().get(0).courtCheck() ) { %>
+           	<p class="text-center"><%= dealerHand.getList().get(0).getCardNumber().getNo() %>(10) + ?</p>
+           	<% } else { %>
+           	<p class="text-center"><%= dealerHand.getList().get(0).getCardNumber().getNo() %> + ?</p>
+           	<% } %>
             </div>
+            <% if(!(split.result.equals("ready"))) { %>
+            	<% 
+	            	Hand splitHand = split.getHand(); 
+	            	Point splitPoint = split.getPoint(); 
+	            	List<Card> splitHandList = splitHand.getList();
+	            	int point = splitPoint.getScore();
+	            %>
+	            <div class="col-6 border <% if(split.result.equals("playing")) { %>border-danger<%}%>">
+	            	<% for(Card card : splitHandList) {  %>
+	            		<img src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
+	            	<% } %>
+	             	<p class="text-center text-danger">
+						<% if(splitPoint.burstCheck()) { %>
+						Burst!!
+						<% } %>
+						<% if(splitPoint.bjCheck()) { %>
+            			BlackJack!!
+            			<% } %>
+            		</p>
+	             	<p class="text-center">
+	             		<% if(splitPoint.aceCheck() && split.result.equals("playing")) { %>
+						<%= (point - 10) %>
+						 / 
+						<% } %>             		
+	             		<%= point %>
+	             	</p>
+	            </div>
+            <% } %>
             <div class="col-7 border">
             	<% for(Card card : playerHand.getList()) {  %>
             		<img src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">

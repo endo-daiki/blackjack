@@ -8,19 +8,37 @@ public class Hit {
 	Hit(Game game) {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
-    	
-    	player.draw(deck);
-    	
-    	game.setDeck(deck);
-    	game.setPlayer(player);
-		
-    	if(player.getPoint().burstCheck() || player.getPoint().bjCheck()) {
-    		new Stand(game);
-			url = Stand.getUrl();
-			return;
+			
+		if(player.result.equals("split")) {
+			Player split = game.getSplit();
+			split.draw(deck);
+			
+			game.setDeck(deck);
+	    	game.setSplit(split);
+	    	
+			if(split.getPoint().burstCheck() || split.getPoint().bjCheck()) {
+				split.setResult("stand");
+	    		new Stand(game);
+				url = Stand.getUrl();
+				return;
+			}
+			
+			url = "PlayerTurn";
+		} else {
+			player.draw(deck);
+			
+			game.setDeck(deck);
+	    	game.setPlayer(player);
+	    	
+			if(player.getPoint().burstCheck() || player.getPoint().bjCheck()) {
+	    		player.setResult("stand");
+	    		new Stand(game);
+				url = Stand.getUrl();
+				return;
+			}
+			
+			url = "PlayerTurn";
 		}
-    	
-		url = "PlayerTurn";
 	}
 	
 	public static String getUrl() {

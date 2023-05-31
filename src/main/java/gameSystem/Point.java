@@ -23,11 +23,11 @@ public class Point {
     	}
 	}
 	
-	boolean burstCheck() {
+	public boolean burstCheck() {
 		return this.score > 21;
 	}
 	
-	boolean bjCheck() {
+	public boolean bjCheck() {
 		return this.score == 21;
 	}
 	
