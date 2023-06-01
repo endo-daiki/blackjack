@@ -3,7 +3,7 @@ package gameSystem;
 public class Player{
 	private Hand hand;
 	private Point point;
-	public String result;
+	private String result;
 	
 	public Player() {
 		hand = new Hand();

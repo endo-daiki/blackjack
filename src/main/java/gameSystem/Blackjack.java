@@ -25,8 +25,8 @@ public class Blackjack {
     	HttpSession session = request.getSession(true);
     	User user = (User)session.getAttribute("user");
     	
-    	bet.calc(game.getPlayer().result);
-    	bet.calc(game.getSplit().result);    		
+    	bet.calc(game.getPlayer().getResult());
+    	bet.calc(game.getSplit().getResult());    		
     	
     	game.setBet(bet);
     	

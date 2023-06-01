@@ -9,7 +9,7 @@ public class Hit {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
 			
-		if(player.result.equals("split")) {
+		if(player.getResult().equals("split")) {
 			Player split = game.getSplit();
 			split.draw(deck);
 			

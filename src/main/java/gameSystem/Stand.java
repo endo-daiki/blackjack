@@ -11,7 +11,7 @@ public class Stand {
 		Player split = game.getSplit();
 		Player dealer = game.getDealer();
 		
-		if(player.result == "split") {
+		if(player.getResult() == "split") {
 			player.setResult("playing");
 			split.setResult("stand");
 			
@@ -32,7 +32,7 @@ public class Stand {
 		
 		player.judge(dealer);
 		split.judge(dealer);
-		game.setGameResult(player.result);
+		game.setGameResult(player.getResult());
 		
 		game.setDeck(deck);
 		game.setPlayer(player);

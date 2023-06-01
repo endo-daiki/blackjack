@@ -53,14 +53,14 @@
 			   	<%= dealerPoint.getScore() %>
 			   </p>
             </div>
-            <% if(!(split.result.equals("ready"))) { %>
+            <% if(!(split.getResult().equals("ready"))) { %>
             	<% 
 	            	Hand splitHand = split.getHand(); 
 	            	Point splitPoint = split.getPoint(); 
 	            	List<Card> splitHandList = splitHand.getList();
 	            	int point = splitPoint.getScore();
 	            %>
-	            <div class="col-6 border <% if(split.result.equals("playing")) { %>border-danger<%}%>">
+	            <div class="col-6 border <% if(split.getResult().equals("playing")) { %>border-danger<%}%>">
 	            	<% for(Card card : splitHandList) {  %>
 	            		<img src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
 	            	<% } %>
@@ -73,14 +73,14 @@
 	          			<% } %>
             		</p>
 	             	<p class="text-center">
-	             		<% if(splitPoint.aceCountCheck() && split.result.equals("playing")) { %>
+	             		<% if(splitPoint.aceCountCheck() && split.getResult().equals("playing")) { %>
 						<%= (point - 10) %>
 						 / 
 						<% } %>             		
 	             		<%= point %>
 	             	</p>
 	             	<h3 class="text-center text-danger">
-						<%= split.result %>
+						<%= split.getResult() %>
             		</h3>
 	            </div>
             <% } %>
@@ -106,7 +106,7 @@
               		<%= point %>
               	</p>
               	<h3 class="text-center text-danger">
-              		<%= player.result %>
+              		<%= player.getResult() %>
               	</h3>
             </div>
             <p class="col-12">refund is <%= game.getBet().refund() %></p>

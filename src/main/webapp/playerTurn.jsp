@@ -46,14 +46,14 @@
            	<p class="text-center"><%= dealerHand.getList().get(0).getCardNumber().getNo() %> + ?</p>
            	<% } %>
             </div>
-            <% if(!(split.result.equals("ready"))) { %>
+            <% if(!(split.getResult().equals("ready"))) { %>
             	<% 
 	            	Hand splitHand = split.getHand(); 
 	            	Point splitPoint = split.getPoint(); 
 	            	List<Card> splitHandList = splitHand.getList();
 	            	int point = splitPoint.getScore();
 	            %>
-	            <div class="col-6 border <% if(split.result.equals("playing")) { %>border-danger<%}%>">
+	            <div class="col-6 border <% if(split.getResult().equals("playing")) { %>border-danger<%}%>">
 	            	<% for(Card card : splitHandList) {  %>
 	            		<img src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
 	            	<% } %>
@@ -66,7 +66,7 @@
             			<% } %>
             		</p>
 	             	<p class="text-center">
-	             		<% if(splitPoint.aceCountCheck() && split.result.equals("playing")) { %>
+	             		<% if(splitPoint.aceCountCheck() && split.getResult().equals("playing")) { %>
 						<%= (point - 10) %>
 						 / 
 						<% } %>             		
@@ -74,7 +74,7 @@
 	             	</p>
 	            </div>
             <% } %>
-            <div class="col-6 border <% if(player.result.equals("playing")) { %>border-danger<%}%>">
+            <div class="col-6 border <% if(player.getResult().equals("playing")) { %>border-danger<%}%>">
             	<% 
 	            	Hand playerHand = player.getHand(); 
 	            	Point playerPoint = player.getPoint(); 
@@ -90,7 +90,7 @@
           			<% } %>
             	</p>
              	<p class="text-center">
-             		<% if(playerPoint.aceCountCheck() && player.result.equals("playing")) { %>
+             		<% if(playerPoint.aceCountCheck() && player.getResult().equals("playing")) { %>
 					<%= (point - 10) %>
 					 / 
 					<% } %>             		
