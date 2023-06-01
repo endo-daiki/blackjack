@@ -21,7 +21,7 @@ class PlayerTest {
 	@Test
 	public void testDraw() {
 		Deck deck = new Deck();
-		player.Draw(deck);
+		player.draw(deck);
 		
 		Hand hand = player.getHand();
 		assertEquals(false, hand.splitCheck());

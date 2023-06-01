@@ -24,11 +24,12 @@ class UserEditTest {
 	
 	@BeforeAll
     public static void setup() { //テスト用のユーザーを先に登録
+		Insert insert = new Insert();
        User user = new User("testId", "testName", "password", "password");
-       Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+       insert.insertUser(user.getId(), user.getName(), user.getPassword());
        
        user = new User("otherId", "otherName", "password", "password");
-       Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+       insert.insertUser(user.getId(), user.getName(), user.getPassword());
     }
 
 	@Test 
@@ -36,7 +37,9 @@ class UserEditTest {
 			throws ServletException, IOException{ //idが未入力のときにエラーを返すかどうか
 		
 		User user = new User("testId", "", "testName", "password", "password");
-		RequestDispatcher dispatcher = UserEdit.excute(user, request);
+		
+		String url = UserEdit.excute(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -49,7 +52,9 @@ class UserEditTest {
 			throws ServletException, IOException{ //名前が未入力のときにエラーを返すかどうか
 		
 		User user = new User("testId", "newId", "", "password", "password");
-		RequestDispatcher dispatcher = UserEdit.excute(user, request);
+		
+		String url = UserEdit.excute(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -62,7 +67,9 @@ class UserEditTest {
 			throws ServletException, IOException{ //パスワードが未入力のときにエラーを返すかどうか
 		
 		User user = new User("testId", "newId", "newTestName", "", "password");
-		RequestDispatcher dispatcher = UserEdit.excute(user, request);
+		
+		String url = UserEdit.excute(user, request);
+		RequestDispatcher dispatcher =  request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -75,7 +82,9 @@ class UserEditTest {
 			throws ServletException, IOException{ //パスワードと確認用パスワードが違う(未入力含む)のときにエラーを返すかどうか
 		
 		User user = new User("testId", "newId", "newTestName", "PAssWorD", "password");
-		RequestDispatcher dispatcher = UserEdit.excute(user, request);
+		
+		String url = UserEdit.excute(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -88,7 +97,9 @@ class UserEditTest {
 			throws ServletException, IOException{ //登録したいidの重複判定のテスト
 		
 		User user = new User("testId", "otherId", "newTestName", "password", "password");
-		RequestDispatcher dispatcher = UserEdit.excute(user, request);
+		
+		String url = UserEdit.excute(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -101,17 +112,21 @@ class UserEditTest {
 		throws ServletException, IOException{ //正しくユーザー登録されているかどうかのテスト
 		
 		User user = new User("testId", "testId", "変更したユーザー名", "password", "password");
-		RequestDispatcher dispatcher = UserEdit.excute(user, request);		//ユーザーを登録
+		
+		String url = UserEdit.excute(user, request);//ユーザーを登録
+		RequestDispatcher dispatcher =	request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
-		User updateUser = Select.selectUser(user.getId(), user.getPassword()); //dbからユーザーを取得
+		Select select = new Select();
+		User updateUser = select.selectUser(user.getId(), user.getPassword()); //dbからユーザーを取得
 		assertEquals("変更したユーザー名", updateUser.getName()); //取得したユーザーの名前を確認
 	}
 	
 	@AfterAll
 	public static void clean() {
-		Delete.deleteUser("testId");
-		Delete.deleteUser("otherId");
+		Delete delete = new Delete();
+		delete.deleteUser("testId");
+		delete.deleteUser("otherId");
 	}
 }

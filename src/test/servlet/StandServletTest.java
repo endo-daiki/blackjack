@@ -29,7 +29,9 @@ class StandServletTest {
 		servlet = new StandServlet();
 		
 		 user = new User("testId", "testName", "password", "password");
-	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		 
+		 Insert insert = new Insert();
+	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
 	     Login.userLogin(user, request);
 	}
@@ -50,7 +52,7 @@ class StandServletTest {
 		
 		response = new MockHttpServletResponse();
 		
-		new Blackjack("testId");
+		new Blackjack(10);
 		
 		servlet.doPost(request, response);
 		

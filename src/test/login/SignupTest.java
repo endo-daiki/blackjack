@@ -25,7 +25,9 @@ class SignupTest {
 	@BeforeAll
     public static void setup() { //テスト用のユーザーを先に登録
        User user = new User("testId", "testName", "password", "password");
-       Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+       
+       Insert insert = new Insert();
+       insert.insertUser(user.getId(), user.getName(), user.getPassword());
     }
 
 	@Test 
@@ -33,7 +35,9 @@ class SignupTest {
 			throws ServletException, IOException{ //idが未入力のときにエラーを返すかどうか
 		
 		User user = new User("", "testName", "password", "password");
-		RequestDispatcher dispatcher = Signup.userSignup(user, request);
+		
+		String url = Signup.userSignup(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -46,7 +50,9 @@ class SignupTest {
 			throws ServletException, IOException{ //名前が未入力のときにエラーを返すかどうか
 		
 		User user = new User("testmail@mail.com", "", "password", "password");
-		RequestDispatcher dispatcher = Signup.userSignup(user, request);
+		
+		String url = Signup.userSignup(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -59,7 +65,9 @@ class SignupTest {
 			throws ServletException, IOException{ //パスワードが未入力のときにエラーを返すかどうか
 		
 		User user = new User("testmail@mail.com", "testName", "", "password");
-		RequestDispatcher dispatcher = Signup.userSignup(user, request);
+		
+		String url = Signup.userSignup(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -72,7 +80,9 @@ class SignupTest {
 			throws ServletException, IOException{ //パスワードと確認用パスワードが違う(未入力含む)のときにエラーを返すかどうか
 		
 		User user = new User("testmail@mail.com", "testName", "AbcD1234", "abcd1234");
-		RequestDispatcher dispatcher = Signup.userSignup(user, request);
+		
+		String url = Signup.userSignup(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -85,7 +95,9 @@ class SignupTest {
 			throws ServletException, IOException{ //登録したいidの重複判定のテスト
 		
 		User user = new User("testId", "テストネーム", "PASSWORD", "PASSWORD");
-		RequestDispatcher dispatcher = Signup.userSignup(user, request);
+		
+		String url = Signup.userSignup(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -97,18 +109,22 @@ class SignupTest {
 	public void signupTest()
 		throws ServletException, IOException{ //正しくユーザー登録されているかどうかのテスト
 		
-		User user = new User("newUser", "新しいユーザー", "PASSWORD", "PASSWORD"); //正しい入力値のユーザー
-		RequestDispatcher dispatcher = Signup.userSignup(user, request);			//ユーザーを登録
+		User user = new User("newUser", "新しいユーザー", "PASSWORD", "PASSWORD");//正しい入力値のユーザー
+		
+		String url = Signup.userSignup(user, request);//ユーザーを登録
+		RequestDispatcher dispatcher = 	request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
-		User loginUser = Select.selectUser(user.getId(), user.getPassword()); //dbからユーザーを取得
+		Select select = new Select();
+		User loginUser = select.selectUser(user.getId(), user.getPassword()); //dbからユーザーを取得
 		assertEquals("新しいユーザー", loginUser.getName()); //取得したユーザーの名前を確認
 	}
 	
 	@AfterAll
 	public static void clean() {
-		Delete.deleteUser("testId");
-		Delete.deleteUser("newUser");
+		Delete delete = new Delete();
+		delete.deleteUser("testId");
+		delete.deleteUser("newUser");
 	}
 }

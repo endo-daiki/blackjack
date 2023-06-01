@@ -42,13 +42,7 @@ class UpdateTest {
 	public void testUpdateResult() 
 			throws ServletException, IOException{ //正しくゲームログが追加されているかどうか
 		
-		boolean checker = update.updateResult(id, "win"); //勝ち数を1追加
-		assertEquals(true, checker); //正しく編集(機能がうごいているか)されているかの確認
-		
-		checker = update.updateResult(id, "lose"); //負け数を1追加
-		assertEquals(true, checker); //正しく編集(機能がうごいているか)されているかの確認
-		
-		checker = update.updateResult(id, "draw"); //引き分け数を1追加
+		boolean checker = update.updateResult(id, 10); //取得数10を追加
 		assertEquals(true, checker); //正しく編集(機能がうごいているか)されているかの確認
 	}
 	

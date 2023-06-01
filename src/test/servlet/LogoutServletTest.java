@@ -28,7 +28,9 @@ class LogoutServletTest {
 		servlet = new LogoutServlet();
 		
 		 user = new User("testId", "testName", "password", "password");
-	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		 
+		 Insert insert = new Insert();
+	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
 	     Login.userLogin(user, request);
 	}
@@ -45,6 +47,7 @@ class LogoutServletTest {
 	
 	@AfterAll
 	public static void clean() {
-		Delete.deleteUser("testId");
+		Delete delete = new Delete();
+		delete.deleteUser("testId");
 	}
 }

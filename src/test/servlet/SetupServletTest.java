@@ -26,7 +26,9 @@ class SetupServletTest {
 		servlet = new SetupServlet();
 		
 		 User user = new User("testId", "testName", "password", "password");
-	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		 		 
+		 Insert insert = new Insert();
+	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	}
 	
 	@Test
@@ -43,6 +45,7 @@ class SetupServletTest {
 	public void testDoPost() throws
 		ServletException, IOException {
 		
+		request.setParameter("bet", "10");
 		response = new MockHttpServletResponse();
 		
 		servlet.doPost(request, response);
@@ -53,7 +56,8 @@ class SetupServletTest {
 	
 	@AfterAll
 	public static void clean() {
-		Delete.deleteUser("testId");
+		Delete delete = new Delete();
+		delete.deleteUser("testId");
 	}
 
 }

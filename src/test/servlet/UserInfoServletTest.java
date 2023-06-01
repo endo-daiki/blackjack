@@ -28,7 +28,10 @@ class UserInfoServletTest {
 		servlet = new UserInfoServlet();
 		
 		user = new User("testId", "testName", "password", "password");
-	    Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		
+		
+		Insert insert = new Insert();
+	    insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
 	    Login.userLogin(user, request);
 	}

@@ -29,16 +29,12 @@ class SelectTest {
 		
 		for(int i = 0; i < 5; i++) { //適当なユーザーを作成
 			insert.insertUser(String.valueOf(i),  "Name" + i, "password");
-			update.updateResult(String.valueOf(i), "win");
-			insert.insertLog(String.valueOf(i), "win");
-			update.updateResult(String.valueOf(i), "draw");
-			insert.insertLog(String.valueOf(i), "draw");
-			update.updateResult(String.valueOf(i), "lose");
-			insert.insertLog(String.valueOf(i), "lose");
+			update.updateResult(String.valueOf(i), i * 10);
+			insert.insertLog(String.valueOf(i), i * 10);
 		}
 		insert.insertUser(String.valueOf(6),  "Name6", "password");
-		update.updateResult(String.valueOf(6), "win");
-		insert.insertLog(String.valueOf(6), "win");
+		update.updateResult(String.valueOf(6), 100);
+		insert.insertLog(String.valueOf(6), 100);
 		
 		user = select.selectUser("0", "password"); //作ったユーザーでログイン
 		
@@ -63,7 +59,7 @@ class SelectTest {
 		List<User> ranker = select.selectRanker();
 		User topRanker = ranker.get(0);
 		
-		assertEquals(1, topRanker.getRate());
+		assertEquals(200, topRanker.getTip());
 		assertEquals(5, ranker.size());
 	}
 		
@@ -72,7 +68,7 @@ class SelectTest {
 		List<playLog> playLogs = select.selectPlayLog("6");
 		playLog log = playLogs.get(0);
 		
-		assertEquals("win", log.getLog());
+		assertEquals("100", log.getLog());
 	}
 	
 	@AfterAll

@@ -25,21 +25,20 @@ class DeleteTest {
 	public static void setup() {
 		Insert insert = new Insert();
 		User user = new User("testId", "testName", "password", "password");
-	    insert.insertUser(user.getId(), user.getName(), user.getPassword());
-	     
-	    insert.insertLog("testId", "win");
+	    insert.insertUser(user.getId(), user.getName(), user.getPassword());	     
+	    insert.insertLog("testId", 20);
 	}
 	
 	@Test
 	public void testDeleteUser() {	
 		boolean checker = delete.deleteUser("testId");		
-		assertEquals(false, checker);
+		assertEquals(true, checker);
 	}
 	
 	@Test
 	public void testDeleteLog() {
 		boolean checker = delete.deleteLog("testId");
-		assertEquals(false, checker);
+		assertEquals(true, checker);
 	}
 	
 	@AfterAll

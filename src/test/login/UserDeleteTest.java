@@ -25,7 +25,9 @@ class UserDeleteTest {
 	@BeforeAll
     public static void setup() { //テスト用のユーザーを先に登録
        User user = new User(id, name, password, password);
-       Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+       
+       Insert insert = new Insert();
+       insert.insertUser(user.getId(), user.getName(), user.getPassword());
     }
 
 	@Test 
@@ -34,7 +36,8 @@ class UserDeleteTest {
 		
 		UserDelete.excute(id, request);
 	        
-		User user = Select.selectUser(id, password); //最初に登録したユーザーをdbから取得(いなければnull)	
+		Select select = new Select();
+		User user = select.selectUser(id, password); //最初に登録したユーザーをdbから取得(いなければnull)	
 		assertNull(user);
 	}
 	

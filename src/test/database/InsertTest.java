@@ -27,7 +27,7 @@ class InsertTest {
 	
 	@Test
 	public void testInsertLog() {
-		boolean checker = insert.insertLog("testId", "win");
+		boolean checker = insert.insertLog("testId", 20);
 		assertEquals(true, checker);
 	}
 	

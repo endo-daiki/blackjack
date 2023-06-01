@@ -24,7 +24,8 @@ class LogoutTest {
 	@BeforeAll
     public static void setup() { //テスト用のユーザーを先に登録
        User user = new User(id, name, password, password);
-       Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+       Insert insert = new Insert();
+       insert.insertUser(user.getId(), user.getName(), user.getPassword());
        
        Login.userLogin(user, request);
     }
@@ -41,6 +42,7 @@ class LogoutTest {
 
 	@AfterAll
 	public static void clean() {
-		Delete.deleteUser(id);
+		Delete delete = new Delete();
+		delete.deleteUser(id);
 	}
 }

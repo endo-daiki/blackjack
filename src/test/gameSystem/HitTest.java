@@ -24,13 +24,13 @@ class HitTest {
 		 Insert insert = new Insert();
 	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
-	     new Blackjack("testId");
+	     new Blackjack(10);
 	     request.setSession(session);
 	}
 	
 	@Test 
 	public void testHit() {
-		Game game = Blackjack.game;
+		Game game = new Game(10);
 		
 		new Hit(game);
 		String url = Hit.getUrl();

@@ -39,7 +39,7 @@ class BlackjackTest {
 	
 	@BeforeEach
 	public void setGame() {
-		new Blackjack("testId");
+		new Blackjack(10);
 	}
 	
 	@Test 
@@ -50,34 +50,40 @@ class BlackjackTest {
 	@Test
 	public void testGetGame() 
 			throws ServletException, IOException {	
-		assertEquals("playerTurn.jsp", Blackjack.getGame(request));
-		
-		
+		Blackjack.Stand();
+		assertEquals("result.jsp", Blackjack.getGame(request));
 	}
 	
 	@Test
 	public void testSetup() {
 		Blackjack.Setup();
-		Game game = Blackjack.game;
-		String result = game.getResult();
+		String resultUrl = Blackjack.getGame(request); 
 		
-		assertEquals("playing", result);
+		assertEquals("playerTurn.jsp", resultUrl);
 	}
 	
 	@Test
 	public void testHit() {
 		Blackjack.Hit();
-		Game game = Blackjack.game;
-		String result = game.getResult();
+		String resultUrl = Blackjack.getGame(request); 
 		
-		assertEquals("playing", result);
+		assertEquals("playerTurn.jsp", resultUrl);
 	}
 	
 	@Test
 	public void testStand() {
 		String url = Blackjack.Stand();
+		String resultUrl = Blackjack.getGame(request); 
 
-		assertEquals("Result", url);
+		assertEquals("result.jsp", resultUrl);
+	}
+	
+	@Test
+	public void testSplit() {
+		Blackjack.Split();
+		String resultUrl = Blackjack.getGame(request); 
+
+		assertEquals("result.jsp", resultUrl);
 	}
 	
 	@AfterAll

@@ -25,13 +25,18 @@ class LoginTest {
 	@BeforeAll
 	 public static void setup() { //テスト用のユーザーを登録
 		User user = new User("testId", "testName", "password", "password");
-	    Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		
+		Insert insert = new Insert();
+	    insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	}
 	
 	@Test
 	public void testUserLogin() throws Exception {
 		User user = new User("testId", "password");
-		RequestDispatcher dispatcher = Login.userLogin(user, request);
+		Login login = new Login();
+		
+		String url = login.userLogin(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 
 		dispatcher.forward(request, response);	
 				
@@ -45,7 +50,9 @@ class LoginTest {
 		ServletException, IOException { //ログインの際、Idが入力されていない時の動作チェック
 		
 		User user = new User("", "password");
-		RequestDispatcher dispatcher = Login.userLogin(user, request);
+		
+		String url = Login.userLogin(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -58,7 +65,9 @@ class LoginTest {
 		ServletException, IOException { //ログインの際、passwordが入力されていない時の動作チェック
 		
 		User user = new User("testId", "");
-		RequestDispatcher dispatcher = Login.userLogin(user, request);
+		
+		String url = Login.userLogin(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -71,7 +80,8 @@ class LoginTest {
 		ServletException, IOException { //登録されたIdとpasswordが異なっているときのチェック
 		
 		User user = new User("testId", "PASSWORD");
-		RequestDispatcher dispatcher = Login.userLogin(user, request);
+		String url = Login.userLogin(user, request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		
 		dispatcher.forward(request, response);	
 		
@@ -81,6 +91,7 @@ class LoginTest {
 		
 	@AfterAll
 	public static void clean() {
-		Delete.deleteUser("testId");
+		Delete delete = new Delete();
+		delete.deleteUser("testId");
 	}
 }

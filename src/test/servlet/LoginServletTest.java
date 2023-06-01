@@ -26,7 +26,9 @@ class LoginServletTest {
 		servlet = new LoginServlet();
 		
 		 User user = new User("testId", "testName", "password", "password");
-	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		 
+		 Insert insert = new Insert();
+	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	}
 	
 	@Test
@@ -63,7 +65,8 @@ class LoginServletTest {
 	
 	@AfterAll
 	public static void clean() {
-		Delete.deleteUser("testId");
+		Delete delete = new Delete();
+		delete.deleteUser("testId");
 	}
 
 }

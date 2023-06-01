@@ -31,16 +31,16 @@ class InformationTest {
 	
 	@BeforeAll
 	public static void setup() {
+		Insert insert = new Insert();
+		Update update = new Update();
+		
 		for(int i = 0; i < 5; i++) { //適当なユーザーを作成
-			Insert.insertUser(String.valueOf(i),  "Name" + i, "password");
-			Update.updateResult(String.valueOf(i), "win");
-			Insert.insertLog(String.valueOf(i), "win");
-			Update.updateResult(String.valueOf(i), "draw");
-			Insert.insertLog(String.valueOf(i), "draw");
-			Update.updateResult(String.valueOf(i), "lose");
-			Insert.insertLog(String.valueOf(i), "lose");
+			insert.insertUser(String.valueOf(i),  "Name" + i, "password");
+			update.updateResult(String.valueOf(i), i * 10);
+			insert.insertLog(String.valueOf(i), i * 10);
 		}
-		user = Select.selectUser("0", "password"); //作ったユーザーでログイン
+		Select select = new Select();
+		user = select.selectUser("0", "password"); //作ったユーザーでログイン
 		
 		session.setAttribute("user", user);
 		request.setSession(session);
@@ -50,8 +50,9 @@ class InformationTest {
 	public void testPlayInfo() throws 
 			ServletException, IOException{ //ログインされたユーザーの情報を取得
 		
-		RequestDispatcher dispatcher = 
-				Information.getPlayInfo(request);
+		String url = Information.getPlayInfo(request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+				
 		
 		dispatcher.forward(request, response);
 		
@@ -68,8 +69,9 @@ class InformationTest {
 	public void testUserInfo() throws 
 			ServletException, IOException{ //ログインされたユーザーの情報を取得
 		
-		RequestDispatcher dispatcher = 
-				Information.getUserInfo(request);
+		String url = Information.getUserInfo(request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+				
 		
 		dispatcher.forward(request, response);
 		
@@ -80,9 +82,10 @@ class InformationTest {
 	
 	@AfterAll
 	public static void clean() {
+		Delete delete = new Delete();
 		for(int i = 0; i < 5; i++) {
-			Delete.deleteUser(String.valueOf(i));
-			Delete.deleteLog(String.valueOf(i));
+			delete.deleteUser(String.valueOf(i));
+			delete.deleteLog(String.valueOf(i));
 		}
 		session.invalidate();
 	}
