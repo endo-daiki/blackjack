@@ -29,10 +29,8 @@ private static String url;
 		game.setDeck(deck);
 		game.setPlayer(newPlayer);
 		game.setSplit(split);
-		System.out.println("split");
 		
 		if(split.getPoint().bjCheck()) {
-			System.out.println("split is bj");
     		split.setResult("stand");
 			new Stand(game);
 			url = Stand.getUrl();

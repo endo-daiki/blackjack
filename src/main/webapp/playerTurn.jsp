@@ -97,7 +97,7 @@
              		<%= point %>
              	</p>
             </div>
-             bet is <%= game.getBet().getBet() %>
+            <p class="col-12">bet is <%= game.getBet().getBet() %></p>         
             <div class="col-12 border">
 				<form action="Hit" method="post">
 					<button type="submit" class="btn btn-outline-primary">hit</button>

@@ -64,8 +64,8 @@
 	            	<% for(Card card : splitHandList) {  %>
 	            		<img src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
 	            	<% } %>
-		             	<p class="text-center text-danger">
-		             	<% if(dealerPoint.burstCheck()) { %>
+		            <p class="text-center text-danger">
+		             	<% if(splitPoint.burstCheck()) { %>
 							Burst!!
 						<% } %>
 						<% if(splitPoint.bjCheck()) { %>
@@ -94,9 +94,14 @@
             	<% for(Card card : playerHandList) { %>
             		<img  src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
             	<% } %>
-            	<% if(playerPoint.bjCheck()) { %>
-            		<p class="text-center text-danger">BlackJack!!</p>
-            	<% } %>
+            	 <p class="text-center text-danger">
+		             	<% if(playerPoint.burstCheck()) { %>
+							Burst!!
+						<% } %>
+						<% if(playerPoint.bjCheck()) { %>
+	          				BlackJack!!
+	          			<% } %>
+            		</p>
               	<p class="text-center">
               		<%= point %>
               	</p>
@@ -104,7 +109,7 @@
               		<%= player.result %>
               	</h3>
             </div>
-             result is <%= game.getBet().refund() %>
+            <p class="col-12">refund is <%= game.getBet().refund() %></p>
             <div class="col-12 border">
             	<form action="Setup" method="post">
             		bet is

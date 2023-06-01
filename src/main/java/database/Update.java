@@ -38,7 +38,7 @@ public class Update {
 			PreparedStatement pstmt = null;
 			
 			pstmt = con.prepareStatement
-					("update newUser set tip = (tip + ?) where id = ?");
+					("update newUser set tip = (tip + ?), playing = playing + 1 where id = ?");
 			
 			pstmt.setInt(1, refund);
 			pstmt.setString(2, id);	
