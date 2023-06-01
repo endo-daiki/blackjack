@@ -12,7 +12,7 @@ public class Delete {
 		
 		try {
 			PreparedStatement pstmt = 
-					con.prepareStatement("delete from user where id = ?");
+					con.prepareStatement("delete from newUser where id = ?");
 			
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
@@ -31,7 +31,7 @@ public class Delete {
 		
 		try {
 			PreparedStatement pstmt = 
-					con.prepareStatement("delete from playLog where user_id = ?");
+					con.prepareStatement("delete from newPlayLog where user_id = ?");
 			
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();

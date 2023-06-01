@@ -2,10 +2,12 @@ package gameSystem;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import database.Insert;
 import database.Update;
 import model.Game;
+import model.User;
 
 public class Blackjack {
 	private static Game game;
@@ -19,12 +21,14 @@ public class Blackjack {
     public static String getGame(HttpServletRequest request) {
     	Update update = new Update();
     	Insert insert = new Insert();
-    	Player player = game.getPlayer();
+    	Bet bet = game.getBet();
+    	HttpSession session = request.getSession(true);
+    	User user = (User)session.getAttribute("user");
     	
     	request.setAttribute("game", game);
-    	if(player.getResult().equals("stand")) {
-    		update.updateResult(game.getUserId(), player.getResult());
-    		insert.insertLog(game.getUserId(), player.getResult());
+    	if(!game.getGameResult().equals("playing")) {
+    		update.updateResult(user.getId(), bet.refund());
+    		insert.insertLog(user.getId(), bet.refund());
     		
     		url = "result.jsp";
     		return url;

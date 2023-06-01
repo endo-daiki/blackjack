@@ -18,7 +18,7 @@ public class Select {
 		boolean idChecker = false;
 		try {
 			PreparedStatement pstmt = con.prepareStatement
-					("select * from user where id = ?");
+					("select * from newUser where id = ?");
 			
 			pstmt.setString(1, id);
 			
@@ -40,7 +40,7 @@ public class Select {
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement
-					("select * from user where id = ? and password = ?");
+					("select * from newUser where id = ? and password = ?");
 			
 			pstmt.setString(1, id);
 			pstmt.setString(2, password);
@@ -53,10 +53,11 @@ public class Select {
 				user.setName(rs.getString("name"));
 				user.setPassword(rs.getString("password"));
 				user.setPlaying(rs.getInt("playing"));
-				user.setWin(rs.getInt("win"));
-				user.setLose(rs.getInt("lose"));
-				user.setDraw(rs.getInt("draw"));
-				user.setRate(rs.getDouble("rate"));
+				user.setTip(rs.getInt("tip"));
+//				user.setWin(rs.getInt("win"));
+//				user.setLose(rs.getInt("lose"));
+//				user.setDraw(rs.getInt("draw"));
+//				user.setRate(rs.getDouble("rate"));
 			}
 			
 			pstmt.close();
@@ -71,14 +72,14 @@ public class Select {
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement
-					("select name, rate from user order by rate desc limit 5");
+					("select name, tip from newUser order by tip desc limit 5");
 			
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				User user = new User();
 				user.setName(rs.getString("name"));
-				user.setRate(rs.getDouble("rate"));
+				user.setTip(rs.getInt("tip"));
 				ranker.add(user);
 			}
 			
@@ -95,7 +96,7 @@ public class Select {
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement
-					("select * from playLog where user_id = ? order by created_at desc");
+					("select * from newPlayLog where user_id = ? order by created_at desc");
 			
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();

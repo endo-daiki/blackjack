@@ -35,28 +35,12 @@
                     <td><%= user.getPlaying() %></td>
                   </tr>
                   <tr>
-                    <th scope="row">勝ち数</th>
-                    <td><%= user.getWin() %></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">負け数</th>
-                    <td><%= user.getLose() %></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">引き分け数</th>
-                    <td><%= user.getDraw() %></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">勝率</th>
-                    <% if(Double.isNaN(user.getRate())) {%>
-                    	<td>0</td>
-                    <% } else { %>
-                    	<td><%= String.format("%.4f", user.getRate()) %></td>
-                    <% } %>
+                  	<th scope="row">持ち金</th>
+                  	<td><%= user.getTip() %></td>
                   </tr>
                 </tbody>
               </table>
-              <p class="text-center">勝率トップ５</p>
+              <p class="text-center">トップ５</p>
               <table class="table">
                 <tbody>
                 <% int rank = 1; %>
@@ -64,7 +48,7 @@
                   <tr>
                     <th scope="row"><%= rank %>位</th>
                     <td><%= ranker.get(i).getName() %></td>
-                    <td><%= String.format("%.4f", ranker.get(i).getRate()) %></td>
+                    <td><%= ranker.get(i).getTip() %></td>
                   </tr>
                 <% rank++; %>
                 <% } %>

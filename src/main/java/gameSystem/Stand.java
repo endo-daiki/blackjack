@@ -12,6 +12,7 @@ public class Stand {
 		Player dealer = game.getDealer();
 		
 		if(player.result == "split") {
+			System.out.println("player turn");
 			player.setResult("playing");
 			split.setResult("stand");
 			
@@ -24,6 +25,7 @@ public class Stand {
 			return;
 		}
 		
+		System.out.println("dealer turn");
 		if(!player.getPoint().burstCheck() || !split.getPoint().burstCheck()) {
 			while(dealer.getPoint().getScore() < 17) {
 				dealer.draw(deck);
@@ -32,7 +34,7 @@ public class Stand {
 		
 		player.judge(dealer);
 		split.judge(dealer);
-		//game.setResult(player.result);
+		game.setGameResult(player.result);
 		
 		game.setDeck(deck);
 		game.setPlayer(player);

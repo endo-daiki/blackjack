@@ -26,6 +26,8 @@ public class Setup {
     	
     	game.setDeck(deck);
     	
+    	game.setGameResult("playing");
+    	
     	if(player.getPoint().bjCheck()) {
     		player.setResult("stand");
 			new Stand(game);

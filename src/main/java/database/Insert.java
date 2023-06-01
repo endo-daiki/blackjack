@@ -15,7 +15,7 @@ public class Insert {
 			PreparedStatement pstmt;
 			ResultSet rs;
 			
-			pstmt = con.prepareStatement("insert into user (id, name, password) values (?,?,?)");
+			pstmt = con.prepareStatement("insert into newUser (id, name, password) values (?,?,?)");
 			
 			pstmt.setString(1, id);
 			pstmt.setString(2, name);
@@ -34,14 +34,14 @@ public class Insert {
 		return checker;
 	}
 
-	public boolean insertLog(String id, String result) {
+	public boolean insertLog(String id, int refund) {
 		boolean checker = false;
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("insert into playLog (user_id, log) values (?,?)");
+			PreparedStatement pstmt = con.prepareStatement("insert into newPlayLog (user_id, log) values (?,?)");
 			
 			pstmt.setString(1, id);
-			pstmt.setString(2, result);
+			pstmt.setInt(2, refund);
 			pstmt.executeUpdate();
 			pstmt.close();
 			

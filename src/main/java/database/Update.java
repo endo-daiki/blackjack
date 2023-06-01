@@ -13,7 +13,7 @@ public class Update {
 			PreparedStatement pstmt;
 			
 			pstmt = con.prepareStatement
-					("update user set id = ?, name = ?, password = ? where id = ?");
+					("update newUser set id = ?, name = ?, password = ? where id = ?");
 			
 			pstmt.setString(1, newId);
 			pstmt.setString(2, name);
@@ -31,28 +31,17 @@ public class Update {
 		return checker;
 	}
 
-	public boolean updateResult(String id, String result) {
+	public boolean updateResult(String id, int refund) {
 		boolean checker = false;
 		
 		try {
 			PreparedStatement pstmt = null;
 			
-			switch (result) {
-				case "win" :
-					pstmt = con.prepareStatement
-						("update user set win = win + 1, playing = playing + 1, rate = win / playing where id = ?");
-					break;
-				case "lose" :
-					pstmt = con.prepareStatement
-						("update user set lose = lose + 1, playing = playing + 1, rate = win / playing where id = ?");
-					break;
-				case "draw" :
-					pstmt = con.prepareStatement
-						("update user set draw = draw + 1, playing = playing + 1, rate = win / playing where id = ?");
-					break;
-			}
+			pstmt = con.prepareStatement
+					("update newUser set tip = (tip + ?) where id = ?");
 			
-			pstmt.setString(1, id);			
+			pstmt.setInt(1, refund);
+			pstmt.setString(2, id);	
 			pstmt.executeUpdate();
 			pstmt.close();
 			

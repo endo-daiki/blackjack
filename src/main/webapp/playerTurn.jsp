@@ -74,7 +74,7 @@
 	             	</p>
 	            </div>
             <% } %>
-            <div class="col-6 border">
+            <div class="col-6 border <% if(player.result.equals("playing")) { %>border-danger<%}%>">
             	<% 
 	            	Hand playerHand = player.getHand(); 
 	            	Point playerPoint = player.getPoint(); 

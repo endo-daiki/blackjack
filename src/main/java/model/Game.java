@@ -9,6 +9,7 @@ public class Game {
 	private Player player;
 	private Player dealer;
 	private Player split;
+	private String gameResult;
 	private String user_id;
 	private Bet bet;
 	
@@ -18,7 +19,8 @@ public class Game {
 		this.player = new Player();
 		this.dealer = new Player();
 		this.split = new Player();
-		this.setBet(new Bet(bet));
+		this.gameResult = "playing";
+		this.bet = new Bet(bet);
 	}
 	
 	public Deck getDeck() {
@@ -57,5 +59,11 @@ public class Game {
 	}
 	public void setBet(Bet bet) {
 		this.bet = bet;
+	}
+	public String getGameResult() {
+		return gameResult;
+	}
+	public void setGameResult(String gameResult) {
+		this.gameResult = gameResult;
 	}
 }

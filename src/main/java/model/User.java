@@ -11,6 +11,7 @@ public class User {
 	private int lose;
 	private int draw;
 	private double rate;
+	private int tip;
 	
 	public User() {}
 	public User(String id, String password) {
@@ -99,6 +100,12 @@ public class User {
 	}
 	public void setRate(double rate) {
 		this.rate = rate;
+	}
+	public int getTip() {
+		return tip;
+	}
+	public void setTip(int tip) {
+		this.tip = tip;
 	}
 	
 }
