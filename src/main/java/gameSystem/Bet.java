@@ -10,6 +10,9 @@ public class Bet {
 	
 	public void calc(String result) {
 		switch(result) {
+			case "naturalwin" :
+				refund += bet * 2.5;
+				break;
 			case "win" :
 				refund += bet * 2;
 				break;

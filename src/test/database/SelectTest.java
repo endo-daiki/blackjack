@@ -71,16 +71,16 @@ class SelectTest {
 		assertEquals("100", log.getLog());
 	}
 	
-//	@AfterAll
-//	public static void clean() {
-//		Delete delete = new Delete(); 
-//		for(int i = 0; i < 5; i++) {
-//			delete.deleteUser(String.valueOf(i));
-//			delete.deleteLog(String.valueOf(i));
-//		}
-//		delete.deleteUser(String.valueOf(6));
-//		delete.deleteLog(String.valueOf(6));
-//		session.invalidate();
-//	}
+	@AfterAll
+	public static void clean() {
+		Delete delete = new Delete(); 
+		for(int i = 0; i < 5; i++) {
+			delete.deleteUser(String.valueOf(i));
+			delete.deleteLog(String.valueOf(i));
+		}
+		delete.deleteUser(String.valueOf(6));
+		delete.deleteLog(String.valueOf(6));
+		session.invalidate();
+	}
 
 }

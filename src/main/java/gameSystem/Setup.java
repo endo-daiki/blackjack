@@ -25,7 +25,6 @@ public class Setup {
     	game.setGameResult("playing");
     	
     	if(player.getPoint().bjCheck()) {
-    		player.setResult("stand");
 			new Stand(game);
 			url = Stand.getUrl();
 			return;

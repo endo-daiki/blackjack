@@ -24,7 +24,7 @@ public class Stand {
 			return;
 		}
 		
-		if(!player.getPoint().burstCheck() || !split.getPoint().burstCheck()) {
+		if(!player.getPoint().burstCheck() || !split.getPoint().burstCheck() && !split.getResult().equals("ready")) {
 			while(dealer.getPoint().getScore() < 17) {
 				dealer.draw(deck);
 			}

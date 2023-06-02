@@ -41,6 +41,9 @@ public class Player{
 		
 		this.result = "draw";
 		if(dealer.getPoint().burstCheck() || playerScore > dealerScore) {
+			if(this.result.equals("natural")) {
+				this.result += "win";
+			}
 			this.result = "win";
 		} else if (this.getPoint().burstCheck() || playerScore < dealerScore) {
 			this.result = "lose";

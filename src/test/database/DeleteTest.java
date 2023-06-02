@@ -31,7 +31,7 @@ class DeleteTest {
 	
 	@Test
 	public void testDeleteUser() {	
-		boolean checker = delete.deleteUser("damyId");	
+		boolean checker = delete.deleteUser("testId");	
 		assertEquals(true, checker);
 	}
 	
@@ -39,12 +39,5 @@ class DeleteTest {
 	public void testDeleteLog() {
 		boolean checker = delete.deleteLog("testId");
 		assertEquals(true, checker);
-	}
-	
-	@AfterAll
-	public static void clean() {
-		delete.deleteUser("testId");
-		delete.deleteLog("testId");
-	}
-	
+	}	
 }
