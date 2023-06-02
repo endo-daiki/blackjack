@@ -15,5 +15,4 @@ class DatabaseTest {
 		Connection con = Database.getConnection();
 		assertNotNull(con);
 	}
-
 }

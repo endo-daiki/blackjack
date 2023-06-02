@@ -40,7 +40,9 @@ class HitTest {
 		Card card = new Card("heart", CardNumber.king);
 		player.getPoint().calc(card);
 		player.getPoint().calc(card);
-
+		game.setPlayer(player);
+		
+		new Hit(game);
 		url = Hit.getUrl();
 		assertEquals("Result", url);
 	}

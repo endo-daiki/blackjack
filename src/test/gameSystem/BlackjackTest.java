@@ -34,6 +34,7 @@ class BlackjackTest {
 		 Insert insert = new Insert();
 	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
+	     session.setAttribute("user", user);
 	     request.setSession(session);
 	}
 	
@@ -72,7 +73,7 @@ class BlackjackTest {
 	
 	@Test
 	public void testStand() {
-		String url = Blackjack.Stand();
+		Blackjack.Stand();
 		String resultUrl = Blackjack.getGame(request); 
 
 		assertEquals("result.jsp", resultUrl);
@@ -80,10 +81,12 @@ class BlackjackTest {
 	
 	@Test
 	public void testSplit() {
+		Blackjack.Setup();
+		
 		Blackjack.Split();
 		String resultUrl = Blackjack.getGame(request); 
 
-		assertEquals("result.jsp", resultUrl);
+		assertEquals("playerTurn.jsp", resultUrl);
 	}
 	
 	@AfterAll

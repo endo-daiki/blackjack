@@ -23,6 +23,7 @@ class SetupTest {
 		 User user = new User("testId", "testName", "password", "password");
 		 Insert insert = new Insert();
 	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
+	     session.setAttribute("user", user);
 	     
 	     new Blackjack(10);
 	     request.setSession(session);

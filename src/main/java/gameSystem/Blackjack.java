@@ -63,7 +63,7 @@ public class Blackjack {
 
 	public static String Split() {
 		new Split(game);
-		url = Stand.getUrl();
+		url = Split.getUrl();
 		return url;
 	}
 }
