@@ -31,8 +31,7 @@ class BlackjackTest {
 	@BeforeAll
 	public static void setup() {
 		 User user = new User("testId", "testName", "password", "password");
-		 Insert insert = new Insert();
-	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
+	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
 	     session.setAttribute("user", user);
 	     request.setSession(session);
@@ -91,9 +90,8 @@ class BlackjackTest {
 	
 	@AfterAll
 	public static void clean() {
-		Delete delete = new Delete();
-		delete.deleteUser("testId");
-		delete.deleteLog("testId");
+		Delete.deleteUser("testId");
+		Delete.deleteLog("testId");
 	}
 
 }

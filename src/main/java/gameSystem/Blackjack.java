@@ -18,8 +18,6 @@ public class Blackjack {
 	}
 
 	public static String getGame(HttpServletRequest request) {
-		Update update = new Update();
-		Insert insert = new Insert();
 		Bet bet = game.getBet();
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
@@ -31,8 +29,8 @@ public class Blackjack {
 
 		request.setAttribute("game", game);
 		if(!game.getGameResult().equals("playing")) {
-			update.updateResult(user.getId(), bet.refund());
-			insert.insertLog(user.getId(), bet.refund());
+			Update.updateResult(user.getId(), bet.refund());
+			Insert.insertLog(user.getId(), bet.refund());
 
 			url = "result.jsp";
 			return url;
@@ -43,27 +41,19 @@ public class Blackjack {
 	}
 
 	public static String Setup() {    	
-		new Setup(game);
-		url = Setup.getUrl();
-		return url;
+		return Setup.excute(game);
 	}
 
 	public static String Hit() {
-		new Hit(game);
-		url = Hit.getUrl();
-		return url;
+		return Hit.excute(game);
 	}
 
 	public static String Stand() {
-		new Stand(game);
-		url = Stand.getUrl();
-		return url;
+		return Stand.excute(game);
 	}
 
 	public static String Split() {
-		new Split(game);
-		url = Split.getUrl();
-		return url;
+		return Split.excute(game);
 	}
 }
 

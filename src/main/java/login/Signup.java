@@ -10,7 +10,6 @@ import model.User;
 public class Signup {
 	public static String userSignup(User user, HttpServletRequest request) {
 		String url = "signup.jsp";
-		Select select = new Select();
 		
 		if(!Validation.validationId(user.getId())) {
 			request.setAttribute("error_msg", "IDを入力してください");
@@ -28,15 +27,14 @@ public class Signup {
 			request.setAttribute("error_msg", "パスワードが正しくありません");
 			return url;
 		}
-		if(select.selectId(user.getId())) {
+		if(Select.selectId(user.getId())) {
 			request.setAttribute("error_msg", "このIDは既に使われています。");
 			return url;
 		}
 			
 		url = "signupDone.jsp";
 
-		Insert insert = new Insert();
-		insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		Insert.insertUser(user.getId(), user.getName(), user.getPassword());
 		
 		return url;
 	}

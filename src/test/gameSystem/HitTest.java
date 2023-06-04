@@ -21,8 +21,7 @@ class HitTest {
 	@BeforeAll
 	public static void setup() {
 		 User user = new User("testId", "testName", "password", "password");
-		 Insert insert = new Insert();
-	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
+	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
 	     new Blackjack(10);
 	     request.setSession(session);
@@ -32,9 +31,7 @@ class HitTest {
 	public void testHit() {
 		Game game = new Game(10);
 		
-		new Hit(game);
-		String url = Hit.getUrl();
-		assertEquals("PlayerTurn", url);
+		assertEquals("PlayerTurn", Hit.excute(game));
 		
 		Player player = game.getPlayer();
 		Card card = new Card("heart", CardNumber.king);
@@ -42,15 +39,12 @@ class HitTest {
 		player.getPoint().calc(card);
 		game.setPlayer(player);
 		
-		new Hit(game);
-		url = Hit.getUrl();
-		assertEquals("Result", url);
+		assertEquals("Result", Hit.excute(game));
 	}
 	
 	@AfterAll
 	public static void clean() {
-		Delete delete = new Delete();
-		delete.deleteUser("testId");
-		delete.deleteLog("testId");
+		Delete.deleteUser("testId");
+		Delete.deleteLog("testId");
 	}
 }

@@ -14,7 +14,7 @@ import model.playLog;
 public class Select {
 	private static final Connection con = Database.getConnection();
 
-	public boolean selectId(String id) {		
+	public static boolean selectId(String id) {		
 		boolean idChecker = false;
 		try {
 			PreparedStatement pstmt = con.prepareStatement
@@ -35,7 +35,7 @@ public class Select {
 		return idChecker;
 	}
 	
-	public User selectUser(String id, String password) {
+	public static User selectUser(String id, String password) {
 		User user = null;
 		
 		try {
@@ -67,7 +67,7 @@ public class Select {
 		return user;
 	}
 	
-	public List<User> selectRanker() {
+	public static List<User> selectRanker() {
 		List<User> ranker = new ArrayList<User>();
 		
 		try {
@@ -91,7 +91,7 @@ public class Select {
 		return ranker;
 	}
 
-	public List<playLog> selectPlayLog(String id) {	
+	public static List<playLog> selectPlayLog(String id) {	
 		List<playLog> playLogs = new ArrayList<playLog>();
 		
 		try {

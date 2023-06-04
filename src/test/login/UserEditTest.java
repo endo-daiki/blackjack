@@ -24,12 +24,11 @@ class UserEditTest {
 	
 	@BeforeAll
     public static void setup() { //テスト用のユーザーを先に登録
-		Insert insert = new Insert();
        User user = new User("testId", "testName", "password", "password");
-       insert.insertUser(user.getId(), user.getName(), user.getPassword());
+       Insert.insertUser(user.getId(), user.getName(), user.getPassword());
        
        user = new User("otherId", "otherName", "password", "password");
-       insert.insertUser(user.getId(), user.getName(), user.getPassword());
+       Insert.insertUser(user.getId(), user.getName(), user.getPassword());
     }
 
 	@Test 
@@ -118,15 +117,13 @@ class UserEditTest {
 		
 		dispatcher.forward(request, response);	
 		
-		Select select = new Select();
-		User updateUser = select.selectUser(user.getId(), user.getPassword()); //dbからユーザーを取得
+		User updateUser = Select.selectUser(user.getId(), user.getPassword()); //dbからユーザーを取得
 		assertEquals("変更したユーザー名", updateUser.getName()); //取得したユーザーの名前を確認
 	}
 	
 	@AfterAll
 	public static void clean() {
-		Delete delete = new Delete();
-		delete.deleteUser("testId");
-		delete.deleteUser("otherId");
+		Delete.deleteUser("testId");
+		Delete.deleteUser("otherId");
 	}
 }

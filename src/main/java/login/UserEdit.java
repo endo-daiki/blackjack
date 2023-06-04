@@ -10,13 +10,12 @@ import model.User;
 public class UserEdit {
 	public static String excute(User user, HttpServletRequest request) {
 		String url = "userEdit.jsp";
-		Select select = new Select();
 		
 		if(!Validation.validationId(user.getNewId())) {
 			request.setAttribute("error_msg", "IDを入力してください");
 			return url;
 		}
-		if(select.selectId(user.getNewId()) && !(user.getNewId().equals(user.getId()))) {
+		if(Select.selectId(user.getNewId()) && !(user.getNewId().equals(user.getId()))) {
 			request.setAttribute("error_msg", "このIDは既に使われています。");
 			return url;
 		}
@@ -35,10 +34,8 @@ public class UserEdit {
 		
 		url = "userEditDone.jsp";
 		
-		Update update = new Update();
-		
-		update.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());	
-		User updateUser = select.selectUser(user.getNewId(), user.getPassword());
+		Update.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());	
+		User updateUser = Select.selectUser(user.getNewId(), user.getPassword());
 		
 		HttpSession session = request.getSession(true);
 	    session.setAttribute("user", updateUser);

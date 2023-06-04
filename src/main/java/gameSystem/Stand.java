@@ -3,9 +3,7 @@ package gameSystem;
 import model.Game;
 
 public class Stand {
-	private static String url;
-	
-	Stand(Game game) {
+	protected static String excute(Game game) {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
 		Player split = game.getSplit();
@@ -16,12 +14,9 @@ public class Stand {
 			split.setResult("stand");
 			
 			if(player.getPoint().bjCheck()) {
-				new Stand(game);
-				url = Stand.getUrl();
-				return;
+				return excute(game);
 			}
-			url = "PlayerTurn";
-			return;
+			return "PlayerTurn";
 		}
 		
 		if(!player.getPoint().burstCheck() || !split.getPoint().burstCheck() && !split.getResult().equals("ready")) {
@@ -39,10 +34,6 @@ public class Stand {
 		game.setSplit(split);
 		game.setDealer(dealer);
 		
-		url = "Result";
-	}
-	
-	public static String getUrl() {
-		return url;
+		return "Result";
 	}
 }

@@ -31,16 +31,12 @@ class InformationTest {
 	
 	@BeforeAll
 	public static void setup() {
-		Insert insert = new Insert();
-		Update update = new Update();
-		
 		for(int i = 0; i < 5; i++) { //適当なユーザーを作成
-			insert.insertUser(String.valueOf(i),  "Name" + i, "password");
-			update.updateResult(String.valueOf(i), i * 10);
-			insert.insertLog(String.valueOf(i), i * 10);
+			Insert.insertUser(String.valueOf(i),  "Name" + i, "password");
+			Update.updateResult(String.valueOf(i), i * 10);
+			Insert.insertLog(String.valueOf(i), i * 10);
 		}
-		Select select = new Select();
-		user = select.selectUser("0", "password"); //作ったユーザーでログイン
+		user = Select.selectUser("0", "password"); //作ったユーザーでログイン
 		
 		session.setAttribute("user", user);
 		request.setSession(session);
@@ -82,10 +78,9 @@ class InformationTest {
 	
 	@AfterAll
 	public static void clean() {
-		Delete delete = new Delete();
 		for(int i = 0; i < 5; i++) {
-			delete.deleteUser(String.valueOf(i));
-			delete.deleteLog(String.valueOf(i));
+			Delete.deleteUser(String.valueOf(i));
+			Delete.deleteLog(String.valueOf(i));
 		}
 		session.invalidate();
 	}

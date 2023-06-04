@@ -13,18 +13,17 @@ import model.playLog;
 public class Information {
 	public static String getPlayInfo(HttpServletRequest request) {
 		String url;
-		Select select = new Select();
 		
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
 
-		User userInfo = select.selectUser(user.getId(), user.getPassword());
+		User userInfo = Select.selectUser(user.getId(), user.getPassword());
 		request.setAttribute("user", userInfo);
 
-		List<User> ranker = select.selectRanker();
+		List<User> ranker = Select.selectRanker();
 		request.setAttribute("ranker", ranker);
 		
-		List<playLog> playLog = select.selectPlayLog(user.getId());
+		List<playLog> playLog = Select.selectPlayLog(user.getId());
 		request.setAttribute("playLog", playLog);
 		
 		url = "playInfo.jsp";
@@ -34,12 +33,11 @@ public class Information {
 	
 	public static String getUserInfo(HttpServletRequest request) {
 		String url;
-		Select select = new Select();
-		
+
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
 		
-		User userInfo = select.selectUser(user.getId(), user.getPassword());
+		User userInfo = Select.selectUser(user.getId(), user.getPassword());
 		request.setAttribute("user", userInfo);
 		
 		url = "userInfo.jsp";

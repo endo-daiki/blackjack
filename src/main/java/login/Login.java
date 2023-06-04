@@ -10,7 +10,6 @@ import model.User;
 public class Login {
 	public static String userLogin(User user, HttpServletRequest request) {
 		String url = "/login.jsp";	
-		Select select = new Select();
 		
 		if(!Validation.validationId(user.getId())) {
 			request.setAttribute("error_msg", "IDを入力してください");
@@ -20,7 +19,7 @@ public class Login {
 			request.setAttribute("error_msg", "パスワードを入力してください");
 			return url;
 		}
-		User loginUser = select.selectUser(user.getId(), user.getPassword());
+		User loginUser = Select.selectUser(user.getId(), user.getPassword());
 		if(loginUser == null) {
 			request.setAttribute("error_msg", "アカウントが存在しないか、IDまたはパスワードが間違っています");
 			return url;

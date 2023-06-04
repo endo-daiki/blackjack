@@ -27,8 +27,7 @@ class SetupServletTest {
 		
 		 User user = new User("testId", "testName", "password", "password");
 		 		 
-		 Insert insert = new Insert();
-	     insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		 Insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	}
 	
 	@Test
@@ -56,8 +55,7 @@ class SetupServletTest {
 	
 	@AfterAll
 	public static void clean() {
-		Delete delete = new Delete();
-		delete.deleteUser("testId");
+		Delete.deleteUser("testId");
 	}
 
 }

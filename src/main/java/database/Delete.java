@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Delete {
 	private static final Connection con = Database.getConnection();
 	
-	public boolean deleteUser(String id) {
+	public static boolean deleteUser(String id) {
 		boolean checker = false;
 		
 		try {
@@ -26,7 +26,7 @@ public class Delete {
 		return checker;
 	}
 	
-	public boolean deleteLog(String id) {
+	public static boolean deleteLog(String id) {
 		boolean checker = false;
 		
 		try {

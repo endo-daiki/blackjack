@@ -26,16 +26,14 @@ class LoginTest {
 	 public static void setup() { //テスト用のユーザーを登録
 		User user = new User("testId", "testName", "password", "password");
 		
-		Insert insert = new Insert();
-	    insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		Insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	}
 	
 	@Test
 	public void testUserLogin() throws Exception {
 		User user = new User("testId", "password");
-		Login login = new Login();
 		
-		String url = login.userLogin(user, request);
+		String url = Login.userLogin(user, request);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 
 		dispatcher.forward(request, response);	
@@ -91,7 +89,6 @@ class LoginTest {
 		
 	@AfterAll
 	public static void clean() {
-		Delete delete = new Delete();
-		delete.deleteUser("testId");
+		Delete.deleteUser("testId");
 	}
 }

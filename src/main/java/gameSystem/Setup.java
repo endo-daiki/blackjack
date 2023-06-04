@@ -3,9 +3,7 @@ package gameSystem;
 import model.Game;
 
 public class Setup {
-	private static String url;
-	
-	Setup(Game game) {
+protected static String excute(Game game) {
 		Deck deck = game.getDeck();
 		
     	Player player = game.getPlayer();
@@ -25,15 +23,9 @@ public class Setup {
     	game.setGameResult("playing");
     	
     	if(player.getPoint().bjCheck()) {
-			new Stand(game);
-			url = Stand.getUrl();
-			return;
+    		return Stand.excute(game);
 		}
 		
-		url = "PlayerTurn";
-	}
-	
-	static String getUrl() {
-		return url;
+		return "PlayerTurn";
 	}
 }

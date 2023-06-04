@@ -20,21 +20,19 @@ class UpdateTest {
 	static String id = "testId";
 	static String name = "testName";
 	static String password = "password";
-	static Update update = new Update();
 	
 	@BeforeAll
     public static void setup() { //テスト用のユーザーを先に登録
        User user = new User(id, name, password, password);
        
-       Insert insert = new Insert();
-       insert.insertUser(user.getId(), user.getName(), user.getPassword());
+       Insert.insertUser(user.getId(), user.getName(), user.getPassword());
     }
 
 	@Test 
 	public void testUpdateUser() 
 			throws ServletException, IOException{ //正しく編集されているかどうか
 		
-		boolean checker = update.updateUser(id, id, "newName", password);
+		boolean checker = Update.updateUser(id, id, "newName", password);
 		assertEquals(true, checker);
 	}
 	
@@ -42,14 +40,13 @@ class UpdateTest {
 	public void testUpdateResult() 
 			throws ServletException, IOException{ //正しくゲームログが追加されているかどうか
 		
-		boolean checker = update.updateResult(id, 10); //取得数10を追加
+		boolean checker = Update.updateResult(id, 10); //取得数10を追加
 		assertEquals(true, checker); //正しく編集(機能がうごいているか)されているかの確認
 	}
 	
 	@AfterAll
 	public static void clean() {
-		Delete delete = new Delete(); 
-		delete.deleteUser("testId");
-		delete.deleteLog("testId");
+		Delete.deleteUser("testId");
+		Delete.deleteLog("testId");
 	}
 }

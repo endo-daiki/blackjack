@@ -26,8 +26,7 @@ class UserDeleteTest {
     public static void setup() { //テスト用のユーザーを先に登録
        User user = new User(id, name, password, password);
        
-       Insert insert = new Insert();
-       insert.insertUser(user.getId(), user.getName(), user.getPassword());
+       Insert.insertUser(user.getId(), user.getName(), user.getPassword());
     }
 
 	@Test 
@@ -35,9 +34,8 @@ class UserDeleteTest {
 			throws ServletException, IOException{ //正しく削除されているかどうか
 		
 		UserDelete.excute(id, request);
-	        
-		Select select = new Select();
-		User user = select.selectUser(id, password); //最初に登録したユーザーをdbから取得(いなければnull)	
+
+		User user = Select.selectUser(id, password); //最初に登録したユーザーをdbから取得(いなければnull)	
 		assertNull(user);
 	}
 	

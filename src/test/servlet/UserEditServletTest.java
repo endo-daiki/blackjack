@@ -29,8 +29,7 @@ class UserEditServletTest {
 		
 		user = new User("testId", "testName", "password", "password");
 		
-		Insert insert = new Insert();
-	    insert.insertUser(user.getId(), user.getName(), user.getPassword());
+		Insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
 	    Login.userLogin(user, request);
 	}

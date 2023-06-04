@@ -10,10 +10,9 @@ public class UserDelete {
 	public static String excute(String id, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		session.invalidate();
-		Delete delete = new Delete();
 		
-		delete.deleteUser(id);
-		delete.deleteLog(id);
+		Delete.deleteUser(id);
+		Delete.deleteLog(id);
 			        
 	    String url = "userDeleteDone.jsp";
 		

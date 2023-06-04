@@ -26,8 +26,7 @@ class SignupTest {
     public static void setup() { //テスト用のユーザーを先に登録
        User user = new User("testId", "testName", "password", "password");
        
-       Insert insert = new Insert();
-       insert.insertUser(user.getId(), user.getName(), user.getPassword());
+       Insert.insertUser(user.getId(), user.getName(), user.getPassword());
     }
 
 	@Test 
@@ -116,15 +115,13 @@ class SignupTest {
 		
 		dispatcher.forward(request, response);	
 		
-		Select select = new Select();
-		User loginUser = select.selectUser(user.getId(), user.getPassword()); //dbからユーザーを取得
+		User loginUser = Select.selectUser(user.getId(), user.getPassword()); //dbからユーザーを取得
 		assertEquals("新しいユーザー", loginUser.getName()); //取得したユーザーの名前を確認
 	}
 	
 	@AfterAll
 	public static void clean() {
-		Delete delete = new Delete();
-		delete.deleteUser("testId");
-		delete.deleteUser("newUser");
+		Delete.deleteUser("testId");
+		Delete.deleteUser("newUser");
 	}
 }

@@ -18,25 +18,21 @@ class SelectTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();
 	static MockHttpServletResponse response = new MockHttpServletResponse();
 	static MockHttpSession session = new MockHttpSession();
-	static Select select = new Select();
 	
 	static User user = new User();
 	
 	@BeforeAll
 	public static void setup() {
-		Insert insert = new Insert();
-		Update update = new Update();
-		
 		for(int i = 0; i < 5; i++) { //適当なユーザーを作成
-			insert.insertUser(String.valueOf(i),  "Name" + i, "password");
-			update.updateResult(String.valueOf(i), i * 10);
-			insert.insertLog(String.valueOf(i), i * 10);
+			Insert.insertUser(String.valueOf(i),  "Name" + i, "password");
+			Update.updateResult(String.valueOf(i), i * 10);
+			Insert.insertLog(String.valueOf(i), i * 10);
 		}
-		insert.insertUser(String.valueOf(6),  "Name6", "password");
-		update.updateResult(String.valueOf(6), 100);
-		insert.insertLog(String.valueOf(6), 100);
+		Insert.insertUser(String.valueOf(6),  "Name6", "password");
+		Update.updateResult(String.valueOf(6), 100);
+		Insert.insertLog(String.valueOf(6), 100);
 		
-		user = select.selectUser("0", "password"); //作ったユーザーでログイン
+		user = Select.selectUser("0", "password"); //作ったユーザーでログイン
 		
 		session.setAttribute("user", user);
 		request.setSession(session);
@@ -44,19 +40,19 @@ class SelectTest {
 		
 	@Test 
 	public void testSelectId() {
-		boolean idCheck = select.selectId("0");
+		boolean idCheck = Select.selectId("0");
 		assertEquals(true, idCheck);
 	}
 	
 	@Test
 	public void testSelectUser() {
-		User user = select.selectUser("0", "password");
+		User user = Select.selectUser("0", "password");
 		assertEquals("Name0", user.getName());
 	}
 	
 	@Test
 	public void testSelectRanker() {
-		List<User> ranker = select.selectRanker();
+		List<User> ranker = Select.selectRanker();
 		User topRanker = ranker.get(0);
 		
 		assertEquals(200, topRanker.getTip());
@@ -65,7 +61,7 @@ class SelectTest {
 		
 	@Test
 	public void  testSelectPlayLog() {
-		List<playLog> playLogs = select.selectPlayLog("6");
+		List<playLog> playLogs = Select.selectPlayLog("6");
 		playLog log = playLogs.get(0);
 		
 		assertEquals("100", log.getLog());
@@ -73,13 +69,12 @@ class SelectTest {
 	
 	@AfterAll
 	public static void clean() {
-		Delete delete = new Delete(); 
 		for(int i = 0; i < 5; i++) {
-			delete.deleteUser(String.valueOf(i));
-			delete.deleteLog(String.valueOf(i));
+			Delete.deleteUser(String.valueOf(i));
+			Delete.deleteLog(String.valueOf(i));
 		}
-		delete.deleteUser(String.valueOf(6));
-		delete.deleteLog(String.valueOf(6));
+		Delete.deleteUser(String.valueOf(6));
+		Delete.deleteLog(String.valueOf(6));
 		session.invalidate();
 	}
 

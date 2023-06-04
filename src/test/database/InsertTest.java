@@ -17,7 +17,6 @@ class InsertTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();
 	static MockHttpServletResponse response = new MockHttpServletResponse();
 	static MockHttpSession session = new MockHttpSession();
-	static Insert insert = new Insert();
 	static String id = "testId";
 	static String name = "testName";
 	static String password = "password";
@@ -25,20 +24,19 @@ class InsertTest {
 
 	@Test 
 	public void testInsertUser() {
-		boolean checker = insert.insertUser(id, name, password);	
+		boolean checker = Insert.insertUser(id, name, password);	
 		assertEquals(true, checker);
 	}
 	
 	@Test
 	public void testInsertLog() {
-		boolean checker = insert.insertLog(id, tip);
+		boolean checker = Insert.insertLog(id, tip);
 		assertEquals(true, checker);
 	}
 	
 	@AfterAll
-	public static void clean() {
-		Delete delete = new Delete(); 
-		delete.deleteUser(id);
-		delete.deleteLog(id);
+	public static void clean() { 
+		Delete.deleteUser(id);
+		Delete.deleteLog(id);
 	}
 }
