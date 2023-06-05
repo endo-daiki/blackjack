@@ -7,7 +7,6 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 class HandTest {
 	static Hand hand;
 	static Deck deck;
@@ -25,21 +24,20 @@ class HandTest {
 	}
 	
 	@Test
-	public void testDraw() {
+	public void testDraw() { //正しくカードを引けているか
+		Card card = new Card("heart", CardNumber.one);
+		deck.add(card);
 		hand.draw(deck);
-		List<Card> list = hand.getList();
-			
+		
+		List<Card> list = hand.getList();	
 		assertEquals(1, list.size());
+		assertEquals(card, list.get(0)); //追加したカードと同じである
 	}
 	
 	@Test
-	public void testGetList() {
+	public void testGetList() { //リストを正しく取得できているか
 		List<Card> list = hand.getList();	
 		assertEquals(0, list.size());
-
-		hand.draw(deck);
-		list = hand.getList();
-		assertEquals(1, list.size());
 	}
 	
 	@Test

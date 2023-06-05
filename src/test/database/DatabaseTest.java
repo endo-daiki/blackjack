@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
 
-
 class DatabaseTest {    
 	@Test
 	public void testGetConnection() throws SQLException {

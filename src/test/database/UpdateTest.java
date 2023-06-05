@@ -9,14 +9,10 @@ import javax.servlet.ServletException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
 
 import model.User;
 
 class UpdateTest {
-	static MockHttpServletRequest request = new MockHttpServletRequest();
-	static MockHttpServletResponse response = new MockHttpServletResponse();
 	static String id = "testId";
 	static String name = "testName";
 	static String password = "password";

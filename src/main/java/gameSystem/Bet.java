@@ -1,7 +1,7 @@
 package gameSystem;
 
 public class Bet {
-	final private int tip;
+	private final int tip;
 	private int refund;
 
 	public Bet(int bet) {

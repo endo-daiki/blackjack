@@ -15,23 +15,16 @@ class HitTest {
 	}
 	
 	@Test 
-	public void testHit() {
+	public void testHit() { //カード1枚だけひいて計算するので必ずPlayerTurnになる
 		assertEquals("PlayerTurn", Hit.excute(game));
-		
-		Player player = game.getPlayer();
-		Card card = new Card("heart", CardNumber.king);
-		player.getPoint().calc(card);
-		player.getPoint().calc(card);
-		game.setPlayer(player);
-		
-		assertEquals("Result", Hit.excute(game));
 	}
 
 	@Test
-	public void testBurstHit() {
+	public void testBurstHit() { 
 		Card card = new Card("heart", CardNumber.king);
 		Deck deck = new Deck();
 
+		deck.add(card);
 		deck.add(card);
 		deck.add(card);
 		game.setDeck(deck);
@@ -61,6 +54,7 @@ class HitTest {
 		Deck deck = new Deck();
 		
 		Card card = new Card("heart", CardNumber.nine);
+		deck.add(card);
 		deck.add(card);
 		deck.add(card);
 		

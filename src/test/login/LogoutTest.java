@@ -33,8 +33,7 @@ class LogoutTest {
     }
 
 	@Test 
-	public void testUserLogout() { //正しくログアウト(セッションから削除されているか)
-		
+	public void testUserLogout() { //正しくログアウト(セッションから削除されているか)		
 		Logout.userLogout(request); 
 	        
 		HttpSession session = request.getSession(true); 

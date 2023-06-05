@@ -30,19 +30,20 @@ static Game game;
 
 	@Test
 	public void testBjSplit() {
+		Card twoCard = new Card("heart", CardNumber.two);
 		Card kingCard = new Card("heart", CardNumber.king);
 		Card aceCard = new Card("heart", CardNumber.one);
 		Deck deck = new Deck();
 
 		deck.add(kingCard);
+		deck.add(twoCard);
 		deck.add(aceCard);
 		deck.add(aceCard);
 		
 		game.setDeck(deck);
 
 		Setup.excute(game);
-		Split.excute(game);
 
-		assertEquals("PlayerTurn", Stand.excute(game));
+		assertEquals("PlayerTurn", Split.excute(game));
 	}
 }

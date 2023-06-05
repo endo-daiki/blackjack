@@ -9,7 +9,7 @@ public class Stand {
 		Player split = game.getSplit();
 		Player dealer = game.getDealer();
 
-		if(player.getResult() == "split") {
+		if(player.getResult().equals("split")) {
 			player.setResult("playing");
 			split.setResult("stand");
 

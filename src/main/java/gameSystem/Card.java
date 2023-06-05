@@ -13,4 +13,3 @@ public class Card {
 		return this.cardNumber == CardNumber.jack || this.cardNumber == CardNumber.queen || this.cardNumber == CardNumber.king; 
 	}
 }
-

@@ -4,17 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.mock.web.MockHttpSession;
 
 import model.User;
 
 class DeleteTest {
-	static MockHttpServletRequest request = new MockHttpServletRequest();
-	static MockHttpServletResponse response = new MockHttpServletResponse();
-	static MockHttpSession session = new MockHttpSession();
-	
 	@BeforeAll
 	public static void setup() {
 		User user = new User("testId", "testName", "password", "password");
