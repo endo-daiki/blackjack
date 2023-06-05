@@ -14,7 +14,7 @@ public class Split {
 		
 		deck.add(card1);
 		deck.add(card2);
-		
+				
 		Player newPlayer = new Player();
 		newPlayer.draw(deck);
 		split.draw(deck);

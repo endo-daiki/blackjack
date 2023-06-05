@@ -1,43 +1,37 @@
 package gameSystem;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import database.Insert;
 import database.Update;
 import model.Game;
-import model.User;
 
 public class Blackjack {
 	private static Game game;
-	private static String url;
+	private static String id;
 
-	public Blackjack(int bet) {
+	public Blackjack(int bet, String user_id) {
 		game = new Game(bet);
-		url = "playerTurn.jsp";
+		id = user_id;
 	}
 
 	public static String getGame(HttpServletRequest request) {
-		Bet bet = game.getBet();
-		HttpSession session = request.getSession(true);
-		User user = (User)session.getAttribute("user");
-
-		bet.calc(game.getPlayer().getResult());
-		bet.calc(game.getSplit().getResult());    		
-
-		game.setBet(bet);
-
 		request.setAttribute("game", game);
+		
 		if(!game.getGameResult().equals("playing")) {
-			Update.updateResult(user.getId(), bet.refund());
-			Insert.insertLog(user.getId(), bet.refund());
+			Bet bet = game.getBet();
+			bet.calc(game.getPlayer().getResult());
+			bet.calc(game.getSplit().getResult());    
+			
+			Update.updateResult(id, bet.refund());
+			Insert.insertLog(id, bet.refund());
 
-			url = "result.jsp";
-			return url;
+			game.setBet(bet);
+			
+			return "result.jsp";
 		}
 
-		url = "playerTurn.jsp";
-		return url;
+		return "playerTurn.jsp";
 	}
 
 	public static String Setup() {    	

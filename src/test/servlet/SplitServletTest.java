@@ -51,7 +51,7 @@ class SplitServletTest {
 		
 		response = new MockHttpServletResponse();
 		
-		new Blackjack(10);
+		new Blackjack(10, "testId");
 		Blackjack.Setup();
 		
 		servlet.doPost(request, response);

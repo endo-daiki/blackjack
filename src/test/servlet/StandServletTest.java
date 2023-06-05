@@ -51,7 +51,7 @@ class StandServletTest {
 		
 		response = new MockHttpServletResponse();
 		
-		new Blackjack(10);
+		new Blackjack(10, "testId");
 		
 		servlet.doPost(request, response);
 		

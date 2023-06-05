@@ -39,7 +39,7 @@ class ResultServletTest {
 	public void testDoGet()
 		throws ServletException, IOException {
 		
-		new Blackjack(10);
+		new Blackjack(10, "testId");
 		Blackjack.Stand();
 		
 		servlet.doGet(request, response);

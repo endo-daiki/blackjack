@@ -16,8 +16,6 @@ public class Hit {
 	    	
 			if(split.getPoint().burstCheck() || split.getPoint().bjCheck()) {
 				split.setResult("stand");
-//	    		new Stand(game);
-//				url = Stand.getUrl();
 				return Stand.excute(game);
 			}
 			
@@ -30,8 +28,6 @@ public class Hit {
 	    	
 			if(player.getPoint().burstCheck() || player.getPoint().bjCheck()) {
 	    		player.setResult("stand");
-//	    		new Stand(game);
-//				url = Stand.getUrl();
 				return Stand.excute(game);
 			}
 			

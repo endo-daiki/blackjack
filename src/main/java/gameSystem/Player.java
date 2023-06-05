@@ -38,15 +38,17 @@ public class Player{
 		}
 		int playerScore = this.point.getScore();
 		int dealerScore = dealer.getPoint().getScore();
-		
-		this.result = "draw";
+	
 		if(dealer.getPoint().burstCheck() || playerScore > dealerScore) {
-			if(this.result.equals("natural")) {
-				this.result += "win";
+			if(this.hand.sizeCheck() && this.point.bjCheck()) {
+				this.result = "naturalwin";
+				return;
 			}
 			this.result = "win";
 		} else if (this.getPoint().burstCheck() || playerScore < dealerScore) {
 			this.result = "lose";
+		} else {
+			this.result = "draw";
 		}
 	}
 }

@@ -10,7 +10,6 @@ public class Game {
 	private Player dealer;
 	private Player split;
 	private String gameResult;
-	private String user_id;
 	private Bet bet;
 	
 	public Game() {}
@@ -29,13 +28,6 @@ public class Game {
 	public void setDeck(Deck deck) {
 		this.deck = deck;
 	}
-	public String getUserId() {
-		return this.user_id;
-	}
-	public void setUserId(String user_id) {
-		this.user_id = user_id;
-	}
-	
 	public Player getPlayer() {
 		return player;
 	}

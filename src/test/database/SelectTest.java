@@ -29,8 +29,8 @@ class SelectTest {
 			Insert.insertLog(String.valueOf(i), i * 10);
 		}
 		Insert.insertUser(String.valueOf(6),  "Name6", "password");
-		Update.updateResult(String.valueOf(6), 100);
-		Insert.insertLog(String.valueOf(6), 100);
+		Update.updateResult(String.valueOf(6), 900);
+		Insert.insertLog(String.valueOf(6), 900);
 		
 		user = Select.selectUser("0", "password"); //作ったユーザーでログイン
 		
@@ -55,7 +55,7 @@ class SelectTest {
 		List<User> ranker = Select.selectRanker();
 		User topRanker = ranker.get(0);
 		
-		assertEquals(200, topRanker.getTip());
+		assertEquals(1000, topRanker.getTip());
 		assertEquals(5, ranker.size());
 	}
 		
@@ -64,7 +64,7 @@ class SelectTest {
 		List<playLog> playLogs = Select.selectPlayLog("6");
 		playLog log = playLogs.get(0);
 		
-		assertEquals("100", log.getLog());
+		assertEquals("900", log.getLog());
 	}
 	
 	@AfterAll

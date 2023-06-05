@@ -54,10 +54,6 @@ public class Select {
 				user.setPassword(rs.getString("password"));
 				user.setPlaying(rs.getInt("playing"));
 				user.setTip(rs.getInt("tip"));
-//				user.setWin(rs.getInt("win"));
-//				user.setLose(rs.getInt("lose"));
-//				user.setDraw(rs.getInt("draw"));
-//				user.setRate(rs.getDouble("rate"));
 			}
 			
 			pstmt.close();

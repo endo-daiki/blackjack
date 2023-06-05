@@ -23,7 +23,7 @@ class HitTest {
 		 User user = new User("testId", "testName", "password", "password");
 	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     
-	     new Blackjack(10);
+	     new Blackjack(10, "testId");
 	     request.setSession(session);
 	}
 	

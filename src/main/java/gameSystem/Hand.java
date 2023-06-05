@@ -22,12 +22,16 @@ public class Hand {
 	}
 	
 	public boolean splitCheck() {
-		if(list.size() != 2) {
+		if(!sizeCheck()) {
 			return false;
 		}
 		String firstCardNo = list.get(0).getCardNumber().getNo();
 		String secondCardNo = list.get(1).getCardNumber().getNo();
 		
 		return firstCardNo.equals(secondCardNo);
+	}
+	
+	public boolean sizeCheck() {
+		return list.size() == 2;
 	}
 }

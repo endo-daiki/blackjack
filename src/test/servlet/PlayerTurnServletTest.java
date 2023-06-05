@@ -39,7 +39,7 @@ class PlayerTurnServletTest {
 	public void testDoGet()
 		throws ServletException, IOException {
 		
-		new Blackjack(10);
+		new Blackjack(10, "testId");
 		
 		servlet.doGet(request, response);
 		

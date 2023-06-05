@@ -24,7 +24,7 @@ class SetupTest {
 		 Insert.insertUser(user.getId(), user.getName(), user.getPassword());
 	     session.setAttribute("user", user);
 	     
-	     new Blackjack(10);
+	     new Blackjack(10, "testId");
 	     request.setSession(session);
 	}
 	
@@ -34,7 +34,7 @@ class SetupTest {
 		assertEquals("PlayerTurn", url);
 		
 		while(!(url == "Result")) {
-			new Blackjack(10);
+			new Blackjack(10, "testId");
 			url = Blackjack.Setup();
 		}
 		

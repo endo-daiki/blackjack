@@ -3,9 +3,7 @@ package gameSystem;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 
 import org.junit.jupiter.api.AfterAll;
@@ -18,10 +16,7 @@ import org.springframework.mock.web.MockHttpSession;
 
 import database.Delete;
 import database.Insert;
-import database.Select;
-import model.Game;
 import model.User;
-import model.playLog;
 
 class BlackjackTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();
@@ -39,7 +34,7 @@ class BlackjackTest {
 	
 	@BeforeEach
 	public void setGame() {
-		new Blackjack(10);
+		new Blackjack(10, "testId");
 	}
 	
 	@Test 
