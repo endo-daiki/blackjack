@@ -16,14 +16,14 @@ import gameSystem.Blackjack;
 @WebServlet("/Hit")
 public class HitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public HitServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public HitServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,7 +31,7 @@ public class HitServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-		
+
 		response.sendRedirect("playerTurn.jsp");
 	}
 
@@ -41,7 +41,7 @@ public class HitServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-		
+
 		String url = Blackjack.Hit();		
 		response.sendRedirect(url);		
 	}

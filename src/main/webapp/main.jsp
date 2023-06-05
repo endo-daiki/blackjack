@@ -30,7 +30,7 @@
     <div class="row justify-content-center">
         <div class="col-7">
 			<div class="d-grid gap-2">
-				<a href="gameTop.jsp" class="btn btn-outline-primary">ゲームスタート</a>
+				<a href="gameTop.jsp" class="btn btn-outline-primary">BLACK JACK</a>
 			</div>
             
             <a class="btn btn-primary" href="UserInfo">ユーザー情報</a>

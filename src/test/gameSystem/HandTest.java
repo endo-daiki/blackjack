@@ -19,9 +19,9 @@ class HandTest {
 	}
 	
 	@Test
-	public void testHand() {
+	public void testHand() { //正しく初期化されているか
 		assertNotNull(hand);
-		assertEquals(false, hand.splitCheck());
+		assertEquals(false, hand.splitCheck()); //手札が0枚なので必ず、falseになる
 	}
 	
 	@Test
@@ -36,15 +36,23 @@ class HandTest {
 	public void testGetList() {
 		List<Card> list = hand.getList();	
 		assertEquals(0, list.size());
+
+		hand.draw(deck);
+		list = hand.getList();
+		assertEquals(1, list.size());
 	}
 	
 	@Test
-	public void testSplitCheck() {
-		hand.draw(deck);
-		hand.draw(deck);
-		assertEquals(false, hand.splitCheck());
+	public void testSplitCheck() { //スプリットのチェックができているか確認
+		Card card = new Card("heart", CardNumber.one);
+		deck.add(card); //デッキの上2枚を同じカードにする
+		deck.add(card);
 
 		hand.draw(deck);
+		hand.draw(deck);
+		assertEquals(true, hand.splitCheck()); //手札が2枚かつカードの数字が同じである
+
+		hand.draw(deck); //手札が2枚ではなくなる
 		assertEquals(false, hand.splitCheck());
 	}
 

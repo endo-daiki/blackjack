@@ -11,7 +11,7 @@ public class Game {
 	private Player split;
 	private String gameResult;
 	private Bet bet;
-	
+
 	public Game() {}
 	public Game(int bet) {
 		this.deck = new Deck();
@@ -21,7 +21,7 @@ public class Game {
 		this.gameResult = "playing";
 		this.bet = new Bet(bet);
 	}
-	
+
 	public Deck getDeck() {
 		return this.deck;
 	}

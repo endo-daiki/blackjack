@@ -18,14 +18,14 @@ import model.User;
 @WebServlet("/UserEdit")
 public class UserEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserEditServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public UserEditServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +33,7 @@ public class UserEditServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-		
+
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher("userEdit.jsp");
 		dispatcher.forward(request, response);
@@ -45,21 +45,21 @@ public class UserEditServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-		
-			request.setCharacterEncoding("UTF-8");
-	
-			String oldId = request.getParameter("oldId");
-			String newId = request.getParameter("newId");
-			String name = request.getParameter("name");
-			String password = request.getParameter("password");
-			String checkPassword = request.getParameter("checkPassword");
-			
-			User user = new User(oldId, newId, name, password, checkPassword);
-			String url = UserEdit.excute(user, request);
-			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher(url);
-			
-			dispatcher.forward(request, response);
+
+		request.setCharacterEncoding("UTF-8");
+
+		String oldId = request.getParameter("oldId");
+		String newId = request.getParameter("newId");
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		String checkPassword = request.getParameter("checkPassword");
+
+		User user = new User(oldId, newId, name, password, checkPassword);
+		String url = UserEdit.excute(user, request);
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher(url);
+
+		dispatcher.forward(request, response);
 	}
 
 }

@@ -1,40 +1,37 @@
 package gameSystem;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.mock.web.MockHttpSession;
 
-import database.Delete;
-import database.Insert;
-import model.User;
+import model.Game;
 
-class StandTest {
-	static MockHttpServletRequest request = new MockHttpServletRequest();
-	static MockHttpServletResponse response = new MockHttpServletResponse();
-	static MockHttpSession session = new MockHttpSession();
+class StandTest {	
+	static Game game;
 	
-	@BeforeAll
-	public static void setup() {
-		 User user = new User("testId", "testName", "password", "password");
-		 Insert.insertUser(user.getId(), user.getName(), user.getPassword());
-	     
-	     new Blackjack(10, "testId");
-	     request.setSession(session);
+	@BeforeEach
+	public void setup() {
+		game = new Game(10);
 	}
-	
 	@Test 
 	public void testStand() {
-		String url = Blackjack.Stand();	
-		assertEquals("Result", url);
+		Setup.excute(game);
+		
+		assertEquals("Result", Stand.excute(game));
 	}
-	
-	@AfterAll
-	public static void clean() {
-		Delete.deleteUser("testId");
-		Delete.deleteLog("testId");
+
+	@Test
+	public void testSplitStand() {
+		Card card = new Card("heart", CardNumber.one);
+		Deck deck = new Deck();
+
+		deck.add(card);
+		deck.add(card);
+		game.setDeck(deck);
+
+		Setup.excute(game);
+		Split.excute(game);
+
+		assertEquals("PlayerTurn", Stand.excute(game));
 	}
 }

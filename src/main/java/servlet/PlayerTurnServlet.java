@@ -16,14 +16,14 @@ import gameSystem.Blackjack;
 @WebServlet("/PlayerTurn")
 public class PlayerTurnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PlayerTurnServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public PlayerTurnServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,7 +31,7 @@ public class PlayerTurnServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-		
+
 		String url = Blackjack.getGame(request);
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher(url);
@@ -41,11 +41,11 @@ public class PlayerTurnServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-//	protected void doPost(HttpServletRequest request, 
-//			HttpServletResponse response) 
-//					throws ServletException, IOException {
-//		
-//		
-//	}
+	protected void doPost(HttpServletRequest request, 
+			HttpServletResponse response) 
+					throws ServletException, IOException {
+
+
+	}
 
 }

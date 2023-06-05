@@ -1,36 +1,21 @@
 package gameSystem;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.mock.web.MockHttpSession;
 
-import database.Delete;
-import database.Insert;
 import model.Game;
-import model.User;
 
 class HitTest {
-	static MockHttpServletRequest request = new MockHttpServletRequest();
-	static MockHttpServletResponse response = new MockHttpServletResponse();
-	static MockHttpSession session = new MockHttpSession();
-	
-	@BeforeAll
-	public static void setup() {
-		 User user = new User("testId", "testName", "password", "password");
-	     Insert.insertUser(user.getId(), user.getName(), user.getPassword());
-	     
-	     new Blackjack(10, "testId");
-	     request.setSession(session);
+	static Game game;
+
+	@BeforeEach
+	public void setup() {
+		game = new Game(10);
 	}
 	
 	@Test 
 	public void testHit() {
-		Game game = new Game(10);
-		
 		assertEquals("PlayerTurn", Hit.excute(game));
 		
 		Player player = game.getPlayer();
@@ -41,10 +26,53 @@ class HitTest {
 		
 		assertEquals("Result", Hit.excute(game));
 	}
-	
-	@AfterAll
-	public static void clean() {
-		Delete.deleteUser("testId");
-		Delete.deleteLog("testId");
+
+	@Test
+	public void testBurstHit() {
+		Card card = new Card("heart", CardNumber.king);
+		Deck deck = new Deck();
+
+		deck.add(card);
+		deck.add(card);
+		game.setDeck(deck);
+
+		Hit.excute(game);
+		Hit.excute(game);
+		assertEquals("Result", Hit.excute(game));
+	}
+
+	@Test
+	public void testSplitHit() {
+		Card card = new Card("heart", CardNumber.one);
+		Deck deck = new Deck();
+
+		deck.add(card);
+		deck.add(card);
+		game.setDeck(deck);
+
+		Setup.excute(game);
+		Split.excute(game);
+
+		assertEquals("PlayerTurn", Hit.excute(game));
+	}
+
+	@Test
+	public void testSplitBurst() {
+		Deck deck = new Deck();
+		
+		Card card = new Card("heart", CardNumber.nine);
+		deck.add(card);
+		deck.add(card);
+		
+		card = new Card("heart", CardNumber.king);
+		deck.add(card);
+		deck.add(card);
+		
+		game.setDeck(deck);
+
+		Setup.excute(game);
+		Split.excute(game);
+
+		assertEquals("PlayerTurn", Hit.excute(game));
 	}
 }

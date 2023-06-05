@@ -14,18 +14,18 @@ public enum CardNumber {
 	jack(10, "j"),
 	queen(10, "q"),
 	king(10, "k");
-	
+
 	private int point;
 	private String no;
-	
+
 	public int getPoint() {
 		return point;
 	}
-	
+
 	public String getNo() {
 		return no;
 	}
-	
+
 	CardNumber(int point, String no) {
 		this.point = point;
 		this.no = no;

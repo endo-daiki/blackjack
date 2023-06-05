@@ -25,8 +25,8 @@ public class Hand {
 		if(!sizeCheck()) {
 			return false;
 		}
-		String firstCardNo = list.get(0).getCardNumber().getNo();
-		String secondCardNo = list.get(1).getCardNumber().getNo();
+		String firstCardNo = list.get(0).cardNumber.getNo();
+		String secondCardNo = list.get(1).cardNumber.getNo();
 
 		return firstCardNo.equals(secondCardNo);
 	}

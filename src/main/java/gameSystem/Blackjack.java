@@ -20,6 +20,7 @@ public class Blackjack {
 
 		if(!game.getGameResult().equals("playing")) {
 			Bet bet = game.getBet();
+
 			bet.calc(game.getPlayer().getResult());
 			bet.calc(game.getSplit().getResult());    
 

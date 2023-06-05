@@ -16,14 +16,14 @@ import gameSystem.Blackjack;
 @WebServlet("/Setup")
 public class SetupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SetupServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public SetupServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,7 +31,7 @@ public class SetupServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-		
+
 		response.sendRedirect("playerTurn.jsp");
 	}
 
@@ -41,11 +41,11 @@ public class SetupServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("UTF-8");		
 		String id = request.getParameter("id");
 		int bet = Integer.parseInt(request.getParameter("bet"));
-		
+
 		new Blackjack(bet, id);
 		String url = Blackjack.Setup();
 		response.sendRedirect(url);

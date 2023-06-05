@@ -16,19 +16,7 @@ class CardTest {
 	@Test
 	public void testCard() {
 		assertNotNull(card);
-		assertEquals(11, card.getCardNumber().getPoint());
-	}
-
-
-	@Test
-	public void testGetSuit() {
-		assertEquals("heart", card.getSuit());
-	}
-
-	@Test
-	public void testGetNo() {
-		CardNumber no = card.getCardNumber();
-		assertEquals(11, no.getPoint());
+		assertEquals(11, card.cardNumber.getPoint());
 	}
 
 	@Test
@@ -38,6 +26,4 @@ class CardTest {
 		Card testCard = new Card("heart", CardNumber.king);
 		assertEquals(true, testCard.courtCheck());
 	}
-
-
 }

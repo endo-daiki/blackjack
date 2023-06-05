@@ -2,48 +2,35 @@ package gameSystem;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.mock.web.MockHttpSession;
 
-import database.Delete;
-import database.Insert;
-import model.User;
+import model.Game;
 
 class SetupTest {	
-	static MockHttpServletRequest request = new MockHttpServletRequest();
-	static MockHttpServletResponse response = new MockHttpServletResponse();
-	static MockHttpSession session = new MockHttpSession();
-	
-	@BeforeAll
-	public static void setup() {
-		 User user = new User("testId", "testName", "password", "password");
-		 Insert.insertUser(user.getId(), user.getName(), user.getPassword());
-	     session.setAttribute("user", user);
-	     
-	     new Blackjack(10, "testId");
-	     request.setSession(session);
-	}
-	
 	@Test 
 	public void testSetup() {
-		String url = Blackjack.Setup();			
-		assertEquals("PlayerTurn", url);
-		
-		while(!(url == "Result")) {
-			new Blackjack(10, "testId");
-			url = Blackjack.Setup();
-		}
-		
-		assertNotEquals("playing",Blackjack.getGame(request));
+		Game game = new Game(10);
+		Deck deck = new Deck();
+		Card card = new Card("heart", CardNumber.two);
+		deck.add(card);
+		deck.add(card);
+
+		game.setDeck(deck);
+
+		assertEquals("PlayerTurn", Setup.excute(game));
 	}
-	
-	@AfterAll
-	public static void clean() {
-		Delete.deleteUser("testId");
-		Delete.deleteLog("testId");
+
+	@Test
+	public void testBjSetup() {
+		Game game = new Game(10);
+		Deck deck = new Deck();
+		Card kingCard = new Card("heart", CardNumber.king);
+		Card aceCard = new Card("heart", CardNumber.one);
+		deck.add(kingCard);
+		deck.add(aceCard);
+
+		game.setDeck(deck);
+
+		assertEquals("Result", Setup.excute(game));
 	}
 }

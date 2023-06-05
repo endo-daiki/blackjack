@@ -17,14 +17,14 @@ import login.Information;
 @WebServlet("/PlayInfo")
 public class PlayInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PlayInfoServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public PlayInfoServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,7 +32,7 @@ public class PlayInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-		
+
 		String url = Information.getPlayInfo(request);
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher(url); 				
@@ -42,10 +42,10 @@ public class PlayInfoServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-//	protected void doPost(HttpServletRequest request, 
-//			HttpServletResponse response) 
-//					throws ServletException, IOException {
-//		
-//	}
+	protected void doPost(HttpServletRequest request, 
+			HttpServletResponse response) 
+					throws ServletException, IOException {
+
+	}
 
 }
