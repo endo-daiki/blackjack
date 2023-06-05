@@ -1,9 +1,9 @@
 package gameSystem;
 
 public class Card {
-	public String suit;
-	public CardNumber cardNumber;
-	
+	public final String suit;
+	public final CardNumber cardNumber;
+	 
 	public Card(String suit, CardNumber cardNumber) {
 		this.suit = suit;
 		this.cardNumber = cardNumber;

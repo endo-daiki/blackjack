@@ -39,7 +39,7 @@
             		Point dealerPoint = dealer.getPoint();
             	%>
             	<% for(Card card : dealerHandList) { %>
-            		<img  src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
+            		<img  src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
             	<% } %>
             	<p class="text-center text-danger">
 					<% if(dealerPoint.burstCheck()) { %>
@@ -62,7 +62,7 @@
 	            %>
 	            <div class="col-6 border <% if(split.getResult().equals("playing")) { %>border-danger<%}%>">
 	            	<% for(Card card : splitHandList) {  %>
-	            		<img src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
+	            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
 	            	<% } %>
 		            <p class="text-center text-danger">
 		             	<% if(splitPoint.burstCheck()) { %>
@@ -92,7 +92,7 @@
 	            	int point = playerPoint.getScore();
 	            %>
             	<% for(Card card : playerHandList) { %>
-            		<img  src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
+            		<img  src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
             	<% } %>
             	 <p class="text-center text-danger">
 		             	<% if(playerPoint.burstCheck()) { %>

@@ -8,33 +8,28 @@ import model.User;
 
 public class Signup {
 	public static String userSignup(User user, HttpServletRequest request) {
-		String url = "signup.jsp";
-		
 		if(!Validation.validationId(user.getId())) {
 			request.setAttribute("error_msg", "IDを入力してください");
-			return url;
+			return "signup.jsp";
 		}
 		if(!Validation.validationName(user.getName())) {
 			request.setAttribute("error_msg", "名前を入力してください");
-			return url;
+			return "signup.jsp";
 		}
 		if(!Validation.validationPassword(user.getPassword())) {
 			request.setAttribute("error_msg", "パスワードを入力してください");
-			return url;
+			return "signup.jsp";
 		}
 		if(!Validation.passwordCheck(user.getPassword(), user.getCheckPassword())) {
 			request.setAttribute("error_msg", "パスワードが正しくありません");
-			return url;
+			return "signup.jsp";
 		}
 		if(Select.selectId(user.getId())) {
 			request.setAttribute("error_msg", "このIDは既に使われています。");
-			return url;
+			return "signup.jsp";
 		}
-			
-		url = "signupDone.jsp";
 
-		Insert.insertUser(user.getId(), user.getName(), user.getPassword());
-		
-		return url;
+		Insert.insertUser(user.getId(), user.getName(), user.getPassword());		
+		return "signupDone.jsp";
 	}
 }

@@ -1,23 +1,23 @@
 package gameSystem;
 
 public class Bet {
-	final private int bet;
+	final private int tip;
 	private int refund;
 	
 	public Bet(int bet) {
-		this.bet = bet;
+		this.tip = bet;
 	}
 	
 	public void calc(String result) {
 		switch(result) {
 			case "naturalwin" :
-				refund += bet * 2.5;
+				refund += tip * 2.5;
 				break;
 			case "win" :
-				refund += bet * 2;
+				refund += tip * 2;
 				break;
 			case "lose" :
-				refund += bet * -1;
+				refund += tip * -1;
 				break;
 			default:
 				refund += 0;
@@ -25,8 +25,8 @@ public class Bet {
 		}
 	}
 	
-	public int getBet() {
-		return this.bet;
+	public int getTip() {
+		return this.tip;
 	}
 	
 	public int refund() {

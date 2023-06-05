@@ -38,12 +38,12 @@
            		List<Card> list = dealerHand.getList();
            		Card openCard = list.get(0); 
             %>
-           	<img src="img/<%= dealerHand.getList().get(0).getSuit() %>_<%= dealerHand.getList().get(0).getCardNumber().getNo() %>.png" width="100" height="150">
+           	<img src="img/<%= openCard.suit %>_<%= openCard.cardNumber.getNo() %>.png" width="100" height="150">
            	<img src="img/trump_back.png" width="100" height="150">
            	<% if( dealerHand.getList().get(0).courtCheck() ) { %>
-           	<p class="text-center"><%= dealerHand.getList().get(0).getCardNumber().getNo() %>(10) + ?</p>
+           	<p class="text-center"><%= openCard.cardNumber.getNo() %>(10) + ?</p>
            	<% } else { %>
-           	<p class="text-center"><%= dealerHand.getList().get(0).getCardNumber().getNo() %> + ?</p>
+           	<p class="text-center"><%= openCard.cardNumber.getNo() %> + ?</p>
            	<% } %>
             </div>
             <% if(!(split.getResult().equals("ready"))) { %>
@@ -55,7 +55,7 @@
 	            %>
 	            <div class="col-6 border <% if(split.getResult().equals("playing")) { %>border-danger<%}%>">
 	            	<% for(Card card : splitHandList) {  %>
-	            		<img src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
+	            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
 	            	<% } %>
 	             	<p class="text-center text-danger">
 						<% if(splitPoint.burstCheck()) { %>
@@ -82,7 +82,7 @@
 	            	int point = playerPoint.getScore();
 	            %>
             	<% for(Card card : playerHandList) {  %>
-            		<img src="img/<%= card.getSuit() %>_<%= card.getCardNumber().getNo() %>.png" width="100" height="150">
+            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
             	<% } %>
              	<p class="text-center text-danger">
 					<% if(playerPoint.bjCheck()) { %>
@@ -97,7 +97,7 @@
              		<%= point %>
              	</p>
             </div>
-            <p class="col-12">bet is <%= game.getBet().getBet() %></p>         
+            <p class="col-12">bet is <%= game.getBet().getTip() %></p>         
             <div class="col-12 border">
 				<form action="Hit" method="post">
 					<button type="submit" class="btn btn-outline-primary">hit</button>

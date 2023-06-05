@@ -7,9 +7,7 @@ public class Logout {
 	public static String userLogout(HttpServletRequest request) {		
 		HttpSession session = request.getSession();
 		session.invalidate();
-		
-		String url = "logout.jsp";
-		
-		return url;
+
+		return "logout.jsp";
 	}
 }

@@ -15,7 +15,7 @@ class BetTest {
 
 	@Test
     public void testBet() {
-        assertEquals(10, bet.getBet());
+        assertEquals(10, bet.getTip());
     }
 
     @Test
@@ -28,11 +28,14 @@ class BetTest {
 
         bet.calc("lose");
         assertEquals(10, bet.refund());
+        
+        bet.calc("naturalwin");
+        assertEquals(35, bet.refund());
     }
 
     @Test
     public void testGetBet() {
-        assertEquals(10, bet.getBet());
+        assertEquals(10, bet.getTip());
     }
 
     @Test
