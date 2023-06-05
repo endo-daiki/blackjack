@@ -17,17 +17,17 @@ public class Blackjack {
 
 	public static String getGame(HttpServletRequest request) {
 		request.setAttribute("game", game);
-		
+
 		if(!game.getGameResult().equals("playing")) {
 			Bet bet = game.getBet();
 			bet.calc(game.getPlayer().getResult());
 			bet.calc(game.getSplit().getResult());    
-			
+
 			Update.updateResult(id, bet.refund());
 			Insert.insertLog(id, bet.refund());
 
 			game.setBet(bet);
-			
+
 			return "result.jsp";
 		}
 
