@@ -39,7 +39,7 @@ class SelectTest {
 	}
 		
 	@Test 
-	public void testSelectId() {
+	public void testSelectId() { //idが使われているか(存在しているか)の確認
 		boolean idCheck = Select.selectId("0");
 		assertEquals(true, idCheck);
 	}
@@ -51,7 +51,7 @@ class SelectTest {
 	}
 	
 	@Test
-	public void testSelectRanker() {
+	public void testSelectRanker() { //上位５人を取得する
 		List<User> ranker = Select.selectRanker();
 		User topRanker = ranker.get(0);
 		
@@ -65,6 +65,7 @@ class SelectTest {
 		playLog log = playLogs.get(0);
 		
 		assertEquals("900", log.getLog());
+		assertEquals(1, playLogs.size());
 	}
 	
 	@AfterAll

@@ -28,12 +28,16 @@ class UpdateTest {
        Insert.insertUser(user.getId(), user.getName(), user.getPassword());
     }
 
+
 	@Test 
 	public void testUpdateUser() 
 			throws ServletException, IOException{ //正しく編集されているかどうか
 		
 		boolean checker = Update.updateUser(id, id, "newName", password);
 		assertEquals(true, checker);
+
+		User updateUser = Select.selectUser(id, password);
+		assertEquals("newName", updateUser.getName());
 	}
 	
 	@Test
@@ -42,6 +46,9 @@ class UpdateTest {
 		
 		boolean checker = Update.updateResult(id, 10); //取得数10を追加
 		assertEquals(true, checker); //正しく編集(機能がうごいているか)されているかの確認
+
+		User updateUser = Select.selectUser(id, password);
+		assertEquals(110, updateUser.getTip());
 	}
 	
 	@AfterAll

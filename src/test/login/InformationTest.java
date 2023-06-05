@@ -68,7 +68,6 @@ class InformationTest {
 		String url = Information.getUserInfo(request);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 				
-		
 		dispatcher.forward(request, response);
 		
 		User userInfo = (User)request.getAttribute("user"); //ログインしているユーザーの情報

@@ -43,9 +43,13 @@ class ValidationTest {
 	
 	@Test 
 	public void testPasswordCheck() { //パスワードと確認用パスワードが違っている、または、確認用パスワードが未入力の場合falseを返す
-		assertEquals(false, Validation.passwordCheck(password, checkPassword));
+		assertEquals(false, Validation.passwordCheck(password, checkPassword)); //パスワードと確認用パスワードが違う
+		
+		password = "";
+		assertEquals(false, Validation.passwordCheck(password, checkPassword)); //同じだが、パスワードが未入力の時
+		
 		password = "password";
 		checkPassword = "password";
-		assertEquals(true, Validation.passwordCheck(password, checkPassword));
+		assertEquals(true, Validation.passwordCheck(password, checkPassword)); //パスワードが入力されている、かつ、パスワードと確認用パスワードが正しい
 	}
 }
