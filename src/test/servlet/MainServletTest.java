@@ -15,8 +15,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
 
 import database.Delete;
 import database.Insert;
+import login.Login;
 import model.User;
-import userAdmin.Login;
 
 class MainServletTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();

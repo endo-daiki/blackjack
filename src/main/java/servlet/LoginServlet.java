@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import login.Login;
 import model.User;
-import userAdmin.Login;
 
 /**
  * Servlet implementation class LoginServlet

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import userAdmin.Information;
+import login.Information;
 
 /**
  * Servlet implementation class UserInfoServlet

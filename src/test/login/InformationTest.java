@@ -21,7 +21,6 @@ import database.Select;
 import database.Update;
 import model.User;
 import model.playLog;
-import userAdmin.Information;
 
 class InformationTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();

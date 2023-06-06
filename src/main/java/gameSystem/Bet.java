@@ -5,7 +5,7 @@ public class Bet {
 	private int refund;
 
 	public Bet(int bet) {
-		if(bet < 1 || bet > 10) {
+		if(10 < bet || 1 > bet) {
 			throw new IllegalArgumentException("不正な数値です");
 		}
 		this.tip = bet;
