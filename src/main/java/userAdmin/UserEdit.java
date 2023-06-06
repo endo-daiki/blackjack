@@ -30,6 +30,7 @@ public class UserEdit {
 			return "userEdit.jsp";
 		}
 
+		Update.updatePlayLog(user.getId(), user.getNewId());
 		Update.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());	
 		User updateUser = Select.selectUser(user.getNewId(), user.getPassword());
 

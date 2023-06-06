@@ -51,4 +51,23 @@ public class Update {
 		}
 		return checker;
 	}
+	
+	public static boolean updatePlayLog(String id, String newId) {
+		boolean checker = false;
+
+		try {
+			PreparedStatement pstmt = con.prepareStatement
+					("update newPlayLog set user_id = ? where user_id = ?");
+
+			pstmt.setString(1, newId);
+			pstmt.setString(2, id);	
+			pstmt.executeUpdate();
+			pstmt.close();
+
+			checker = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return checker;
+	}
 }
