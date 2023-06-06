@@ -16,21 +16,24 @@ public class Hand {
 
 		return card;
 	}
-
 	public List<Card> getList() {
 		return list;
 	}
-
+	public Card getFirstCard() {
+		return this.list.get(0);
+	}
+	public Card getSecondCard() {
+		return this.list.get(1);
+	}
 	public boolean splitCheck() {
 		if(!sizeCheck()) {
 			return false;
 		}
-		String firstCardNo = list.get(0).cardNumber.getNo();
-		String secondCardNo = list.get(1).cardNumber.getNo();
+		String firstCardNo = getFirstCard().cardNumber.getNo();
+		String secondCardNo = getSecondCard().cardNumber.getNo();
 
 		return firstCardNo.equals(secondCardNo);
 	}
-
 	public boolean sizeCheck() {
 		return list.size() == 2;
 	}

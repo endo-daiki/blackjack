@@ -12,16 +12,14 @@ public class Insert {
 		boolean checker = false;
 
 		try {
-			PreparedStatement pstmt;
-			ResultSet rs;
-
-			pstmt = con.prepareStatement("insert into newUser (id, name, password) values (?,?,?)");
+			PreparedStatement pstmt = 
+					con.prepareStatement("insert into newUser (id, name, password) values (?,?,?)");
 
 			pstmt.setString(1, id);
 			pstmt.setString(2, name);
 			pstmt.setString(3, password);
 
-			rs = pstmt.executeQuery();
+			ResultSet rs = pstmt.executeQuery();
 
 			rs.close();
 			pstmt.close();

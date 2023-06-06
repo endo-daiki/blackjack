@@ -9,8 +9,8 @@ public class Split {
 		Player split = game.getSplit();
 
 		Hand playerHand = player.getHand();
-		Card card1 = playerHand.getList().get(0);
-		Card card2 = playerHand.getList().get(1);
+		Card card1 = playerHand.getFirstCard();
+		Card card2 = playerHand.getSecondCard();
 
 		deck.add(card1);
 		deck.add(card2);

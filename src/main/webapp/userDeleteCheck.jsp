@@ -26,7 +26,7 @@
     <div class="row justify-content-center">
         <div class="col-7">
         	<p>退会します。よろしいですか？</p>
-        	<p>ユーザー名 : <%= user.getName() %>様</p>
+        	<p>ユーザー名 : <%= user.getName() %>さん</p>
             <form method="post" action="UserDelete">
 				<input type="hidden" value="<%= user.getId() %>" name="id">
 				<button type=submit class="btn btn-danger">退会する</button>

@@ -10,6 +10,8 @@ public class Card {
 	}
 
 	public boolean courtCheck() {
-		return this.cardNumber == CardNumber.jack || this.cardNumber == CardNumber.queen || this.cardNumber == CardNumber.king; 
+		return this.cardNumber == CardNumber.jack
+			|| this.cardNumber == CardNumber.queen
+			|| this.cardNumber == CardNumber.king; 
 	}
 }

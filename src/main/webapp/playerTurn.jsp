@@ -36,7 +36,7 @@
             <% 
            		Hand dealerHand = dealer.getHand(); 
            		List<Card> list = dealerHand.getList();
-           		Card openCard = list.get(0); 
+           		Card openCard = dealerHand.getFirstCard(); 
             %>
            	<img src="img/<%= openCard.suit %>_<%= openCard.cardNumber.getNo() %>.png" width="100" height="150">
            	<img src="img/trump_back.png" width="100" height="150">
@@ -66,7 +66,7 @@
             			<% } %>
             		</p>
 	             	<p class="text-center">
-	             		<% if(splitPoint.aceCountCheck() && split.getResult().equals("playing")) { %>
+	             		<% if(splitPoint.aceCountCheck()) { %>
 						<%= (point - 10) %>
 						 / 
 						<% } %>             		
@@ -90,7 +90,7 @@
           			<% } %>
             	</p>
              	<p class="text-center">
-             		<% if(playerPoint.aceCountCheck() && player.getResult().equals("playing")) { %>
+             		<% if(playerPoint.aceCountCheck()) { %>
 					<%= (point - 10) %>
 					 / 
 					<% } %>             		
