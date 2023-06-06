@@ -29,7 +29,9 @@ class UserDeleteTest {
        User user = new User(id, name, password, password);
        
        Insert.insertUser(user.getId(), user.getName(), user.getPassword());
+       
        request.setSession(session);
+       Login.userLogin(user, request);
     }
 
 	@Test 

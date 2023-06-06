@@ -23,8 +23,13 @@ class StandTest {
 	@Test
 	public void testSplitStand() {
 		Card card = new Card("heart", CardNumber.one);
+		Card twoCard = new Card("heart", CardNumber.two);
 		Deck deck = new Deck();
 
+		deck.add(twoCard);
+		deck.add(twoCard);
+		deck.add(twoCard);
+		deck.add(twoCard);
 		deck.add(card);
 		deck.add(card);
 		game.setDeck(deck);

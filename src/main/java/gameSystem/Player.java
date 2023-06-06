@@ -41,7 +41,7 @@ public class Player{
 
 		if(dealer.getPoint().burstCheck() || playerScore > dealerScore) {
 			if(this.hand.sizeCheck() && this.point.bjCheck()) {
-				this.result = "naturalwin";
+				this.result = "natural Blackjack";
 				return;
 			}
 			this.result = "win";

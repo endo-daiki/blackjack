@@ -18,9 +18,10 @@ static Game game;
 	@Test 
 	public void testSplit() {
 		Deck deck = new Deck();
-		Card card = new Card("heart", CardNumber.one);
-		deck.add(card);
-		deck.add(card);
+		Card twoCard = new Card("heart", CardNumber.two);
+		
+		deck.add(twoCard);
+		deck.add(twoCard);
 		
 		game.setDeck(deck);
 
@@ -35,6 +36,8 @@ static Game game;
 		Card aceCard = new Card("heart", CardNumber.one);
 		Deck deck = new Deck();
 
+		deck.add(kingCard);
+		deck.add(twoCard);
 		deck.add(kingCard);
 		deck.add(twoCard);
 		deck.add(aceCard);

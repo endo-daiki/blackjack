@@ -3,7 +3,9 @@
 <%@ page import="model.User, model.playLog, java.util.List" %>
 <% 
  	User user = (User) request.getAttribute("user");
+	@SuppressWarnings("unchecked")
 	List<User> ranker = (List<User>) request.getAttribute("ranker");
+	@SuppressWarnings("unchecked")
 	List<playLog> playLog = (List<playLog>) request.getAttribute("playLog");
 	if(user == null) {
 %>

@@ -5,12 +5,15 @@ public class Bet {
 	private int refund;
 
 	public Bet(int bet) {
+		if(10 < bet || 1 > bet) {
+			throw new IllegalArgumentException("不正な数値です");
+		}
 		this.tip = bet;
 	}
 
 	public void calc(String result) {
 		switch(result) {
-		case "naturalwin" :
+		case "natural Blackjack" :
 			refund += tip * 2.5;
 			break;
 		case "win" :

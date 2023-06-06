@@ -29,7 +29,7 @@ class BetTest {
         bet.calc("lose"); //負けたら掛金額を没収
         assertEquals(10, bet.refund());
         
-        bet.calc("naturalwin"); //ナチュラルBJは2.5倍を追加
+        bet.calc("natural Blackjack"); //ナチュラルBJは2.5倍を追加
         assertEquals(35, bet.refund());
     }
 

@@ -104,7 +104,7 @@ class PlayerTest {
 		dealer.draw(deck);
 
 		player.judge(dealer);
-		assertEquals("naturalwin", player.getResult());
+		assertEquals("natural Blackjack", player.getResult());
 	}
 	
 	@Test

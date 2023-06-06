@@ -51,7 +51,9 @@ class InformationTest {
 		dispatcher.forward(request, response);
 
 		User userInfo = (User)request.getAttribute("user"); //ログインしているユーザーの情報
+		@SuppressWarnings("unchecked")
 		List<User> ranker = (List<User>)request.getAttribute("ranker"); //勝率の上位5名を選出
+		@SuppressWarnings("unchecked")
 		List<playLog> playLog = (List<playLog>)request.getAttribute("playLog"); //ゲームプレイした記録を取得
 
 		assertEquals("Name0", userInfo.getName());

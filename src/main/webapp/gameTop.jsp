@@ -29,7 +29,18 @@
 			<form action="Setup" method="post">
 				<input type="hidden" name="id" value="<%= user.getId() %>">
 				bet is
-				<input type="number" value="1" min="1" max="10" name="bet" class="form-control">
+				<select class="form-select" name="bet">
+				    <option selected value="1">1</option>
+				    <option value="2">2</option>
+				    <option value="3">3</option>
+				    <option value="4">4</option>
+				    <option value="5">5</option>
+				    <option value="6">6</option>
+				    <option value="7">7</option>
+				    <option value="8">8</option>
+				    <option value="9">9</option>
+				    <option value="10">10</option>
+				 </select>
 				<div class="d-grid gap-2">
 					<button type="submit" class="btn btn-outline-primary">GAME START</button>
 				</div>

@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import database.Delete;
 import database.Insert;
 import login.Login;
-import login.UserDelete;
 import model.User;
 
 class MainServletTest {
@@ -63,6 +63,6 @@ class MainServletTest {
 	
 	@AfterAll
 	public static void clean() {
-		UserDelete.excute("testId", request);
+		Delete.deleteUser("testId");
 	}
 }
