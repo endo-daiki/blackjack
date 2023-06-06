@@ -18,6 +18,7 @@ import database.Delete;
 import database.Insert;
 import database.Select;
 import model.User;
+import userAdmin.Signup;
 
 class SignupTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();

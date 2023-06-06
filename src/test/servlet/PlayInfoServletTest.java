@@ -15,8 +15,8 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import database.Delete;
 import database.Insert;
 import gameSystem.Blackjack;
-import login.Login;
 import model.User;
+import userAdmin.Login;
 
 class PlayInfoServletTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();

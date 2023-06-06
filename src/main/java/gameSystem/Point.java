@@ -22,19 +22,15 @@ public class Point {
 			}
 		}
 	}
-
 	public boolean burstCheck() {
 		return this.score > 21;
 	}
-
 	public boolean bjCheck() {
 		return this.score == 21;
 	}
-
 	public int getScore() {
 		return score;
 	}
-
 	public boolean aceCountCheck() {
 		return aceCount > 0;
 	}

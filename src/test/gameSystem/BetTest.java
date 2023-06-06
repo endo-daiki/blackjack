@@ -16,6 +16,7 @@ class BetTest {
 	@Test
     public void testBet() { //初期値が正しいか確認
         assertEquals(10, bet.getTip());
+        
     }
 
     @Test

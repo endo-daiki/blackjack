@@ -24,7 +24,6 @@ public class Player{
 	public String getResult() {
 		return this.result;
 	}
-
 	public void setResult(String result) {
 		this.result = result;
 	}		

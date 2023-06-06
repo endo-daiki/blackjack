@@ -45,5 +45,4 @@ public class HitServlet extends HttpServlet {
 		String url = Blackjack.Hit();		
 		response.sendRedirect(url);		
 	}
-
 }

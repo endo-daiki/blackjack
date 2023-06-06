@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-	private static List<Card> deck;
-	private static final String[] suit = {"spade","heart","diamond","club"};
-	private static final CardNumber[] cardNumber = CardNumber.values();
+	private List<Card> deck;
+	private final String[] suit = {"spade","heart","diamond","club"};
+	private final CardNumber[] cardNumber = CardNumber.values();
 
 	public Deck() {
 		deck = new ArrayList<Card>();

@@ -18,6 +18,7 @@ import database.Delete;
 import database.Insert;
 import database.Select;
 import model.User;
+import userAdmin.UserEdit;
 
 class UserEditTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();

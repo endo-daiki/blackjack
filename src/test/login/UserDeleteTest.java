@@ -15,6 +15,8 @@ import org.springframework.mock.web.MockHttpSession;
 import database.Insert;
 import database.Select;
 import model.User;
+import userAdmin.Login;
+import userAdmin.UserDelete;
 
 class UserDeleteTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();

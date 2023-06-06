@@ -16,6 +16,7 @@ class HitTest {
 		
 		deck.add(card);
 		deck.add(card);
+		game.setDeck(deck);
 		
 		Setup.excute(game);
 		assertEquals("PlayerTurn", Hit.excute(game));
@@ -29,6 +30,8 @@ class HitTest {
 		
 		deck.add(card);
 		deck.add(card);
+		
+		game.setDeck(deck);
 		
 		Setup.excute(game);
 		assertEquals("Result", Hit.excute(game));
@@ -47,6 +50,8 @@ class HitTest {
 		deck.add(twoCard);
 		deck.add(twoCard);
 		deck.add(twoCard);
+		
+		game.setDeck(deck);
 		
 		Setup.excute(game);
 		Split.excute(game);
@@ -67,6 +72,8 @@ class HitTest {
 		deck.add(card);
 		deck.add(card);
 		deck.add(card);
+		
+		game.setDeck(deck);
 		
 		Setup.excute(game);
 		Split.excute(game);

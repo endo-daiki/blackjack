@@ -14,6 +14,8 @@ import org.springframework.mock.web.MockHttpSession;
 import database.Delete;
 import database.Insert;
 import model.User;
+import userAdmin.Login;
+import userAdmin.Logout;
 
 class LogoutTest {
 	static MockHttpServletRequest request = new MockHttpServletRequest();

@@ -32,6 +32,24 @@ public class Hit {
 			}
 
 			return "PlayerTurn";
-		}
+		}	
+//		Deck deck = game.getDeck();
+//		Player player = game.getPlayer();
+//		Player split = game.getSplit();
+//		
+//		Player hit = player.getResult().equals("split") ? split : player;
+//		
+//		hit.draw(deck);
+//		
+//		game.setDeck(deck);
+//		game.setPlayer(player);
+//		game.setSplit(split);
+//		
+//		if(hit.getPoint().burstCheck() || hit.getPoint().bjCheck()) {
+//			hit.setResult("stand");
+//			return Stand.excute(game);
+//		}
+//		
+//		return "PlayerTurn";
 	}
 }
