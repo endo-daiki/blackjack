@@ -33,7 +33,7 @@ public class Update {
 
 	public static boolean updateResult(String id, int refund) {
 		boolean checker = false;
- 
+
 		try {
 			PreparedStatement pstmt = null;
 
@@ -41,27 +41,6 @@ public class Update {
 					("update newUser set tip = (tip + ?), playing = playing + 1 where id = ?");
 
 			pstmt.setInt(1, refund);
-			pstmt.setString(2, id);	
-			pstmt.executeUpdate();
-			pstmt.close();
-
-			checker = true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return checker;
-	}
-	
-	public static boolean updatePlayLog(String newId, String id) {
-		boolean checker = false;
-		 
-		try {
-			PreparedStatement pstmt = null;
-
-			pstmt = con.prepareStatement
-					("update newPlayLog set user_id = ? where user_id = ?");
-
-			pstmt.setString(1, newId);
 			pstmt.setString(2, id);	
 			pstmt.executeUpdate();
 			pstmt.close();
