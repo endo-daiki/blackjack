@@ -30,7 +30,8 @@ public class UserEdit {
 			return "userEdit.jsp";
 		}
 
-		Update.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());	
+		Update.updateUser(user.getId(), user.getNewId(), user.getName(), user.getPassword());
+		Update.updatePlayLog(user.getNewId(), user.getId());	
 		User updateUser = Select.selectUser(user.getNewId(), user.getPassword());
 
 		HttpSession session = request.getSession(true);
