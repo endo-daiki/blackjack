@@ -19,11 +19,11 @@ public enum CardNumber {
 	private String no;
 
 	public int getPoint() {
-		return this.point;
+		return point;
 	}
 
 	public String getNo() {
-		return this.no;
+		return no;
 	}
 
 	CardNumber(int point, String no) {

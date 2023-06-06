@@ -26,7 +26,7 @@
 		<h1 class="text-center">ブラックジャック</h1>
 		<p class="text-center">ユーザー ログイン</p>
 		<div class="col-7">
-			<% if(request.getAttribute("error_msg") != null){ %>
+			<% if(request.getAttribute("error_msg")!= null){ %>
 				<p class="text-danger">ログインエラー：<%= (String)request.getAttribute("error_msg") %></p>
 			<% } %>
 			<form method="post" action="Login">

@@ -13,7 +13,6 @@ public class Player{
 
 	public void draw(Deck deck) {
 		Card card = this.hand.draw(deck);
-
 		point.calc(card);
 	}
 	public Hand getHand() {

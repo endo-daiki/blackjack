@@ -40,9 +40,6 @@ public class Hit {
 //		Player hit = player.getResult().equals("split") ? split : player;
 //		
 //		hit.draw(deck);
-//	
-//		player = player.getResult().equals("split") ? player : hit;
-//		split = player.getResult().equals("split") ? hit : split;
 //		
 //		game.setDeck(deck);
 //		game.setPlayer(player);

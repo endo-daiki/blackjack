@@ -17,8 +17,8 @@ public class Select {
 	public static boolean selectId(String id) {		
 		boolean idChecker = false;
 		try {
-			PreparedStatement pstmt = 
-					con.prepareStatement("select * from newUser where id = ?");
+			PreparedStatement pstmt = con.prepareStatement
+					("select * from newUser where id = ?");
 
 			pstmt.setString(1, id);
 

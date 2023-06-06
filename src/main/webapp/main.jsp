@@ -26,7 +26,7 @@
 	<% if(request.getAttribute("user_login") != null) { %>
 		<p class="text-danger text-center"><%= request.getAttribute("user_login") %></p>
 	<% } %>
-	<p class="text-center">ようこそ、<%= user.getName() %>さん</p>
+	<p class="text-center">ようこそ、<%= user.getName()  %>さん</p>
     <div class="row justify-content-center">
         <div class="col-7">
 			<div class="d-grid gap-2">

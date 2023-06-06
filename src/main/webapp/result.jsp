@@ -10,6 +10,7 @@
 	}
 %>
 <%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,java.util.List" %>
+<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game");
 	Player player = game.getPlayer();
@@ -71,7 +72,11 @@
 	          				BlackJack!!
 	          			<% } %>
             		</p>
-	             	<p class="text-center">       		
+	             	<p class="text-center">
+	             		<% if(splitPoint.aceCountCheck() && split.getResult().equals("playing")) { %>
+						<%= (point - 10) %>
+						 / 
+						<% } %>             		
 	             		<%= point %>
 	             	</p>
 	             	<h3 class="text-center text-danger">

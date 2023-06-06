@@ -45,12 +45,14 @@
               <p class="text-center">トップ５</p>
               <table class="table">
                 <tbody>
+                <% int rank = 1; %>
                 <% for(int i = 0; i < ranker.size(); i++) { %>
                   <tr>
-                    <th scope="row"><%= i + 1 %>位</th>
+                    <th scope="row"><%= rank %>位</th>
                     <td><%= ranker.get(i).getName() %></td>
                     <td><%= ranker.get(i).getTip() %></td>
                   </tr>
+                <% rank++; %>
                 <% } %>
                 </tbody>
               </table>
@@ -63,6 +65,7 @@
                 	    <td><%= playLog.get(i).getTime() %></td>
                     	<td><%= playLog.get(i).getLog() %></td>
                   	  </tr>
+                	<% rank++; %>
 	                <% } %>
 	                </tbody>
 	              </table>

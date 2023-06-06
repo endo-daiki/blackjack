@@ -26,7 +26,7 @@
     <div class="row justify-content-center">
         <div class="col-7">
 			<% if(request.getAttribute("error_msg") != null) { %>
-				<p class="text-danger">編集エラー：<%= request.getAttribute("error_msg") %></p>
+			<p class="text-danger">編集エラー：<%= request.getAttribute("error_msg") %></p>
 			<% } %>
             <form method="post" action="UserEdit">
 				<label>ID</label>

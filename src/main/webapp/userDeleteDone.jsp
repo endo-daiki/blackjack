@@ -25,7 +25,7 @@
     <p class="text-center">ユーザー退会 完了</p>
     <div class="row justify-content-center">
         <div class="col-7">
-            <p>退会しました。ご利用ありがとうございました。</p>
+            <p>退会しました。</p>
             <a href="./">ログイン画面に戻る</a>
         </div>
     </div>

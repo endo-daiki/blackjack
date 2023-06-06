@@ -7,6 +7,10 @@ public class User {
 	private String checkPassword;
 	private String password;
 	private int playing;
+	private int win;
+	private int lose;
+	private int draw;
+	private double rate;
 	private int tip;
 
 	public User() {}
@@ -62,6 +66,30 @@ public class User {
 	}
 	public void setPlaying(int playing) {
 		this.playing = playing;
+	}
+	public int getWin() {
+		return this.win;
+	}
+	public void setWin(int win) {
+		this.win = win;
+	}
+	public int getLose() {
+		return this.lose;
+	}
+	public void setLose(int lose) {
+		this.lose = lose;
+	}
+	public int getDraw() {
+		return this.draw;
+	}
+	public void setDraw(int draw) {
+		this.draw = draw;
+	}
+	public double getRate() {
+		return this.rate;
+	}
+	public void setRate(double rate) {
+		this.rate = rate;
 	}
 	public int getTip() {
 		return tip;
