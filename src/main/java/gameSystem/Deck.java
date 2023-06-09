@@ -29,7 +29,7 @@ public class Deck {
 		return card;
 	}
 
-	public void add(Card card) {
-		deck.add(0, card);
+	public void add(int i, Card card) {
+		deck.add(i, card);
 	}
 }

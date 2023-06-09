@@ -3,56 +3,42 @@ package gameSystem;
 public class Player{
 	private Hand hand;
 	private Hand splitHand;
-	private Point point;
-	private String result;
+	private Result result;
 
 	public Player() {
 		hand = new Hand();
 		splitHand = new Hand();
-		point = new Point();
-		this.result = "ready";
+		this.result = Result.READY;
 	}
 
 	public void draw(Deck deck) {
-		Card card = this.hand.draw(deck);
-		point.calc(card);
+		if(this.result == Result.SPLIT) {
+			this.splitHand.draw(deck);
+			return;
+		}
+		this.hand.draw(deck);
 	}
 	public Hand getHand() {
 		return hand;
 	}
-	public Point getPoint() {
-		return point;
+	public Hand getSplitHand() {
+		return splitHand;
 	}
-	public String getResult() {
+	public Point getPoint() {
+		return this.hand.getPoint();
+	}
+	public Point getSplitPoint() {
+		return this.splitHand.getPoint();
+	}
+	public Result getResult() {
 		return this.result;
 	}
-	public void setResult(String result) {
+	public void setResult(Result result) {
 		this.result = result;
 	}		
 	public void judge(Player dealer) {
-		if(this.result.equals("ready")) {
-			return;
-		}
-		if(this.point.burstCheck()) {
-			this.result = "lose";
-			return;
-		}
-		int playerScore = this.point.getScore();
-		int dealerScore = dealer.getPoint().getScore();
-
-		if(dealer.getPoint().burstCheck() || playerScore > dealerScore) {
-			if(this.hand.sizeCheck() && this.point.bjCheck()) {
-				this.result = "natural Blackjack";
-				return;
-			}
-			this.result = "win";
-			return;
-		} else if (this.getPoint().burstCheck() || playerScore < dealerScore) {
-			this.result = "lose";
-			return;
-		} else {
-			this.result = "draw";
-			return;
-		}
+		Point dealerPoint = dealer.getPoint();
+		hand.judge(dealerPoint);
+		splitHand.judge(dealerPoint);
 	}
 }

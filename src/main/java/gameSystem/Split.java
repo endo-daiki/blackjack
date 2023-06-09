@@ -6,7 +6,6 @@ public class Split {
 	protected static String excute(Game game) {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
-		Player split = game.getSplit();
 		
 		game.setGameResult("split");
 
@@ -14,23 +13,24 @@ public class Split {
 		Card card1 = playerHand.getList().get(0);
 		Card card2 = playerHand.getList().get(1);
 
-		deck.add(card1);
-		deck.add(card2);
+		deck.add(0, card1);
+		deck.add(2, card2);
 
 		Player newPlayer = new Player();
 		newPlayer.draw(deck);
-		split.draw(deck);
 		newPlayer.draw(deck);
-		split.draw(deck);
+		
+		newPlayer.setResult(Result.SPLIT);
+		newPlayer.draw(deck);
+		newPlayer.draw(deck);
 
-		split.setResult("playing");
-		newPlayer.setResult("split");
+		player.setResult(Result.SPLIT);
+		newPlayer.setResult(Result.SPLIT);
 
 		game.setDeck(deck);
 		game.setPlayer(newPlayer);
-		game.setSplit(split);
 
-		if(split.getPoint().bjCheck()) {
+		if(newPlayer.getSplitPoint().bjCheck()) {
 			return Stand.excute(game);
 		}
 

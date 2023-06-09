@@ -7,7 +7,11 @@ public class Setup {
 		Deck deck = game.getDeck();
 
 		Player player = game.getPlayer();
-		player.setResult("playing");
+		player.setResult(Result.PLAYING);
+		
+		Card card = new Card("heart", CardNumber.one);
+		deck.add(0, card);
+		deck.add(0, card);
 
 		player.draw(deck);
 		player.draw(deck);  	

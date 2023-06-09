@@ -6,32 +6,24 @@ public class Stand {
 	protected static String excute(Game game) {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
-		Player split = game.getSplit();
 		Player dealer = game.getDealer();
-
-		if(player.getResult().equals("split")) {
-			player.setResult("playing");
-			split.setResult("stand");
-
-			if(player.getPoint().bjCheck()) {
-				return excute(game);
-			}
+		
+		if(player.getSplitHand().getResult() == Result.STAND) {
+			player.setResult(Result.PLAYING);
 			return "PlayerTurn";
 		}
 
-		if(!player.getPoint().burstCheck() || !split.getPoint().burstCheck() && !split.getResult().equals("ready")) {
+		if(!player.getPoint().burstCheck() || !player.getSplitPoint().burstCheck() && !player.getSplitHand().getResult().equals(Result.READY)) {
 			while(dealer.getPoint().getScore() < 17) {
 				dealer.draw(deck);
 			}
 		}
 
 		player.judge(dealer);
-		split.judge(dealer);
-		game.setGameResult(player.getResult());
+		game.setGameResult("test");
 
 		game.setDeck(deck);
 		game.setPlayer(player);
-		game.setSplit(split);
 		game.setDealer(dealer);
 
 		return "Result";

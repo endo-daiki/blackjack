@@ -9,12 +9,12 @@
 <%
 	}
 %>
-<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,java.util.List" %>
-<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,java.util.List" %>
+<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,gameSystem.Result,java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game");
 	Player player = game.getPlayer();
-	Player split = game.getSplit();
+	Hand playerHand = player.getHand();
+	Hand splitHand = player.getSplitHand();
 	Player dealer = game.getDealer();
 %>
 <!DOCTYPE html>
@@ -54,14 +54,13 @@
 			   	<%= dealerPoint.getScore() %>
 			   </p>
             </div>
-            <% if(!(split.getResult().equals("ready"))) { %>
-            	<% 
-	            	Hand splitHand = split.getHand(); 
-	            	Point splitPoint = split.getPoint(); 
+            <% if(splitHand.getResult() == Result.READY) { %>
+            	<%
+	            	Point splitPoint = player.getSplitPoint(); 
 	            	List<Card> splitHandList = splitHand.getList();
 	            	int point = splitPoint.getScore();
 	            %>
-	            <div class="col-6 border <% if(split.getResult().equals("playing")) { %>border-danger<%}%>">
+	            <div class="col-6 border <% if(!(player.getResult() == Result.READY)) { %>border-danger<%}%>">
 	            	<% for(Card card : splitHandList) {  %>
 	            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
 	            	<% } %>
@@ -73,21 +72,16 @@
 	          				BlackJack!!
 	          			<% } %>
             		</p>
-	             	<p class="text-center">
-	             		<% if(splitPoint.aceCountCheck() && split.getResult().equals("playing")) { %>
-						<%= (point - 10) %>
-						 / 
-						<% } %>             		
+	             	<p class="text-center">          		
 	             		<%= point %>
 	             	</p>
 	             	<h3 class="text-center text-danger">
-						<%= split.getResult() %>
+						<%= splitHand.getResult() %>
             		</h3>
 	            </div>
             <% } %>
             <div class="col-6 border">
             	<% 
-	            	Hand playerHand = player.getHand(); 
 	            	Point playerPoint = player.getPoint(); 
 	            	List<Card> playerHandList = playerHand.getList();
 	            	int point = playerPoint.getScore();

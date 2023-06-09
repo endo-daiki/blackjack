@@ -11,21 +11,8 @@ public class Bet {
 		this.tip = bet;
 	}
 
-	public void calc(String result) {
-		switch(result) {
-		case "natural Blackjack" :
-			refund += tip * 2.5;
-			break;
-		case "win" :
-			refund += tip * 2;
-			break;
-		case "lose" :
-			refund += tip * -1;
-			break;
-		default:
-			refund += 0;
-			break;
-		}
+	public void calc(Result result) {
+		this.refund += this.tip * result.toBet();
 	}
 
 	public int getTip() {
