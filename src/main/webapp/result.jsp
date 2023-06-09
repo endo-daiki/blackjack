@@ -32,6 +32,7 @@
         <div class="row justify-content-center">
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">ゲームリザルト</p>
+             <p>my tip <%= user.getTip() %></p>
             <div class="col-12 border">
            		<% 
             		Hand dealerHand = dealer.getHand(); 

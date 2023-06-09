@@ -2,11 +2,13 @@ package gameSystem;
 
 public class Player{
 	private Hand hand;
+	private Hand splitHand;
 	private Point point;
 	private String result;
 
 	public Player() {
 		hand = new Hand();
+		splitHand = new Hand();
 		point = new Point();
 		this.result = "ready";
 	}

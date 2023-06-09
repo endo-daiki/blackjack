@@ -32,7 +32,8 @@
     <div class="row justify-content-center">
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">プレイヤーターン</p>
-            <div class="col-12 border">
+            <p>my tip <%= user.getTip() %></p>
+            <div class="col-12 border">    
             <% 
            		Hand dealerHand = dealer.getHand(); 
            		List<Card> list = dealerHand.getList();
@@ -100,15 +101,15 @@
             <p class="col-12">bet is <%= game.getBet().getTip() %></p>         
             <div class="col-12 border">
 				<form action="Hit" method="post">
-					<button type="submit" class="btn btn-outline-primary">hit</button>
+					<button type="submit" class="btn btn-primary">hit</button>
 				</form>
 				<form action="Stand" method="post">
-					<button type="submit" class="btn btn-outline-danger">stand</button>
+					<button type="submit" class="btn btn-danger">stand</button>
 				</form>
 				<% if(playerHand.splitCheck()) { %>
-					<form action="Split" method="post">
-						<button type="submit" class="btn btn-outline">split</button>
-					</form>
+				<form action="Split" method="post">
+					<button type="submit" class="btn btn-light">split</button>
+				</form>
 				<% } %>
             	<a href="gameTop.jsp" class="btn btn-outline-danger">戻る</a>
             </div>

@@ -7,6 +7,8 @@ public class Split {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
 		Player split = game.getSplit();
+		
+		game.setGameResult("split");
 
 		Hand playerHand = player.getHand();
 		Card card1 = playerHand.getList().get(0);
