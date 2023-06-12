@@ -27,7 +27,7 @@ public class Split {
 		game.setPlayer(newPlayer);
 
 		if(newPlayer.getSplitPoint().bjCheck()) {
-			return Stand.excute(game);
+			return Stand.excute(game, "split");
 		}
 
 		return "PlayerTurn";

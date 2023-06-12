@@ -14,6 +14,7 @@ public class Setup {
 
 		player.draw(deck);
 		player.draw(deck);  	
+		player.setStatus(Status.PLAYING);
 		game.setPlayer(player);
 
 		Player dealer = game.getDealer();
@@ -24,7 +25,7 @@ public class Setup {
 		game.setDeck(deck);
 
 		if(player.getPoint().bjCheck()) {
-			return Stand.excute(game);
+			return Stand.excute(game, "playing");
 		}
 
 		return "PlayerTurn";

@@ -42,8 +42,9 @@ public class StandServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
+		String select = request.getParameter("select");
 
-		String url = Blackjack.Stand();
+		String url = Blackjack.Stand(select);
 		response.sendRedirect(url);
 	}
 

@@ -12,7 +12,26 @@ public class Player{
 	}
 
 	public void draw(Deck deck) {
+		if(this.status == Status.SPLIT) {
+			this.splitHand.draw(deck);
+			return;
+		}
 		this.hand.draw(deck);
+	}
+	public boolean moveCheck() {
+		if(this.status == Status.SPLIT) {
+			return this.splitHand.moveCheck();
+		}
+		return this.hand.moveCheck();
+	}
+	public void isStand() {
+		if(this.status == Status.SPLIT) {
+			this.splitHand.isStand();
+			this.status = Status.PLAYING;
+			return;
+		}
+		this.hand.isStand();
+		this.status = Status.SPLIT;
 	}
 	public void splitDraw(Deck deck) {
 		this.splitHand.draw(deck);

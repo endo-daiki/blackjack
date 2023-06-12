@@ -3,16 +3,20 @@ package gameSystem;
 import model.Game;
 
 public class Stand {
-	protected static String excute(Game game) {
+	protected static String excute(Game game, String select) {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
 		Player dealer = game.getDealer();
 		
-		if(player.getStatus() == Status.SPLIT) {
+		if(select.equals("split")) {
+			player.setStatus(Status.SPLIT);
+		} else {
 			player.setStatus(Status.PLAYING);
-			if(player.getPoint().bjCheck()) {
-				return excute(game);
-			}
+		}
+
+		player.isStand();
+		
+		if(!player.moveCheck()) {
 			return "PlayerTurn";
 		}
 

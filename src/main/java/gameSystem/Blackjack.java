@@ -47,12 +47,12 @@ public class Blackjack {
 		return Setup.excute(game);
 	}
 
-	public static String Hit() {
-		return Hit.excute(game);
+	public static String Hit(String select) {
+		return Hit.excute(game, select);
 	}
 
-	public static String Stand() {
-		return Stand.excute(game);
+	public static String Stand(String select) {
+		return Stand.excute(game, select);
 	}
 
 	public static String Split() {

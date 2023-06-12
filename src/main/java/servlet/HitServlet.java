@@ -41,8 +41,9 @@ public class HitServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-
-		String url = Blackjack.Hit();		
+		String select = request.getParameter("select");
+		
+		String url = Blackjack.Hit(select);		
 		response.sendRedirect(url);		
 	}
 }

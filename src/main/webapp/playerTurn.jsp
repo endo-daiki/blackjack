@@ -55,7 +55,7 @@
 	            	List<Card> splitHandList = splitHand.getList();
 	            	int point = splitPoint.getScore();
 	            %>
-	            <div class="col-6 border <% if(player.getStatus() == Status.SPLIT) { %>border-danger<%}%>">
+	            <div class="col-6 border">
 	            	<% for(Card card : splitHandList) {  %>
 	            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
 	            	<% } %>
@@ -74,10 +74,10 @@
 						<% } %>             		
 	             		<%= point %>
 	             	</p>
-	             	 <input class="form-check-input" type="radio" name="select" value="split" <% if(splitHand.moveCheck()) { %>disabled<% } %>>
+	             	 <input class="form-check-input" type="radio" name="select" value="split" <% if(splitHand.moveCheck()) { %>disabled<% } else if(player.getStatus() == Status.SPLIT) { %> checked <% } %>>
 	            </div>
             <% } %>
-            <div class="col-6 border <% if(player.getStatus() == Status.PLAYING) { %>border-danger<%}%>">
+            <div class="col-6 border">
             	<% 
 	            	Point playerPoint = player.getPoint(); 
 	            	List<Card> playerHandList = playerHand.getList();
@@ -87,8 +87,11 @@
             		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
             	<% } %>
              	<p class="text-center text-danger">
+             		<% if(playerPoint.burstCheck()) { %>
+						Burst!!
+					<% } %>
 					<% if(playerPoint.bjCheck()) { %>
-          			BlackJack!!
+          				BlackJack!!
           			<% } %>
             	</p>
              	<p class="text-center">
@@ -98,7 +101,7 @@
 					<% } %>             		
              		<%= point %>
              	</p>
-             	<input class="form-check-input" type="radio" name="select" value="playing" <% if(playerHand.moveCheck()) { %>disabled<% } %>>
+             	<input class="form-check-input" type="radio" name="select" value="playing" <% if(playerHand.moveCheck()) { %>disabled<% } else if(player.getStatus() == Status.PLAYING) { %> checked <% } %>>
             </div>
             <p class="col-12">bet is <%= game.getBet().getTip() %></p>         
             <div class="col-12 border row justify-content-around">
