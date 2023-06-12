@@ -9,7 +9,7 @@
 <%
 	}
 %>
-<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,gameSystem.Result,java.util.List" %>
+<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,gameSystem.Result,gameSystem.Status,java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game");
 	Player player = game.getPlayer();
@@ -54,13 +54,13 @@
 			   	<%= dealerPoint.getScore() %>
 			   </p>
             </div>
-            <% if(splitHand.getResult() == Result.READY) { %>
+            <% if(splitHand.sizeCheck() > 0) { %>
             	<%
 	            	Point splitPoint = player.getSplitPoint(); 
 	            	List<Card> splitHandList = splitHand.getList();
 	            	int point = splitPoint.getScore();
 	            %>
-	            <div class="col-6 border <% if(!(player.getResult() == Result.READY)) { %>border-danger<%}%>">
+	            <div class="col-6 border">
 	            	<% for(Card card : splitHandList) {  %>
 	            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
 	            	<% } %>
@@ -101,7 +101,7 @@
               		<%= point %>
               	</p>
               	<h3 class="text-center text-danger">
-              		<%= player.getResult() %>
+              		<%= playerHand.getResult() %>
               	</h3>
             </div>
             <p class="col-12">refund is <%= game.getBet().refund() %></p>

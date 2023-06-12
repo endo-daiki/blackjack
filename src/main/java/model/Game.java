@@ -3,13 +3,13 @@ package model;
 import gameSystem.Bet;
 import gameSystem.Deck;
 import gameSystem.Player;
+import gameSystem.Status;
 
 public class Game {
 	private Deck deck;
 	private Player player;
 	private Player dealer;
 	private Player split;
-	private String gameResult;
 	private Bet bet;
 
 	public Game() {}
@@ -18,7 +18,6 @@ public class Game {
 		this.player = new Player();
 		this.dealer = new Player();
 		this.split = new Player();
-		this.gameResult = "playing";
 		this.bet = new Bet(bet);
 	}
 
@@ -51,11 +50,5 @@ public class Game {
 	}
 	public void setBet(Bet bet) {
 		this.bet = bet;
-	}
-	public String getGameResult() {
-		return gameResult;
-	}
-	public void setGameResult(String gameResult) {
-		this.gameResult = gameResult;
 	}
 }

@@ -7,13 +7,21 @@ public class Hit {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
 		
-		player.draw(deck);
+		if(player.getStatus() == Status.SPLIT) {
+			player.splitDraw(deck);
+			
+			if(player.getSplitPoint().bjCheck() || player.getSplitPoint().burstCheck()) {
+				return Stand.excute(game);
+			}
+		} else {
+			player.draw(deck);
+			
+			if(player.getPoint().bjCheck() || player.getPoint().burstCheck()) {
+				return Stand.excute(game);
+			}
+		}	
 		game.setDeck(deck);
 		game.setPlayer(player);
-		
-		if(player.getPoint().bjCheck() || player.getPoint().burstCheck()) {
-			return Stand.excute(game);
-		}
 		
 		return "PlayerTurn";
 	}

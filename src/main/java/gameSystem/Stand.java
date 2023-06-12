@@ -8,20 +8,22 @@ public class Stand {
 		Player player = game.getPlayer();
 		Player dealer = game.getDealer();
 		
-		if(player.getSplitHand().getResult() == Result.STAND) {
-			player.setResult(Result.PLAYING);
+		if(player.getStatus() == Status.SPLIT) {
+			player.setStatus(Status.PLAYING);
+			if(player.getPoint().bjCheck()) {
+				return excute(game);
+			}
 			return "PlayerTurn";
 		}
 
-		if(!player.getPoint().burstCheck() || !player.getSplitPoint().burstCheck() && !player.getSplitHand().getResult().equals(Result.READY)) {
+		if(!player.getPoint().burstCheck() || !player.getSplitPoint().burstCheck() && player.getSplitHand().sizeCheck() > 0) {
 			while(dealer.getPoint().getScore() < 17) {
 				dealer.draw(deck);
 			}
 		}
 
 		player.judge(dealer);
-		game.setGameResult("test");
-
+		
 		game.setDeck(deck);
 		game.setPlayer(player);
 		game.setDealer(dealer);

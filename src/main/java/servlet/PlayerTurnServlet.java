@@ -32,7 +32,7 @@ public class PlayerTurnServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 
-		String url = Blackjack.getGame(request);
+		String url = Blackjack.getPlayerTrun(request);
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

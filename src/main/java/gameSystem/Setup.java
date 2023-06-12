@@ -7,7 +7,6 @@ public class Setup {
 		Deck deck = game.getDeck();
 
 		Player player = game.getPlayer();
-		player.setResult(Result.PLAYING);
 		
 		Card card = new Card("heart", CardNumber.one);
 		deck.add(0, card);
@@ -23,8 +22,6 @@ public class Setup {
 		game.setDealer(dealer);
 
 		game.setDeck(deck);
-
-		game.setGameResult("playing");
 
 		if(player.getPoint().bjCheck()) {
 			return Stand.excute(game);

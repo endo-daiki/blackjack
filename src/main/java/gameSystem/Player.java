@@ -3,20 +3,19 @@ package gameSystem;
 public class Player{
 	private Hand hand;
 	private Hand splitHand;
-	private Result result;
+	private Status status;
 
 	public Player() {
 		hand = new Hand();
 		splitHand = new Hand();
-		this.result = Result.READY;
+		status = Status.PLAYING;
 	}
 
 	public void draw(Deck deck) {
-		if(this.result == Result.SPLIT) {
-			this.splitHand.draw(deck);
-			return;
-		}
 		this.hand.draw(deck);
+	}
+	public void splitDraw(Deck deck) {
+		this.splitHand.draw(deck);
 	}
 	public Hand getHand() {
 		return hand;
@@ -30,11 +29,11 @@ public class Player{
 	public Point getSplitPoint() {
 		return this.splitHand.getPoint();
 	}
-	public Result getResult() {
-		return this.result;
+	public Status getStatus() {
+		return this.status;
 	}
-	public void setResult(Result result) {
-		this.result = result;
+	public void setStatus(Status status) {
+		this.status = status;
 	}		
 	public void judge(Player dealer) {
 		Point dealerPoint = dealer.getPoint();

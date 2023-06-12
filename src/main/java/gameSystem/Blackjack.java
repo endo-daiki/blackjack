@@ -18,28 +18,29 @@ public class Blackjack {
 		id = user_id;
 	}
 
-	public static String getGame(HttpServletRequest request) {
+	public static String getPlayerTrun(HttpServletRequest request) {
+		request.setAttribute("game", game);
+		return "playerTurn.jsp";
+	}
+	
+	public static String getResult(HttpServletRequest request) {
 		request.setAttribute("game", game);
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
+		Player player = game.getPlayer();
 
-		if(!game.getGameResult().equals("playing")) {
-			Bet bet = game.getBet();
+		Bet bet = game.getBet();
+		bet.calc(player.getHand().getResult());
+		bet.calc(player.getSplitHand().getResult());    
 
-			bet.calc(game.getPlayer().getHand().getResult());
-			bet.calc(game.getPlayer().getSplitHand().getResult());    
+		Update.updateResult(id, bet.refund());
+		Insert.insertLog(id, bet.refund());
+		
+		session.setAttribute("user", Select.selectUser(id, user.getPassword()));
 
-			Update.updateResult(id, bet.refund());
-			Insert.insertLog(id, bet.refund());
-			
-			session.setAttribute("user", Select.selectUser(id, user.getPassword()));
+		game.setBet(bet);
 
-			game.setBet(bet);
-
-			return "result.jsp";
-		}
-
-		return "playerTurn.jsp";
+		return "result.jsp";
 	}
 
 	public static String Setup() {    	

@@ -9,10 +9,12 @@
 <%
 	}
 %>
-<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,gameSystem.Result,java.util.List" %>
+<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,gameSystem.Result,gameSystem.Status,java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game");
 	Player player = game.getPlayer();
+	Hand playerHand = player.getHand();
+	Hand splitHand = player.getSplitHand();
 	Player dealer = game.getDealer();
 %>
 <!DOCTYPE html>
@@ -26,6 +28,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </head>
 <body class="p-4">
+	<form method="post">
     <div class="container-fluid">
         
     <div class="row justify-content-center">
@@ -46,14 +49,13 @@
            	<p class="text-center"><%= openCard.cardNumber.getNo() %> + ?</p>
            	<% } %>
             </div>
-            <% if(player.getResult() == Result.SPLIT) { %>
+            <% if(splitHand.sizeCheck() > 0) { %>
             	<% 
-	            	Hand splitHand = player.getSplitHand(); 
 	            	Point splitPoint = player.getSplitPoint(); 
 	            	List<Card> splitHandList = splitHand.getList();
 	            	int point = splitPoint.getScore();
 	            %>
-	            <div class="col-6 border <% if(player.getResult() == Result.SPLIT) { %>border-danger<%}%>">
+	            <div class="col-6 border <% if(player.getStatus() == Status.SPLIT) { %>border-danger<%}%>">
 	            	<% for(Card card : splitHandList) {  %>
 	            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
 	            	<% } %>
@@ -66,17 +68,17 @@
             			<% } %>
             		</p>
 	             	<p class="text-center">
-	             		<% if(splitPoint.aceCountCheck() && player.getResult().equals(Result.SPLIT)) { %>
+	             		<% if(splitPoint.aceCountCheck() && player.getStatus() == Status.SPLIT) { %>
 						<%= (point - 10) %>
 						 / 
 						<% } %>             		
 	             		<%= point %>
 	             	</p>
+	             	 <input class="form-check-input" type="radio" name="select" value="split" <% if(splitHand.moveCheck()) { %>disabled<% } %>>
 	            </div>
             <% } %>
-            <div class="col-6 border <% if(player.getResult() == Result.PLAYING) { %>border-danger<%}%>">
+            <div class="col-6 border <% if(player.getStatus() == Status.PLAYING) { %>border-danger<%}%>">
             	<% 
-	            	Hand playerHand = player.getHand(); 
 	            	Point playerPoint = player.getPoint(); 
 	            	List<Card> playerHandList = playerHand.getList();
 	            	int point = playerPoint.getScore();
@@ -90,35 +92,31 @@
           			<% } %>
             	</p>
              	<p class="text-center">
-             		<% if(playerPoint.aceCountCheck() && player.getResult().equals("playing")) { %>
+             		<% if(playerPoint.aceCountCheck() && player.getStatus() == Status.PLAYING) { %>
 					<%= (point - 10) %>
 					 / 
 					<% } %>             		
              		<%= point %>
              	</p>
+             	<input class="form-check-input" type="radio" name="select" value="playing" <% if(playerHand.moveCheck()) { %>disabled<% } %>>
             </div>
             <p class="col-12">bet is <%= game.getBet().getTip() %></p>         
             <div class="col-12 border row justify-content-around">
-				<form action="Hit" method="post" class="col-4">
 					<div class="d-grid gap-2">
-						<button type="submit" class="btn btn-primary">hit</button>					
-					</div>
-				</form>
-				<form action="Stand" method="post" class="col-4">
+						<button formaction="Hit" type="submit" class="btn btn-primary">hit</button>					
+						</div>
 					<div class="d-grid gap-2">
-						<button type="submit" class="btn btn-danger">stand</button>
+						<button formaction="Stand" type="submit" class="btn btn-danger">stand</button>
 					</div>
-				</form>
-				<% if(playerHand.splitCheck()) { %>
-				<form action="Split" method="post" class="col-4">
-					<div class="d-grid gap-2">
-						<button type="submit" class="btn btn-light">split</button>
-					</div>
-				</form>
-				<% } %>
+					<% if(playerHand.splitCheck()) { %>
+						<div class="d-grid gap-2">
+							<button formaction="Split" type="submit" class="btn btn-light">split</button>
+						</div>
+					<% } %>
             	<a href="gameTop.jsp" class="btn btn-outline-danger">戻る</a>
             </div>
         </div>
        </div>
+				</form>
 </body>
 </html>

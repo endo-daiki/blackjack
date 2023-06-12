@@ -11,7 +11,6 @@ public class Hand {
 	public Hand() {
 		list = new ArrayList<Card>();
 		point = new Point();
-		result = Result.READY;
 	}
 
 	public Card draw(Deck deck) {
@@ -20,6 +19,10 @@ public class Hand {
 		point.calc(card);
 		
 		return card;
+	}
+	
+	public boolean moveCheck() { //行動できるかどうか
+		return this.point.burstCheck() || this.point.bjCheck();
 	}
 
 	public List<Card> getList() {
@@ -33,7 +36,7 @@ public class Hand {
 	}
 
 	public boolean splitCheck() {
-		if(!sizeCheck()) {
+		if(sizeCheck() != 2) {
 			return false;
 		}
 		String firstCardNo = list.get(0).cardNumber.getNo();
@@ -42,21 +45,25 @@ public class Hand {
 		return firstCardNo.equals(secondCardNo);
 	}
 
-	public boolean sizeCheck() {
-		return list.size() == 2;
+	public int sizeCheck() {
+		return list.size();
 	}
 	
 	public void judge(Point dealerPoint) {
+		if(sizeCheck() == 0) {
+			this.result = Result.DRAW;
+			return;
+		}
 		if(this.point.burstCheck()) {
 			this.result = Result.LOSE;
 			return;
 		}
 		if(dealerPoint.burstCheck() || this.point.getScore() > dealerPoint.getScore()) {
-			if(sizeCheck() && this.point.bjCheck()) {
+			if(sizeCheck() == 2 && this.point.bjCheck()) {
 				this.result = Result.NATURALWIN;			
 			}
 			this.result = Result.WIN;
-		} else if (this.getPoint().burstCheck() || this.point.getScore() > dealerPoint.getScore()) {
+		} else if (this.getPoint().burstCheck() || this.point.getScore() < dealerPoint.getScore()) {
 			this.result = Result.LOSE;
 		} else {
 			this.result = Result.DRAW;
