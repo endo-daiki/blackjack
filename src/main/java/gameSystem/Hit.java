@@ -4,6 +4,9 @@ import model.Game;
 
 public class Hit {
 	protected static String excute(Game game, String select) {
+		if(select == null) {
+			return "PlayerTurn";
+		}
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
 		

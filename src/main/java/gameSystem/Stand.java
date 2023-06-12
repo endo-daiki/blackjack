@@ -4,6 +4,9 @@ import model.Game;
 
 public class Stand {
 	protected static String excute(Game game, String select) {
+		if(select == null) {
+			return "PlayerTurn";
+		}
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
 		Player dealer = game.getDealer();

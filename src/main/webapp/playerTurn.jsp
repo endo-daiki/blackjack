@@ -74,7 +74,9 @@
 						<% } %>             		
 	             		<%= point %>
 	             	</p>
-	             	 <input class="form-check-input" type="radio" name="select" value="split" <% if(splitHand.moveCheck()) { %>disabled<% } else if(player.getStatus() == Status.SPLIT) { %> checked <% } %>>
+	             	<% if(!splitHand.moveCheck()) { %>
+	             	 	<input class="form-check-input" type="radio" name="select" value="split" <% if(player.getStatus() == Status.SPLIT) { %> checked <% } %>>	             	
+	             	<% }%>
 	            </div>
             <% } %>
             <div class="col-6 border">
@@ -101,7 +103,9 @@
 					<% } %>             		
              		<%= point %>
              	</p>
-             	<input class="form-check-input" type="radio" name="select" value="playing" <% if(playerHand.moveCheck()) { %>disabled<% } else if(player.getStatus() == Status.PLAYING) { %> checked <% } %>>
+             	<% if(!playerHand.moveCheck()) { %>
+             		<input class="form-check-input" type="radio" name="select" value="playing" <% if(player.getStatus() == Status.PLAYING) { %> checked <% } %>>            	
+             	<% } %>
             </div>
             <p class="col-12">bet is <%= game.getBet().getTip() %></p>         
             <div class="col-12 border row justify-content-around">
