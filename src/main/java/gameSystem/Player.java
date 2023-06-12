@@ -33,9 +33,7 @@ public class Player{
 		this.hand.isStand();
 		this.status = Status.SPLIT;
 	}
-	public void splitDraw(Deck deck) {
-		this.splitHand.draw(deck);
-	}
+
 	public Hand getHand() {
 		return hand;
 	}

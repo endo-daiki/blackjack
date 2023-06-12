@@ -1,7 +1,7 @@
 package gameSystem;
 
 public enum Result {
-	NATURALWIN(2.5),
+	NATURALBLACKJACK(2.5),
 	WIN(2),
 	LOSE(-1),
 	DRAW(0);

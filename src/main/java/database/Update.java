@@ -10,9 +10,7 @@ public class Update {
 	public static boolean updateUser(String id, String newId, String name, String password) {
 		boolean checker = false;
 		try {
-			PreparedStatement pstmt;
-
-			pstmt = con.prepareStatement
+			PreparedStatement pstmt = con.prepareStatement
 					("update newUser set id = ?, name = ?, password = ? where id = ?");
 
 			pstmt.setString(1, newId);
@@ -35,9 +33,7 @@ public class Update {
 		boolean checker = false;
 
 		try {
-			PreparedStatement pstmt = null;
-
-			pstmt = con.prepareStatement
+			PreparedStatement pstmt = con.prepareStatement
 					("update newUser set tip = (tip + ?), playing = playing + 1 where id = ?");
 
 			pstmt.setInt(1, refund);

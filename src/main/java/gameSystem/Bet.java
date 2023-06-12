@@ -12,6 +12,7 @@ public class Bet {
 	}
 
 	public void calc(Result result) {
+		System.out.println(result);
 		this.refund += this.tip * result.toBet();
 	}
 

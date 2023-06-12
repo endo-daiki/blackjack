@@ -18,7 +18,7 @@ public class Blackjack {
 		id = user_id;
 	}
 
-	public static String getPlayerTrun(HttpServletRequest request) {
+	public static String getPlayerTurn(HttpServletRequest request) {
 		request.setAttribute("game", game);
 		return "playerTurn.jsp";
 	}

@@ -18,10 +18,10 @@ public class Split {
 		newPlayer.draw(deck);
 		newPlayer.draw(deck);
 		
-		newPlayer.splitDraw(deck);
-		newPlayer.splitDraw(deck);
-		
 		newPlayer.setStatus(Status.SPLIT);
+		
+		newPlayer.draw(deck);
+		newPlayer.draw(deck);
 
 		game.setDeck(deck);
 		game.setPlayer(newPlayer);

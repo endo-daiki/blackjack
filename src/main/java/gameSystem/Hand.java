@@ -64,7 +64,8 @@ public class Hand {
 		}
 		if(dealerPoint.burstCheck() || this.point.getScore() > dealerPoint.getScore()) {
 			if(sizeCheck() == 2 && this.point.bjCheck()) {
-				this.result = Result.NATURALWIN;			
+				this.result = Result.NATURALBLACKJACK;			
+				return;
 			}
 			this.result = Result.WIN;
 		} else if (this.getPoint().burstCheck() || this.point.getScore() < dealerPoint.getScore()) {

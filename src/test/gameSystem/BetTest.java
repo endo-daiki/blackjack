@@ -20,16 +20,16 @@ class BetTest {
 
     @Test
     public void testCalc() { //結果ごとに返金の合計が変化
-        bet.calc("win"); //勝ったら2倍になる
+        bet.calc(Result.WIN); //勝ったら2倍になる
         assertEquals(20, bet.refund());
 
-        bet.calc("draw"); //引き分けは変動なし
+        bet.calc(Result.DRAW); //引き分けは変動なし
         assertEquals(20, bet.refund());
 
-        bet.calc("lose"); //負けたら掛金額を没収
+        bet.calc(Result.LOSE); //負けたら掛金額を没収
         assertEquals(10, bet.refund());
         
-        bet.calc("natural Blackjack"); //ナチュラルBJは2.5倍を追加
+        bet.calc(Result.NATURALBLACKJACK); //ナチュラルBJは2.5倍を追加
         assertEquals(35, bet.refund());
     }
 
@@ -40,7 +40,7 @@ class BetTest {
 
     @Test
     public void testRefund() { //返金額を取得
-        bet.calc("win"); 
+        bet.calc(Result.WIN); 
         assertEquals(20, bet.refund()); //掛金の2倍の額を取得できる
     }
 }

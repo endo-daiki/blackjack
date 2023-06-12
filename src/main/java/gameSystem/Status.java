@@ -4,5 +4,8 @@ public enum Status {
 	READY,
 	PLAYING,
 	SPLIT,
-	STAND;
+	STAND,
+	BURST,
+	BLACKJACK,
+	NATURALBLACKJACK;
 }

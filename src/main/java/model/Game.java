@@ -3,7 +3,6 @@ package model;
 import gameSystem.Bet;
 import gameSystem.Deck;
 import gameSystem.Player;
-import gameSystem.Status;
 
 public class Game {
 	private Deck deck;

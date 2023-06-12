@@ -40,8 +40,7 @@ class BlackjackTest {
 
 	@Test 
 	public void testBlackjack() {
-		Blackjack.getGame(request);
-		
+		Blackjack.getPlayerTurn(request);
 		Game game = (Game)request.getAttribute("game");
 		Player player = game.getPlayer();
 		
