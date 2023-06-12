@@ -7,6 +7,7 @@ public class Stand {
 		if(select == null) {
 			return "PlayerTurn";
 		}
+		
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
 		Player dealer = game.getDealer();
