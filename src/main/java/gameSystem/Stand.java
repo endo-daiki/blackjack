@@ -14,7 +14,7 @@ public class Stand {
 			return "PlayerTurn";
 		}		
 		if(!player.burstCheckAll()) {
-			while(dealer.getPoint().getScore() < 17) {
+			while(dealer.getPoint("normal").getScore() < 17) {
 				dealer.draw(deck, "normal");
 			}
 		}

@@ -24,16 +24,16 @@ public class Bet {
 	}
 	
 	public void judge(Player player, Player dealer) {
-		for(Hand hand : player.getHand().values()) {
-			if(player.getPoint().burstCheck()) {
+		for(String key : player.getHand().keySet()) {
+			if(player.getPoint(key).burstCheck()) {
 				this.calc(Result.LOSE);
-			} else if(dealer.getPoint().burstCheck() || player.getPoint().getScore() > dealer.getPoint().getScore()) {
-				if(hand.sizeCheck() == 2 && player.getPoint().bjCheck()) {
+			} else if(dealer.getPoint("normal").burstCheck() || player.getPoint(key).getScore() > dealer.getPoint("normal").getScore()) {
+				if(player.getHand().get(key).getList().size() == 2 && player.getPoint(key).bjCheck()) {
 					this.calc(Result.NATURALBLACKJACK);			
 				} else {
 					this.calc(Result.WIN);
 				}		
-			} else if (player.getPoint().burstCheck() || player.getPoint().getScore() < dealer.getPoint().getScore()) {
+			} else if (player.getPoint(key).burstCheck() || player.getPoint(key).getScore() < dealer.getPoint("normal").getScore()) {
 				this.calc(Result.LOSE);
 			} else {
 				this.calc(Result.DRAW);

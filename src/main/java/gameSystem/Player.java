@@ -42,9 +42,6 @@ public class Player{
 		}
 		return true;
 	}
-	public Point getPoint() {
-		return this.hand.get("normal").getPoint();
-	}
 	public void isStand(String key) {
 		this.hand.get(key).isStand();
 	}	

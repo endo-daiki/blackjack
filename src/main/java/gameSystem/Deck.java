@@ -28,4 +28,8 @@ public class Deck {
 
 		return card;
 	}
+
+	public void add(int i, Card card) {
+		deck.add(i, card);
+	}
 }

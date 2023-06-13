@@ -40,7 +40,7 @@ class ResultServletTest {
 		throws ServletException, IOException {
 		
 		new Blackjack(10, "testId");
-		Blackjack.Stand();
+		Blackjack.Stand("normal");
 		
 		servlet.doGet(request, response);
 		

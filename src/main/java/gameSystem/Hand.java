@@ -22,12 +22,10 @@ public class Hand {
 		point.calc(card);
 	}
 
-	public Card draw(Deck deck) {
+	public void draw(Deck deck) {
 		Card card = deck.pull();
 		list.add(card);
 		point.calc(card);
-		
-		return card;
 	}
 	
 	public boolean movedCheck() {
@@ -45,16 +43,12 @@ public class Hand {
 	}
 
 	public boolean splitCheck() {
-		if(sizeCheck() != 2) {
+		if(this.list.size() != 2) {
 			return false;
 		}
 		String firstCardNo = list.get(0).cardNumber.getNo();
 		String secondCardNo = list.get(1).cardNumber.getNo();
 
 		return firstCardNo.equals(secondCardNo);
-	}
-
-	public int sizeCheck() {
-		return list.size();
 	}
 }

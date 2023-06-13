@@ -15,8 +15,8 @@
 	Player player = game.getPlayer();
 	Player dealer = game.getDealer();
 	
-	Map<String, Hand> testDealerHand = dealer.getHand();
-	Map<String, Hand> testHand = player.getHand();
+	Map<String, Hand> playerHand = player.getHand();
+	Map<String, Hand> dealerHand = dealer.getHand();
 %>
 <!DOCTYPE html>
 <html>
@@ -37,24 +37,24 @@
             <p class="text-center">プレイヤーターン</p>
             <p>my tip <%= user.getTip() %></p>
             <div class="col-12 border">    
-            <% 
-           		Hand dealerHand = testDealerHand.get("normal"); 
-           		List<Card> list = dealerHand.getList();
-           		Card openCard = list.get(0); 
-            %>
-           	<img src="img/<%= openCard.suit %>_<%= openCard.cardNumber.getNo() %>.png" width="100" height="150">
-           	<img src="img/trump_back.png" width="100" height="150">
-           	<% if( dealerHand.getList().get(0).courtCheck() ) { %>
-           	<p class="text-center"><%= openCard.cardNumber.getNo() %>(10) + ?</p>
-           	<% } else { %>
-           	<p class="text-center"><%= openCard.cardNumber.getNo() %> + ?</p>
-           	<% } %>
+	            <% 
+	           		Hand dealerNormalHand = dealerHand.get("normal"); 
+	           		List<Card> list = dealerNormalHand.getList();
+	           		Card openCard = list.get(0); 
+	            %>
+	           	<img src="img/<%= openCard.suit %>_<%= openCard.cardNumber.getNo() %>.png" width="100" height="150">
+	           	<img src="img/trump_back.png" width="100" height="150">
+	           	<% if( dealerNormalHand.getList().get(0).courtCheck() ) { %>
+	           	<p class="text-center"><%= openCard.cardNumber.getNo() %>(10) + ?</p>
+	           	<% } else { %>
+	           	<p class="text-center"><%= openCard.cardNumber.getNo() %> + ?</p>
+	           	<% } %>
             </div>
             <p class="col-12">bet is <%= game.getBet().getTip() %></p> 
-            <% for(String key : testHand.keySet()) { %>  
+            <% for(String key : playerHand.keySet()) { %>  
                 <div class="col-6 border">
 	            	<% 
-	            		Hand hand = testHand.get(key);
+	            		Hand hand = playerHand.get(key);
 		            	Point testPoint = hand.getPoint(); 
 		            	List<Card> handList = hand.getList();
 		            	int score = testPoint.getScore();
@@ -83,17 +83,17 @@
 	            </div>
             <% } %>      
             <div class="col-12 border row justify-content-around">
-					<div class="d-grid gap-2">
-						<button formaction="Hit" type="submit" class="btn btn-primary">hit</button>					
-						</div>
-					<div class="d-grid gap-2">
-						<button formaction="Stand" type="submit" class="btn btn-danger">stand</button>
+				<div class="d-grid gap-2">
+					<button formaction="Hit" type="submit" class="btn btn-primary">hit</button>					
 					</div>
-					<% if(player.splitCheck()) { %>
-					<div class="d-grid gap-2">
-						<button formaction="Split" type="submit" class="btn btn-light">split</button>
-					</div>
-					<% } %>
+				<div class="d-grid gap-2">
+					<button formaction="Stand" type="submit" class="btn btn-danger">stand</button>
+				</div>
+				<% if(player.splitCheck()) { %>
+				<div class="d-grid gap-2">
+					<button formaction="Split" type="submit" class="btn btn-light">split</button>
+				</div>
+				<% } %>
             	<a href="gameTop.jsp" class="btn btn-outline-danger">戻る</a>
             </div>
         </div>
