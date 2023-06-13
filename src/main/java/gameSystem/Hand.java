@@ -8,11 +8,14 @@ public class Hand {
 	private Point point;
 	private Result result;
 	private boolean isStand;
+	
+	private Status status;
 
 	public Hand() {
 		list = new ArrayList<Card>();
 		point = new Point();
 		isStand = false;
+		status = Status.READY;
 	}
 
 	public Card draw(Deck deck) {
@@ -23,7 +26,7 @@ public class Hand {
 		return card;
 	}
 	public boolean moveCheck() { //行動できるかどうか
-		return this.point.burstCheck() || this.point.bjCheck() || this.isStand;
+		return this.point.burstCheck() || this.point.bjCheck() || this.isStand;//this.status == Statu.STAND;
 	}
 
 	public List<Card> getList() {
@@ -37,6 +40,13 @@ public class Hand {
 	}
 	public void isStand() {
 		this.isStand = true;
+		this.status = Status.STAND;
+	}
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	public Status getStatus() {
+		return this.status;
 	}
 	
 	public boolean splitCheck() {

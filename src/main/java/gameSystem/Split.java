@@ -22,6 +22,10 @@ public class Split {
 		
 		newPlayer.draw(deck);
 		newPlayer.draw(deck);
+		
+//		newPlayer.split(); //player側で、handの受け渡しを行う
+//		newPlayer.draw(deck, "normal");
+//		newPlayer.draw(deck, "split");
 
 		game.setDeck(deck);
 		game.setPlayer(newPlayer);

@@ -9,13 +9,15 @@
 <%
 	}
 %>
-<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,gameSystem.Result,gameSystem.Status,java.util.List" %>
+<%@ page import="java.util.HashMap,java.util.Map,model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,gameSystem.Result,gameSystem.Status,java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game");
 	Player player = game.getPlayer();
 	Hand playerHand = player.getHand();
 	Hand splitHand = player.getSplitHand();
 	Player dealer = game.getDealer();
+	
+	Map<String, Hand> testHand = player.getHandList();
 %>
 <!DOCTYPE html>
 <html>
@@ -107,7 +109,37 @@
              		<input class="form-check-input" type="radio" name="select" value="playing" <% if(player.getStatus() == Status.PLAYING) { %> checked <% } %>>            	
              	<% } %>
             </div>
-            <p class="col-12">bet is <%= game.getBet().getTip() %></p>         
+            <p class="col-12">bet is <%= game.getBet().getTip() %></p> 
+            <% for(Hand hand : testHand.values()) { %>  
+                <div class="col-6 border">
+	            	<% 
+		            	Point testPoint = hand.getPoint(); 
+		            	List<Card> handList = hand.getList();
+		            	int score = testPoint.getScore();
+		            %>
+	            	<% for(Card card : handList) {  %>
+	            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
+	            	<% } %>
+	             	<p class="text-center text-danger">
+	             		<% if(testPoint.burstCheck()) { %>
+							Burst!!
+						<% } %>
+						<% if(testPoint.bjCheck()) { %>
+	          				BlackJack!!
+	          			<% } %>
+	            	</p>
+	             	<p class="text-center">
+<%-- 	             		<% if(testPoint.aceCountCheck() && player.getStatus() == Status.PLAYING) { %> --%>
+<%-- 						<%= (point - 10) %> --%>
+<!-- 						 /  -->
+<%-- 						<% } %>             		 --%>
+	             		<%= score %>
+	             	</p>
+	             	<% if(!hand.moveCheck()) { %>
+	             		<input class="form-check-input" type="radio" name="select" value="playing">>            	
+	             	<% } %>
+	            </div>
+            <% } %>      
             <div class="col-12 border row justify-content-around">
 					<div class="d-grid gap-2">
 						<button formaction="Hit" type="submit" class="btn btn-primary">hit</button>					
