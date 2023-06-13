@@ -27,11 +27,12 @@ public class Blackjack {
 		request.setAttribute("game", game);
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
+		
 		Player player = game.getPlayer();
+		Player dealer = game.getDealer();
 
 		Bet bet = game.getBet();
-		bet.calc(player.getHand().getResult());
-		bet.calc(player.getSplitHand().getResult());    
+		bet.judge(player, dealer);  
 
 		Update.updateResult(id, bet.refund());
 		Insert.insertLog(id, bet.refund());

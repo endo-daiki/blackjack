@@ -1,8 +1,8 @@
 package gameSystem;
 
 public class Point {
-	int score;
-	public int aceCount;
+	private int score;
+	private int aceCount;
 
 	public Point(){
 		score = 0;

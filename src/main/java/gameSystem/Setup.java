@@ -5,27 +5,21 @@ import model.Game;
 public class Setup {
 	protected static String excute(Game game) {
 		Deck deck = game.getDeck();
-
 		Player player = game.getPlayer();
-		
-		Card card = new Card("heart", CardNumber.one);
-		deck.add(0, card);
-		deck.add(0, card);
-
-		player.draw(deck);
-		player.draw(deck);  	
-		player.setStatus(Status.PLAYING);
-		game.setPlayer(player);
-
 		Player dealer = game.getDealer();
-		dealer.draw(deck);
-		dealer.draw(deck);
-		game.setDealer(dealer);
+		
+		player.draw(deck, "normal");
+		player.draw(deck, "normal");  	
+
+		dealer.draw(deck, "normal");
+		dealer.draw(deck, "normal");
 
 		game.setDeck(deck);
+		game.setPlayer(player);
+		game.setDealer(dealer);
 
-		if(player.getPoint().bjCheck()) {
-			return Stand.excute(game, "playing");
+		if(player.getPoint("normal").bjCheck()) {
+			return Stand.excute(game, "normal");
 		}
 
 		return "PlayerTurn";

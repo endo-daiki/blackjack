@@ -9,13 +9,14 @@
 <%
 	}
 %>
-<%@ page import="model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,gameSystem.Result,gameSystem.Status,java.util.List" %>
+<%@ page import="java.util.HashMap,java.util.Map,model.Game,gameSystem.Card,gameSystem.Hand,gameSystem.Point,gameSystem.Player,gameSystem.Result,gameSystem.Status,java.util.List" %>
 <% 
 	Game game = (Game) request.getAttribute("game");
 	Player player = game.getPlayer();
-	Hand playerHand = player.getHand();
-	Hand splitHand = player.getSplitHand();
 	Player dealer = game.getDealer();
+	
+	Map<String, Hand> testDealerHand = dealer.getHand();
+	Map<String, Hand> testHand = player.getHand();
 %>
 <!DOCTYPE html>
 <html>
@@ -32,10 +33,10 @@
         <div class="row justify-content-center">
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">ゲームリザルト</p>
-             <p>my tip <%= user.getTip() %></p>
+            <p>my tip <%= user.getTip() %></p>
             <div class="col-12 border">
            		<% 
-            		Hand dealerHand = dealer.getHand(); 
+            		Hand dealerHand = dealer.getHand().get("normal"); 
             		List<Card> dealerHandList = dealerHand.getList();
             		Point dealerPoint = dealer.getPoint();
             	%>
@@ -54,56 +55,33 @@
 			   	<%= dealerPoint.getScore() %>
 			   </p>
             </div>
-            <% if(splitHand.sizeCheck() > 0) { %>
-            	<%
-	            	Point splitPoint = player.getSplitPoint(); 
-	            	List<Card> splitHandList = splitHand.getList();
-	            	int point = splitPoint.getScore();
-	            %>
-	            <div class="col-6 border">
-	            	<% for(Card card : splitHandList) {  %>
+			<% for(String key : testHand.keySet()) { %>  
+                <div class="col-6 border">
+	            	<% 
+	            		Hand hand = testHand.get(key);
+		            	Point testPoint = hand.getPoint(); 
+		            	List<Card> handList = hand.getList();
+		            	int score = testPoint.getScore();
+		            %>
+	            	<% for(Card card : handList) {  %>
 	            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
 	            	<% } %>
-		            <p class="text-center text-danger">
-		             	<% if(splitPoint.burstCheck()) { %>
+	             	<p class="text-center text-danger">
+	             		<% if(testPoint.burstCheck()) { %>
 							Burst!!
 						<% } %>
-						<% if(splitPoint.bjCheck()) { %>
+						<% if(testPoint.bjCheck()) { %>
 	          				BlackJack!!
 	          			<% } %>
-            		</p>
-	             	<p class="text-center">          		
-	             		<%= point %>
+	            	</p>
+	             	<p class="text-center">           		
+	             		<%= score %>
 	             	</p>
-	             	<h3 class="text-center text-danger">
-						<%= splitHand.getResult() %>
-            		</h3>
+	             	<% if(!hand.movedCheck()) { %>
+	             		<input class="form-check-input" type="radio" name="select" value="<%= key %>">           	
+	             	<% } %>
 	            </div>
-            <% } %>
-            <div class="col-6 border">
-            	<% 
-	            	Point playerPoint = player.getPoint(); 
-	            	List<Card> playerHandList = playerHand.getList();
-	            	int point = playerPoint.getScore();
-	            %>
-            	<% for(Card card : playerHandList) { %>
-            		<img  src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
-            	<% } %>
-            	 <p class="text-center text-danger">
-		             	<% if(playerPoint.burstCheck()) { %>
-							Burst!!
-						<% } %>
-						<% if(playerPoint.bjCheck()) { %>
-	          				BlackJack!!
-	          			<% } %>
-            		</p>
-              	<p class="text-center">
-              		<%= point %>
-              	</p>
-              	<h3 class="text-center text-danger">
-              		<%= playerHand.getResult() %>
-              	</h3>
-            </div>
+            <% } %>    
             <p class="col-12">refund is <%= game.getBet().refund() %></p>
             <div class="col-12 border">
             	<form action="Setup" method="post">

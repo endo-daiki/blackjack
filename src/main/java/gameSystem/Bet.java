@@ -11,7 +11,7 @@ public class Bet {
 		this.tip = bet;
 	}
 
-	public void calc(Result result) {
+	private void calc(Result result) {
 		this.refund += this.tip * result.toBet();
 	}
 
@@ -24,20 +24,20 @@ public class Bet {
 	}
 	
 	public void judge(Player player, Player dealer) {
-//		if(playerPoint.burstCheck()) {
-//			this.result = Result.LOSE;
-//			return;
-//		}
-//		if(dealerPoint.burstCheck() || this.point.getScore() > dealerPoint.getScore()) {
-//			if(sizeCheck() == 2 && this.point.bjCheck()) {
-//				this.result = Result.NATURALBLACKJACK;			
-//				return;
-//			}
-//			this.result = Result.WIN;
-//		} else if (this.getPoint().burstCheck() || this.point.getScore() < dealerPoint.getScore()) {
-//			this.result = Result.LOSE;
-//		} else {
-//			this.result = Result.DRAW;
-//		}
+		for(Hand hand : player.getHand().values()) {
+			if(player.getPoint().burstCheck()) {
+				this.calc(Result.LOSE);
+			} else if(dealer.getPoint().burstCheck() || player.getPoint().getScore() > dealer.getPoint().getScore()) {
+				if(hand.sizeCheck() == 2 && player.getPoint().bjCheck()) {
+					this.calc(Result.NATURALBLACKJACK);			
+				} else {
+					this.calc(Result.WIN);
+				}		
+			} else if (player.getPoint().burstCheck() || player.getPoint().getScore() < dealer.getPoint().getScore()) {
+				this.calc(Result.LOSE);
+			} else {
+				this.calc(Result.DRAW);
+			}			
+		}
 	}
 }

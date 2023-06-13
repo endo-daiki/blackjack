@@ -13,11 +13,10 @@
 <% 
 	Game game = (Game) request.getAttribute("game");
 	Player player = game.getPlayer();
-	Hand playerHand = player.getHand();
-	Hand splitHand = player.getSplitHand();
 	Player dealer = game.getDealer();
 	
-	Map<String, Hand> testHand = player.getHandList();
+	Map<String, Hand> testDealerHand = dealer.getHand();
+	Map<String, Hand> testHand = player.getHand();
 %>
 <!DOCTYPE html>
 <html>
@@ -39,7 +38,7 @@
             <p>my tip <%= user.getTip() %></p>
             <div class="col-12 border">    
             <% 
-           		Hand dealerHand = dealer.getHand(); 
+           		Hand dealerHand = testDealerHand.get("normal"); 
            		List<Card> list = dealerHand.getList();
            		Card openCard = list.get(0); 
             %>
@@ -51,68 +50,11 @@
            	<p class="text-center"><%= openCard.cardNumber.getNo() %> + ?</p>
            	<% } %>
             </div>
-            <% if(splitHand.sizeCheck() > 0) { %>
-            	<% 
-	            	Point splitPoint = player.getSplitPoint(); 
-	            	List<Card> splitHandList = splitHand.getList();
-	            	int point = splitPoint.getScore();
-	            %>
-	            <div class="col-6 border">
-	            	<% for(Card card : splitHandList) {  %>
-	            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
-	            	<% } %>
-	             	<p class="text-center text-danger">
-						<% if(splitPoint.burstCheck()) { %>
-						Burst!!
-						<% } %>
-						<% if(splitPoint.bjCheck()) { %>
-            			BlackJack!!
-            			<% } %>
-            		</p>
-	             	<p class="text-center">
-	             		<% if(splitPoint.aceCountCheck() && player.getStatus() == Status.SPLIT) { %>
-						<%= (point - 10) %>
-						 / 
-						<% } %>             		
-	             		<%= point %>
-	             	</p>
-	             	<% if(!splitHand.moveCheck()) { %>
-	             	 	<input class="form-check-input" type="radio" name="select" value="split" <% if(player.getStatus() == Status.SPLIT) { %> checked <% } %>>	             	
-	             	<% }%>
-	            </div>
-            <% } %>
-            <div class="col-6 border">
-            	<% 
-	            	Point playerPoint = player.getPoint(); 
-	            	List<Card> playerHandList = playerHand.getList();
-	            	int point = playerPoint.getScore();
-	            %>
-            	<% for(Card card : playerHandList) {  %>
-            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
-            	<% } %>
-             	<p class="text-center text-danger">
-             		<% if(playerPoint.burstCheck()) { %>
-						Burst!!
-					<% } %>
-					<% if(playerPoint.bjCheck()) { %>
-          				BlackJack!!
-          			<% } %>
-            	</p>
-             	<p class="text-center">
-             		<% if(playerPoint.aceCountCheck() && player.getStatus() == Status.PLAYING) { %>
-					<%= (point - 10) %>
-					 / 
-					<% } %>             		
-             		<%= point %>
-             	</p>
-             	<% if(!playerHand.moveCheck()) { %>
-             		<input class="form-check-input" type="radio" name="select" value="playing" <% if(player.getStatus() == Status.PLAYING) { %> checked <% } %>>            	
-             	<% } %>
-            </div>
             <p class="col-12">bet is <%= game.getBet().getTip() %></p> 
-            <% for(Hand hand : testHand.values()) { %>  
+            <% for(String key : testHand.keySet()) { %>  
                 <div class="col-6 border">
 	            	<% 
+	            		Hand hand = testHand.get(key);
 		            	Point testPoint = hand.getPoint(); 
 		            	List<Card> handList = hand.getList();
 		            	int score = testPoint.getScore();
@@ -129,14 +71,14 @@
 	          			<% } %>
 	            	</p>
 	             	<p class="text-center">
-<%-- 	             		<% if(testPoint.aceCountCheck() && player.getStatus() == Status.PLAYING) { %> --%>
-<%-- 						<%= (point - 10) %> --%>
-<!-- 						 /  -->
-<%-- 						<% } %>             		 --%>
+	             		<% if(testPoint.aceCountCheck() && !hand.movedCheck()) { %>
+						<%= (score - 10) %>
+						 / 
+						<% } %>             		
 	             		<%= score %>
 	             	</p>
-	             	<% if(!hand.moveCheck()) { %>
-	             		<input class="form-check-input" type="radio" name="select" value="playing">>            	
+	             	<% if(!hand.movedCheck()) { %>
+	             		<input class="form-check-input" type="radio" name="select" value="<%= key %>" checked>         	
 	             	<% } %>
 	            </div>
             <% } %>      
@@ -147,10 +89,10 @@
 					<div class="d-grid gap-2">
 						<button formaction="Stand" type="submit" class="btn btn-danger">stand</button>
 					</div>
-					<% if(playerHand.splitCheck()) { %>
-						<div class="d-grid gap-2">
-							<button formaction="Split" type="submit" class="btn btn-light">split</button>
-						</div>
+					<% if(player.splitCheck()) { %>
+					<div class="d-grid gap-2">
+						<button formaction="Split" type="submit" class="btn btn-light">split</button>
+					</div>
 					<% } %>
             	<a href="gameTop.jsp" class="btn btn-outline-danger">戻る</a>
             </div>

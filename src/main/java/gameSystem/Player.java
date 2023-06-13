@@ -4,91 +4,55 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Player{
-	private Hand hand;
-	private Hand splitHand;
-	private Status status;
-	private boolean playHandisNormal;
-	
-	private Map<String, Hand> test = new HashMap<>();
+	private Map<String, Hand> hand = new HashMap<>();
 
 	public Player() {
-		hand = new Hand();
-		splitHand = new Hand();
-		status = Status.PLAYING;
-		playHandisNormal = true;
-		
-		test.put("normal", hand);
+		hand.put("normal", new Hand());
 	}
 	
-	public Map<String, Hand> getHandList() {
-		return this.test;
+	public Map<String, Hand> getHand() {
+		return this.hand;
+	}
+	public Point getPoint(String key) {
+		return this.hand.get(key).getPoint();
+	}
+	public boolean splitCheck() {
+		return (hand.size() == 1) && (hand.get("normal").splitCheck());
 	}
 
-	public void draw(Deck deck) {
-//		if(playHandisNormal) {
-//			this.test.get("normal").draw(deck);
-//			return;
-//		}
-//		this.test.get("split").draw(deck);
-		
-		if(this.status == Status.SPLIT) {
-			this.splitHand.draw(deck);
-			return;
+	public void draw(Deck deck, String key) {
+		this.hand.get(key).draw(deck);
+	}
+	public boolean movedCheck(String key) {
+		return this.hand.get(key).movedCheck();
+	}
+	public boolean movedCheckAll() {
+		for(Hand hand :this.hand.values()) {
+			if(!hand.movedCheck()) {
+				return false;
+			}
 		}
-		this.hand.draw(deck);
+		return true;
 	}
-	public boolean moveCheck() {
-//		if(playHandisNormal) {
-//			this.test.get("normal").moveCheck();
-//			return;
-//		}
-//		this.test.get("split").moveCheck();
-		
-		if(this.status == Status.SPLIT) {
-			return this.splitHand.moveCheck();
+	public boolean burstCheckAll() {
+		for(Hand hand :this.hand.values()) {
+			if(!hand.getPoint().burstCheck()) {
+				return false;
+			}
 		}
-		return this.hand.moveCheck();
-	}
-	public void isStand() {
-//		if(playHandisNormal) {
-//			this.test.get("normal").setStatus(Status.Stand);
-//			return;
-//		}
-//		this.test.get("split").setStatus(Status.Stand);
-		
-		if(this.status == Status.SPLIT) {
-			this.splitHand.isStand();
-			this.status = Status.PLAYING;
-			return;
-		}
-		this.hand.isStand();
-		this.status = Status.SPLIT;
-	}
-
-	public Hand getHand() {
-		return hand;
-	}
-	public Hand getSplitHand() {
-		return splitHand;
+		return true;
 	}
 	public Point getPoint() {
-		return this.hand.getPoint();
+		return this.hand.get("normal").getPoint();
 	}
-	public Point getSplitPoint() {
-		return this.splitHand.getPoint();
-	}
-	public Status getStatus() {
-		return this.status;
-	}
-	public void setStatus(Status status) {
-		this.status = status;
-	}		
-	public void judge(Player dealer) {
-		Point dealerPoint = dealer.getPoint();
-		hand.judge(dealerPoint);
-		splitHand.judge(dealerPoint);
-	}
+	public void isStand(String key) {
+		this.hand.get(key).isStand();
+	}	
 	public void split() {
-		this.test.put("split", splitHand);
+		Card card1 = this.hand.get("normal").getList().get(0);
+		Card card2 = this.hand.get("normal").getList().get(1);
+		
+		this.hand.replace("normal", new Hand(card1));
+		this.hand.put("split", new Hand(card2));
 	}
 }

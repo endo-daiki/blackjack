@@ -6,16 +6,20 @@ import java.util.List;
 public class Hand {
 	private List<Card> list; 
 	private Point point;
-	private Result result;
 	private boolean isStand;
-	
-	private Status status;
 
 	public Hand() {
 		list = new ArrayList<Card>();
 		point = new Point();
 		isStand = false;
-		status = Status.READY;
+	}
+	public Hand(Card card) {
+		list = new ArrayList<Card>();
+		point = new Point();
+		isStand = false;
+		
+		list.add(card);
+		point.calc(card);
 	}
 
 	public Card draw(Deck deck) {
@@ -25,8 +29,9 @@ public class Hand {
 		
 		return card;
 	}
-	public boolean moveCheck() { //行動できるかどうか
-		return this.point.burstCheck() || this.point.bjCheck() || this.isStand;//this.status == Statu.STAND;
+	
+	public boolean movedCheck() {
+		return this.point.burstCheck() || this.point.bjCheck() || this.isStand;
 	}
 
 	public List<Card> getList() {
@@ -35,20 +40,10 @@ public class Hand {
 	public Point getPoint() {
 		return this.point;
 	}
-	public Result getResult() {
-		return this.result;
-	}
 	public void isStand() {
 		this.isStand = true;
-		this.status = Status.STAND;
 	}
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-	public Status getStatus() {
-		return this.status;
-	}
-	
+
 	public boolean splitCheck() {
 		if(sizeCheck() != 2) {
 			return false;
@@ -61,27 +56,5 @@ public class Hand {
 
 	public int sizeCheck() {
 		return list.size();
-	}
-	
-	public void judge(Point dealerPoint) {
-		if(sizeCheck() == 0) {
-			this.result = Result.DRAW;
-			return;
-		}
-		if(this.point.burstCheck()) {
-			this.result = Result.LOSE;
-			return;
-		}
-		if(dealerPoint.burstCheck() || this.point.getScore() > dealerPoint.getScore()) {
-			if(sizeCheck() == 2 && this.point.bjCheck()) {
-				this.result = Result.NATURALBLACKJACK;			
-				return;
-			}
-			this.result = Result.WIN;
-		} else if (this.getPoint().burstCheck() || this.point.getScore() < dealerPoint.getScore()) {
-			this.result = Result.LOSE;
-		} else {
-			this.result = Result.DRAW;
-		}
 	}
 }
