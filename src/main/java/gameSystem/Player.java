@@ -23,9 +23,6 @@ public class Player{
 	public void draw(Deck deck, String key) {
 		this.hand.get(key).draw(deck);
 	}
-	public boolean movedCheck(String key) {
-		return this.hand.get(key).movedCheck();
-	}
 	public boolean movedCheckAll() {
 		for(Hand hand :this.hand.values()) {
 			if(!hand.movedCheck()) {

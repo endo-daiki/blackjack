@@ -9,6 +9,7 @@ public class Bet {
 			throw new IllegalArgumentException("不正な数値です");
 		}
 		this.tip = bet;
+		this.refund = 0;
 	}
 
 	private void calc(Result result) {

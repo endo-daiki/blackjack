@@ -6,10 +6,10 @@ public class Hit {
 	protected static String excute(Game game, String key) {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
+		Hand hand = player.getHand().get(key);
 		
-		player.draw(deck, key);
-		
-		if(player.movedCheck(key)) {
+		player.draw(deck, key);			
+		if(hand.movedCheck()) {
 			return Stand.excute(game, key);
 		}
 

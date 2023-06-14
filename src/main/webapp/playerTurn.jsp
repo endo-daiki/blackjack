@@ -36,7 +36,7 @@
             <h1 class="text-center">ブラックジャック</h1>
             <p class="text-center">プレイヤーターン</p>
             <p>my tip <%= user.getTip() %></p>
-            <div class="col-12 border">    
+            <div class="col-12 border">
 	            <% 
 	           		Hand dealerNormalHand = dealerHand.get("normal"); 
 	           		List<Card> list = dealerNormalHand.getList();
@@ -55,23 +55,23 @@
                 <div class="col-6 border">
 	            	<% 
 	            		Hand hand = playerHand.get(key);
-		            	Point testPoint = hand.getPoint(); 
+		            	Point point = hand.getPoint(); 
 		            	List<Card> handList = hand.getList();
-		            	int score = testPoint.getScore();
+		            	int score = point.getScore();
 		            %>
 	            	<% for(Card card : handList) {  %>
 	            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
 	            	<% } %>
 	             	<p class="text-center text-danger">
-	             		<% if(testPoint.burstCheck()) { %>
+	             		<% if(point.burstCheck()) { %>
 							Burst!!
 						<% } %>
-						<% if(testPoint.bjCheck()) { %>
+						<% if(point.bjCheck()) { %>
 	          				BlackJack!!
 	          			<% } %>
 	            	</p>
 	             	<p class="text-center">
-	             		<% if(testPoint.aceCountCheck() && !hand.movedCheck()) { %>
+	             		<% if(point.aceCountCheck() && !hand.movedCheck()) { %>
 						<%= (score - 10) %>
 						 / 
 						<% } %>             		
