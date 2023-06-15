@@ -41,14 +41,16 @@ public class Hand {
 	public void isStand() {
 		this.isStand = true;
 	}
-
 	public boolean splitCheck() {
-		if(this.list.size() != 2) {
+		if(sizeCheck()) {
 			return false;
 		}
 		String firstCardNo = list.get(0).cardNumber.getNo();
 		String secondCardNo = list.get(1).cardNumber.getNo();
 
 		return firstCardNo.equals(secondCardNo);
+	}
+	public boolean sizeCheck() {
+		return this.list.size() == 2;
 	}
 }
