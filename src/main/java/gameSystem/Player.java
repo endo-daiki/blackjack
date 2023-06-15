@@ -4,24 +4,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Player{
-	private Map<String, Hand> hand = new HashMap<>();
+	private Map<Status, Hand> hand = new HashMap<>();
 
 	public Player() {
-		hand.put("normal", new Hand());
+		hand.put(Status.PLAYING, new Hand());
 	}
 	
-	public Map<String, Hand> getHand() {
+	public Map<Status, Hand> getHand() {
 		return this.hand;
 	}
-	public Point getPoint(String key) {
-		return this.hand.get(key).getPoint();
+	public Point getPoint(Status status) {
+		return this.hand.get(status).getPoint();
 	}
 	public boolean splitCheck() {
-		return (hand.size() == 1) && (hand.get("normal").splitCheck());
+		return (hand.size() == 1) && (hand.get(Status.PLAYING).splitCheck());
 	}
 
-	public void draw(Deck deck, String key) {
-		this.hand.get(key).draw(deck);
+	public void draw(Deck deck, Status status) {
+		this.hand.get(status).draw(deck);
 	}
 	public boolean movedCheckAll() {
 		for(Hand hand :this.hand.values()) {
@@ -39,14 +39,14 @@ public class Player{
 		}
 		return true;
 	}
-	public void isStand(String key) {
-		this.hand.get(key).isStand();
+	public void isStand(Status status) {
+		this.hand.get(status).isStand();
 	}	
 	public void split() {
-		Card card1 = this.hand.get("normal").getList().get(0);
-		Card card2 = this.hand.get("normal").getList().get(1);
+		Card card1 = this.hand.get(Status.PLAYING).getList().get(0);
+		Card card2 = this.hand.get(Status.PLAYING).getList().get(1);
 		
-		this.hand.replace("normal", new Hand(card1));
-		this.hand.put("split", new Hand(card2));
+		this.hand.replace(Status.PLAYING, new Hand(card1));
+		this.hand.put(Status.SPLIT, new Hand(card2));
 	}
 }

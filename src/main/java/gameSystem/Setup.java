@@ -12,18 +12,18 @@ public class Setup {
 		deck.add(0, card);
 		deck.add(0, card);
 
-		player.draw(deck, "normal");
-		player.draw(deck, "normal");  	
+		player.draw(deck, Status.PLAYING);
+		player.draw(deck, Status.PLAYING);  	
 
-		dealer.draw(deck, "normal");
-		dealer.draw(deck, "normal");
+		dealer.draw(deck, Status.PLAYING);
+		dealer.draw(deck, Status.PLAYING);
 		
 		game.setPlayer(player);
 		game.setDealer(dealer);
 		game.setDeck(deck);
 
-		if(player.getPoint("normal").bjCheck()) {
-			return Stand.excute(game, "normal");
+		if(player.getPoint(Status.PLAYING).bjCheck()) {
+			return Stand.excute(game, "PLAYING");
 		}
 
 		return "PlayerTurn";

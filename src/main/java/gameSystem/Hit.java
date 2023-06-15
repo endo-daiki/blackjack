@@ -6,8 +6,9 @@ public class Hit {
 	protected static String excute(Game game, String key) {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
+		Status status = Status.valueOf(key);
 		
-		player.draw(deck, key);			
+		player.draw(deck, status);			
 		Hand hand = player.getHand().get(key);
 		
 		if(hand.movedCheck()) {
