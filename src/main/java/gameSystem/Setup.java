@@ -7,10 +7,6 @@ public class Setup {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
 		Player dealer = game.getDealer();
-		
-		Card card = new Card("heart", CardNumber.one);
-		deck.add(0, card);
-		deck.add(0, card);
 
 		player.draw(deck, Status.PLAYING);
 		player.draw(deck, Status.PLAYING);  	

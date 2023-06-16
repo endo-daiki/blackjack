@@ -22,13 +22,13 @@ class PointTest {
 	@Test
 	public void testCalc() {
 		point.calc(aceCard);
-		assertEquals(11, point.score);
+		assertEquals(11, point.getScore());
 		
 		point.calc(courtCard);
-		assertEquals(21, point.score);
+		assertEquals(21, point.getScore());
 		
 		point.calc(towCard);
-		assertEquals(13, point.score);
+		assertEquals(13, point.getScore());
 	}
 	
 	@Test

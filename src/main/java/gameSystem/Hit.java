@@ -9,7 +9,7 @@ public class Hit {
 		Status status = Status.valueOf(key);
 		
 		player.draw(deck, status);			
-		Hand hand = player.getHand().get(key);
+		Hand hand = player.getHand().get(status);
 		
 		if(hand.movedCheck()) {
 			return Stand.excute(game, key);

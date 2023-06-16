@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 
-import javax.net.ssl.SSLEngineResult.Status;
 import javax.servlet.ServletException;
 
 import org.junit.jupiter.api.AfterAll;

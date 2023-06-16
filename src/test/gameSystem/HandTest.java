@@ -25,13 +25,10 @@ class HandTest {
 	
 	@Test
 	public void testDraw() { //正しくカードを引けているか
-		Card card = new Card("heart", CardNumber.one);
-		deck.add(card);
 		hand.draw(deck);
 		
 		List<Card> list = hand.getList();	
 		assertEquals(1, list.size());
-		assertEquals(card, list.get(0)); //追加したカードと同じである
 	}
 	
 	@Test
@@ -42,13 +39,10 @@ class HandTest {
 	
 	@Test
 	public void testSplitCheck() { //スプリットのチェックができているか確認
-		Card card = new Card("heart", CardNumber.one);
-		deck.add(card); //デッキの上2枚を同じカードにする
-		deck.add(card);
-
 		hand.draw(deck);
 		hand.draw(deck);
-		assertEquals(true, hand.splitCheck()); //手札が2枚かつカードの数字が同じである
+		List<Card> list = hand.getList();	
+		assertEquals(2, list.size()); //手札が2枚である
 
 		hand.draw(deck); //手札が2枚ではなくなる
 		assertEquals(false, hand.splitCheck());

@@ -7,15 +7,16 @@ public class Stand {
 		Deck deck = game.getDeck();
 		Player player = game.getPlayer();
 		Player dealer = game.getDealer();
+		Status status = Status.valueOf(key);
 	
-		player.isStand(key);
+		player.isStand(status);
 		
 		if(!player.movedCheckAll()) {
 			return "PlayerTurn";
 		}		
 		if(!player.burstCheckAll()) {
-			while(dealer.getPoint("normal").getScore() < 17) {
-				dealer.draw(deck, "normal");
+			while(dealer.getPoint(Status.PLAYING).getScore() < 17) {
+				dealer.draw(deck, Status.PLAYING);
 			}
 		}
 		

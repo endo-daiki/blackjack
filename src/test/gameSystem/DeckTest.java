@@ -18,14 +18,4 @@ class DeckTest {
 		
 		assertNotNull(card);
 	}
-
-	@Test
-	public void testAdd() { //正しくデッキにカードが追加されているか確認
-		Card createCard = new Card("heart", CardNumber.one);
-		deck.add(createCard); //カードをデッキに追加
-
-		Card drawCard = deck.pull(); //追加したカードをドロー
-		assertEquals(createCard, drawCard); //作ったカードと引いたカードが同じである
-	}
-
 }

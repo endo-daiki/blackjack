@@ -15,8 +15,8 @@
 	Player player = game.getPlayer();
 	Player dealer = game.getDealer();
 	
-	Map<String, Hand> playerHand = player.getHand();
-	Map<String, Hand> dealerHand = dealer.getHand();
+	Map<Status, Hand> playerHand = player.getHand();
+	Map<Status, Hand> dealerHand = dealer.getHand();
 %>
 <!DOCTYPE html>
 <html>
@@ -38,7 +38,7 @@
             <p>my tip <%= user.getTip() %></p>
             <div class="col-12 border">
 	            <% 
-	           		Hand dealerNormalHand = dealerHand.get("normal"); 
+	           		Hand dealerNormalHand = dealerHand.get(Status.PLAYING); 
 	           		List<Card> list = dealerNormalHand.getList();
 	           		Card openCard = list.get(0); 
 	            %>
@@ -51,7 +51,7 @@
 	           	<% } %>
             </div>
             <p class="col-12">bet is <%= game.getBet().getTip() %></p> 
-            <% for(String key : playerHand.keySet()) { %>  
+            <% for(Status key : playerHand.keySet()) { %>  
                 <div class="col-6 border">
 	            	<% 
 	            		Hand hand = playerHand.get(key);

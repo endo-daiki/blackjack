@@ -12,7 +12,7 @@ public class Bet {
 		this.refund = 0;
 	}
 
-	private void calc(Result result) {
+	public void calc(Result result) {
 		this.refund += this.tip * result.toBet();
 	}
 
@@ -25,16 +25,16 @@ public class Bet {
 	}
 	
 	public void judge(Player player, Player dealer) {
-		for(String key : player.getHand().keySet()) {
+		for(Status key : player.getHand().keySet()) {
 			if(player.getPoint(key).burstCheck()) {
 				this.calc(Result.LOSE);
-			} else if(dealer.getPoint("normal").burstCheck() || player.getPoint(key).getScore() > dealer.getPoint("normal").getScore()) {
+			} else if(dealer.getPoint(Status.PLAYING).burstCheck() || player.getPoint(key).getScore() > dealer.getPoint(Status.PLAYING).getScore()) {
 				if(player.getHand().get(key).sizeCheck() && player.getPoint(key).bjCheck()) {
 					this.calc(Result.NATURALBLACKJACK);			
 				} else {
 					this.calc(Result.WIN);
 				}		
-			} else if (player.getPoint(key).burstCheck() || player.getPoint(key).getScore() < dealer.getPoint("normal").getScore()) {
+			} else if (player.getPoint(key).burstCheck() || player.getPoint(key).getScore() < dealer.getPoint(Status.PLAYING).getScore()) {
 				this.calc(Result.LOSE);
 			} else {
 				this.calc(Result.DRAW);

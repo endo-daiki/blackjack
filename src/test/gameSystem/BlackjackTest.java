@@ -16,7 +16,6 @@ import org.springframework.mock.web.MockHttpSession;
 
 import database.Delete;
 import database.Insert;
-import model.Game;
 import model.User;
 
 class BlackjackTest {
@@ -41,16 +40,12 @@ class BlackjackTest {
 	@Test 
 	public void testBlackjack() {
 		Blackjack.getPlayerTurn(request);
-		Game game = (Game)request.getAttribute("game");
-		Player player = game.getPlayer();
-		
-		
 	}
 
 	@Test
 	public void testGetGame() 
 			throws ServletException, IOException {	
-		Blackjack.Stand("normal");
+		Blackjack.Stand("PLAYING");
 		assertEquals("result.jsp", Blackjack.getPlayerTurn(request));
 	}
 
@@ -64,7 +59,7 @@ class BlackjackTest {
 
 	@Test
 	public void testHit() {
-		Blackjack.Hit("normal");
+		Blackjack.Hit("PLAYING");
 		String resultUrl = Blackjack.getPlayerTurn(request); 
 
 		assertEquals("playerTurn.jsp", resultUrl);
@@ -72,7 +67,7 @@ class BlackjackTest {
 
 	@Test
 	public void testStand() {
-		Blackjack.Stand("normal");
+		Blackjack.Stand("PLAYING");
 		String resultUrl = Blackjack.getPlayerTurn(request); 
 
 		assertEquals("result.jsp", resultUrl);

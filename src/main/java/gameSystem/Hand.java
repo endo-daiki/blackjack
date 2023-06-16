@@ -42,7 +42,7 @@ public class Hand {
 		this.isStand = true;
 	}
 	public boolean splitCheck() {
-		if(sizeCheck()) {
+		if(!sizeCheck()) {
 			return false;
 		}
 		String firstCardNo = list.get(0).cardNumber.getNo();

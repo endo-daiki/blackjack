@@ -18,11 +18,6 @@ static Game game;
 	@Test 
 	public void testSplit() {
 		Deck deck = new Deck();
-		Card twoCard = new Card("heart", CardNumber.two);
-		
-		deck.add(twoCard);
-		deck.add(twoCard);
-		
 		game.setDeck(deck);
 
 		Setup.excute(game);
@@ -31,18 +26,7 @@ static Game game;
 
 	@Test
 	public void testBjSplit() {
-		Card twoCard = new Card("heart", CardNumber.two);
-		Card kingCard = new Card("heart", CardNumber.king);
-		Card aceCard = new Card("heart", CardNumber.one);
 		Deck deck = new Deck();
-
-		deck.add(kingCard);
-		deck.add(twoCard);
-		deck.add(kingCard);
-		deck.add(twoCard);
-		deck.add(aceCard);
-		deck.add(aceCard);
-		
 		game.setDeck(deck);
 
 		Setup.excute(game);

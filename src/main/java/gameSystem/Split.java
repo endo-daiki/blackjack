@@ -8,14 +8,14 @@ public class Split {
 		Player player = game.getPlayer();
 		
 		player.split();
-		player.draw(deck, "normal");
-		player.draw(deck, "split");
+		player.draw(deck, Status.PLAYING);
+		player.draw(deck, Status.SPLIT);
 
-		if(player.getPoint("split").bjCheck()) {
-			return Stand.excute(game, "split");
+		if(player.getPoint(Status.SPLIT).bjCheck()) {
+			return Stand.excute(game, "SPLIT");
 		}
-		if(player.getPoint("normal").bjCheck()) {
-			return Stand.excute(game, "normal");
+		if(player.getPoint(Status.PLAYING).bjCheck()) {
+			return Stand.excute(game, "PLAYING");
 		}
 
 		return "PlayerTurn";

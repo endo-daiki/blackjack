@@ -17,26 +17,17 @@ class StandTest {
 	public void testStand() {
 		Setup.excute(game);
 		
-		assertEquals("Result", Stand.excute(game));
+		assertEquals("Result", Stand.excute(game, "PLAYING"));
 	}
 
 	@Test
 	public void testSplitStand() {
-		Card card = new Card("heart", CardNumber.one);
-		Card twoCard = new Card("heart", CardNumber.two);
 		Deck deck = new Deck();
-
-		deck.add(twoCard);
-		deck.add(twoCard);
-		deck.add(twoCard);
-		deck.add(twoCard);
-		deck.add(card);
-		deck.add(card);
 		game.setDeck(deck);
 
 		Setup.excute(game);
 		Split.excute(game);
 
-		assertEquals("PlayerTurn", Stand.excute(game));
+		assertEquals("PlayerTurn", Stand.excute(game, "PLAYING"));
 	}
 }

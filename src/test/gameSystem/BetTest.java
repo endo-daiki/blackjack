@@ -43,4 +43,18 @@ class BetTest {
         bet.calc(Result.WIN); 
         assertEquals(20, bet.refund()); //掛金の2倍の額を取得できる
     }
+    
+    @Test
+    public void testJudge() {
+    	Player player = new Player();
+    	Player dealer = new Player();
+    	Deck deck = new Deck();
+    	
+    	player.draw(deck, Status.PLAYING);
+    	dealer.draw(deck, Status.PLAYING);
+    	
+    	bet.judge(player, dealer);
+    	
+    	assertEquals(20, bet.refund());
+    }
 }
