@@ -2,9 +2,6 @@ package gameSystem;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,9 +30,46 @@ class SplitTest {
 		Setup.excute(game);
 		assertEquals("PlayerTurn", Split.excute(game));
 	}
-
+	
 	@Test
 	public void testBjSplit() {
-		
+		Player player = new Player();
+		player.draw(aceCard, Status.PLAYING);
+		player.draw(aceCard, Status.PLAYING);
+
+		Deck deck = new Deck() {
+			@Override
+			public Card pull() {
+				return kingCard;
+			}
+		};
+
+		game.setDeck(deck);
+		game.setPlayer(player);
+		assertEquals("Result", Split.excute(game));
+	}
+
+	@Test
+	public void testPlayingBjSplit() {
+		Player player = new Player();
+		player.draw(aceCard, Status.PLAYING);
+		player.draw(aceCard, Status.PLAYING);
+
+		Deck deck = new Deck() {
+			int i = 2;
+			@Override
+			public Card pull() { 
+				if(i % 2 == 0) {
+					i++;
+					return kingCard;
+				}
+				i++;
+				return nineCard;
+			}
+		};
+
+		game.setDeck(deck);
+		game.setPlayer(player);
+		assertEquals("PlayerTurn", Split.excute(game));
 	}
 }

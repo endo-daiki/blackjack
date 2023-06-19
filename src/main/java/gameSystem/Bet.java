@@ -28,6 +28,7 @@ public class Bet {
 		for(Status key : player.getHand().keySet()) {
 			if(player.getPoint(key).burstCheck()) {
 				this.calc(Result.LOSE);
+				
 			} else if(dealer.getPoint(Status.PLAYING).burstCheck() || player.getPoint(key).getScore() > dealer.getPoint(Status.PLAYING).getScore()) {
 				if(player.getHand().get(key).sizeCheck() && player.getPoint(key).bjCheck()) {
 					this.calc(Result.NATURALBLACKJACK);			

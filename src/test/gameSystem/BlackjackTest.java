@@ -12,7 +12,6 @@ import org.springframework.mock.web.MockHttpSession;
 
 import database.Delete;
 import database.Insert;
-import model.Game;
 import model.User;
 
 class BlackjackTest {

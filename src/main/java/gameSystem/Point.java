@@ -15,7 +15,7 @@ public class Point {
 		}
 		this.score += addPoint;
 
-		if(this.score > 21 && aceCount > 0) {
+		if(burstCheck() && aceCount > 0) {
 			while(this.score > 21) {
 				this.score -= 10;
 				aceCount--;
