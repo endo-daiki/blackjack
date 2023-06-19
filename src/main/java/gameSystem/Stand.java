@@ -16,7 +16,7 @@ public class Stand {
 		}		
 		if(!player.burstCheckAll()) {
 			while(dealer.getPoint(Status.PLAYING).getScore() < 17) {
-				dealer.draw(deck, Status.PLAYING);
+				dealer.draw(deck.pull(), Status.PLAYING);
 			}
 		}
 		

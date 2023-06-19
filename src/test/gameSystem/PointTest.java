@@ -18,6 +18,11 @@ class PointTest {
 		courtCard = new Card("spade", CardNumber.king);
 		towCard = new Card("diamond", CardNumber.two);
 	}
+
+	@Test
+	public void testPoint() {
+		assertEquals(0, point.getScore());
+	}
 	
 	@Test
 	public void testCalc() {

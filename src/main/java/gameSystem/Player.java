@@ -20,8 +20,8 @@ public class Player{
 		return (hand.size() == 1) && (hand.get(Status.PLAYING).splitCheck());
 	}
 
-	public void draw(Deck deck, Status status) {
-		this.hand.get(status).draw(deck);
+	public void draw(Card card, Status status) {
+		this.hand.get(status).draw(card);
 	}
 	public boolean movedCheckAll() {
 		for(Hand hand :this.hand.values()) {

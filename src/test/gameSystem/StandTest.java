@@ -13,6 +13,7 @@ class StandTest {
 	public void setup() {
 		game = new Game(10);
 	}
+
 	@Test 
 	public void testStand() {
 		Setup.excute(game);
@@ -22,12 +23,18 @@ class StandTest {
 
 	@Test
 	public void testSplitStand() {
-		Deck deck = new Deck();
+		Deck deck = new Deck() {
+			@Override
+			public Card pull() { //必ずaceを引くとする
+				return new Card("heart", CardNumber.one);
+			}
+		};
 		game.setDeck(deck);
 
 		Setup.excute(game);
 		Split.excute(game);
 
 		assertEquals("PlayerTurn", Stand.excute(game, "PLAYING"));
+		assertEquals("Result", Stand.excute(game, "SPLIT"));
 	}
 }

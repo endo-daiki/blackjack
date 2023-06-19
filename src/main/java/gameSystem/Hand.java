@@ -22,8 +22,7 @@ public class Hand {
 		point.calc(card);
 	}
 
-	public void draw(Deck deck) {
-		Card card = deck.pull();
+	public void draw(Card card) {
 		list.add(card);
 		point.calc(card);
 	}

@@ -8,7 +8,7 @@ public class Hit {
 		Player player = game.getPlayer();
 		Status status = Status.valueOf(key);
 		
-		player.draw(deck, status);			
+		player.draw(deck.pull(), status);			
 		Hand hand = player.getHand().get(status);
 		
 		if(hand.movedCheck()) {

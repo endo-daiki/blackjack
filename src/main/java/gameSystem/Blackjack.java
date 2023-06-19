@@ -36,6 +36,9 @@ public class Blackjack {
 		Insert.insertLog(id, bet.refund());
 		
 		session.setAttribute("user", Select.selectUser(id, user.getPassword()));
+		
+		game.setPlayer(player);
+		game.setDealer(dealer);
 		game.setBet(bet);
 
 		request.setAttribute("game", game);

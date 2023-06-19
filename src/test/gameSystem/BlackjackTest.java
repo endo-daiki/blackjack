@@ -2,10 +2,6 @@ package gameSystem;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +12,7 @@ import org.springframework.mock.web.MockHttpSession;
 
 import database.Delete;
 import database.Insert;
+import model.Game;
 import model.User;
 
 class BlackjackTest {
@@ -38,49 +35,34 @@ class BlackjackTest {
 	}
 
 	@Test 
-	public void testBlackjack() {
-		Blackjack.getPlayerTurn(request);
+	public void testGetPlayerTurn() {
+		assertEquals("playerTurn.jsp", Blackjack.getPlayerTurn(request));
 	}
 
 	@Test
-	public void testGetGame() 
-			throws ServletException, IOException {	
-		Blackjack.Stand("PLAYING");
-		assertEquals("result.jsp", Blackjack.getPlayerTurn(request));
+	public void testGetResult() {	
+		assertEquals("result.jsp", Blackjack.getResult(request));
 	}
 
 	@Test
 	public void testSetup() {
-		Blackjack.Setup();
-		String resultUrl = Blackjack.getPlayerTurn(request); 
-
-		assertEquals("playerTurn.jsp", resultUrl);
+		assertEquals("PlayerTurn", Blackjack.Setup());
 	}
 
 	@Test
 	public void testHit() {
-		Blackjack.Hit("PLAYING");
-		String resultUrl = Blackjack.getPlayerTurn(request); 
-
-		assertEquals("playerTurn.jsp", resultUrl);
+		assertEquals("PlayerTurn", Blackjack.Hit("PLAYING"));
 	}
 
 	@Test
 	public void testStand() {
-		Blackjack.Stand("PLAYING");
-		String resultUrl = Blackjack.getPlayerTurn(request); 
-
-		assertEquals("result.jsp", resultUrl);
+		assertEquals("Result", Blackjack.Stand("PLAYING"));
 	}
 
 	@Test
 	public void testSplit() {
 		Blackjack.Setup();
-
-		Blackjack.Split();
-		String resultUrl = Blackjack.getPlayerTurn(request); 
-
-		assertEquals("playerTurn.jsp", resultUrl);
+		assertEquals("PlayerTurn", Blackjack.Split());
 	}
 
 	@AfterAll

@@ -8,7 +8,7 @@ class CardNumberTest {
 	static CardNumber no = CardNumber.one;
 
 	@Test
-	public void test() {
+	public void testCardNumber() {
 		assertEquals(no, CardNumber.one);
 	}
 	

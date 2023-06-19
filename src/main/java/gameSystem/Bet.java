@@ -12,7 +12,7 @@ public class Bet {
 		this.refund = 0;
 	}
 
-	public void calc(Result result) {
+	private void calc(Result result) {
 		this.refund += this.tip * result.toBet();
 	}
 

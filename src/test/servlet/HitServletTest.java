@@ -52,7 +52,7 @@ class HitServletTest {
 		response = new MockHttpServletResponse();
 		
 		new Blackjack(10, "testId");
-		
+		request.setParameter("select", "PLAYING");
 		servlet.doPost(request, response);
 		
 		String url = response.getRedirectedUrl();
