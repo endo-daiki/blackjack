@@ -10,7 +10,7 @@ public class UserDelete {
 	public static String excute(String id, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		User user = (User) session.getAttribute("user");
-		
+
 		if(!id.equals(user.getId())) {
 			throw new IllegalArgumentException("Idが正しくありません。不正があります。");
 		}

@@ -7,7 +7,7 @@ public enum Result {
 	DRAW(0);
 
 	private double bet;
-	
+
 	public double toBet() {
 		return this.bet;
 	}

@@ -8,9 +8,9 @@ public class Stand {
 		Player player = game.getPlayer();
 		Player dealer = game.getDealer();
 		Status status = Status.valueOf(key);
-	
+
 		player.isStand(status);
-		
+
 		if(!player.movedCheckAll()) {
 			return "PlayerTurn";
 		}		
@@ -19,7 +19,7 @@ public class Stand {
 				dealer.draw(deck.pull(), Status.PLAYING);
 			}
 		}
-		
+
 		game.setDeck(deck);
 		game.setPlayer(player);
 		game.setDealer(dealer);

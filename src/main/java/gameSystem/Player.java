@@ -9,7 +9,7 @@ public class Player{
 	public Player() {
 		hand.put(Status.PLAYING, new Hand());
 	}
-	
+
 	public Map<Status, Hand> getHand() {
 		return this.hand;
 	}
@@ -45,7 +45,7 @@ public class Player{
 	public void split() {
 		Card card1 = this.hand.get(Status.PLAYING).getList().get(0);
 		Card card2 = this.hand.get(Status.PLAYING).getList().get(1);
-		
+
 		this.hand.replace(Status.PLAYING, new Hand(card1));
 		this.hand.put(Status.SPLIT, new Hand(card2));
 	}

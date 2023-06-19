@@ -17,7 +17,7 @@ class SetupTest {
 		game = new Game(10);
 		Deck deck = new Deck() {
 			@Override
-			public Card pull() { //必ずaceを引くとする
+			public Card pull() {
 				return aceCard;
 			}
 		};
@@ -28,11 +28,11 @@ class SetupTest {
 
 	@Test
 	public void testBjSetup() {
-		Game game = new Game(10);
+		game = new Game(10);
 		Deck deck = new Deck() {
 			int i = 0;
 			@Override
-			public Card pull() { //必ずaceを引くとする
+			public Card pull() { 
 				if(i % 2 == 0) {
 					i++;
 					return kingCard;

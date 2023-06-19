@@ -17,7 +17,7 @@ public class Hand {
 		list = new ArrayList<Card>();
 		point = new Point();
 		isStand = false;
-		
+
 		list.add(card);
 		point.calc(card);
 	}
@@ -26,7 +26,7 @@ public class Hand {
 		list.add(card);
 		point.calc(card);
 	}
-	
+
 	public boolean movedCheck() {
 		return this.point.burstCheck() || this.point.bjCheck() || this.isStand;
 	}

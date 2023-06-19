@@ -22,23 +22,19 @@ public class Blackjack {
 		request.setAttribute("game", game);
 		return "playerTurn.jsp";
 	}
-	
+
 	public static String getResult(HttpServletRequest request) {		
 		HttpSession session = request.getSession(true);
 		User user = (User)session.getAttribute("user");
-		Player player = game.getPlayer();
-		Player dealer = game.getDealer();
 		Bet bet = game.getBet();
-		
-		bet.judge(player, dealer);  
+
+		bet.judge(game.getPlayer(), game.getDealer());  
 
 		Update.updateResult(id, bet.refund());
 		Insert.insertLog(id, bet.refund());
-		
+
 		session.setAttribute("user", Select.selectUser(id, user.getPassword()));
-		
-		game.setPlayer(player);
-		game.setDealer(dealer);
+
 		game.setBet(bet);
 
 		request.setAttribute("game", game);

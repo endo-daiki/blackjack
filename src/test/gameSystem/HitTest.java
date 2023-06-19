@@ -70,6 +70,6 @@ class HitTest {
 		Setup.excute(game);
 		Split.excute(game);
 		
-		assertEquals("PlayerTurn", Hit.excute(game, "PLAYING"));
+		assertEquals("PlayerTurn", Hit.excute(game, "SPLIT"));
 	}
 }

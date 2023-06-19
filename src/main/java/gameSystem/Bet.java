@@ -23,23 +23,30 @@ public class Bet {
 	public int refund() {
 		return this.refund;
 	}
-	
+
 	public void judge(Player player, Player dealer) {
 		for(Status key : player.getHand().keySet()) {
 			if(player.getPoint(key).burstCheck()) {
 				this.calc(Result.LOSE);
-				
-			} else if(dealer.getPoint(Status.PLAYING).burstCheck() || player.getPoint(key).getScore() > dealer.getPoint(Status.PLAYING).getScore()) {
+				return;	
+			} 
+			if(dealer.getPoint(Status.PLAYING).burstCheck()) {
+				this.calc(Result.WIN);
+				return;
+			}
+			if(player.getPoint(key).getScore() > dealer.getPoint(Status.PLAYING).getScore()) {
 				if(player.getHand().get(key).sizeCheck() && player.getPoint(key).bjCheck()) {
 					this.calc(Result.NATURALBLACKJACK);			
 				} else {
 					this.calc(Result.WIN);
 				}		
-			} else if (player.getPoint(key).burstCheck() || player.getPoint(key).getScore() < dealer.getPoint(Status.PLAYING).getScore()) {
+				return;
+			}
+			if (player.getPoint(key).getScore() < dealer.getPoint(Status.PLAYING).getScore()) {
 				this.calc(Result.LOSE);
-			} else {
-				this.calc(Result.DRAW);
-			}			
+				return;
+			} 
+			this.calc(Result.DRAW);			
 		}
 	}
 }

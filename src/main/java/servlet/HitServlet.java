@@ -42,7 +42,7 @@ public class HitServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 		String select = request.getParameter("select");
-		
+
 		String url = Blackjack.Hit(select);		
 		response.sendRedirect(url);		
 	}

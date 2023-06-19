@@ -47,7 +47,7 @@ public class Update {
 		}
 		return checker;
 	}
-	
+
 	public static boolean updatePlayLog(String id, String newId) {
 		boolean checker = false;
 

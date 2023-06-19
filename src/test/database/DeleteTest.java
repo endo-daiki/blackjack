@@ -11,16 +11,16 @@ class DeleteTest {
 	@BeforeAll
 	public static void setup() {
 		User user = new User("testId", "testName", "password", "password");
-	    Insert.insertUser(user.getId(), user.getName(), user.getPassword());	     
-	    Insert.insertLog("testId", 20);
+		Insert.insertUser(user.getId(), user.getName(), user.getPassword());	     
+		Insert.insertLog("testId", 20);
 	}
-	
+
 	@Test
 	public void testDeleteUser() {	
 		boolean checker = Delete.deleteUser("testId");	
 		assertEquals(true, checker);
 	}
-	
+
 	@Test
 	public void testDeleteLog() {
 		boolean checker = Delete.deleteLog("testId");

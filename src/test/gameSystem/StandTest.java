@@ -25,7 +25,7 @@ class StandTest {
 	public void testSplitStand() {
 		Deck deck = new Deck() {
 			@Override
-			public Card pull() { //必ずaceを引くとする
+			public Card pull() { 
 				return new Card("heart", CardNumber.one);
 			}
 		};
