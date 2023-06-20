@@ -20,28 +20,34 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 </head>
 <body class="p-4">
-<div class="container-fluid">
-	<div class="row justify-content-center">
-		<h1 class="text-center">ブラックジャック</h1>
-		<p class="text-center">ユーザー 新規登録</p>
-		<div class="col-7">
-			<% if(request.getAttribute("error_msg")!= null){ %>
-				<p class="text-danger">登録エラー：<%= (String)request.getAttribute("error_msg") %></p>
-			<% } %>
-			<form method="post" action="Signup">
-				<label>ID</label>
-				<input class="form-control" type="text" name="id" required><br>
-				<label>名前</label>
-				<input class="form-control" type="text" name="name" required><br>
-				<label>パスワード</label>
-				<input class="form-control" type="password" name="password" pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="8文字以上で入力してください" required><br>
-				<label>確認用パスワード</label>
-				<input class="form-control" type="password" name="checkPassword" pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="上記と同じパスワードを入力してください" required><br>
-				<button class="btn btn-primary" type=submit >新規登録</button>
-			</form>
-			<a href="login.jsp">ログイン</a>
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<h1 class="text-center">ブラックジャック</h1>
+			<p class="text-center">ユーザー 新規登録</p>
+			<div class="col-7">
+				<%
+				if (request.getAttribute("error_msg") != null) {
+				%>
+				<p class="text-danger">
+					登録エラー：<%=(String) request.getAttribute("error_msg")%></p>
+				<%
+				}
+				%>
+				<form method="post" action="Signup">
+					<label>ID</label> <input class="form-control" type="text" name="id"
+						required><br> <label>名前</label> <input
+						class="form-control" type="text" name="name" required><br>
+					<label>パスワード</label> <input class="form-control" type="password"
+						name="password" pattern="^[a-zA-Z0-9\d]{8,}$"
+						placeholder="8文字以上で入力してください" required><br> <label>確認用パスワード</label>
+					<input class="form-control" type="password" name="checkPassword"
+						pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="上記と同じパスワードを入力してください"
+						required><br>
+					<button class="btn btn-primary" type=submit>新規登録</button>
+				</form>
+				<a href="login.jsp">ログイン</a>
+			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>

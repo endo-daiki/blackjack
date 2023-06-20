@@ -9,9 +9,9 @@ import model.Game;
 
 class SplitTest {
 	static Game game;
-	static Card aceCard = new Card("heart", CardNumber.one);
-	static Card nineCard = new Card("heart", CardNumber.nine);
-	static Card kingCard = new Card("heart", CardNumber.king);
+	static Card aceCard = new Card(Suit.heart, CardNumber.one);
+	static Card nineCard = new Card(Suit.heart, CardNumber.nine);
+	static Card kingCard = new Card(Suit.heart, CardNumber.king);
 	
 	@BeforeEach
 	public void setup() {

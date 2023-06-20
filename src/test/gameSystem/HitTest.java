@@ -7,9 +7,9 @@ import model.Game;
 
 class HitTest {
 	static Game game;
-	static Card aceCard = new Card("heart", CardNumber.one);
-	static Card nineCard = new Card("heart", CardNumber.nine);
-	static Card kingCard = new Card("heart", CardNumber.king);
+	static Card aceCard = new Card(Suit.heart, CardNumber.one);
+	static Card nineCard = new Card(Suit.heart, CardNumber.nine);
+	static Card kingCard = new Card(Suit.heart, CardNumber.king);
 	
 	@Test
 	public void testHit() {

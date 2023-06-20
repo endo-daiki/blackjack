@@ -6,13 +6,13 @@ import java.util.List;
 
 public class Deck {
 	private List<Card> deck;
-	private final String[] suit = {"spade","heart","diamond","club"};
+	private final Suit[] suit = Suit.values();
 	private final CardNumber[] cardNumber = CardNumber.values();
 
 	public Deck() {
 		deck = new ArrayList<Card>();
 
-		for(String suit : suit) {
+		for(Suit suit : suit) {
 			for(CardNumber no : cardNumber) {
 				Card card = new Card(suit, no);
 				deck.add(card);

@@ -20,24 +20,27 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 </head>
 <body class="p-4">
-<div class="container-fluid">
-    <h1 class="text-center">ブラックジャック</h1>
-    <p class="text-center">トップぺージ</p>
-	<% if(request.getAttribute("user_login") != null) { %>
+	<div class="container-fluid">
+		<h1 class="text-center">ブラックジャック</h1>
+		<p class="text-center">トップぺージ</p>
+		<% if(request.getAttribute("user_login") != null) { %>
 		<p class="text-danger text-center"><%= request.getAttribute("user_login") %></p>
-	<% } %>
-	<p class="text-center">ようこそ、<%= user.getName()  %>さん</p>
-    <div class="row justify-content-center">
-        <div class="col-7">
-			<div class="d-grid gap-2">
-				<a href="gameTop.jsp" class="btn btn-outline-primary">BLACK JACK</a>
+		<% } %>
+		<p class="text-center">
+			ようこそ、<%= user.getName()  %>さん
+		</p>
+		<div class="row justify-content-center">
+			<div class="col-7">
+				<div class="d-grid gap-2">
+					<a href="gameTop.jsp" class="btn btn-outline-primary">BLACK
+						JACK</a>
+				</div>
+
+				<a class="btn btn-primary" href="UserInfo">ユーザー情報</a> <a
+					class="btn btn-primary" href="PlayInfo">戦績情報</a> <a class=""
+					href="Logout">ログアウト</a>
 			</div>
-            
-            <a class="btn btn-primary" href="UserInfo">ユーザー情報</a>
-            <a class="btn btn-primary" href="PlayInfo">戦績情報</a>
-			<a class="" href="Logout">ログアウト</a>
-        </div>
-    </div>
-</div>
+		</div>
+	</div>
 </body>
 </html>

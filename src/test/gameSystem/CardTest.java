@@ -10,7 +10,7 @@ class CardTest {
 
 	@BeforeAll
 	public static void setup() {
-		card = new Card("heart", CardNumber.one);
+		card = new Card(Suit.heart, CardNumber.one);
 	}
 
 	@Test
@@ -23,16 +23,16 @@ class CardTest {
 	public void testCourtCheck() {
 		assertFalse(card.courtCheck());
 
-		Card testCard = new Card("heart", CardNumber.king);
+		Card testCard = new Card(Suit.heart, CardNumber.king);
 		assertTrue(testCard.courtCheck());
 	}
 	
 	@Test
 	public void testEqualCheck() {
-		Card card2 = new Card("diamond", CardNumber.one);
+		Card card2 = new Card(Suit.diamond, CardNumber.one);
 		assertTrue(card.equalCheck(card2));
 		
-		card2 = new Card("heart", CardNumber.king);
+		card2 = new Card(Suit.heart, CardNumber.king);
 		assertFalse(card.equalCheck(card2));
 	}
 }

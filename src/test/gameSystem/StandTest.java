@@ -26,7 +26,7 @@ class StandTest {
 		Deck deck = new Deck() {
 			@Override
 			public Card pull() { 
-				return new Card("heart", CardNumber.one);
+				return new Card(Suit.heart, CardNumber.one);
 			}
 		};
 		game.setDeck(deck);

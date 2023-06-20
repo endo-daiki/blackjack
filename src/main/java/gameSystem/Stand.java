@@ -19,8 +19,7 @@ public class Stand {
 			while(dealer.getPoint(Status.PLAYING).getScore() < 17) {
 				dealer.draw(deck.pull(), Status.PLAYING);
 			}
-		}
-		
+		}	
 		bet.judge(player, dealer);
 
 		game.setDeck(deck);

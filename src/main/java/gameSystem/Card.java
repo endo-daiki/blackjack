@@ -1,10 +1,10 @@
 package gameSystem;
 
 public class Card {
-	public final String suit;
+	public final Suit suit;
 	public final CardNumber cardNumber;
 
-	public Card(String suit, CardNumber cardNumber) {
+	public Card(Suit suit, CardNumber cardNumber) {
 		this.suit = suit;
 		this.cardNumber = cardNumber;
 	}

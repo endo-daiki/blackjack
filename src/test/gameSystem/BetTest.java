@@ -23,9 +23,9 @@ class BetTest {
     public void testJudge() {
     	Player player = new Player();
     	Player dealer = new Player();
-    	Card aceCard = new Card("heart", CardNumber.one);
-        Card nineCard = new Card("heart", CardNumber.nine);
-        Card kingCard = new Card("heart", CardNumber.king);
+    	Card aceCard = new Card(Suit.heart, CardNumber.one);
+        Card nineCard = new Card(Suit.heart, CardNumber.nine);
+        Card kingCard = new Card(Suit.heart, CardNumber.king);
     	
     	player.draw(aceCard, Status.PLAYING);
     	dealer.draw(nineCard, Status.PLAYING);	

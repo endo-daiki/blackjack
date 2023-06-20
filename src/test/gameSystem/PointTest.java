@@ -14,9 +14,9 @@ class PointTest {
 	@BeforeEach
 	public void setup() {
 		point = new Point();
-		aceCard = new Card("heart", CardNumber.one);
-		courtCard = new Card("spade", CardNumber.king);
-		towCard = new Card("diamond", CardNumber.two);
+		aceCard = new Card(Suit.heart, CardNumber.one);
+		courtCard = new Card(Suit.spade, CardNumber.king);
+		towCard = new Card(Suit.diamond, CardNumber.two);
 	}
 
 	@Test

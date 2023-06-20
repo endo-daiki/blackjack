@@ -20,16 +20,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 </head>
 <body class="p-4">
-<div class="container-fluid">
-    <h1 class="text-center">ブラックジャック</h1>
-    <p class="text-center">ユーザー登録完了</p>
-    <div class="row justify-content-center">
-        <div class="col-7">
-            <p>登録を完了しました。</p>
-            <p>引き続き、ログインをしてください。</p>
-            <a href="login.jsp">ログインする</a>
-        </div>
-    </div>
-</div>
+	<div class="container-fluid">
+		<h1 class="text-center">ブラックジャック</h1>
+		<p class="text-center">ユーザー登録完了</p>
+		<div class="row justify-content-center">
+			<div class="col-7">
+				<p>登録を完了しました。</p>
+				<p>引き続き、ログインをしてください。</p>
+				<a href="login.jsp">ログインする</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

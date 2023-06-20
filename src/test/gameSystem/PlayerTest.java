@@ -8,8 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 
 class PlayerTest {
 	static Player player;
-	static Card aceCard = new Card("heart", CardNumber.one);
-	static Card kingCard = new Card("heart", CardNumber.king);
+	static Card aceCard = new Card(Suit.heart, CardNumber.one);
+	static Card kingCard = new Card(Suit.heart, CardNumber.king);
 	
 	@BeforeEach
 	public void setup() {

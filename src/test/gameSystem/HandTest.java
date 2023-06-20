@@ -14,7 +14,7 @@ class HandTest {
 	@BeforeEach
 	public void setup() {
 		hand = new Hand();
-		card = new Card("heart", CardNumber.one);
+		card = new Card(Suit.heart, CardNumber.one);
 	}
 	
 	@Test
@@ -45,7 +45,7 @@ class HandTest {
 		hand.draw(card);
 		assertEquals(false, hand.movedCheck());
 
-		Card kingCard = new Card("heart", CardNumber.king);
+		Card kingCard = new Card(Suit.heart, CardNumber.king);
 		hand.draw(kingCard);
 		hand.draw(kingCard);
 

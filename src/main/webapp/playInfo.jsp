@@ -24,55 +24,56 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 </head>
 <body class="p-4">
-<div class="container-fluid">
-    <h1 class="text-center">ブラックジャック</h1>
-    <p class="text-center">戦績情報</p>
-    <div class="row justify-content-center">
-        <div class="col-7">
-        	<p class="text-center">ユーザー名：<%= user.getName() %></p>
-            <table class="table">
-                <tbody>
-                  <tr>
-                    <th scope="row">プレイ回数</th>
-                    <td><%= user.getPlaying() %></td>
-                  </tr>
-                  <tr>
-                  	<th scope="row">持ち金</th>
-                  	<td><%= user.getTip() %></td>
-                  </tr>
-                </tbody>
-              </table>
-              <p class="text-center">トップ５</p>
-              <table class="table">
-                <tbody>
-                <% int rank = 1; %>
-                <% for(int i = 0; i < ranker.size(); i++) { %>
-                  <tr>
-                    <th scope="row"><%= rank %>位</th>
-                    <td><%= ranker.get(i).getName() %></td>
-                    <td><%= ranker.get(i).getTip() %></td>
-                  </tr>
-                <% rank++; %>
-                <% } %>
-                </tbody>
-              </table>
-              <p class="text-center">ゲーム記録</p>
-              <div class="overflow-auto" style="max-height:400px;">
-	              <table class="table">
-    	            <tbody>
-        	        <% for(int i = 0; i < playLog.size(); i++) { %>
-            	      <tr>
-                	    <td><%= playLog.get(i).getTime() %></td>
-                    	<td><%= playLog.get(i).getLog() %></td>
-                  	  </tr>
-                	<% rank++; %>
-	                <% } %>
-	                </tbody>
-	              </table>
-              </div>
-              <a href="Main">戻る</a>
-        </div>
-    </div>
-</div>
+	<div class="container-fluid">
+		<h1 class="text-center">ブラックジャック</h1>
+		<p class="text-center">戦績情報</p>
+		<div class="row justify-content-center">
+			<div class="col-7">
+				<p class="text-center">
+					ユーザー名：<%= user.getName() %></p>
+				<table class="table">
+					<tbody>
+						<tr>
+							<th scope="row">プレイ回数</th>
+							<td><%= user.getPlaying() %></td>
+						</tr>
+						<tr>
+							<th scope="row">持ち金</th>
+							<td><%= user.getTip() %></td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="text-center">トップ５</p>
+				<table class="table">
+					<tbody>
+						<% int rank = 1; %>
+						<% for(int i = 0; i < ranker.size(); i++) { %>
+						<tr>
+							<th scope="row"><%= rank %>位</th>
+							<td><%= ranker.get(i).getName() %></td>
+							<td><%= ranker.get(i).getTip() %></td>
+						</tr>
+						<% rank++; %>
+						<% } %>
+					</tbody>
+				</table>
+				<p class="text-center">ゲーム記録</p>
+				<div class="overflow-auto" style="max-height: 400px;">
+					<table class="table">
+						<tbody>
+							<% for(int i = 0; i < playLog.size(); i++) { %>
+							<tr>
+								<td><%= playLog.get(i).getTime() %></td>
+								<td><%= playLog.get(i).getLog() %></td>
+							</tr>
+							<% rank++; %>
+							<% } %>
+						</tbody>
+					</table>
+				</div>
+				<a href="Main">戻る</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
