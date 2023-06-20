@@ -45,15 +45,15 @@
 	           		Card openCard = list.get(0); 
 	            %>
 					<img
-						src="img/<%= openCard.suit %>_<%= openCard.cardNumber.getNo() %>.png"
+						src="img/<%= openCard.suit %>_<%= openCard.cardNumber %>.png"
 						width="100" height="150"> <img src="img/trump_back.png"
 						width="100" height="150">
 					<% if( dealerNormalHand.getList().get(0).courtCheck() ) { %>
-					<p class="text-center"><%= openCard.cardNumber.getNo() %>(10) +
+					<p class="text-center"><%= openCard.cardNumber %>(10) +
 						?
 					</p>
 					<% } else { %>
-					<p class="text-center"><%= openCard.cardNumber.getNo() %>
+					<p class="text-center"><%= openCard.cardNumber %>
 						+ ?
 					</p>
 					<% } %>
@@ -70,7 +70,7 @@
 		            	int score = point.getScore();
 		            %>
 					<% for(Card card : handList) {  %>
-					<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png"
+					<img src="img/<%= card.suit %>_<%= card.cardNumber %>.png"
 						width="100" height="150">
 					<% } %>
 					<p class="text-center text-danger">

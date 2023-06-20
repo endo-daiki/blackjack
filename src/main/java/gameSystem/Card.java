@@ -14,6 +14,6 @@ public class Card {
 	}
 	
 	public boolean equalCheck(Card card) {
-		return this.cardNumber.getNo().equals(card.cardNumber.getNo());
+		return this.cardNumber.equals(card.cardNumber);
 	}
 }

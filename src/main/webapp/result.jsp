@@ -43,7 +43,7 @@
             		Point dealerPoint = dealer.getPoint(Status.PLAYING);
             	%>
 				<% for(Card card : dealerHandList) { %>
-				<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png"
+				<img src="img/<%= card.suit %>_<%= card.cardNumber %>.png"
 					width="100" height="150">
 				<% } %>
 				<p class="text-center text-danger">
@@ -67,7 +67,7 @@
 		            	int score = point.getScore();
 		            %>
 				<% for(Card card : handList) {  %>
-				<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png"
+				<img src="img/<%= card.suit %>_<%= card.cardNumber %>.png"
 					width="100" height="150">
 				<% } %>
 				<p class="text-center text-danger">
