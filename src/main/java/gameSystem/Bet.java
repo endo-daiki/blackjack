@@ -30,11 +30,7 @@ public class Bet {
 				this.calc(Result.LOSE);
 				return;	
 			} 
-			if(dealer.getPoint(Status.PLAYING).burstCheck()) {
-				this.calc(Result.WIN);
-				return;
-			}
-			if(player.getPoint(key).getScore() > dealer.getPoint(Status.PLAYING).getScore()) {
+			if(player.getPoint(key).getScore() > dealer.getPoint(Status.PLAYING).getScore() || dealer.getPoint(Status.PLAYING).burstCheck()) {
 				if(player.getHand().get(key).sizeCheck() && player.getPoint(key).bjCheck()) {
 					this.calc(Result.NATURALBLACKJACK);			
 				} else {

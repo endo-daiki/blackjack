@@ -59,18 +59,18 @@
                 <div class="col-6 border">
 	            	<% 
 	            		Hand hand = playerHand.get(key);
-		            	Point testPoint = hand.getPoint(); 
+		            	Point point = hand.getPoint(); 
 		            	List<Card> handList = hand.getList();
-		            	int score = testPoint.getScore();
+		            	int score = point.getScore();
 		            %>
 	            	<% for(Card card : handList) {  %>
 	            		<img src="img/<%= card.suit %>_<%= card.cardNumber.getNo() %>.png" width="100" height="150">
 	            	<% } %>
 	             	<p class="text-center text-danger">
-	             		<% if(testPoint.burstCheck()) { %>
+	             		<% if(point.burstCheck()) { %>
 							Burst!!
 						<% } %>
-						<% if(testPoint.bjCheck()) { %>
+						<% if(point.bjCheck()) { %>
 	          				BlackJack!!
 	          			<% } %>
 	            	</p>

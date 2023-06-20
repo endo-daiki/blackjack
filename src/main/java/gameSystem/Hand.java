@@ -18,8 +18,7 @@ public class Hand {
 		point = new Point();
 		isStand = false;
 
-		list.add(card);
-		point.calc(card);
+		draw(card);
 	}
 
 	public void draw(Card card) {

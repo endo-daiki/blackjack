@@ -8,7 +8,6 @@ public class Game {
 	private Deck deck;
 	private Player player;
 	private Player dealer;
-	private Player split;
 	private Bet bet;
 
 	public Game() {}
@@ -16,7 +15,6 @@ public class Game {
 		this.deck = new Deck();
 		this.player = new Player();
 		this.dealer = new Player();
-		this.split = new Player();
 		this.bet = new Bet(bet);
 	}
 
@@ -37,12 +35,6 @@ public class Game {
 	}
 	public void setDealer(Player dealer) {
 		this.dealer = dealer;
-	}
-	public Player getSplit() {
-		return split;
-	}
-	public void setSplit(Player split) {
-		this.split = split;
 	}
 	public Bet getBet() {
 		return bet;
