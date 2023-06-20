@@ -43,10 +43,10 @@ public class Hand {
 		if(!sizeCheck()) {
 			return false;
 		}
-		String firstCardNo = list.get(0).cardNumber.getNo();
-		String secondCardNo = list.get(1).cardNumber.getNo();
+		Card firstCard = list.get(0);
+		Card secondCard = list.get(1);
 
-		return firstCardNo.equals(secondCardNo);
+		return firstCard.equalCheck(secondCard);
 	}
 	public boolean sizeCheck() {
 		return this.list.size() == 2;

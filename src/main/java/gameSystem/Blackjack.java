@@ -30,7 +30,6 @@ public class Blackjack {
 		User user = (User)session.getAttribute("user");
 		session.setAttribute("user", Select.selectUser(id, user.getPassword()));
 
-		game.setBet(bet);
 		request.setAttribute("game", game);
 		return "result.jsp";
 	}

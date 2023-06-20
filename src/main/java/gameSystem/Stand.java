@@ -8,8 +8,8 @@ public class Stand {
 		Player player = game.getPlayer();
 		Player dealer = game.getDealer();
 		Bet bet = game.getBet();
-		
 		Status status = Status.valueOf(key);
+
 		player.isStand(status);
 
 		if(!player.movedCheckAll()) {
@@ -22,7 +22,7 @@ public class Stand {
 		}
 		
 		bet.judge(player, dealer);
-		
+
 		game.setDeck(deck);
 		game.setPlayer(player);
 		game.setDealer(dealer);

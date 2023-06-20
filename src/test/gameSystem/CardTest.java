@@ -21,9 +21,18 @@ class CardTest {
 
 	@Test
 	public void testCourtCheck() {
-		assertEquals(false, card.courtCheck());
+		assertFalse(card.courtCheck());
 
 		Card testCard = new Card("heart", CardNumber.king);
-		assertEquals(true, testCard.courtCheck());
+		assertTrue(testCard.courtCheck());
+	}
+	
+	@Test
+	public void testEqualCheck() {
+		Card card2 = new Card("diamond", CardNumber.one);
+		assertTrue(card.equalCheck(card2));
+		
+		card2 = new Card("heart", CardNumber.king);
+		assertFalse(card.equalCheck(card2));
 	}
 }

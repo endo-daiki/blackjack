@@ -12,4 +12,8 @@ public class Card {
 	public boolean courtCheck() {
 		return this.cardNumber == CardNumber.jack || this.cardNumber == CardNumber.queen || this.cardNumber == CardNumber.king; 
 	}
+	
+	public boolean equalCheck(Card card) {
+		return this.cardNumber.getNo().equals(card.cardNumber.getNo());
+	}
 }
