@@ -19,15 +19,15 @@ public class Deck {
 			}
 		}
 		
-		Card card1 = new Card(Suit.heart, CardNumber.one);
-		Card card2 = new Card(Suit.diamond, CardNumber.one);
-		
 		Collections.shuffle(deck);
 		
-		deck.remove(card1);
-		deck.remove(card2);
-		deck.add(0, card1);
-		deck.add(0, card2);
+//		Card card1 = new Card(Suit.heart, CardNumber.one);
+//		Card card2 = new Card(Suit.diamond, CardNumber.one);
+//		
+//		deck.remove(card1);
+//		deck.remove(card2);
+//		deck.add(0, card1);
+//		deck.add(0, card2);
 	}
 
 	public Card pull() {
