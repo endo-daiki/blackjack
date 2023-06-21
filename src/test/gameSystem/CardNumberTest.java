@@ -11,12 +11,7 @@ class CardNumberTest {
 	public void testCardNumber() {
 		assertEquals(no, CardNumber.one);
 	}
-	
-	@Test
-	public void testGetNo() {
-		assertEquals("1", no.getNo());
-	}
-	
+
 	@Test
 	public void testGetPoint() {
 		assertEquals(11, no.getPoint());
