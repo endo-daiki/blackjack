@@ -34,7 +34,7 @@
 			<h1 class="text-center">ブラックジャック</h1>
 			<p class="text-center">ゲームリザルト</p>
 			<p>
-				my tip
+				チップ : 
 				<%= user.getTip() %></p>
 			<div class="col-12 border">
 				<% 
@@ -88,12 +88,12 @@
 			</div>
 			<% } %>
 			<p class="col-12">
-				refund is
+				取得結果　：
 				<%= game.getBet().refund() %></p>
 			<div class="col-12 border">
 				<form action="Setup" method="post">
 					<input type="hidden" name="id" value="<%= user.getId() %>">
-					bet is <select class="form-select" name="bet">
+					賭け数 <select class="form-select" name="bet">
 						<option selected value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>

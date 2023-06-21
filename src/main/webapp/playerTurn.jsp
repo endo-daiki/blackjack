@@ -36,7 +36,7 @@
 				<h1 class="text-center">ブラックジャック</h1>
 				<p class="text-center">プレイヤーターン</p>
 				<p>
-					my tip
+					チップ : 
 					<%= user.getTip() %></p>
 				<div class="col-12 border">
 					<% 
@@ -46,23 +46,23 @@
 	            %>
 					<img
 						src="img/<%= openCard.suit %>_<%= openCard.cardNumber %>.png"
-						width="100" height="150"> <img src="img/trump_back.png"
+						width="100" height="150"> <img src="img/trump_back.jpg"
 						width="100" height="150">
-					<% if( dealerNormalHand.getList().get(0).courtCheck() ) { %>
+					<% if( dealerNormalHand.getList().get(0).courtCheck()) { %>
 					<p class="text-center"><%= openCard.cardNumber %>(10) +
 						?
 					</p>
 					<% } else { %>
-					<p class="text-center"><%= openCard.cardNumber %>
+					<p class="text-center"><%= openCard.cardNumber.getPoint() %>
 						+ ?
 					</p>
 					<% } %>
 				</div>
 				<p class="col-12">
-					bet is
+					賭け数 : 
 					<%= game.getBet().getTip() %></p>
 				<% for(Status key : playerHand.keySet()) { %>
-				<div class="col-6 border">
+				<div class="col border">
 					<% 
 	            		Hand hand = playerHand.get(key);
 		            	Point point = hand.getPoint(); 

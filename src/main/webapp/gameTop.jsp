@@ -25,11 +25,11 @@
 			<h1 class="text-center">ブラックジャック</h1>
 			<p class="text-center">ゲームを始めます</p>
 			<div class="col-7">
-				my tip
+				チップ : 
 				<%=user.getTip()%>
 				<form action="Setup" method="post">
 					<input type="hidden" name="id" value="<%=user.getId()%>">
-					bet <select class="form-select" name="bet">
+					賭け数 <select class="form-select" name="bet">
 						<option selected value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
