@@ -59,7 +59,7 @@
 				</p>
 			</div>
 			<% for(Status key : playerHand.keySet()) { %>
-			<div class="col-6 border">
+			<div class="col border">
 				<% 
 	            		Hand hand = playerHand.get(key);
 		            	Point point = hand.getPoint(); 
