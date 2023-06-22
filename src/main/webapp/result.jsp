@@ -89,7 +89,7 @@
 			<% } %>
 			<div class="col-12 border">
 				<p class="d-block text-center">
-					チップ : <%= user.getTip() %> / 取得結果　： <%= game.getBet().refund() %>
+					チップ : <%= user.getTip() %> / 取得枚数　： <%= game.getBet().refund() %>
 				</p>
 				<form action="Setup" method="post">
 					<input type="hidden" name="id" value="<%= user.getId() %>">
