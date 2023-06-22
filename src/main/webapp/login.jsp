@@ -38,9 +38,11 @@
 					<label>ID</label> <input type="text" name="id" class="form-control"
 						required><br> <label>パスワード</label> <input
 						type="password" name="password" class="form-control" required><br>
-					<button type=submit class="btn btn-primary">ログイン</button>
+						<div class="text-center">
+							<button type=submit class="btn btn-primary">ログイン</button>
+							<a href="signup.jsp" class="d-block my-2">新規登録</a>						
+						</div>
 				</form>
-				<a href="signup.jsp">新規登録</a>
 			</div>
 		</div>
 	</div>

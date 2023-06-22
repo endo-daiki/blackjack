@@ -15,7 +15,7 @@
 		<div class="row justify-content-center">
 			<h1 class="text-center text-danger">エラーが発生しました。</h1>
 			<p class="text-center text-danger">TOPページに戻ります。</p>
-			<div class="col-7">
+			<div class="col-7 text-center">
 				<a href="/blackjack">トップページ</a>
 			</div>
 		</div>

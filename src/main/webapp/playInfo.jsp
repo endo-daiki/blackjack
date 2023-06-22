@@ -71,7 +71,9 @@
 						</tbody>
 					</table>
 				</div>
-				<a href="Main">戻る</a>
+				<p class="text-center my-4">
+					<a href="Main">戻る</a>
+				</p>		
 			</div>
 		</div>
 	</div>

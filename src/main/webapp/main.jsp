@@ -31,14 +31,16 @@
 		</p>
 		<div class="row justify-content-center">
 			<div class="col-7">
-				<div class="d-grid gap-2">
-					<a href="gameTop.jsp" class="btn btn-outline-primary">BLACK
-						JACK</a>
+				<div class="text-center">
+					<a class="btn btn-primary d-block" href="gameTop.jsp">BLACKJACK</a>
+					<p class="my-2">
+						<a class="btn btn-outline-primary" href="UserInfo">ユーザー情報</a>					
+					</p>
+					<p class="my-2">
+						<a class="btn btn-outline-primary" href="PlayInfo">戦績情報</a>					
+					</p>
+					<a class="d-block" href="Logout">ログアウト</a>
 				</div>
-
-				<a class="btn btn-primary" href="UserInfo">ユーザー情報</a> <a
-					class="btn btn-primary" href="PlayInfo">戦績情報</a> <a class=""
-					href="Logout">ログアウト</a>
 			</div>
 		</div>
 	</div>

@@ -43,9 +43,11 @@
 					<input class="form-control" type="password" name="checkPassword"
 						pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="上記と同じパスワードを入力してください"
 						required><br>
-					<button class="btn btn-primary" type=submit>新規登録</button>
+						<div class="text-center">
+							<button class="btn btn-primary" type=submit>新規登録</button>
+							<a href="login.jsp" class="d-block my-2">ログイン</a>
+						</div>
 				</form>
-				<a href="login.jsp">ログイン</a>
 			</div>
 		</div>
 	</div>

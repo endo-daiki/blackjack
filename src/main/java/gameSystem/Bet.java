@@ -28,21 +28,26 @@ public class Bet {
 		for(Status key : player.getHand().keySet()) {
 			if(player.getPoint(key).burstCheck()) {
 				this.calc(Result.LOSE);
+				player.getHand().get(key).setResult(Result.LOSE);
 				return;	
 			} 
 			if(player.getPoint(key).getScore() > dealer.getPoint(Status.PLAYING).getScore() || dealer.getPoint(Status.PLAYING).burstCheck()) {
 				if(player.getHand().get(key).sizeCheck() && player.getPoint(key).bjCheck()) {
-					this.calc(Result.NATURALBLACKJACK);			
+					this.calc(Result.NATURALBLACKJACK);		
+					player.getHand().get(key).setResult(Result.NATURALBLACKJACK);
 				} else {
 					this.calc(Result.WIN);
+					player.getHand().get(key).setResult(Result.WIN);
 				}		
 				return;
 			}
 			if (player.getPoint(key).getScore() < dealer.getPoint(Status.PLAYING).getScore()) {
 				this.calc(Result.LOSE);
+				player.getHand().get(key).setResult(Result.LOSE);
 				return;
 			} 
-			this.calc(Result.DRAW);			
+			this.calc(Result.DRAW);		
+			player.getHand().get(key).setResult(Result.DRAW);
 		}
 	}
 }

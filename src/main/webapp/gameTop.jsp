@@ -41,12 +41,13 @@
 						<option value="9">9</option>
 						<option value="10">10</option>
 					</select>
-					<div class="d-grid gap-2">
-						<button type="submit" class="btn btn-outline-primary">GAME
-							START</button>
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary">GAME START</button>
+						<p>
+							<a href="Main">戻る</a>						
+						</p>
 					</div>
 				</form>
-				<a href="Main" class="btn btn-danger">戻る</a>
 			</div>
 
 		</div>

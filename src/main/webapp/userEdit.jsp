@@ -34,21 +34,20 @@
 				}
 				%>
 				<form method="post" action="UserEdit">
-					<label>ID</label> <input class="form-control" type="text"
-						name="newId" value="<%=user.getId()%>" required><br>
-					<label>名前</label> <input class="form-control" type="text"
-						name="name" value="<%=user.getName()%>" required><br>
-					<label>パスワード</label> <input class="form-control" type="password"
-						name="password" value="<%=user.getPassword()%>"
-						pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="8文字以上で入力してください"
-						required><br> <label>確認用パスワード</label> <input
-						class="form-control" type="password" name="checkPassword"
-						pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="上記と同じパスワードを入力してください"
-						required><br> <input type="hidden" name="oldId"
-						value="<%=user.getId()%>">
-					<button class="btn btn-primary" type=submit>変更</button>
+					<label>ID</label> 
+					<input class="form-control" type="text" name="newId" value="<%=user.getId()%>" required><br>
+					<label>名前</label> 
+					<input class="form-control" type="text" name="name" value="<%=user.getName()%>" required><br>
+					<label>パスワード</label> 
+					<input class="form-control" type="password" name="password" value="<%=user.getPassword()%>" pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="8文字以上で入力してください" required><br> 
+					<label>確認用パスワード</label> 
+					<input class="form-control" type="password" name="checkPassword" pattern="^[a-zA-Z0-9\d]{8,}$" placeholder="上記と同じパスワードを入力してください" required><br> 
+					<input type="hidden" name="oldId" value="<%=user.getId()%>">
+					<div class="text-center">
+						<button class="btn btn-primary" type=submit>変更</button>
+						<a class="d-block" href="UserInfo">戻る</a>
+					</div>					
 				</form>
-				<a href="UserInfo">戻る</a>
 			</div>
 		</div>
 	</div>

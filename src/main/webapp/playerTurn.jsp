@@ -30,14 +30,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 </head>
 <body class="p-4">
-	<form method="post">
 		<div class="container-fluid">
 			<div class="row justify-content-center">
 				<h1 class="text-center">ブラックジャック</h1>
 				<p class="text-center">プレイヤーターン</p>
-				<p>
-					チップ : 
-					<%= user.getTip() %></p>
 				<div class="col-12 border">
 					<% 
 	           		Hand dealerNormalHand = dealerHand.get(Status.PLAYING); 
@@ -58,9 +54,7 @@
 					</p>
 					<% } %>
 				</div>
-				<p class="col-12">
-					賭け数 : 
-					<%= game.getBet().getTip() %></p>
+			<form method="post">
 				<% for(Status key : playerHand.keySet()) { %>
 				<div class="col border">
 					<% 
@@ -94,22 +88,19 @@
 					<% } %>
 				</div>
 				<% } %>
-				<div class="col-12 border row justify-content-around">
-					<div class="d-grid gap-2">
+					<div class="text-center border">
+						<p class="d-block text-center">
+							チップ : <%= user.getTip() %> / 賭け数 : <%= game.getBet().getTip() %>
+						</p>
 						<button formaction="Hit" type="submit" class="btn btn-primary">hit</button>
+						<button formaction="Stand" type="submit" class="btn btn-primary">stand</button>
+						<% if(player.splitCheck()) { %>
+							<button formaction="Split" type="submit" class="btn btn-primary">split</button>
+						<% } %>
+						<a href="gameTop.jsp" class="btn btn-outline-primary">戻る</a>					
 					</div>
-					<div class="d-grid gap-2">
-						<button formaction="Stand" type="submit" class="btn btn-danger">stand</button>
-					</div>
-					<% if(player.splitCheck()) { %>
-					<div class="d-grid gap-2">
-						<button formaction="Split" type="submit" class="btn btn-light">split</button>
-					</div>
-					<% } %>
-					<a href="gameTop.jsp" class="btn btn-outline-danger">戻る</a>
+				</form>
 				</div>
 			</div>
-		</div>
-	</form>
 </body>
 </html>

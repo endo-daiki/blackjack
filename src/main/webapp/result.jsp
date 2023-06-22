@@ -33,9 +33,6 @@
 		<div class="row justify-content-center">
 			<h1 class="text-center">ブラックジャック</h1>
 			<p class="text-center">ゲームリザルト</p>
-			<p>
-				チップ : 
-				<%= user.getTip() %></p>
 			<div class="col-12 border">
 				<% 
             		Hand dealerNormalHand = dealer.getHand().get(Status.PLAYING); 
@@ -70,6 +67,9 @@
 				<img src="img/<%= card.suit %>_<%= card.cardNumber %>.png"
 					width="100" height="150">
 				<% } %>
+				<p class="h3 text-center text-danger">
+					<%= hand.getResult() %>
+				</p>
 				<p class="text-center text-danger">
 					<% if(point.burstCheck()) { %>
 					Burst!!
@@ -87,10 +87,10 @@
 				<% } %>
 			</div>
 			<% } %>
-			<p class="col-12">
-				取得結果　：
-				<%= game.getBet().refund() %></p>
 			<div class="col-12 border">
+				<p class="d-block text-center">
+					チップ : <%= user.getTip() %> / 取得結果　： <%= game.getBet().refund() %>
+				</p>
 				<form action="Setup" method="post">
 					<input type="hidden" name="id" value="<%= user.getId() %>">
 					賭け数 <select class="form-select" name="bet">
@@ -105,12 +105,11 @@
 						<option value="9">9</option>
 						<option value="10">10</option>
 					</select>
-					<div class="d-grid gap-2">
-						<button type="submit" class="btn btn-outline-primary">RE
-							START</button>
+					<div class="text-center border">
+						<button type="submit" class="btn btn-primary">RE START</button>					
+						<a href="Main" class="btn btn-outline-primary">終了</a>
 					</div>
 				</form>
-				<a href="Main" class="btn btn-danger">終了</a>
 			</div>
 		</div>
 	</div>

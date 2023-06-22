@@ -7,6 +7,7 @@ public class Hand {
 	private List<Card> list; 
 	private Point point;
 	private boolean isStand;
+	private Result result;
 
 	public Hand() {
 		list = new ArrayList<Card>();
@@ -45,5 +46,11 @@ public class Hand {
 	}
 	public boolean sizeCheck() {
 		return this.list.size() == 2;
+	}
+	public void setResult(Result result) {
+		this.result = result;
+	}
+	public Result getResult() {
+		return this.result;
 	}
 }

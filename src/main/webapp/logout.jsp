@@ -24,7 +24,7 @@
 		<h1 class="text-center">ブラックジャック</h1>
 		<p class="text-center">ログアウト</p>
 		<div class="row justify-content-center">
-			<div class="col-7">
+			<div class="col-7 text-center">
 				<p>ログアウトしました。</p>
 				<a href="./">ログイン画面へ戻る</a>
 			</div>
