@@ -54,7 +54,7 @@
 					</p>
 					<% } %>
 				</div>
-			<form method="post">
+				<form method="post" class="row p-0">
 				<% for(Status key : playerHand.keySet()) { %>
 				<div class="col border">
 					<% 

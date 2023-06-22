@@ -46,7 +46,7 @@
 				<div class="text-center">
 					<a href="UserEdit" class="btn btn-primary">変更</a> 
 					<a href="UserDelete" class="btn btn-danger">退会</a>
-					<a href="Main">戻る</a>				
+					<a class="btn btn-outline-primary" href="Main">戻る</a>				
 				</div>
 			</div>
 		</div>

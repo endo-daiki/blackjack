@@ -43,9 +43,7 @@
 					</select>
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">GAME START</button>
-						<p>
-							<a href="Main">戻る</a>						
-						</p>
+						<a class="btn btn-outline-primary" href="Main">戻る</a>						
 					</div>
 				</form>
 			</div>

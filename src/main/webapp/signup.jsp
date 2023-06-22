@@ -45,7 +45,9 @@
 						required><br>
 						<div class="text-center">
 							<button class="btn btn-primary" type=submit>新規登録</button>
-							<a href="login.jsp" class="d-block my-2">ログイン</a>
+							<p class="my-2">
+								<a href="login.jsp" class="btn btn-outline-primary">ログイン</a>
+							</p>
 						</div>
 				</form>
 			</div>

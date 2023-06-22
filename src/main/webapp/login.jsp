@@ -40,7 +40,9 @@
 						type="password" name="password" class="form-control" required><br>
 						<div class="text-center">
 							<button type=submit class="btn btn-primary">ログイン</button>
-							<a href="signup.jsp" class="d-block my-2">新規登録</a>						
+							<p class="my-2">
+								<a href="signup.jsp" class="btn btn-outline-primary">新規登録</a>	
+							</p>					
 						</div>
 				</form>
 			</div>
