@@ -9,7 +9,7 @@ class BetTest {
     static Bet bet;
 
     @BeforeEach
-    public void setup() { //ベットクラスを新規作成
+    public void setup() { //ベットクラスを新規作成,エラーだった時のテストもする
         bet = new Bet(10);
     }
 
@@ -20,7 +20,7 @@ class BetTest {
     }
 
     @Test
-    public void testJudge() {
+    public void testJudge() { //すべての分岐パターンを通るように修正
     	Player player = new Player();
     	Player dealer = new Player();
     	Card aceCard = new Card(Suit.heart, CardNumber.one);
