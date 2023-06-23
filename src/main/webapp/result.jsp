@@ -68,7 +68,7 @@
 					width="100" height="150">
 				<% } %>
 				<p class="h3 text-center text-danger">
-					<%= hand.getResult() %>
+					<%= hand.getResult().getMsg() %>
 				</p>
 				<p class="text-center text-danger">
 					<% if(point.burstCheck()) { %>

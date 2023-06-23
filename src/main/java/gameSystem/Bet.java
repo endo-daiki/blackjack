@@ -42,7 +42,6 @@ public class Bet {
 			if (player.getPoint(key).getScore() < dealer.getPoint(Status.PLAYING).getScore()) {
 				this.calc(Result.LOSE);
 				player.getHand().get(key).setResult(Result.LOSE);
-				return;
 			} else {
 				this.calc(Result.DRAW);		
 				player.getHand().get(key).setResult(Result.DRAW);

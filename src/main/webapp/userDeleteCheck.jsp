@@ -34,7 +34,9 @@
 					<input type="hidden" value="<%= user.getId() %>" name="id">
 					<button type=submit class="btn btn-danger">退会する</button>
 				</form>
-				<a href="UserInfo">戻る</a>
+				<p class="py-2">
+					<a class="btn btn-outline-primary" href="UserInfo">戻る</a>
+				</p>
 			</div>
 		</div>
 	</div>

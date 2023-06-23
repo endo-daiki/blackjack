@@ -27,7 +27,7 @@
 			<div class="col-7">
 				<p>登録を完了しました。</p>
 				<p>引き続き、ログインをしてください。</p>
-				<a href="login.jsp">ログインする</a>
+				<a class="btn btn-outline-primary" href="login.jsp">ログインする</a>
 			</div>
 		</div>
 	</div>

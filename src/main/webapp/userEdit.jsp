@@ -45,7 +45,9 @@
 					<input type="hidden" name="oldId" value="<%=user.getId()%>">
 					<div class="text-center">
 						<button class="btn btn-primary" type=submit>変更</button>
-						<a class="d-block" href="UserInfo">戻る</a>
+						<p class="py-2">
+							<a class="btn btn-outline-primary" href="UserInfo">戻る</a>						
+						</p>
 					</div>					
 				</form>
 			</div>
