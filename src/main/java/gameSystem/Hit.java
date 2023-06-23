@@ -11,7 +11,7 @@ public class Hit {
 		player.draw(deck.pull(), status);			
 		Hand hand = player.getHand().get(status);
 
-		if(hand.movedCheck() || hand.getList().size() == 3) {
+		if(hand.movedCheck() || hand.getList().size() == 3 && player.getHand().size() == 2) {
 			return Stand.excute(game, key);
 		}
 

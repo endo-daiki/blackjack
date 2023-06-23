@@ -8,7 +8,7 @@ class DeckTest {
 	static Deck deck = new Deck();
 
 	@Test
-	public void testDeckInstanse() { //正しく初期化されているか確認
+	public void testDeckInstanse() { //正しく初期化されているか確認,デッキ内容52枚も確認する
 		assertNotNull(deck);
 	}
 	
