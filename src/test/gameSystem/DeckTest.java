@@ -7,10 +7,11 @@ import java.util.List;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class DeckTest {
-	static Deck deck = new Deck();
+	static Deck deck;
 	static List<Card> list = new ArrayList<Card>();
 	
 	@BeforeAll
@@ -22,11 +23,16 @@ class DeckTest {
 			}
 		}
 	}
+	
+	@BeforeEach
+	public void deckSet() {
+		deck = new Deck();
+	}
 
 	@Test
-	public void testDeckInstanse() { //正しく初期化されているか確認,デッキ内容52枚も確認する
+	public void testDeck() { //正しく初期化されているか確認,デッキ内容52枚も確認する
 		assertNotNull(deck);
-
+		
 		for(int i = 0; i < list.size(); i++) {
 			Card card = deck.pull();
 			if(Arrays.asList(list).contains(card)) {
@@ -37,6 +43,7 @@ class DeckTest {
 	
 	@Test
 	public void testPull() { //正しくカードが引かれているか確認
+//		Deck deck = new Deck();
 		Card card = deck.pull();
 		
 		assertNotNull(card);

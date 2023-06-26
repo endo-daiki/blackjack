@@ -22,7 +22,7 @@ class PointTest {
 	@Test
 	public void testPoint() { //変数が正しく初期化されているか確認
 		assertEquals(0, point.getScore());
-		assertFalse(point.AceCountCheck()); //aceCountが0なので、メソッドはfalseを返す
+		assertFalse(point.aceCountCheck()); //aceCountが0なので、メソッドはfalseを返す
 	}
 	
 	@Test
