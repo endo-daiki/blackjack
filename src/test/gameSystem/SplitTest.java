@@ -28,11 +28,11 @@ class SplitTest {
 		};
 		game.setDeck(deck);
 		Setup.excute(game);
-		assertEquals("PlayerTurn", Split.excute(game));
+		assertEquals("PlayerTurn", Split.excute(game)); //合計がスプリットにならないので必ずplayerTurnに戻る
 	}
 	
 	@Test
-	public void testBjSplit() {
+	public void testBjSplit() { //両方がナチュラルブラックジャックした時の処理
 		Player player = new Player();
 		player.draw(aceCard, Status.PLAYING);
 		player.draw(aceCard, Status.PLAYING);
@@ -50,7 +50,7 @@ class SplitTest {
 	}
 
 	@Test
-	public void testPlayingBjSplit() {
+	public void testPlayingBjSplit() { //片方がナチュラルブラックジャックした時の処理
 		Player player = new Player();
 		player.draw(aceCard, Status.PLAYING);
 		player.draw(aceCard, Status.PLAYING);
@@ -70,6 +70,6 @@ class SplitTest {
 
 		game.setDeck(deck);
 		game.setPlayer(player);
-		assertEquals("PlayerTurn", Split.excute(game));
+		assertEquals("PlayerTurn", Split.excute(game)); //片方はbjではないのでplayerTurnに戻る
 	}
 }

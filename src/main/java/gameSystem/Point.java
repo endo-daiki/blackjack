@@ -6,6 +6,7 @@ public class Point {
 
 	public Point(){
 		score = 0;
+		aceCount = 0;
 	}
 
 	void calc(Card card) {

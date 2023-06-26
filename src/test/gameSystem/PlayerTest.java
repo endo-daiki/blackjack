@@ -17,13 +17,15 @@ class PlayerTest {
 	}
 
 	@Test
-	public void testPlayer() {
-		assertNotNull(player.getHand());
+	public void testPlayer() { //ハンドが正しく生成(初期化)されているかどうか
+		assertEquals(1, player.getHand().size());
+		assertNotNull(player.getHand().get(Status.PLAYING)); //手札のキーが正しく設定されているか確認
 	}
 
 	@Test
 	public void testGetPoint() {
 		assertNotNull(player.getPoint(Status.PLAYING));
+
 	}
 
 	@Test

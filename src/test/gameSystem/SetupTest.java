@@ -17,7 +17,7 @@ class SetupTest {
 		game = new Game(10);
 		Deck deck = new Deck() {
 			@Override
-			public Card pull() {
+			public Card pull() { //デッキからaceを2枚引いてplayerTurnに戻る
 				return aceCard;
 			}
 		};
@@ -27,7 +27,7 @@ class SetupTest {
 	}
 
 	@Test
-	public void testBjSetup() {
+	public void testBjSetup() { //手札がbjになったので、stand処理を行う
 		game = new Game(10);
 		Deck deck = new Deck() {
 			int i = 0;

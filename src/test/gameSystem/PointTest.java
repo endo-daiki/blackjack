@@ -9,31 +9,32 @@ class PointTest {
 	static Point point;
 	static Card aceCard;
 	static Card courtCard;
-	static Card towCard;
+	static Card twoCard;
 	
 	@BeforeEach
 	public void setup() {
 		point = new Point();
 		aceCard = new Card(Suit.heart, CardNumber.one);
 		courtCard = new Card(Suit.spade, CardNumber.king);
-		towCard = new Card(Suit.diamond, CardNumber.two);
+		twoCard = new Card(Suit.diamond, CardNumber.two);
 	}
 
 	@Test
-	public void testPoint() {
+	public void testPoint() { //変数が正しく初期化されているか確認
 		assertEquals(0, point.getScore());
+		assertFalse(point.AceCountCheck()); //aceCountが0なので、メソッドはfalseを返す
 	}
 	
 	@Test
-	public void testCalc() {
+	public void testCalc() { //正しく追加されているかどうか
 		point.calc(aceCard);
 		assertEquals(11, point.getScore());
 		
 		point.calc(courtCard);
 		assertEquals(21, point.getScore());
 		
-		point.calc(towCard);
-		assertEquals(13, point.getScore());
+		point.calc(twoCard); 
+		assertEquals(13, point.getScore()); //aceを持ち、21点以上なら21を超えない処理をする
 	}
 	
 	@Test

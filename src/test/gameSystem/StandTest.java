@@ -16,9 +16,16 @@ class StandTest {
 
 	@Test 
 	public void testStand() {
+		Deck deck = new Deck() { //必ずsetupで自動standしないようにする
+			@Override
+			public Card pull() { 
+				return new Card(Suit.heart, CardNumber.one);
+			}
+		};
+		game.setDeck(deck);
 		Setup.excute(game);
 		
-		assertEquals("Result", Stand.excute(game, "PLAYING"));
+		assertEquals("Result", Stand.excute(game, "PLAYING")); //自分でstandを選択し終了
 	}
 
 	@Test
@@ -34,7 +41,7 @@ class StandTest {
 		Setup.excute(game);
 		Split.excute(game);
 
-		assertEquals("PlayerTurn", Stand.excute(game, "PLAYING"));
-		assertEquals("Result", Stand.excute(game, "SPLIT"));
+		assertEquals("PlayerTurn", Stand.excute(game, "PLAYING")); //自分でstandを選択し終了(スプリット手札がまだ動けるのでplayerTurnに戻る)
+		assertEquals("Result", Stand.excute(game, "SPLIT")); //自分でstandを選択し終了
 	}
 }

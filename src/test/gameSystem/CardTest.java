@@ -21,8 +21,9 @@ class CardTest {
 
 	@Test
 	public void testCourtCheck() {
-		assertFalse(card.courtCheck());
+		assertFalse(card.courtCheck()); //絵札のカードではないのでfalse
 
+		//絵札すべてが正しく判定されるかチェック
 		Card kingCard = new Card(Suit.heart, CardNumber.king);
 		Card queenCard = new Card(Suit.heart, CardNumber.queen);
 		Card jackCard = new Card(Suit.heart, CardNumber.jack);
@@ -32,7 +33,7 @@ class CardTest {
 	}
 	
 	@Test
-	public void testEqualCheck() {
+	public void testEqualCheck() { //スプリットできるか判定するため、点数が同じかチェックする
 		Card card2 = new Card(Suit.diamond, CardNumber.one);
 		assertTrue(card.equalCheck(card2));
 		
