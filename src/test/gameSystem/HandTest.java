@@ -25,25 +25,28 @@ class HandTest {
 		assertEquals(false, hand.splitCheck()); //手札が0枚なので必ず、falseになる
 		List<Card> list = hand.getList();
 		assertEquals(0, list.size());
+		assertEquals(0, hand.getPoint().getScore());
 	}
 	
 	@Test
-	public void testHand2() {
-		hand = new Hand(aceCard);
+	public void testHand2() { 
+		Hand hand = new Hand(aceCard);
+		List<Card> list = hand.getList();
+		assertEquals(1, list.size());
 		assertEquals(11, hand.getPoint().getScore());
 	}
 	
 	@Test
 	public void testDraw() { //正しくカードを引けているか
-		hand.draw(aceCard);
+		hand.draw(kingCard);
 		
 		List<Card> list = hand.getList();	
 		assertEquals(1, list.size());
-		assertEquals(11, hand.getPoint().getScore());
+		assertEquals(10, hand.getPoint().getScore());
 	}
 
 	@Test
-	public void movedCheckBurst() {
+	public void movedCheckBurst() { //バーストの判定ができているか
 		assertEquals(false, hand.movedCheck());
 
 		hand.draw(kingCard);
@@ -55,7 +58,7 @@ class HandTest {
 	}
 	
 	@Test
-	public void movedChecSplit() {
+	public void movedChecBlackjack() { //ブラックジャック(21点)の判定ができているか
 		hand.draw(kingCard);
 		assertEquals(false, hand.movedCheck());
 
@@ -64,7 +67,7 @@ class HandTest {
 	}
 	
 	@Test
-	public void movedChecisStand() {
+	public void movedChecisStand() { //スタンドの判定ができているか
 		hand.draw(kingCard);
 		hand.draw(kingCard);
 		assertEquals(false, hand.movedCheck());
@@ -77,12 +80,18 @@ class HandTest {
 	public void testGetList() { //リストを正しく取得できているか
 		List<Card> list = hand.getList();	
 		assertEquals(0, list.size());
+
+		hand.draw(aceCard);
+		list = hand.getList();
+		assertEquals(1, list.size());
 	}
 
 	@Test
 	public void testGetPoint() {
+		hand.draw(kingCard);
+
 		Point point = hand.getPoint();
-		assertNotNull(point);
+		assertEquals(10, point.getScore());
 	}
 
 	@Test
@@ -110,6 +119,6 @@ class HandTest {
 	@Test
 	public void testResult() {
 		hand.setResult(Result.WIN);
-		assertEquals(Result.WIN, hand.getResult());
+		assertEquals(Result.WIN, hand.getResult()); //正しくsetされている、getできることが両方チェックできる
 	}
 }

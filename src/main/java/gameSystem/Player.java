@@ -50,7 +50,7 @@ public class Player{
 		this.hand.put(Status.SPLIT, new Hand(card2));
 	}
 
-	public boolean test(String key) {
+	public boolean hitCheck(String key) {
 		return hand.get(Status.valueOf(key)).getList().size() == 3 && getHand().size() == 2;
 	}
 }

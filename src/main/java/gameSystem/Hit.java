@@ -11,7 +11,7 @@ public class Hit {
 		player.draw(deck.pull(), status);			
 		Hand hand = player.getHand().get(status);
 
-		if(hand.movedCheck() || player.test(key)) { //テストによりメソッドを作成してしまった
+		if(hand.movedCheck() || player.hitCheck(key)) { //テストによりメソッドを作成してしまった
 			return Stand.excute(game, key);
 		}
 

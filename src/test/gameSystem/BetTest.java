@@ -12,7 +12,7 @@ class BetTest {
     static Card kingCard = new Card(Suit.heart, CardNumber.king);
 
     @BeforeEach
-    public void setup() { //ベットクラスを新規作成,エラーだった時のテストもする
+    public void setup() {
         bet = new Bet(10);
     }
 
@@ -25,13 +25,14 @@ class BetTest {
 	@Test
 	public void testErrorBet() {
 		try {
-				bet = new Bet(1);
+				bet = new Bet(10);
 				bet = new Bet(11);
 		    } catch (IllegalArgumentException expected) {
 		      assertEquals(expected.getMessage(), "不正な数値です");
 		    }
 		
 		try {
+			bet = new Bet(1);
 			bet = new Bet(0);
 	    } catch (IllegalArgumentException expected) {
 	      assertEquals(expected.getMessage(), "不正な数値です");

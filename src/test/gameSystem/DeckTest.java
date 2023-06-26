@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class DeckTest {
 	static Deck deck = new Deck();
 	static List<Card> list = new ArrayList<Card>();
 	
-	@BeforeEach
-	public void setup() {
+	@BeforeAll
+	public static void setup() {
 		for(Suit suit : Suit.values()) { //デッキのlistと同じ
 			for(CardNumber no : CardNumber.values()) {
 				Card card = new Card(suit, no);
