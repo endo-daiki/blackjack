@@ -6,12 +6,14 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockHttpSession;
 
+import database.Delete;
 import database.Insert;
 import database.Select;
 import model.User;
@@ -24,8 +26,8 @@ class UserDeleteTest {
 	static String name = "testName";
 	static String password = "password";
 	
-	@BeforeAll
-    public static void setup() { //テスト用のユーザーを先に登録
+	@BeforeEach
+    public void setup() { //テスト用のユーザーを先に登録
        User user = new User(id, name, password, password);
        
        Insert.insertUser(user.getId(), user.getName(), user.getPassword());
@@ -45,13 +47,18 @@ class UserDeleteTest {
 	}
 	
 	@Test 
-	public void testExcuteError() 
+	public void testExcuteIdError() 
 			throws ServletException, IOException{ //正しく削除されているかどうか
 		try {
 			UserDelete.excute("noId", request);
 		} catch (IllegalArgumentException expected) {
 		    assertEquals(expected.getMessage(), "Idが正しくありません。不正があります。");
 		}
+	}
+	
+	@AfterAll
+	public static void clean() {
+		Delete.deleteUser(id);
 	}
 	
 }

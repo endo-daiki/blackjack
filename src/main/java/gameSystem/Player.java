@@ -49,4 +49,8 @@ public class Player{
 		this.hand.replace(Status.PLAYING, new Hand(card1));
 		this.hand.put(Status.SPLIT, new Hand(card2));
 	}
+
+	public boolean test(String key) {
+		return hand.get(Status.valueOf(key)).getList().size() == 3 && getHand().size() == 2;
+	}
 }

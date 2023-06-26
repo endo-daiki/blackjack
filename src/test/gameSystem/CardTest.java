@@ -23,8 +23,12 @@ class CardTest {
 	public void testCourtCheck() {
 		assertFalse(card.courtCheck());
 
-		Card testCard = new Card(Suit.heart, CardNumber.king);
-		assertTrue(testCard.courtCheck());
+		Card kingCard = new Card(Suit.heart, CardNumber.king);
+		Card queenCard = new Card(Suit.heart, CardNumber.queen);
+		Card jackCard = new Card(Suit.heart, CardNumber.jack);
+		assertTrue(kingCard.courtCheck());
+		assertTrue(queenCard.courtCheck());
+		assertTrue(jackCard.courtCheck());
 	}
 	
 	@Test
