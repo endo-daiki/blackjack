@@ -44,4 +44,14 @@ class UserDeleteTest {
 		assertNull(user);
 	}
 	
+	@Test 
+	public void testExcuteError() 
+			throws ServletException, IOException{ //正しく削除されているかどうか
+		try {
+			UserDelete.excute("noId", request);
+		} catch (IllegalArgumentException expected) {
+		    assertEquals(expected.getMessage(), "Idが正しくありません。不正があります。");
+		}
+	}
+	
 }

@@ -45,7 +45,7 @@ class HitTest {
 		Deck deck = new Deck() {
 			@Override
 			public Card pull() {
-				return aceCard;
+				return kingCard;
 			}
 		};
 		game.setDeck(deck);
@@ -54,8 +54,22 @@ class HitTest {
 		Split.excute(game);
 		
 		assertEquals("PlayerTurn", Hit.excute(game, "PLAYING"));
+		
+		deck = new Deck() {
+			int i = 1;
+			@Override
+			public Card pull() {
+				if(i % 2 == 0) {
+					return aceCard;
+				}
+				return kingCard;
+			}
+		};
+		game.setDeck(deck);
+		
+		assertEquals("PlayerTurn", Hit.excute(game, "PLAYING"));
+		assertEquals("Result", Hit.excute(game, "SPLIT"));
 	}
-
 	@Test
 	public void testSplitBurstHit() {
 		game = new Game(10);

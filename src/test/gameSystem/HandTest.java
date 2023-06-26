@@ -9,29 +9,33 @@ import org.junit.jupiter.api.Test;
 
 class HandTest {
 	static Hand hand;
-	static Card card;
+	static Card aceCard;
+	static Card kingCard;
 	
 	@BeforeEach
 	public void setup() {
 		hand = new Hand();
-		card = new Card(Suit.heart, CardNumber.one);
+		aceCard = new Card(Suit.heart, CardNumber.one);
+		kingCard = new Card(Suit.heart, CardNumber.king);
 	}
 	
 	@Test
 	public void testHand1() { //正しく初期化されているか
 		assertNotNull(hand);
 		assertEquals(false, hand.splitCheck()); //手札が0枚なので必ず、falseになる
+		List<Card> list = hand.getList();
+		assertEquals(0, list.size());
 	}
 	
 	@Test
 	public void testHand2() {
-		hand = new Hand(card);
+		hand = new Hand(aceCard);
 		assertEquals(11, hand.getPoint().getScore());
 	}
 	
 	@Test
 	public void testDraw() { //正しくカードを引けているか
-		hand.draw(card);
+		hand.draw(aceCard);
 		
 		List<Card> list = hand.getList();	
 		assertEquals(1, list.size());
@@ -39,16 +43,33 @@ class HandTest {
 	}
 
 	@Test
-	public void movedCheck() {
+	public void movedCheckBurst() {
 		assertEquals(false, hand.movedCheck());
 
-		hand.draw(card);
+		hand.draw(kingCard);
+		hand.draw(kingCard);
 		assertEquals(false, hand.movedCheck());
 
-		Card kingCard = new Card(Suit.heart, CardNumber.king);
 		hand.draw(kingCard);
+		assertEquals(true, hand.movedCheck());
+	}
+	
+	@Test
+	public void movedChecSplit() {
 		hand.draw(kingCard);
+		assertEquals(false, hand.movedCheck());
 
+		hand.draw(aceCard);
+		assertEquals(true, hand.movedCheck());
+	}
+	
+	@Test
+	public void movedChecisStand() {
+		hand.draw(kingCard);
+		hand.draw(kingCard);
+		assertEquals(false, hand.movedCheck());
+
+		hand.isStand();
 		assertEquals(true, hand.movedCheck());
 	}
 	
@@ -71,15 +92,24 @@ class HandTest {
 	}
 	
 	@Test
-	public void testSplitCheck() { //スプリットのチェックができているか確認
-		hand.draw(card);
-		hand.draw(card);
-		List<Card> list = hand.getList();	
-		assertEquals(2, list.size()); //手札が2枚である
-		assertEquals(true, hand.splitCheck());
-
-		hand.draw(card); //手札が2枚ではなくなる
+	public void testSplitCheckFalse() { //スプリットのチェックができているか確認
+		hand.draw(kingCard); //手札一枚なのでfalse
+		assertEquals(false, hand.splitCheck());
+		
+		hand.draw(aceCard); //手札2枚だが同じでないのでfalse
 		assertEquals(false, hand.splitCheck());
 	}
-
+	
+	@Test
+	public void testSplitCheckTrue() { //スプリットのチェックができているか確認
+		hand.draw(aceCard); 
+		hand.draw(aceCard);
+		assertEquals(true, hand.splitCheck());
+	}
+	
+	@Test
+	public void testResult() {
+		hand.setResult(Result.WIN);
+		assertEquals(Result.WIN, hand.getResult());
+	}
 }
