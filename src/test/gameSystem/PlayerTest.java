@@ -1,7 +1,9 @@
 package gameSystem;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,6 +38,9 @@ class PlayerTest {
 		player.draw(aceCard, Status.PLAYING);
 
 		assertEquals(true, player.splitCheck());
+		
+		player.split();
+		assertFalse(player.splitCheck());
 	}
 
 	@Test
@@ -93,5 +98,26 @@ class PlayerTest {
 		player.split();
 
 		assertEquals(2, player.getHand().size());
+	}
+	
+	@Test
+	public void testHitCheck() {
+		assertFalse(player.hitCheck("PLAYING"));//どちらもfalse
+		
+		player.draw(aceCard, Status.PLAYING);
+		player.draw(aceCard, Status.PLAYING);
+		player.draw(aceCard, Status.PLAYING);
+		assertFalse(player.hitCheck("PLAYING"));
+		player.split();
+
+		assertFalse(player.hitCheck("PLAYING")); //split中だが、手札枚数はそれぞれ1
+		assertFalse(player.hitCheck("SPLIT"));
+		
+		player.draw(aceCard, Status.PLAYING);
+		assertFalse(player.hitCheck("PLAYING")); //split中だが手札が2枚
+		
+		player.draw(aceCard, Status.SPLIT);
+		player.draw(kingCard, Status.SPLIT);
+		assertTrue(player.hitCheck("SPLIT")); //手札が3枚かつplayerはsplit中なのでtrue
 	}
 }

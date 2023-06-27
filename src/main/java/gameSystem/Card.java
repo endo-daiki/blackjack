@@ -13,7 +13,7 @@ public class Card {
 		return this.cardNumber == CardNumber.jack || this.cardNumber == CardNumber.queen || this.cardNumber == CardNumber.king; 
 	}
 	
-	public boolean equalCheck(Card card) {
-		return this.cardNumber.equals(card.cardNumber);
+	public boolean pointCheck(Card card) {
+		return this.cardNumber.getPoint() == card.cardNumber.getPoint();
 	}
 }

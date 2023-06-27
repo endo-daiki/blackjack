@@ -21,8 +21,8 @@ public class Deck {
 		
 		Collections.shuffle(deck);
 		
-		Card card1 = new Card(Suit.heart, CardNumber.one);
-		Card card2 = new Card(Suit.diamond, CardNumber.one);
+		Card card1 = new Card(Suit.heart, CardNumber.king);
+		Card card2 = new Card(Suit.diamond, CardNumber.ten);
 		
 		deck.remove(card1);
 		deck.remove(card2);

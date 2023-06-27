@@ -80,7 +80,7 @@ class BetTest {
         assertEquals(20, bet.refund());
         
         dealer.draw(nineCard, Status.PLAYING);
-        bet.judge(player, dealer); //ディーラーのバーストで勝ち
+        bet.judge(player, dealer); //ディーラーの点数がプレイヤーより多いが、バーストしているので勝ち
         assertEquals(40, bet.refund());
     }
     

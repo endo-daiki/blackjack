@@ -35,9 +35,9 @@ class CardTest {
 	@Test
 	public void testEqualCheck() { //スプリットできるか判定するため、点数が同じかチェックする
 		Card card2 = new Card(Suit.diamond, CardNumber.one);
-		assertTrue(card.equalCheck(card2));
+		assertTrue(card.pointCheck(card2));
 		
 		card2 = new Card(Suit.heart, CardNumber.king);
-		assertFalse(card.equalCheck(card2));
+		assertFalse(card.pointCheck(card2));
 	}
 }
