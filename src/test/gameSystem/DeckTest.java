@@ -32,9 +32,9 @@ class DeckTest {
 	@Test
 	public void testDeck() { //正しく初期化されているか確認,デッキ内容52枚も確認する
 		assertNotNull(deck);
-		
+		Card card;
 		for(int i = 0; i < list.size(); i++) {
-			Card card = deck.pull();
+			card = deck.pull();
 			if(Arrays.asList(list).contains(card)) {
 	            fail("存在しないカードです");
 	        }
@@ -43,7 +43,6 @@ class DeckTest {
 	
 	@Test
 	public void testPull() { //正しくカードが引かれているか確認
-//		Deck deck = new Deck();
 		Card card = deck.pull();
 		
 		assertNotNull(card);
