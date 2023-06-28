@@ -33,9 +33,10 @@ class DeckTest {
 	public void testDeck() { //正しく初期化されているか確認,デッキ内容52枚も確認する
 		assertNotNull(deck);
 		Card card;
+		
 		for(int i = 0; i < list.size(); i++) {
 			card = deck.pull();
-			if(Arrays.asList(list).contains(card)) {
+			if(list.indexOf(card) == -1) {
 	            fail("存在しないカードです");
 	        }
 		}
@@ -46,7 +47,7 @@ class DeckTest {
 		Card card = deck.pull();
 		
 		assertNotNull(card);
-		if(Arrays.asList(list).contains(card)) {
+		if(list.indexOf(card) == -1) {
             fail("存在しないカードです");
         }
 	}

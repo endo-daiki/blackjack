@@ -33,11 +33,32 @@ class CardTest {
 	}
 	
 	@Test
-	public void testEqualCheck() { //スプリットできるか判定するため、点数が同じかチェックする
+	public void testPointCheck() { //スプリットできるか判定するため、点数が同じかチェックする
 		Card card2 = new Card(Suit.diamond, CardNumber.one);
 		assertTrue(card.pointCheck(card2));
 		
 		card2 = new Card(Suit.heart, CardNumber.king);
 		assertFalse(card.pointCheck(card2));
+	}
+	
+	@Test
+	public void equalsCheck() {
+		Card card2 = card;
+		
+		assertTrue(card.equals(card2));
+		
+		card2 = null;
+		assertFalse(card.equals(card2));
+		
+		String a = "test";
+		assertFalse(card.equals(a));
+		
+		card2 = new Card(Suit.heart, CardNumber.one);
+		assertTrue(card.equals(card2));
+		
+		card2 = new Card(Suit.diamond, CardNumber.one);
+		assertFalse(card.equals(card2));
+		card2 = new Card(Suit.heart, CardNumber.king);
+		assertFalse(card.equals(card2));
 	}
 }
