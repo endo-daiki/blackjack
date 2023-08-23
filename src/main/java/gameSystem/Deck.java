@@ -20,14 +20,6 @@ public class Deck {
 		}
 		
 		Collections.shuffle(deck);
-		
-		Card card1 = new Card(Suit.heart, CardNumber.king);
-		Card card2 = new Card(Suit.diamond, CardNumber.ten);
-		
-		deck.remove(card1);
-		deck.remove(card2);
-		deck.add(0, card1);
-		deck.add(0, card2);
 	}
 
 	public Card pull() {
