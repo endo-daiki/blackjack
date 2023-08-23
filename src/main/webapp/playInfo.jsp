@@ -38,7 +38,7 @@
 							<td><%= user.getPlaying() %></td>
 						</tr>
 						<tr>
-							<th scope="row">持ち金</th>
+							<th scope="row">手持ちチップ</th>
 							<td><%= user.getTip() %></td>
 						</tr>
 					</tbody>
