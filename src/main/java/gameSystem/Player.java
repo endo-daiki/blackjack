@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Player{
-	private Map<Status, Hand> hand = new HashMap<>();
+	private Map<Status, Hand> hand = new HashMap<>(); //{通常手札かスプリットか, 手札クラス}の配列
 
 	public Player() {
 		hand.put(Status.PLAYING, new Hand());

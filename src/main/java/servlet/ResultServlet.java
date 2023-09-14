@@ -33,7 +33,7 @@ public class ResultServlet extends HttpServlet {
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 
-		String url = Blackjack.getResult(request);
+		String url = Blackjack.getResult(request); //Blackjackクラスで精算
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

@@ -10,23 +10,23 @@ public class Stand {
 		Bet bet = game.getBet();
 		Status status = Status.valueOf(key);
 
-		player.isStand(status);
+		player.isStand(status); //スタンドにする手札を決める
 
-		if(!player.movedCheckAll()) {
+		if(!player.movedCheckAll()) { //すべての手札が行動可能ならプレイヤーターンに戻る
 			return "PlayerTurn";
 		}		
-		if(!player.burstCheckAll()) {
+		if(!player.burstCheckAll()) {	//すべてバーストならプレイヤーの自動敗北、ディーラーはカードを引かない
 			while(dealer.getPoint(Status.PLAYING).getScore() < 17) {
 				dealer.draw(deck.pull(), Status.PLAYING);
 			}
 		}	
-		bet.judge(player, dealer);
+		bet.judge(player, dealer); //勝敗判定
 
 		game.setDeck(deck);
 		game.setPlayer(player);
 		game.setDealer(dealer);
 		game.setBet(bet);
 
-		return "Result";
+		return "Result"; //Resultサーブレットにリダイレクト(リロード対策)
 	}
 }

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
-	private List<Card> list; 
-	private Point point;
-	private boolean isStand;
-	private Result result;
+	private List<Card> list; //カード一覧
+	private Point point; //点数
+	private boolean isStand; //行動可能かどうか
+	private Result result; //勝敗結果
 
 	public Hand() {
 		list = new ArrayList<Card>();

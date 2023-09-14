@@ -20,8 +20,11 @@ public class Blackjack {
 	public static String getPlayerTurn(HttpServletRequest request) {
 		request.setAttribute("game", game);
 		return "playerTurn.jsp";
-	}
-	public static String getResult(HttpServletRequest request) {		
+	} 
+	
+	public static String getResult(HttpServletRequest request) {
+		//賭け金を精算し、DBを更新してgameクラスをJSPに渡す
+
 		Bet bet = game.getBet();
 		Update.updateResult(id, bet.refund());
 		Insert.insertLog(id, bet.refund());
