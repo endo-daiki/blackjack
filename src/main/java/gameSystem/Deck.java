@@ -16,6 +16,8 @@ public class Deck {
 			for(CardNumber no : cardNumber) {
 				Card card = new Card(suit, no);
 				deck.add(card);
+				
+				
 			}
 		}
 		
