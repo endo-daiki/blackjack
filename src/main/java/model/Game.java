@@ -16,6 +16,8 @@ public class Game {
 		this.player = new Player();
 		this.dealer = new Player();
 		this.bet = new Bet(bet);
+		
+		
 	}
 
 	public Deck getDeck() {
